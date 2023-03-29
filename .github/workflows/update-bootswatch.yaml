@@ -25,9 +25,9 @@ jobs:
       - name: Install
         run: |
           make install
-      - name: Run `scripts/update-bootswatch.py`
+      - name: Run `scripts/update_bootswatch.py`
         run: |
-          python3 scripts/update-bootswatch.py
+          python3 scripts/update_bootswatch.py
       - name: Commit changes
         run: |
           git commit shinyswatch/_themes.py -m 'foo added' --author 'GitHub Actions <actions@github.com>'
