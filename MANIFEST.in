@@ -1,0 +1,2 @@
+include shinyswatch/known_tags.json
+recursive-include shinyswatch/lib *

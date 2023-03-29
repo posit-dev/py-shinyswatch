@@ -1,0 +1,36 @@
+name: Update Bootswatch
+
+on:
+  workflow_dispatch:
+  issue_comment:
+    types: [created]
+
+jobs:
+  update-bootswatch:
+    if: startsWith(github.event.comment.body, '/update')
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: r-lib/actions/pr-fetch@v2
+        with:
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Set up Python 3.11
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.11"
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -e ".[dev,test]"
+      - name: Install
+        run: |
+          make install
+      - name: Run `scripts/update-bootswatch.py`
+        run: |
+          python3 scripts/update-bootswatch.py
+      - name: Commit changes
+        run: |
+          git commit shinyswatch/_themes.py -m 'foo added' --author 'GitHub Actions <actions@github.com>'
+      - uses: r-lib/actions/pr-push@v2
+        with:
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
