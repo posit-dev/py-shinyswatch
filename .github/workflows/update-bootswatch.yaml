@@ -12,8 +12,6 @@ jobs:
     steps:
       - name: Checkout repo
         uses: actions/checkout@v3
-        with:
-          fetch-depth: 0
 
       - name: Set up Python 3.11
         uses: actions/setup-python@v4
@@ -33,10 +31,8 @@ jobs:
 
       - name: Push back changes
         run: |
-          git config --global --unset credential.helper
-          git config --local user.name "$GITHUB_ACTOR"
-          git config --local user.email "$GITHUB_ACTOR@users.noreply.github.com"
+          git config user.name github-actions
+          git config user.email github-actions@github.com
           git add shinyswatch/_themes.py || echo "No Bootswatch changes to add"
           git commit -m 'Update Bootswatch themes (GitHub Actions)' || echo "No Bootswatch changes to commit"
-          git pull --ff-only
           git push
