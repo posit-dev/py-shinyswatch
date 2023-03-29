@@ -32,7 +32,8 @@ jobs:
         run: |
           git config --local user.name "$GITHUB_ACTOR"
           git config --local user.email "$GITHUB_ACTOR@users.noreply.github.com"
-          git commit shinyswatch/_themes.py -m 'Update Bootswatch themes (GitHub Actions)'
+          git add shinyswatch/_themes.py || echo "No Bootswatch changes to add"
+          git commit -m 'Update Bootswatch themes (GitHub Actions)' || echo "No Bootswatch changes to commit"
       - uses: r-lib/actions/pr-push@v2
         with:
           repo-token: ${{ secrets.GITHUB_TOKEN }}
