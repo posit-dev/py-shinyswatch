@@ -7,13 +7,14 @@ on:
 
 jobs:
   update-bootswatch:
-    if: startsWith(github.event.comment.body, '/update')
+    if: ${{ github.event.issue.pull_request && (github.event.comment.author_association == 'MEMBER' || github.event.comment.author_association == 'OWNER') && startsWith(github.event.comment.body, '/update') }}
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - uses: r-lib/actions/pr-fetch@v2
+      - name: Checkout repo
+        uses: actions/checkout@v3
         with:
-          repo-token: ${{ secrets.GITHUB_TOKEN }}
+          fetch-depth: 0
+
       - name: Set up Python 3.11
         uses: actions/setup-python@v4
         with:
@@ -25,15 +26,16 @@ jobs:
       - name: Install
         run: |
           make install
+
       - name: Run `scripts/update_bootswatch.py`
         run: |
           python3 scripts/update_bootswatch.py
-      - name: Commit changes
+
+      - name: Push back changes
         run: |
           git config --local user.name "$GITHUB_ACTOR"
           git config --local user.email "$GITHUB_ACTOR@users.noreply.github.com"
           git add shinyswatch/_themes.py || echo "No Bootswatch changes to add"
           git commit -m 'Update Bootswatch themes (GitHub Actions)' || echo "No Bootswatch changes to commit"
-      - uses: r-lib/actions/pr-push@v2
-        with:
-          repo-token: ${{ secrets.GITHUB_TOKEN }}
+          git pull --ff-only
+          git push
