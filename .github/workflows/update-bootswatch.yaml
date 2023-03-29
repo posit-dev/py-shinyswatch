@@ -30,7 +30,9 @@ jobs:
           python3 scripts/update_bootswatch.py
       - name: Commit changes
         run: |
-          git commit shinyswatch/_themes.py -m 'foo added' --author 'GitHub Actions <actions@github.com>'
+          git config --local user.name "$GITHUB_ACTOR"
+          git config --local user.email "$GITHUB_ACTOR@users.noreply.github.com"
+          git commit shinyswatch/_themes.py -m 'Update Bootswatch themes (GitHub Actions)'
       - uses: r-lib/actions/pr-push@v2
         with:
           repo-token: ${{ secrets.GITHUB_TOKEN }}
