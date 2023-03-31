@@ -35,5 +35,5 @@ python3 -m shiny run examples/big-sketchy/app.py
 If you want to do development on shinyswatch for Python:
 
 ```sh
-pip install -e ".[dev,test]"
+pip install -e ".[dev,test,examples]"
 ```
