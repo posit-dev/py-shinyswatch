@@ -1,21 +1,9 @@
-import typing
-
 import htmltools
-import pytest
 
 import shinyswatch
 
 
-@pytest.mark.parametrize("func", [shinyswatch.theme, shinyswatch.theme_cdn])
-def test_error_messages(
-    func: typing.Callable[
-        [
-            str,
-            str,
-        ],
-        htmltools.HTMLDependency,
-    ]
-):
+def test_error_messages():
     try:
         shinyswatch.theme("not-a-theme")
     except ValueError as e:
@@ -29,4 +17,7 @@ def test_error_messages(
 
 
 def test_theme_class():
-    assert isinstance(shinyswatch.theme("cerulean"), htmltools.HTMLDependency)
+    cerulean_theme = shinyswatch.theme("cerulean")
+    assert isinstance(cerulean_theme, list)
+    for dep in cerulean_theme:
+        assert isinstance(dep, htmltools.HTMLDependency)
