@@ -10,10 +10,6 @@ def test_error_messages():
         assert "Bootswatch theme" in str(e)
         assert "* cerulean" in str(e)
         assert "* superhero" in str(e)
-    try:
-        shinyswatch.theme("not-a-theme", bs_ver="not-a-version")
-    except ValueError as e:
-        assert "Bootswatch version" in str(e)
 
 
 def test_theme_class():

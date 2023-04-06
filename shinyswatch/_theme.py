@@ -40,7 +40,8 @@ def _shiny_theme(html_dep: HTMLDependency) -> list[HTMLDependency]:
     ]
 
 
-def theme(name: str, *, bs_ver: str = "5") -> list[HTMLDependency]:
+def theme(name: str) -> list[HTMLDependency]:
+    bs_ver = "5"
     assert_theme(name=name, bs_ver=bs_ver)
 
     subdir = os.path.join(os.path.dirname(__file__), "bsw" + bs_ver, name)
