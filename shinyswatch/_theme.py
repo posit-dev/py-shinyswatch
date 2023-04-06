@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import os
+from copy import deepcopy
 
 from htmltools import HTMLDependency
 from shiny.ui import page_bootstrap as shiny_page_bootstrap
@@ -16,7 +17,8 @@ def _shiny_theme(html_dep: HTMLDependency) -> list[HTMLDependency]:
     shiny_deps = shiny_page_bootstrap().get_dependencies()
     for dep in shiny_deps:
         if dep.name == "bootstrap":
-            bs_no_style = dep
+            # Copy the dependency, but only disable the stylesheet (to keep the JS files)
+            bs_no_style = deepcopy(dep)
             # Disable bootstrap.min.css as it is included in bootswatch bundle
             bs_no_style.stylesheet = []
             # Rename to convey intent (and to disable it below)
