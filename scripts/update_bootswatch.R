@@ -3,6 +3,7 @@
 library(bslib)
 library(rlang)
 
+# == Approach ================================================================
 # We MUST use `{bslib}` themes as the original bootswatch themes
 # have been modified to support Shiny markup. Ex: `.well`.
 # The final bslib themes have already had their web font paths replaced
@@ -10,6 +11,7 @@ library(rlang)
 # We do this by downloading the original bootswatch themes from npm and
 # parsing the original CDN paths from the original Sass files.
 # If any unexpected URL-like variables are found, an error will be thrown.
+# ===========================================================================
 
 root <- here::here()
 lib <- file.path(root, "shinyswatch")
@@ -20,6 +22,9 @@ npm_tag <- names(bslib::versions()[bslib::versions() == ver])
 
 
 # Download bootswatch from npm to get original urls that are stripped in {bslib}
+if (!nzchar(Sys.which("npm"))) {
+  stop("npm is required to run this script")
+}
 extra_args <- " --package-lock false --no-save --silent"
 system(paste0("npm uninstall bootswatch", extra_args))
 system(paste0("npm install bootswatch@", npm_tag, extra_args))
@@ -46,6 +51,12 @@ ignore <- Map(
     p$tick(tokens = list(name = name_fmt))
     dir.create(file.path(out_dir, name), recursive = TRUE, showWarnings = FALSE)
 
+    # == Find and replace the `web-font-url` variable =========================
+    # Find the `web-font-url` variable in the `.scss` files
+    # and replace it with the original CDN url from the npm package theme.
+    # Make sure there are no url-like variables besides `web-font-url` in the
+    # `.scss` files.
+
     # Find any line that has a url for a variable
     npm_theme_path <- file.path(bootswatch_npm_dist, name)
     npm_lines <- c(
@@ -54,6 +65,7 @@ ignore <- Map(
     )
     npm_url_lines <- npm_lines[grep("\"https?://", npm_lines)]
     variable_map <- list()
+    # Make a map of all the variables and their values
     for (npm_url_line in npm_url_lines) {
       line_parts <- strsplit(npm_url_line, ": ")[[1]]
       variable <- sub("^\\$", "", line_parts[1])
@@ -63,17 +75,21 @@ ignore <- Map(
 
     # Diagnostics on which sass variables were found
     if (length(variable_map) == 0) {
+      # Good
       message("No variables found in ", name, " _variables.scss file")
     } else {
       str(variable_map)
       has_web_font_path <- "web-font-path" %in% names(variable_map)
       if (!has_web_font_path) {
+        # Not good. At least one variable besides `web-font-path` was found
         message("No `web-font-path` found in ", name, " _variables.scss file")
       }
       if (length(names(variable_map)) > as.numeric(has_web_font_path)) {
+        # Not good. At least one variable besides `web-font-path` was found
         stop("More than one variable found in ", name, " _variables.scss file")
       }
     }
+    # == End - Find and replace the `web-font-url` variable ===================
 
     # Get the patched sass bundle from bslib
     sass_bundle <- bslib::bs_theme(version = ver, bootswatch = name)
