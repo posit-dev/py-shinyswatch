@@ -3,7 +3,7 @@ from ._themes import themes, versions
 newline_and_star = "\n* "
 
 
-def assert_bs_ver(*, bs_ver: str) -> None:
+def _assert_bs_ver(*, bs_ver: str) -> None:
     if type(bs_ver) is not str:
         raise TypeError("`bs_ver` must be a string")
     if bs_ver not in versions:
@@ -13,9 +13,7 @@ def assert_bs_ver(*, bs_ver: str) -> None:
         )
 
 
-def assert_theme(*, name: str, bs_ver: str = "5") -> None:
-    assert_bs_ver(bs_ver=bs_ver)
-
+def _assert_bs_theme(*, bs_ver: str, name: str) -> None:
     if type(name) is not str:
         raise TypeError("`name` must be a string")
     if name not in themes[bs_ver]:
@@ -23,3 +21,8 @@ def assert_theme(*, name: str, bs_ver: str = "5") -> None:
         raise ValueError(
             f"Bootswatch theme `{name}` not supported. Bootswatch version `{bs_ver}` has themes:{newline_and_star}{theme_names}"
         )
+
+
+def assert_theme(*, name: str, bs_ver: str = "5") -> None:
+    _assert_bs_ver(bs_ver=bs_ver)
+    _assert_bs_theme(bs_ver=bs_ver, name=name)
