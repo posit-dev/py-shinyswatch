@@ -1,6 +1,6 @@
 # shinyswatch
 
-Bootstrap 5 themes for [Shiny](https://shiny.rstudio.com/py/).
+[Bootswatch](https://bootswatch.com/) + Bootstrap 5 theme for [Shiny](https://shiny.rstudio.com/py/).
 
 ## Installation
 
