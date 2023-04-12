@@ -1,5 +1,11 @@
-__version__ = "0.0.0.9000"
+"""Bootswatch + Bootstrap 5 themes for Shiny"""
 
-from ._theme import theme
+__version__ = "0.1.1"
 
-__all__ = ("theme",)
+from . import theme
+from ._get_theme import get_theme
+
+__all__ = (
+    "theme",
+    "get_theme",
+)
