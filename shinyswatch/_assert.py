@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from ._bsw5 import bsw5_themes, bsw5_version
 
 newline_and_star = "\n* "
