@@ -1,6 +1,6 @@
 # shinyswatch
 
-[Bootswatch](https://bootswatch.com/) + Bootstrap 5 theme for [Shiny](https://shiny.rstudio.com/py/).
+[Bootswatch](https://bootswatch.com/) + Bootstrap 5 themes for [Shiny](https://shiny.rstudio.com/py/).
 
 ## Installation
 
@@ -24,7 +24,7 @@ from shiny import App, Inputs, Outputs, Session, render, ui
 import shinyswatch
 
 app_ui = ui.page_fluid(
-    shinyswatch.theme("darkly"),
+    shinyswatch.theme.darkly,
     ui.input_slider("num", "Number:", min=10, max=100, value=30),
     ui.output_text_verbatim("slider_val"),
 )
