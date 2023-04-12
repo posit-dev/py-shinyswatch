@@ -8,7 +8,9 @@ import shinyswatch
 app_ui = ui.page_fluid(
     # # Theme code
     # Add the Theme's HTML Dependency object anywhere in the UI code
-    shinyswatch.theme("sketchy"),
+    shinyswatch.get_theme("sketchy"),
+    # # Equivalent to:
+    # shinyswatch.theme.sketchy,
     # # /Theme code
     ui.panel_title("Changing the values of inputs from the server"),
     ui.row(

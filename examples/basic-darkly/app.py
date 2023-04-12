@@ -1,28 +1,19 @@
-import matplotlib.pyplot as plt
-import numpy as np
 from shiny import App, Inputs, Outputs, Session, render, ui
 
 import shinyswatch
 
 app_ui = ui.page_fluid(
-    # Theme code
-    shinyswatch.theme("darkly"),
-    # /Theme code
-    ui.input_slider("obs", "Number of bins:", min=10, max=100, value=30),
-    ui.output_plot("distPlot"),
+    shinyswatch.theme.darkly,
+    ui.input_slider("num", "Number:", min=10, max=100, value=30),
+    ui.output_text_verbatim("slider_val"),
 )
 
 
 def server(input: Inputs, output: Outputs, session: Session):
     @output
-    @render.plot
-    def distPlot():
-        np.random.seed(19680801)
-        x = 100 + 15 * np.random.randn(437)
-
-        fig, ax = plt.subplots()
-        ax.hist(x, input.obs(), density=True)
-        return fig
+    @render.text
+    def slider_val():
+        return f"{input.num()}"
 
 
 app = App(app_ui, server)
