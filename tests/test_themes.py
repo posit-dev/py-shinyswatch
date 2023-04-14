@@ -1,6 +1,7 @@
 import htmltools
 
 import shinyswatch
+import shinyswatch._bsw5 as bsw5
 
 
 def test_error_messages():
@@ -12,13 +13,10 @@ def test_error_messages():
         assert "* superhero" in str(e)
 
 
-def test_theme_class():
-    cerulean_theme = shinyswatch.get_theme("cerulean")
-    assert isinstance(cerulean_theme, list)
-    for dep in cerulean_theme:
-        assert isinstance(dep, htmltools.HTMLDependency)
+def test_themes():
+    for theme_name in bsw5.bsw5_themes:
+        theme_deps = shinyswatch.get_theme(theme_name)
 
-
-def test_theme_names():
-    for theme_name in shinyswatch.theme.__all__:
-        shinyswatch.get_theme(theme_name)
+        assert isinstance(theme_deps, list)
+        for dep in theme_deps:
+            assert isinstance(dep, htmltools.HTMLDependency)

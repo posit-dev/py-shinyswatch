@@ -1,3 +1,29 @@
+# shinyswatch
+
+[Bootswatch](https://bootswatch.com/) + Bootstrap 5 themes for [Shiny](https://shiny.rstudio.com/py/).
+
+## Installation
+
+```sh
+pip install shinyswatch
+```
+
+To install the latest development version from this repository:
+
+```sh
+pip install https://github.com/schloerke/py-shinyswatch/tarball/main
+```
+
+## Usage
+
+Add your theme within your App's UI defintion. For example:
+
+```{shinylive-python}
+#| standalone: true
+#| components: [editor, viewer]
+#| layout: vertical
+#| height: 500
+#| viewerHeight: 1000
 from datetime import date
 
 from shiny import App, Inputs, Outputs, Session, reactive, ui
@@ -8,9 +34,7 @@ import shinyswatch
 app_ui = ui.page_fluid(
     # Theme code - start
     # Add the Theme's HTML Dependency object in the UI code
-    shinyswatch.get_theme("sketchy"),
-    # # Equivalent to:
-    # shinyswatch.theme.sketchy(),
+    shinyswatch.theme.sketchy(),
     # Theme code - end
     ui.panel_title("Changing the values of inputs from the server"),
     ui.row(
@@ -206,3 +230,10 @@ def server(input: Inputs, output: Outputs, session: Session):
 
 
 app = App(app_ui, server, debug=False)
+
+## file: requirements.txt
+shiny
+shinyswatch
+```
+
+> Note: While the styling is contained within `{shinyswatch}`, fonts are requested from a CDN. This means that you will need an internet connection to use the themes.
