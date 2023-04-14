@@ -16,15 +16,18 @@ pip install https://github.com/schloerke/py-shinyswatch/tarball/main
 
 ## Usage
 
-Add your theme **anywhere** within your App's UI defintion. For example:
+Add your theme within your App's top level UI defintion. For example:
 
-```py
+```python
+# File: app.py
 from shiny import App, Inputs, Outputs, Session, render, ui
 
 import shinyswatch
 
 app_ui = ui.page_fluid(
-    shinyswatch.theme.darkly,
+    # Theme code - start
+    shinyswatch.theme.darkly(),
+    # Theme code - end
     ui.input_slider("num", "Number:", min=10, max=100, value=30),
     ui.output_text_verbatim("slider_val"),
 )
@@ -42,13 +45,15 @@ app = App(app_ui, server)
 
 ## Examples
 
-There are two examples in the shinyswatch repo. After checking out the repo, you can run them by calling:
+There are two examples in the shinyswatch repo. You can view them online at: [shinyswatch.theme.darkly](http://rstudio.github.io/py-shinyswatch/reference/theme.darkly.html) and [get_theme](http://rstudio.github.io/py-shinyswatch/reference/get_theme.html).
+
+To run the demos locally, you can clone the repo and run the examples by calling:
 
 ```sh
 python3 -m shiny run examples/basic-darkly/app.py
+# or
 python3 -m shiny run examples/big-sketchy/app.py
 ```
-
 
 ## Development
 

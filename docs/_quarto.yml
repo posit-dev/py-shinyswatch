@@ -1,0 +1,62 @@
+project:
+  type: website
+  resources:
+    - objects.json
+
+metadata-files:
+  - _sidebar.yml
+
+filters:
+  - shinylive
+
+quartodoc:
+  # style: single-page
+  style: pkgdown
+  sidebar: _sidebar.yml
+  dir: reference
+  package: shinyswatch
+  sections:
+    - title: Get a theme
+      desc: Generic method to retrieve a Bootswatch + Bootstrap 5 theme.
+      contents:
+        - get_theme
+    - title: Themes
+      desc: Functions to create a specific theme.
+      contents:
+        - theme.cerulean
+        - theme.cosmo
+        - theme.cyborg
+        - theme.darkly
+        - theme.flatly
+        - theme.journal
+        - theme.litera
+        - theme.lumen
+        - theme.lux
+        - theme.materia
+        - theme.minty
+        - theme.morph
+        - theme.pulse
+        - theme.quartz
+        - theme.sandstone
+        - theme.simplex
+        - theme.sketchy
+        - theme.slate
+        - theme.solar
+        - theme.spacelab
+        - theme.superhero
+        - theme.united
+        - theme.vapor
+        - theme.yeti
+        - theme.zephyr
+
+website:
+  title: shinyswatch
+  navbar:
+    left:
+      # - href: https://machow.github.io/quartodoc/
+      #   text: quartodoc home
+      - file: reference/index.qmd
+        text: "Reference"
+    right:
+      - icon: github
+        href: https://github.com/rstudio/shinyswatch

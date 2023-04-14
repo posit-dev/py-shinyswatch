@@ -103,3 +103,5 @@ ENV/
 
 typings/
 node_modules/
+
+/.luarc.json

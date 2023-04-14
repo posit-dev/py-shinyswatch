@@ -62,16 +62,18 @@ coverage: ## check code coverage quickly with the default Python
 	coverage html
 	$(BROWSER) htmlcov/index.html
 
-docs: ## generate Sphinx HTML documentation, including API docs
-	rm -f docs/shinyswatch.rst
-	rm -f docs/modules.rst
-	sphinx-apidoc -o docs/ shinyswatch
-	$(MAKE) -C docs clean
-	$(MAKE) -C docs html
-	$(BROWSER) docs/_build/html/index.html
+quarto-shinylive: ## Make sure quarto-shinylive is installed
+	cd docs && (test -f _extensions/quarto-ext/shinylive/shinylive.lua || quarto install extension quarto-ext/shinylive)
+docs: quarto-shinylive ## generate quartodoc HTML documentation, including API docs
+	cd docs && python -m quartodoc build
+	cd docs && quarto render
+	$(BROWSER) docs/_site/index.html
 
-servedocs: docs ## compile the docs watching for changes
-	watchmedo shell-command -p '*.rst' -c '$(MAKE) -C docs html' -R -D .
+# # Perform `quarto preview` and `quartodoc build` in parallel
+# watchdocs: quarto-shinylive
+# 	cd docs && quarto preview &
+# 	watchmedo shell-command -p 'shinyswatch/*.py' -c 'cd docs && python -m quartodoc build' -R -D . &
+# 	wait
 
 release: dist ## package and upload a release
 	twine upload dist/*
