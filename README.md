@@ -45,7 +45,9 @@ app = App(app_ui, server)
 
 ## Examples
 
-There are two examples in the shinyswatch repo. You can view them online at: [shinyswatch.theme.darkly](http://rstudio.github.io/py-shinyswatch/reference/theme.darkly.html) and [get_theme](http://rstudio.github.io/py-shinyswatch/reference/get_theme.html).
+There are two examples in the shinyswatch repo.
+
+<!-- You can view them online at: [shinyswatch.theme.darkly](http://rstudio.github.io/py-shinyswatch/reference/theme.darkly.html) and [get_theme](http://rstudio.github.io/py-shinyswatch/reference/get_theme.html). -->
 
 To run the demos locally, you can clone the repo and run the examples by calling:
 
