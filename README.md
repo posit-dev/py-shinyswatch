@@ -55,24 +55,26 @@ app = App(app_ui, server)
 
 ![darkly theme](readme_darkly.png)
 
-## Examples
-
-There are two examples in the shinyswatch repo.
-
-<!-- You can view them online at: [shinyswatch.theme.darkly](http://rstudio.github.io/py-shinyswatch/reference/theme.darkly.html) and [get_theme](http://rstudio.github.io/py-shinyswatch/reference/get_theme.html). -->
-
-To run the demos locally, you can clone the repo and run the examples by calling:
-
-```sh
-python3 -m shiny run examples/basic-darkly/app.py
-# or
-python3 -m shiny run examples/big-sketchy/app.py
-```
-
 ## Development
 
 If you want to do development on shinyswatch for Python:
 
 ```sh
 pip install -e ".[dev,test]"
+```
+
+### Examples
+
+There are three examples in the shinyswatch repo.
+
+<!-- You can view them online at: [shinyswatch.theme.darkly](http://rstudio.github.io/py-shinyswatch/reference/theme.darkly.html) and [get_theme](http://rstudio.github.io/py-shinyswatch/reference/get_theme.html). -->
+
+To run the demos locally, you can run the examples by calling:
+
+```sh
+python3 -m shiny run examples/basic-darkly/app.py
+# or
+python3 -m shiny run examples/big-sketchy/app.py
+# or
+python3 -m shiny run examples/components/app.py
 ```
