@@ -43,6 +43,8 @@ def server(input: Inputs, output: Outputs, session: Session):
 app = App(app_ui, server)
 ```
 
+![darkly theme](readme_darkly.png)
+
 ## Examples
 
 There are two examples in the shinyswatch repo.
