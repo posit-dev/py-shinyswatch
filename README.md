@@ -16,7 +16,17 @@ pip install https://github.com/rstudio/py-shinyswatch/tarball/main
 
 ## Usage
 
-Add your theme within your App's top level UI defintion. For example:
+To use a theme, call the theme function and add it to your App's UI definition.
+
+```python
+# Darkly theme
+shinyswatch.theme.darkly()
+
+# Sketchy theme
+shinyswatch.theme.sketchy()
+```
+
+Example Shiny application:
 
 ```python
 # File: app.py
