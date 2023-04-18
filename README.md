@@ -2,6 +2,8 @@
 
 [Bootswatch](https://bootswatch.com/) + Bootstrap 5 themes for [Shiny](https://shiny.rstudio.com/py/).
 
+![component example](readme_ex.png)
+
 ## Installation
 
 ```sh
