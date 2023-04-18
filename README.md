@@ -11,7 +11,7 @@ pip install shinyswatch
 To install the latest development version from this repository:
 
 ```sh
-pip install https://github.com/schloerke/py-shinyswatch/tarball/main
+pip install https://github.com/rstudio/py-shinyswatch/tarball/main
 ```
 
 ## Usage
