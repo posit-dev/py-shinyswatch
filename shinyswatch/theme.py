@@ -19,41 +19,6 @@ def cerulean() -> list[HTMLDependency]:
     -------
     list[htmltools.HTMLDependency]
         List of HTMLDependency objects that create a Bootswatch (cerulean) and Bootstrap 5 theme.
-
-    Examples
-    --------
-    ```{shinylive-python}
-    #| standalone: true
-    #| components: [editor, viewer]
-    #| layout: vertical
-    ## file: app.py
-    from shiny import App, Inputs, Outputs, Session, render, ui
-
-    import shinyswatch
-
-    app_ui = ui.page_fluid(
-        # Theme code - start
-        shinyswatch.theme.cerulean(),
-        # Theme code - end
-        ui.input_slider("num", "Number:", min=10, max=100, value=30),
-        ui.output_text_verbatim("slider_val"),
-    )
-
-
-    def server(input: Inputs, output: Outputs, session: Session):
-        @output
-        @render.text
-        def slider_val():
-            return f"{input.num()}"
-
-
-    app = App(app_ui, server)
-
-    ## file: requirements.txt
-    shiny
-    shinyswatch
-
-    ```
     """
 
     return _get_theme("cerulean")
@@ -67,41 +32,6 @@ def cosmo() -> list[HTMLDependency]:
     -------
     list[htmltools.HTMLDependency]
         List of HTMLDependency objects that create a Bootswatch (cosmo) and Bootstrap 5 theme.
-
-    Examples
-    --------
-    ```{shinylive-python}
-    #| standalone: true
-    #| components: [editor, viewer]
-    #| layout: vertical
-    ## file: app.py
-    from shiny import App, Inputs, Outputs, Session, render, ui
-
-    import shinyswatch
-
-    app_ui = ui.page_fluid(
-        # Theme code - start
-        shinyswatch.theme.cosmo(),
-        # Theme code - end
-        ui.input_slider("num", "Number:", min=10, max=100, value=30),
-        ui.output_text_verbatim("slider_val"),
-    )
-
-
-    def server(input: Inputs, output: Outputs, session: Session):
-        @output
-        @render.text
-        def slider_val():
-            return f"{input.num()}"
-
-
-    app = App(app_ui, server)
-
-    ## file: requirements.txt
-    shiny
-    shinyswatch
-
-    ```
     """
 
     return _get_theme("cosmo")
@@ -115,41 +45,6 @@ def cyborg() -> list[HTMLDependency]:
     -------
     list[htmltools.HTMLDependency]
         List of HTMLDependency objects that create a Bootswatch (cyborg) and Bootstrap 5 theme.
-
-    Examples
-    --------
-    ```{shinylive-python}
-    #| standalone: true
-    #| components: [editor, viewer]
-    #| layout: vertical
-    ## file: app.py
-    from shiny import App, Inputs, Outputs, Session, render, ui
-
-    import shinyswatch
-
-    app_ui = ui.page_fluid(
-        # Theme code - start
-        shinyswatch.theme.cyborg(),
-        # Theme code - end
-        ui.input_slider("num", "Number:", min=10, max=100, value=30),
-        ui.output_text_verbatim("slider_val"),
-    )
-
-
-    def server(input: Inputs, output: Outputs, session: Session):
-        @output
-        @render.text
-        def slider_val():
-            return f"{input.num()}"
-
-
-    app = App(app_ui, server)
-
-    ## file: requirements.txt
-    shiny
-    shinyswatch
-
-    ```
     """
 
     return _get_theme("cyborg")
@@ -163,41 +58,6 @@ def darkly() -> list[HTMLDependency]:
     -------
     list[htmltools.HTMLDependency]
         List of HTMLDependency objects that create a Bootswatch (darkly) and Bootstrap 5 theme.
-
-    Examples
-    --------
-    ```{shinylive-python}
-    #| standalone: true
-    #| components: [editor, viewer]
-    #| layout: vertical
-    ## file: app.py
-    from shiny import App, Inputs, Outputs, Session, render, ui
-
-    import shinyswatch
-
-    app_ui = ui.page_fluid(
-        # Theme code - start
-        shinyswatch.theme.darkly(),
-        # Theme code - end
-        ui.input_slider("num", "Number:", min=10, max=100, value=30),
-        ui.output_text_verbatim("slider_val"),
-    )
-
-
-    def server(input: Inputs, output: Outputs, session: Session):
-        @output
-        @render.text
-        def slider_val():
-            return f"{input.num()}"
-
-
-    app = App(app_ui, server)
-
-    ## file: requirements.txt
-    shiny
-    shinyswatch
-
-    ```
     """
 
     return _get_theme("darkly")
@@ -211,41 +71,6 @@ def flatly() -> list[HTMLDependency]:
     -------
     list[htmltools.HTMLDependency]
         List of HTMLDependency objects that create a Bootswatch (flatly) and Bootstrap 5 theme.
-
-    Examples
-    --------
-    ```{shinylive-python}
-    #| standalone: true
-    #| components: [editor, viewer]
-    #| layout: vertical
-    ## file: app.py
-    from shiny import App, Inputs, Outputs, Session, render, ui
-
-    import shinyswatch
-
-    app_ui = ui.page_fluid(
-        # Theme code - start
-        shinyswatch.theme.flatly(),
-        # Theme code - end
-        ui.input_slider("num", "Number:", min=10, max=100, value=30),
-        ui.output_text_verbatim("slider_val"),
-    )
-
-
-    def server(input: Inputs, output: Outputs, session: Session):
-        @output
-        @render.text
-        def slider_val():
-            return f"{input.num()}"
-
-
-    app = App(app_ui, server)
-
-    ## file: requirements.txt
-    shiny
-    shinyswatch
-
-    ```
     """
 
     return _get_theme("flatly")
@@ -259,41 +84,6 @@ def journal() -> list[HTMLDependency]:
     -------
     list[htmltools.HTMLDependency]
         List of HTMLDependency objects that create a Bootswatch (journal) and Bootstrap 5 theme.
-
-    Examples
-    --------
-    ```{shinylive-python}
-    #| standalone: true
-    #| components: [editor, viewer]
-    #| layout: vertical
-    ## file: app.py
-    from shiny import App, Inputs, Outputs, Session, render, ui
-
-    import shinyswatch
-
-    app_ui = ui.page_fluid(
-        # Theme code - start
-        shinyswatch.theme.journal(),
-        # Theme code - end
-        ui.input_slider("num", "Number:", min=10, max=100, value=30),
-        ui.output_text_verbatim("slider_val"),
-    )
-
-
-    def server(input: Inputs, output: Outputs, session: Session):
-        @output
-        @render.text
-        def slider_val():
-            return f"{input.num()}"
-
-
-    app = App(app_ui, server)
-
-    ## file: requirements.txt
-    shiny
-    shinyswatch
-
-    ```
     """
 
     return _get_theme("journal")
@@ -307,41 +97,6 @@ def litera() -> list[HTMLDependency]:
     -------
     list[htmltools.HTMLDependency]
         List of HTMLDependency objects that create a Bootswatch (litera) and Bootstrap 5 theme.
-
-    Examples
-    --------
-    ```{shinylive-python}
-    #| standalone: true
-    #| components: [editor, viewer]
-    #| layout: vertical
-    ## file: app.py
-    from shiny import App, Inputs, Outputs, Session, render, ui
-
-    import shinyswatch
-
-    app_ui = ui.page_fluid(
-        # Theme code - start
-        shinyswatch.theme.litera(),
-        # Theme code - end
-        ui.input_slider("num", "Number:", min=10, max=100, value=30),
-        ui.output_text_verbatim("slider_val"),
-    )
-
-
-    def server(input: Inputs, output: Outputs, session: Session):
-        @output
-        @render.text
-        def slider_val():
-            return f"{input.num()}"
-
-
-    app = App(app_ui, server)
-
-    ## file: requirements.txt
-    shiny
-    shinyswatch
-
-    ```
     """
 
     return _get_theme("litera")
@@ -355,41 +110,6 @@ def lumen() -> list[HTMLDependency]:
     -------
     list[htmltools.HTMLDependency]
         List of HTMLDependency objects that create a Bootswatch (lumen) and Bootstrap 5 theme.
-
-    Examples
-    --------
-    ```{shinylive-python}
-    #| standalone: true
-    #| components: [editor, viewer]
-    #| layout: vertical
-    ## file: app.py
-    from shiny import App, Inputs, Outputs, Session, render, ui
-
-    import shinyswatch
-
-    app_ui = ui.page_fluid(
-        # Theme code - start
-        shinyswatch.theme.lumen(),
-        # Theme code - end
-        ui.input_slider("num", "Number:", min=10, max=100, value=30),
-        ui.output_text_verbatim("slider_val"),
-    )
-
-
-    def server(input: Inputs, output: Outputs, session: Session):
-        @output
-        @render.text
-        def slider_val():
-            return f"{input.num()}"
-
-
-    app = App(app_ui, server)
-
-    ## file: requirements.txt
-    shiny
-    shinyswatch
-
-    ```
     """
 
     return _get_theme("lumen")
@@ -403,41 +123,6 @@ def lux() -> list[HTMLDependency]:
     -------
     list[htmltools.HTMLDependency]
         List of HTMLDependency objects that create a Bootswatch (lux) and Bootstrap 5 theme.
-
-    Examples
-    --------
-    ```{shinylive-python}
-    #| standalone: true
-    #| components: [editor, viewer]
-    #| layout: vertical
-    ## file: app.py
-    from shiny import App, Inputs, Outputs, Session, render, ui
-
-    import shinyswatch
-
-    app_ui = ui.page_fluid(
-        # Theme code - start
-        shinyswatch.theme.lux(),
-        # Theme code - end
-        ui.input_slider("num", "Number:", min=10, max=100, value=30),
-        ui.output_text_verbatim("slider_val"),
-    )
-
-
-    def server(input: Inputs, output: Outputs, session: Session):
-        @output
-        @render.text
-        def slider_val():
-            return f"{input.num()}"
-
-
-    app = App(app_ui, server)
-
-    ## file: requirements.txt
-    shiny
-    shinyswatch
-
-    ```
     """
 
     return _get_theme("lux")
@@ -451,41 +136,6 @@ def materia() -> list[HTMLDependency]:
     -------
     list[htmltools.HTMLDependency]
         List of HTMLDependency objects that create a Bootswatch (materia) and Bootstrap 5 theme.
-
-    Examples
-    --------
-    ```{shinylive-python}
-    #| standalone: true
-    #| components: [editor, viewer]
-    #| layout: vertical
-    ## file: app.py
-    from shiny import App, Inputs, Outputs, Session, render, ui
-
-    import shinyswatch
-
-    app_ui = ui.page_fluid(
-        # Theme code - start
-        shinyswatch.theme.materia(),
-        # Theme code - end
-        ui.input_slider("num", "Number:", min=10, max=100, value=30),
-        ui.output_text_verbatim("slider_val"),
-    )
-
-
-    def server(input: Inputs, output: Outputs, session: Session):
-        @output
-        @render.text
-        def slider_val():
-            return f"{input.num()}"
-
-
-    app = App(app_ui, server)
-
-    ## file: requirements.txt
-    shiny
-    shinyswatch
-
-    ```
     """
 
     return _get_theme("materia")
@@ -499,41 +149,6 @@ def minty() -> list[HTMLDependency]:
     -------
     list[htmltools.HTMLDependency]
         List of HTMLDependency objects that create a Bootswatch (minty) and Bootstrap 5 theme.
-
-    Examples
-    --------
-    ```{shinylive-python}
-    #| standalone: true
-    #| components: [editor, viewer]
-    #| layout: vertical
-    ## file: app.py
-    from shiny import App, Inputs, Outputs, Session, render, ui
-
-    import shinyswatch
-
-    app_ui = ui.page_fluid(
-        # Theme code - start
-        shinyswatch.theme.minty(),
-        # Theme code - end
-        ui.input_slider("num", "Number:", min=10, max=100, value=30),
-        ui.output_text_verbatim("slider_val"),
-    )
-
-
-    def server(input: Inputs, output: Outputs, session: Session):
-        @output
-        @render.text
-        def slider_val():
-            return f"{input.num()}"
-
-
-    app = App(app_ui, server)
-
-    ## file: requirements.txt
-    shiny
-    shinyswatch
-
-    ```
     """
 
     return _get_theme("minty")
@@ -547,41 +162,6 @@ def morph() -> list[HTMLDependency]:
     -------
     list[htmltools.HTMLDependency]
         List of HTMLDependency objects that create a Bootswatch (morph) and Bootstrap 5 theme.
-
-    Examples
-    --------
-    ```{shinylive-python}
-    #| standalone: true
-    #| components: [editor, viewer]
-    #| layout: vertical
-    ## file: app.py
-    from shiny import App, Inputs, Outputs, Session, render, ui
-
-    import shinyswatch
-
-    app_ui = ui.page_fluid(
-        # Theme code - start
-        shinyswatch.theme.morph(),
-        # Theme code - end
-        ui.input_slider("num", "Number:", min=10, max=100, value=30),
-        ui.output_text_verbatim("slider_val"),
-    )
-
-
-    def server(input: Inputs, output: Outputs, session: Session):
-        @output
-        @render.text
-        def slider_val():
-            return f"{input.num()}"
-
-
-    app = App(app_ui, server)
-
-    ## file: requirements.txt
-    shiny
-    shinyswatch
-
-    ```
     """
 
     return _get_theme("morph")
@@ -595,41 +175,6 @@ def pulse() -> list[HTMLDependency]:
     -------
     list[htmltools.HTMLDependency]
         List of HTMLDependency objects that create a Bootswatch (pulse) and Bootstrap 5 theme.
-
-    Examples
-    --------
-    ```{shinylive-python}
-    #| standalone: true
-    #| components: [editor, viewer]
-    #| layout: vertical
-    ## file: app.py
-    from shiny import App, Inputs, Outputs, Session, render, ui
-
-    import shinyswatch
-
-    app_ui = ui.page_fluid(
-        # Theme code - start
-        shinyswatch.theme.pulse(),
-        # Theme code - end
-        ui.input_slider("num", "Number:", min=10, max=100, value=30),
-        ui.output_text_verbatim("slider_val"),
-    )
-
-
-    def server(input: Inputs, output: Outputs, session: Session):
-        @output
-        @render.text
-        def slider_val():
-            return f"{input.num()}"
-
-
-    app = App(app_ui, server)
-
-    ## file: requirements.txt
-    shiny
-    shinyswatch
-
-    ```
     """
 
     return _get_theme("pulse")
@@ -643,41 +188,6 @@ def quartz() -> list[HTMLDependency]:
     -------
     list[htmltools.HTMLDependency]
         List of HTMLDependency objects that create a Bootswatch (quartz) and Bootstrap 5 theme.
-
-    Examples
-    --------
-    ```{shinylive-python}
-    #| standalone: true
-    #| components: [editor, viewer]
-    #| layout: vertical
-    ## file: app.py
-    from shiny import App, Inputs, Outputs, Session, render, ui
-
-    import shinyswatch
-
-    app_ui = ui.page_fluid(
-        # Theme code - start
-        shinyswatch.theme.quartz(),
-        # Theme code - end
-        ui.input_slider("num", "Number:", min=10, max=100, value=30),
-        ui.output_text_verbatim("slider_val"),
-    )
-
-
-    def server(input: Inputs, output: Outputs, session: Session):
-        @output
-        @render.text
-        def slider_val():
-            return f"{input.num()}"
-
-
-    app = App(app_ui, server)
-
-    ## file: requirements.txt
-    shiny
-    shinyswatch
-
-    ```
     """
 
     return _get_theme("quartz")
@@ -691,41 +201,6 @@ def sandstone() -> list[HTMLDependency]:
     -------
     list[htmltools.HTMLDependency]
         List of HTMLDependency objects that create a Bootswatch (sandstone) and Bootstrap 5 theme.
-
-    Examples
-    --------
-    ```{shinylive-python}
-    #| standalone: true
-    #| components: [editor, viewer]
-    #| layout: vertical
-    ## file: app.py
-    from shiny import App, Inputs, Outputs, Session, render, ui
-
-    import shinyswatch
-
-    app_ui = ui.page_fluid(
-        # Theme code - start
-        shinyswatch.theme.sandstone(),
-        # Theme code - end
-        ui.input_slider("num", "Number:", min=10, max=100, value=30),
-        ui.output_text_verbatim("slider_val"),
-    )
-
-
-    def server(input: Inputs, output: Outputs, session: Session):
-        @output
-        @render.text
-        def slider_val():
-            return f"{input.num()}"
-
-
-    app = App(app_ui, server)
-
-    ## file: requirements.txt
-    shiny
-    shinyswatch
-
-    ```
     """
 
     return _get_theme("sandstone")
@@ -739,41 +214,6 @@ def simplex() -> list[HTMLDependency]:
     -------
     list[htmltools.HTMLDependency]
         List of HTMLDependency objects that create a Bootswatch (simplex) and Bootstrap 5 theme.
-
-    Examples
-    --------
-    ```{shinylive-python}
-    #| standalone: true
-    #| components: [editor, viewer]
-    #| layout: vertical
-    ## file: app.py
-    from shiny import App, Inputs, Outputs, Session, render, ui
-
-    import shinyswatch
-
-    app_ui = ui.page_fluid(
-        # Theme code - start
-        shinyswatch.theme.simplex(),
-        # Theme code - end
-        ui.input_slider("num", "Number:", min=10, max=100, value=30),
-        ui.output_text_verbatim("slider_val"),
-    )
-
-
-    def server(input: Inputs, output: Outputs, session: Session):
-        @output
-        @render.text
-        def slider_val():
-            return f"{input.num()}"
-
-
-    app = App(app_ui, server)
-
-    ## file: requirements.txt
-    shiny
-    shinyswatch
-
-    ```
     """
 
     return _get_theme("simplex")
@@ -787,41 +227,6 @@ def sketchy() -> list[HTMLDependency]:
     -------
     list[htmltools.HTMLDependency]
         List of HTMLDependency objects that create a Bootswatch (sketchy) and Bootstrap 5 theme.
-
-    Examples
-    --------
-    ```{shinylive-python}
-    #| standalone: true
-    #| components: [editor, viewer]
-    #| layout: vertical
-    ## file: app.py
-    from shiny import App, Inputs, Outputs, Session, render, ui
-
-    import shinyswatch
-
-    app_ui = ui.page_fluid(
-        # Theme code - start
-        shinyswatch.theme.sketchy(),
-        # Theme code - end
-        ui.input_slider("num", "Number:", min=10, max=100, value=30),
-        ui.output_text_verbatim("slider_val"),
-    )
-
-
-    def server(input: Inputs, output: Outputs, session: Session):
-        @output
-        @render.text
-        def slider_val():
-            return f"{input.num()}"
-
-
-    app = App(app_ui, server)
-
-    ## file: requirements.txt
-    shiny
-    shinyswatch
-
-    ```
     """
 
     return _get_theme("sketchy")
@@ -835,41 +240,6 @@ def slate() -> list[HTMLDependency]:
     -------
     list[htmltools.HTMLDependency]
         List of HTMLDependency objects that create a Bootswatch (slate) and Bootstrap 5 theme.
-
-    Examples
-    --------
-    ```{shinylive-python}
-    #| standalone: true
-    #| components: [editor, viewer]
-    #| layout: vertical
-    ## file: app.py
-    from shiny import App, Inputs, Outputs, Session, render, ui
-
-    import shinyswatch
-
-    app_ui = ui.page_fluid(
-        # Theme code - start
-        shinyswatch.theme.slate(),
-        # Theme code - end
-        ui.input_slider("num", "Number:", min=10, max=100, value=30),
-        ui.output_text_verbatim("slider_val"),
-    )
-
-
-    def server(input: Inputs, output: Outputs, session: Session):
-        @output
-        @render.text
-        def slider_val():
-            return f"{input.num()}"
-
-
-    app = App(app_ui, server)
-
-    ## file: requirements.txt
-    shiny
-    shinyswatch
-
-    ```
     """
 
     return _get_theme("slate")
@@ -883,41 +253,6 @@ def solar() -> list[HTMLDependency]:
     -------
     list[htmltools.HTMLDependency]
         List of HTMLDependency objects that create a Bootswatch (solar) and Bootstrap 5 theme.
-
-    Examples
-    --------
-    ```{shinylive-python}
-    #| standalone: true
-    #| components: [editor, viewer]
-    #| layout: vertical
-    ## file: app.py
-    from shiny import App, Inputs, Outputs, Session, render, ui
-
-    import shinyswatch
-
-    app_ui = ui.page_fluid(
-        # Theme code - start
-        shinyswatch.theme.solar(),
-        # Theme code - end
-        ui.input_slider("num", "Number:", min=10, max=100, value=30),
-        ui.output_text_verbatim("slider_val"),
-    )
-
-
-    def server(input: Inputs, output: Outputs, session: Session):
-        @output
-        @render.text
-        def slider_val():
-            return f"{input.num()}"
-
-
-    app = App(app_ui, server)
-
-    ## file: requirements.txt
-    shiny
-    shinyswatch
-
-    ```
     """
 
     return _get_theme("solar")
@@ -931,41 +266,6 @@ def spacelab() -> list[HTMLDependency]:
     -------
     list[htmltools.HTMLDependency]
         List of HTMLDependency objects that create a Bootswatch (spacelab) and Bootstrap 5 theme.
-
-    Examples
-    --------
-    ```{shinylive-python}
-    #| standalone: true
-    #| components: [editor, viewer]
-    #| layout: vertical
-    ## file: app.py
-    from shiny import App, Inputs, Outputs, Session, render, ui
-
-    import shinyswatch
-
-    app_ui = ui.page_fluid(
-        # Theme code - start
-        shinyswatch.theme.spacelab(),
-        # Theme code - end
-        ui.input_slider("num", "Number:", min=10, max=100, value=30),
-        ui.output_text_verbatim("slider_val"),
-    )
-
-
-    def server(input: Inputs, output: Outputs, session: Session):
-        @output
-        @render.text
-        def slider_val():
-            return f"{input.num()}"
-
-
-    app = App(app_ui, server)
-
-    ## file: requirements.txt
-    shiny
-    shinyswatch
-
-    ```
     """
 
     return _get_theme("spacelab")
@@ -979,41 +279,6 @@ def superhero() -> list[HTMLDependency]:
     -------
     list[htmltools.HTMLDependency]
         List of HTMLDependency objects that create a Bootswatch (superhero) and Bootstrap 5 theme.
-
-    Examples
-    --------
-    ```{shinylive-python}
-    #| standalone: true
-    #| components: [editor, viewer]
-    #| layout: vertical
-    ## file: app.py
-    from shiny import App, Inputs, Outputs, Session, render, ui
-
-    import shinyswatch
-
-    app_ui = ui.page_fluid(
-        # Theme code - start
-        shinyswatch.theme.superhero(),
-        # Theme code - end
-        ui.input_slider("num", "Number:", min=10, max=100, value=30),
-        ui.output_text_verbatim("slider_val"),
-    )
-
-
-    def server(input: Inputs, output: Outputs, session: Session):
-        @output
-        @render.text
-        def slider_val():
-            return f"{input.num()}"
-
-
-    app = App(app_ui, server)
-
-    ## file: requirements.txt
-    shiny
-    shinyswatch
-
-    ```
     """
 
     return _get_theme("superhero")
@@ -1027,41 +292,6 @@ def united() -> list[HTMLDependency]:
     -------
     list[htmltools.HTMLDependency]
         List of HTMLDependency objects that create a Bootswatch (united) and Bootstrap 5 theme.
-
-    Examples
-    --------
-    ```{shinylive-python}
-    #| standalone: true
-    #| components: [editor, viewer]
-    #| layout: vertical
-    ## file: app.py
-    from shiny import App, Inputs, Outputs, Session, render, ui
-
-    import shinyswatch
-
-    app_ui = ui.page_fluid(
-        # Theme code - start
-        shinyswatch.theme.united(),
-        # Theme code - end
-        ui.input_slider("num", "Number:", min=10, max=100, value=30),
-        ui.output_text_verbatim("slider_val"),
-    )
-
-
-    def server(input: Inputs, output: Outputs, session: Session):
-        @output
-        @render.text
-        def slider_val():
-            return f"{input.num()}"
-
-
-    app = App(app_ui, server)
-
-    ## file: requirements.txt
-    shiny
-    shinyswatch
-
-    ```
     """
 
     return _get_theme("united")
@@ -1075,41 +305,6 @@ def vapor() -> list[HTMLDependency]:
     -------
     list[htmltools.HTMLDependency]
         List of HTMLDependency objects that create a Bootswatch (vapor) and Bootstrap 5 theme.
-
-    Examples
-    --------
-    ```{shinylive-python}
-    #| standalone: true
-    #| components: [editor, viewer]
-    #| layout: vertical
-    ## file: app.py
-    from shiny import App, Inputs, Outputs, Session, render, ui
-
-    import shinyswatch
-
-    app_ui = ui.page_fluid(
-        # Theme code - start
-        shinyswatch.theme.vapor(),
-        # Theme code - end
-        ui.input_slider("num", "Number:", min=10, max=100, value=30),
-        ui.output_text_verbatim("slider_val"),
-    )
-
-
-    def server(input: Inputs, output: Outputs, session: Session):
-        @output
-        @render.text
-        def slider_val():
-            return f"{input.num()}"
-
-
-    app = App(app_ui, server)
-
-    ## file: requirements.txt
-    shiny
-    shinyswatch
-
-    ```
     """
 
     return _get_theme("vapor")
@@ -1123,41 +318,6 @@ def yeti() -> list[HTMLDependency]:
     -------
     list[htmltools.HTMLDependency]
         List of HTMLDependency objects that create a Bootswatch (yeti) and Bootstrap 5 theme.
-
-    Examples
-    --------
-    ```{shinylive-python}
-    #| standalone: true
-    #| components: [editor, viewer]
-    #| layout: vertical
-    ## file: app.py
-    from shiny import App, Inputs, Outputs, Session, render, ui
-
-    import shinyswatch
-
-    app_ui = ui.page_fluid(
-        # Theme code - start
-        shinyswatch.theme.yeti(),
-        # Theme code - end
-        ui.input_slider("num", "Number:", min=10, max=100, value=30),
-        ui.output_text_verbatim("slider_val"),
-    )
-
-
-    def server(input: Inputs, output: Outputs, session: Session):
-        @output
-        @render.text
-        def slider_val():
-            return f"{input.num()}"
-
-
-    app = App(app_ui, server)
-
-    ## file: requirements.txt
-    shiny
-    shinyswatch
-
-    ```
     """
 
     return _get_theme("yeti")
@@ -1171,41 +331,6 @@ def zephyr() -> list[HTMLDependency]:
     -------
     list[htmltools.HTMLDependency]
         List of HTMLDependency objects that create a Bootswatch (zephyr) and Bootstrap 5 theme.
-
-    Examples
-    --------
-    ```{shinylive-python}
-    #| standalone: true
-    #| components: [editor, viewer]
-    #| layout: vertical
-    ## file: app.py
-    from shiny import App, Inputs, Outputs, Session, render, ui
-
-    import shinyswatch
-
-    app_ui = ui.page_fluid(
-        # Theme code - start
-        shinyswatch.theme.zephyr(),
-        # Theme code - end
-        ui.input_slider("num", "Number:", min=10, max=100, value=30),
-        ui.output_text_verbatim("slider_val"),
-    )
-
-
-    def server(input: Inputs, output: Outputs, session: Session):
-        @output
-        @render.text
-        def slider_val():
-            return f"{input.num()}"
-
-
-    app = App(app_ui, server)
-
-    ## file: requirements.txt
-    shiny
-    shinyswatch
-
-    ```
     """
 
     return _get_theme("zephyr")
