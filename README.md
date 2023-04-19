@@ -47,7 +47,6 @@ Example Shiny application:
     <tbody><tr><td>
 
 ```python
-# File: app.py
 from shiny import App, Inputs, Outputs, Session, render, ui
 
 import shinyswatch
