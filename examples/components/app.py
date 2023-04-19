@@ -4,10 +4,9 @@ from shiny import App, render, ui
 import shinyswatch
 
 app_ui = ui.page_navbar(
-    # "title",
     ui.nav(
         "Navbar 1",
-        shinyswatch.theme.sketchy(),
+        shinyswatch.theme.superhero(),
         ui.layout_sidebar(
             ui.panel_sidebar(
                 ui.input_file("file", "File input:"),
@@ -40,8 +39,9 @@ app_ui = ui.page_navbar(
             ),
         ),
     ),
-    ui.nav("Navbar 2", "Navbar 2 content"),
-    ui.nav("Navbar 3", "Navbar 2 content"),
+    ui.nav("Plot", "Plot content"),
+    ui.nav("Table", "Table content"),
+    title="shinyswatch",
 )
 
 
