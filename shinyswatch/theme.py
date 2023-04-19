@@ -4,11 +4,14 @@
 Targeted theme methods for all Bootswatch themes.
 """
 
+from __future__ import annotations
+
+from htmltools import HTMLDependency
 
 from ._get_theme import get_theme as _get_theme
 
 
-def cerulean():
+def cerulean() -> list[HTMLDependency]:
     """
     To see a live demo of the cerulean Bootswatch theme, visit [https://bootswatch.com/cerulean/](https://bootswatch.com/cerulean/).
 
@@ -24,7 +27,6 @@ def cerulean():
     #| components: [editor, viewer]
     #| layout: vertical
     ## file: app.py
-    # File: app.py
     from shiny import App, Inputs, Outputs, Session, render, ui
 
     import shinyswatch
@@ -57,7 +59,7 @@ def cerulean():
     return _get_theme("cerulean")
 
 
-def cosmo():
+def cosmo() -> list[HTMLDependency]:
     """
     To see a live demo of the cosmo Bootswatch theme, visit [https://bootswatch.com/cosmo/](https://bootswatch.com/cosmo/).
 
@@ -73,7 +75,6 @@ def cosmo():
     #| components: [editor, viewer]
     #| layout: vertical
     ## file: app.py
-    # File: app.py
     from shiny import App, Inputs, Outputs, Session, render, ui
 
     import shinyswatch
@@ -106,7 +107,7 @@ def cosmo():
     return _get_theme("cosmo")
 
 
-def cyborg():
+def cyborg() -> list[HTMLDependency]:
     """
     To see a live demo of the cyborg Bootswatch theme, visit [https://bootswatch.com/cyborg/](https://bootswatch.com/cyborg/).
 
@@ -122,7 +123,6 @@ def cyborg():
     #| components: [editor, viewer]
     #| layout: vertical
     ## file: app.py
-    # File: app.py
     from shiny import App, Inputs, Outputs, Session, render, ui
 
     import shinyswatch
@@ -155,7 +155,7 @@ def cyborg():
     return _get_theme("cyborg")
 
 
-def darkly():
+def darkly() -> list[HTMLDependency]:
     """
     To see a live demo of the darkly Bootswatch theme, visit [https://bootswatch.com/darkly/](https://bootswatch.com/darkly/).
 
@@ -171,7 +171,6 @@ def darkly():
     #| components: [editor, viewer]
     #| layout: vertical
     ## file: app.py
-    # File: app.py
     from shiny import App, Inputs, Outputs, Session, render, ui
 
     import shinyswatch
@@ -204,7 +203,7 @@ def darkly():
     return _get_theme("darkly")
 
 
-def flatly():
+def flatly() -> list[HTMLDependency]:
     """
     To see a live demo of the flatly Bootswatch theme, visit [https://bootswatch.com/flatly/](https://bootswatch.com/flatly/).
 
@@ -220,7 +219,6 @@ def flatly():
     #| components: [editor, viewer]
     #| layout: vertical
     ## file: app.py
-    # File: app.py
     from shiny import App, Inputs, Outputs, Session, render, ui
 
     import shinyswatch
@@ -253,7 +251,7 @@ def flatly():
     return _get_theme("flatly")
 
 
-def journal():
+def journal() -> list[HTMLDependency]:
     """
     To see a live demo of the journal Bootswatch theme, visit [https://bootswatch.com/journal/](https://bootswatch.com/journal/).
 
@@ -269,7 +267,6 @@ def journal():
     #| components: [editor, viewer]
     #| layout: vertical
     ## file: app.py
-    # File: app.py
     from shiny import App, Inputs, Outputs, Session, render, ui
 
     import shinyswatch
@@ -302,7 +299,7 @@ def journal():
     return _get_theme("journal")
 
 
-def litera():
+def litera() -> list[HTMLDependency]:
     """
     To see a live demo of the litera Bootswatch theme, visit [https://bootswatch.com/litera/](https://bootswatch.com/litera/).
 
@@ -318,7 +315,6 @@ def litera():
     #| components: [editor, viewer]
     #| layout: vertical
     ## file: app.py
-    # File: app.py
     from shiny import App, Inputs, Outputs, Session, render, ui
 
     import shinyswatch
@@ -351,7 +347,7 @@ def litera():
     return _get_theme("litera")
 
 
-def lumen():
+def lumen() -> list[HTMLDependency]:
     """
     To see a live demo of the lumen Bootswatch theme, visit [https://bootswatch.com/lumen/](https://bootswatch.com/lumen/).
 
@@ -367,7 +363,6 @@ def lumen():
     #| components: [editor, viewer]
     #| layout: vertical
     ## file: app.py
-    # File: app.py
     from shiny import App, Inputs, Outputs, Session, render, ui
 
     import shinyswatch
@@ -400,7 +395,7 @@ def lumen():
     return _get_theme("lumen")
 
 
-def lux():
+def lux() -> list[HTMLDependency]:
     """
     To see a live demo of the lux Bootswatch theme, visit [https://bootswatch.com/lux/](https://bootswatch.com/lux/).
 
@@ -416,7 +411,6 @@ def lux():
     #| components: [editor, viewer]
     #| layout: vertical
     ## file: app.py
-    # File: app.py
     from shiny import App, Inputs, Outputs, Session, render, ui
 
     import shinyswatch
@@ -449,7 +443,7 @@ def lux():
     return _get_theme("lux")
 
 
-def materia():
+def materia() -> list[HTMLDependency]:
     """
     To see a live demo of the materia Bootswatch theme, visit [https://bootswatch.com/materia/](https://bootswatch.com/materia/).
 
@@ -465,7 +459,6 @@ def materia():
     #| components: [editor, viewer]
     #| layout: vertical
     ## file: app.py
-    # File: app.py
     from shiny import App, Inputs, Outputs, Session, render, ui
 
     import shinyswatch
@@ -498,7 +491,7 @@ def materia():
     return _get_theme("materia")
 
 
-def minty():
+def minty() -> list[HTMLDependency]:
     """
     To see a live demo of the minty Bootswatch theme, visit [https://bootswatch.com/minty/](https://bootswatch.com/minty/).
 
@@ -514,7 +507,6 @@ def minty():
     #| components: [editor, viewer]
     #| layout: vertical
     ## file: app.py
-    # File: app.py
     from shiny import App, Inputs, Outputs, Session, render, ui
 
     import shinyswatch
@@ -547,7 +539,7 @@ def minty():
     return _get_theme("minty")
 
 
-def morph():
+def morph() -> list[HTMLDependency]:
     """
     To see a live demo of the morph Bootswatch theme, visit [https://bootswatch.com/morph/](https://bootswatch.com/morph/).
 
@@ -563,7 +555,6 @@ def morph():
     #| components: [editor, viewer]
     #| layout: vertical
     ## file: app.py
-    # File: app.py
     from shiny import App, Inputs, Outputs, Session, render, ui
 
     import shinyswatch
@@ -596,7 +587,7 @@ def morph():
     return _get_theme("morph")
 
 
-def pulse():
+def pulse() -> list[HTMLDependency]:
     """
     To see a live demo of the pulse Bootswatch theme, visit [https://bootswatch.com/pulse/](https://bootswatch.com/pulse/).
 
@@ -612,7 +603,6 @@ def pulse():
     #| components: [editor, viewer]
     #| layout: vertical
     ## file: app.py
-    # File: app.py
     from shiny import App, Inputs, Outputs, Session, render, ui
 
     import shinyswatch
@@ -645,7 +635,7 @@ def pulse():
     return _get_theme("pulse")
 
 
-def quartz():
+def quartz() -> list[HTMLDependency]:
     """
     To see a live demo of the quartz Bootswatch theme, visit [https://bootswatch.com/quartz/](https://bootswatch.com/quartz/).
 
@@ -661,7 +651,6 @@ def quartz():
     #| components: [editor, viewer]
     #| layout: vertical
     ## file: app.py
-    # File: app.py
     from shiny import App, Inputs, Outputs, Session, render, ui
 
     import shinyswatch
@@ -694,7 +683,7 @@ def quartz():
     return _get_theme("quartz")
 
 
-def sandstone():
+def sandstone() -> list[HTMLDependency]:
     """
     To see a live demo of the sandstone Bootswatch theme, visit [https://bootswatch.com/sandstone/](https://bootswatch.com/sandstone/).
 
@@ -710,7 +699,6 @@ def sandstone():
     #| components: [editor, viewer]
     #| layout: vertical
     ## file: app.py
-    # File: app.py
     from shiny import App, Inputs, Outputs, Session, render, ui
 
     import shinyswatch
@@ -743,7 +731,7 @@ def sandstone():
     return _get_theme("sandstone")
 
 
-def simplex():
+def simplex() -> list[HTMLDependency]:
     """
     To see a live demo of the simplex Bootswatch theme, visit [https://bootswatch.com/simplex/](https://bootswatch.com/simplex/).
 
@@ -759,7 +747,6 @@ def simplex():
     #| components: [editor, viewer]
     #| layout: vertical
     ## file: app.py
-    # File: app.py
     from shiny import App, Inputs, Outputs, Session, render, ui
 
     import shinyswatch
@@ -792,7 +779,7 @@ def simplex():
     return _get_theme("simplex")
 
 
-def sketchy():
+def sketchy() -> list[HTMLDependency]:
     """
     To see a live demo of the sketchy Bootswatch theme, visit [https://bootswatch.com/sketchy/](https://bootswatch.com/sketchy/).
 
@@ -808,7 +795,6 @@ def sketchy():
     #| components: [editor, viewer]
     #| layout: vertical
     ## file: app.py
-    # File: app.py
     from shiny import App, Inputs, Outputs, Session, render, ui
 
     import shinyswatch
@@ -841,7 +827,7 @@ def sketchy():
     return _get_theme("sketchy")
 
 
-def slate():
+def slate() -> list[HTMLDependency]:
     """
     To see a live demo of the slate Bootswatch theme, visit [https://bootswatch.com/slate/](https://bootswatch.com/slate/).
 
@@ -857,7 +843,6 @@ def slate():
     #| components: [editor, viewer]
     #| layout: vertical
     ## file: app.py
-    # File: app.py
     from shiny import App, Inputs, Outputs, Session, render, ui
 
     import shinyswatch
@@ -890,7 +875,7 @@ def slate():
     return _get_theme("slate")
 
 
-def solar():
+def solar() -> list[HTMLDependency]:
     """
     To see a live demo of the solar Bootswatch theme, visit [https://bootswatch.com/solar/](https://bootswatch.com/solar/).
 
@@ -906,7 +891,6 @@ def solar():
     #| components: [editor, viewer]
     #| layout: vertical
     ## file: app.py
-    # File: app.py
     from shiny import App, Inputs, Outputs, Session, render, ui
 
     import shinyswatch
@@ -939,7 +923,7 @@ def solar():
     return _get_theme("solar")
 
 
-def spacelab():
+def spacelab() -> list[HTMLDependency]:
     """
     To see a live demo of the spacelab Bootswatch theme, visit [https://bootswatch.com/spacelab/](https://bootswatch.com/spacelab/).
 
@@ -955,7 +939,6 @@ def spacelab():
     #| components: [editor, viewer]
     #| layout: vertical
     ## file: app.py
-    # File: app.py
     from shiny import App, Inputs, Outputs, Session, render, ui
 
     import shinyswatch
@@ -988,7 +971,7 @@ def spacelab():
     return _get_theme("spacelab")
 
 
-def superhero():
+def superhero() -> list[HTMLDependency]:
     """
     To see a live demo of the superhero Bootswatch theme, visit [https://bootswatch.com/superhero/](https://bootswatch.com/superhero/).
 
@@ -1004,7 +987,6 @@ def superhero():
     #| components: [editor, viewer]
     #| layout: vertical
     ## file: app.py
-    # File: app.py
     from shiny import App, Inputs, Outputs, Session, render, ui
 
     import shinyswatch
@@ -1037,7 +1019,7 @@ def superhero():
     return _get_theme("superhero")
 
 
-def united():
+def united() -> list[HTMLDependency]:
     """
     To see a live demo of the united Bootswatch theme, visit [https://bootswatch.com/united/](https://bootswatch.com/united/).
 
@@ -1053,7 +1035,6 @@ def united():
     #| components: [editor, viewer]
     #| layout: vertical
     ## file: app.py
-    # File: app.py
     from shiny import App, Inputs, Outputs, Session, render, ui
 
     import shinyswatch
@@ -1086,7 +1067,7 @@ def united():
     return _get_theme("united")
 
 
-def vapor():
+def vapor() -> list[HTMLDependency]:
     """
     To see a live demo of the vapor Bootswatch theme, visit [https://bootswatch.com/vapor/](https://bootswatch.com/vapor/).
 
@@ -1102,7 +1083,6 @@ def vapor():
     #| components: [editor, viewer]
     #| layout: vertical
     ## file: app.py
-    # File: app.py
     from shiny import App, Inputs, Outputs, Session, render, ui
 
     import shinyswatch
@@ -1135,7 +1115,7 @@ def vapor():
     return _get_theme("vapor")
 
 
-def yeti():
+def yeti() -> list[HTMLDependency]:
     """
     To see a live demo of the yeti Bootswatch theme, visit [https://bootswatch.com/yeti/](https://bootswatch.com/yeti/).
 
@@ -1151,7 +1131,6 @@ def yeti():
     #| components: [editor, viewer]
     #| layout: vertical
     ## file: app.py
-    # File: app.py
     from shiny import App, Inputs, Outputs, Session, render, ui
 
     import shinyswatch
@@ -1184,7 +1163,7 @@ def yeti():
     return _get_theme("yeti")
 
 
-def zephyr():
+def zephyr() -> list[HTMLDependency]:
     """
     To see a live demo of the zephyr Bootswatch theme, visit [https://bootswatch.com/zephyr/](https://bootswatch.com/zephyr/).
 
@@ -1200,7 +1179,6 @@ def zephyr():
     #| components: [editor, viewer]
     #| layout: vertical
     ## file: app.py
-    # File: app.py
     from shiny import App, Inputs, Outputs, Session, render, ui
 
     import shinyswatch
