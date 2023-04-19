@@ -3,11 +3,11 @@
 [Bootswatch](https://bootswatch.com/) + Bootstrap 5 themes for [Shiny](https://shiny.rstudio.com/py/).
 
 
-Here are just three of the 25 themes in shinyswatch:
+Here are just three of the **25 themes** in shinyswatch:
 
-| ![Minty](readme_minty.png) | ![Sketchy](readme_sketchy.png) | ![Superhero](readme_superhero.png) |
-|----------------------------|--------------------------------|------------------------------------|
 | Minty                      | Sketchy                        | Superhero                          |
+|----------------------------|--------------------------------|------------------------------------|
+| ![Minty](readme_minty.png) | ![Sketchy](readme_sketchy.png) | ![Superhero](readme_superhero.png) |
 
 
 ## Installation
