@@ -1,7 +1,9 @@
+# pyright: reportPrivateImportUsage=false
+# pyright: reportGeneralTypeIssues=false
+
 from __future__ import annotations
 
 import html
-import pdb
 import re
 from pathlib import PurePath
 from typing import Union
@@ -67,8 +69,6 @@ class Renderer(MdRenderer):
         rendered = super().render(el)
 
         converted = convert_rst_link_to_md(rendered)
-
-        # pdb.set_trace()
 
         if el.module.name != "theme":
             return converted
