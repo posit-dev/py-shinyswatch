@@ -7,7 +7,7 @@ Here are just three of the **25 themes** in shinyswatch:
 
 | Minty                      | Sketchy                        | Superhero                          |
 |----------------------------|--------------------------------|------------------------------------|
-| ![Minty](readme_minty.png) | ![Sketchy](readme_sketchy.png) | ![Superhero](readme_superhero.png) |
+| ![Minty](https://raw.githubusercontent.com/rstudio/py-shinyswatch/v0.2.2/readme_minty.png) | ![Sketchy](https://raw.githubusercontent.com/rstudio/py-shinyswatch/v0.2.2/readme_sketchy.png) | ![Superhero](https://raw.githubusercontent.com/rstudio/py-shinyswatch/v0.2.2/readme_superhero.png) |
 
 
 ## Installation
@@ -72,7 +72,7 @@ app = App(app_ui, server)
 
 </td><td>
 
-![darkly theme](readme_darkly.png)
+![darkly theme](https://raw.githubusercontent.com/rstudio/py-shinyswatch/v0.2.2/readme_darkly.png)
 
 </td></tr></tbody></table>
 
