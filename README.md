@@ -27,14 +27,24 @@ pip install https://github.com/rstudio/py-shinyswatch/tarball/main
 To use a theme, call the theme function and add it to your App's UI definition.
 
 ```python
-# Darkly theme
-shinyswatch.theme.darkly()
+# Minty theme
+shinyswatch.theme.minty()
 
 # Sketchy theme
 shinyswatch.theme.sketchy()
+
+# Superhero theme
+shinyswatch.theme.superhero()
 ```
 
 Example Shiny application:
+
+<table>
+    <thead><tr>
+        <th>File: <code>app.py</code></th>
+        <th>Screenshot</th>
+    </tr></thead>
+    <tbody><tr><td>
 
 ```python
 # File: app.py
@@ -61,7 +71,11 @@ def server(input: Inputs, output: Outputs, session: Session):
 app = App(app_ui, server)
 ```
 
+</td><td>
+
 ![darkly theme](readme_darkly.png)
+
+</td></tr></tbody></table>
 
 ## Development
 
