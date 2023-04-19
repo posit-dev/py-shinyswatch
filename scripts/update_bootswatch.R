@@ -186,7 +186,7 @@ cat(file = file.path(lib, "_bsw5.py"), bsw5_file_txt)
 theme_funcs_txt <- paste0(lapply(theme_names, function(theme_name) {
   glue::glue(
     .trim = FALSE,
-    "def { theme_name }():
+    "def { theme_name }() -> list[HTMLDependency]:
     \"\"\"
     To see a live demo of the { theme_name } Bootswatch theme, visit [https://bootswatch.com/{ theme_name }/](https://bootswatch.com/{ theme_name }/).
 
@@ -202,7 +202,6 @@ theme_funcs_txt <- paste0(lapply(theme_names, function(theme_name) {
     #| components: [editor, viewer]
     #| layout: vertical
     ## file: app.py
-    # File: app.py
     from shiny import App, Inputs, Outputs, Session, render, ui
 
     import shinyswatch
@@ -245,6 +244,9 @@ themes_file_txt <- glue::glue(
 Targeted theme methods for all Bootswatch themes.
 \"\"\"
 
+from __future__ import annotations
+
+from htmltools import HTMLDependency
 
 from ._get_theme import get_theme as _get_theme
 
