@@ -66,15 +66,17 @@ jobs:
       - name: Install
         run: |
           make install
-      - name: Build quartodoc files
+
+      - name: Render quarto site
         run: |
           make docs-ci
 
-      - name: Publish to GitHub Pages (and render)
+      - name: Publish to GitHub Pages (on push)
         if: github.event_name == 'push'
         uses: quarto-dev/quarto-actions/publish@v2
         with:
           path: docs
+          render: false
           target: gh-pages
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

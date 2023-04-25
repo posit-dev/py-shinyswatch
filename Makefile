@@ -64,12 +64,14 @@ coverage: ## check code coverage quickly with the default Python
 
 quarto-shinylive: ## Make sure quarto-shinylive is installed
 	cd docs && (test -f _extensions/quarto-ext/shinylive/shinylive.lua || quarto install extension --no-prompt quarto-ext/shinylive)
-quartodoc: ## Build quartodoc
+docs-quartodoc: ## Build quartodoc
 	cd docs && python -m quartodoc build
-docs-ci: quarto-shinylive quartodoc ## Build quartodoc for CI
-docs: quarto-shinylive quartodoc ## generate quartodoc HTML documentation, including API docs
+docs-render:
 	cd docs && quarto render
+docs-ci: quarto-shinylive docs-quartodoc docs-render ## Build quartodoc for CI
+docs-open:
 	$(BROWSER) docs/_site/index.html
+docs: docs-ci docs-open ## generate quartodoc HTML documentation, including API docs
 
 # # Perform `quarto preview` and `quartodoc build` in parallel
 # watchdocs: quarto-shinylive
