@@ -64,7 +64,7 @@ jobs:
       - name: Install
         run: |
           make install
-      - name: Build Docs
+      - name: Build quartodoc files
         run: |
           make docs-ci
 
@@ -75,7 +75,7 @@ jobs:
           path: docs
           target: gh-pages
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # this secret is always available for github actions
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
   deploy:
     name: "Deploy to PyPI"
