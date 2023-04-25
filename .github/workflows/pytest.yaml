@@ -43,6 +43,8 @@ jobs:
           make check
 
   docs:
+    permissions:
+      contents: write
     name: "Build Docs"
     runs-on: ubuntu-latest
     steps:
