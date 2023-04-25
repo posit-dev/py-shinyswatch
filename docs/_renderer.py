@@ -23,8 +23,10 @@ with open(demo_app_path) as f:
 APP_TMPL = (
     demo_app_code.replace("{", "{{")
     .replace("}", "}}")
-    .replace("shinyswatch.theme.superhero()", "shinyswatch.theme.{theme_name}()")
+    .replace("shinyswatch.theme.superhero()", "{code}")
 )
+THEME_TMPL = APP_TMPL.replace("{code}", "shinyswatch.theme.{theme_name}()")
+GET_THEME_TMPL = APP_TMPL.replace("{code}", 'shinyswatch.get_theme("superhero")')
 
 SHINYLIVE_TMPL = """```{{shinylive-python}}
 #| standalone: true
@@ -70,10 +72,14 @@ class Renderer(MdRenderer):
 
         converted = convert_rst_link_to_md(rendered)
 
-        if el.module.name != "theme":
+        if not (el.module.name == "theme" or el.name == "get_theme"):
             return converted
 
-        app_code = APP_TMPL.format(theme_name=el.name)
+        app_code = ""
+        if el.name == "get_theme":
+            app_code = GET_THEME_TMPL
+        else:
+            app_code = THEME_TMPL.format(theme_name=el.name)
         example = SHINYLIVE_TMPL.format(app_code=app_code)
         converted_with_examples = DOCSTRING_TMPL.format(
             rendered=converted,
