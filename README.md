@@ -81,7 +81,7 @@ app = App(app_ui, server)
 If you want to do development on shinyswatch for Python:
 
 ```sh
-pip install -e ".[dev,test]"
+pip install -e ".[dev,test,docs]"
 ```
 
 ### Examples

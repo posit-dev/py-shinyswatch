@@ -1,5 +1,5 @@
 {
-    "ignore": ["build"],
+    "ignore": ["build", "docs"],
     "typeCheckingMode": "basic",
     "strict": [
         "shinyswatch/",

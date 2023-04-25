@@ -188,47 +188,14 @@ theme_funcs_txt <- paste0(lapply(theme_names, function(theme_name) {
     .trim = FALSE,
     "def { theme_name }() -> list[HTMLDependency]:
     \"\"\"
-    To see a live demo of the { theme_name } Bootswatch theme, visit [https://bootswatch.com/{ theme_name }/](https://bootswatch.com/{ theme_name }/).
+    `{ theme_name }` Bootswatch theme
+
+    Visit [https://bootswatch.com/{ theme_name }/](https://bootswatch.com/{ theme_name }/) to see a Bootswatch's demo of the `{ theme_name }` theme.
 
     Returns
     -------
     list[htmltools.HTMLDependency]
         List of HTMLDependency objects that create a Bootswatch ({ theme_name }) and Bootstrap 5 theme.
-
-    Examples
-    --------
-    ```{{shinylive-python}}
-    #| standalone: true
-    #| components: [editor, viewer]
-    #| layout: vertical
-    ## file: app.py
-    from shiny import App, Inputs, Outputs, Session, render, ui
-
-    import shinyswatch
-
-    app_ui = ui.page_fluid(
-        # Theme code - start
-        shinyswatch.theme.{ theme_name }(),
-        # Theme code - end
-        ui.input_slider(\"num\", \"Number:\", min=10, max=100, value=30),
-        ui.output_text_verbatim(\"slider_val\"),
-    )
-
-
-    def server(input: Inputs, output: Outputs, session: Session):
-        @output
-        @render.text
-        def slider_val():
-            return f\"{{input.num()}}\"
-
-
-    app = App(app_ui, server)
-
-    ## file: requirements.txt
-    shiny
-    shinyswatch
-
-    ```
     \"\"\"
 
     return _get_theme(\"{ theme_name }\")"

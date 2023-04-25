@@ -13,6 +13,10 @@ quartodoc:
   # style: single-page
   style: pkgdown
   sidebar: _sidebar.yml
+  renderer:
+    style: _renderer.py
+    show_signature_annotations: false
+    display_name: relative
   dir: reference
   package: shinyswatch
   sections:
