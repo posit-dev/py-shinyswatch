@@ -63,7 +63,7 @@ coverage: ## check code coverage quickly with the default Python
 	$(BROWSER) htmlcov/index.html
 
 quarto-shinylive: ## Make sure quarto-shinylive is installed
-	cd docs && (test -f _extensions/quarto-ext/shinylive/shinylive.lua || quarto install extension quarto-ext/shinylive)
+	cd docs && (test -f _extensions/quarto-ext/shinylive/shinylive.lua || quarto install extension --no-prompt quarto-ext/shinylive)
 quartodoc: ## Build quartodoc
 	cd docs && python -m quartodoc build
 docs-ci: quarto-shinylive quartodoc ## Build quartodoc for CI
