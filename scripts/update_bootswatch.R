@@ -188,7 +188,9 @@ theme_funcs_txt <- paste0(lapply(theme_names, function(theme_name) {
     .trim = FALSE,
     "def { theme_name }() -> list[HTMLDependency]:
     \"\"\"
-    To see a live demo of the { theme_name } Bootswatch theme, visit [https://bootswatch.com/{ theme_name }/](https://bootswatch.com/{ theme_name }/).
+    `{ theme_name }` Bootswatch theme
+
+    Visit [https://bootswatch.com/{ theme_name }/](https://bootswatch.com/{ theme_name }/) to see a Bootswatch's demo of the `{ theme_name }` theme.
 
     Returns
     -------

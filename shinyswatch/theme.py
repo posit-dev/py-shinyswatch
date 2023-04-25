@@ -13,7 +13,9 @@ from ._get_theme import get_theme as _get_theme
 
 def cerulean() -> list[HTMLDependency]:
     """
-    To see a live demo of the cerulean Bootswatch theme, visit [https://bootswatch.com/cerulean/](https://bootswatch.com/cerulean/).
+    `cerulean` Bootswatch theme
+
+    Visit [https://bootswatch.com/cerulean/](https://bootswatch.com/cerulean/) to see a Bootswatch's demo of the `cerulean` theme.
 
     Returns
     -------
@@ -26,7 +28,9 @@ def cerulean() -> list[HTMLDependency]:
 
 def cosmo() -> list[HTMLDependency]:
     """
-    To see a live demo of the cosmo Bootswatch theme, visit [https://bootswatch.com/cosmo/](https://bootswatch.com/cosmo/).
+    `cosmo` Bootswatch theme
+
+    Visit [https://bootswatch.com/cosmo/](https://bootswatch.com/cosmo/) to see a Bootswatch's demo of the `cosmo` theme.
 
     Returns
     -------
@@ -39,7 +43,9 @@ def cosmo() -> list[HTMLDependency]:
 
 def cyborg() -> list[HTMLDependency]:
     """
-    To see a live demo of the cyborg Bootswatch theme, visit [https://bootswatch.com/cyborg/](https://bootswatch.com/cyborg/).
+    `cyborg` Bootswatch theme
+
+    Visit [https://bootswatch.com/cyborg/](https://bootswatch.com/cyborg/) to see a Bootswatch's demo of the `cyborg` theme.
 
     Returns
     -------
@@ -52,7 +58,9 @@ def cyborg() -> list[HTMLDependency]:
 
 def darkly() -> list[HTMLDependency]:
     """
-    To see a live demo of the darkly Bootswatch theme, visit [https://bootswatch.com/darkly/](https://bootswatch.com/darkly/).
+    `darkly` Bootswatch theme
+
+    Visit [https://bootswatch.com/darkly/](https://bootswatch.com/darkly/) to see a Bootswatch's demo of the `darkly` theme.
 
     Returns
     -------
@@ -65,7 +73,9 @@ def darkly() -> list[HTMLDependency]:
 
 def flatly() -> list[HTMLDependency]:
     """
-    To see a live demo of the flatly Bootswatch theme, visit [https://bootswatch.com/flatly/](https://bootswatch.com/flatly/).
+    `flatly` Bootswatch theme
+
+    Visit [https://bootswatch.com/flatly/](https://bootswatch.com/flatly/) to see a Bootswatch's demo of the `flatly` theme.
 
     Returns
     -------
@@ -78,7 +88,9 @@ def flatly() -> list[HTMLDependency]:
 
 def journal() -> list[HTMLDependency]:
     """
-    To see a live demo of the journal Bootswatch theme, visit [https://bootswatch.com/journal/](https://bootswatch.com/journal/).
+    `journal` Bootswatch theme
+
+    Visit [https://bootswatch.com/journal/](https://bootswatch.com/journal/) to see a Bootswatch's demo of the `journal` theme.
 
     Returns
     -------
@@ -91,7 +103,9 @@ def journal() -> list[HTMLDependency]:
 
 def litera() -> list[HTMLDependency]:
     """
-    To see a live demo of the litera Bootswatch theme, visit [https://bootswatch.com/litera/](https://bootswatch.com/litera/).
+    `litera` Bootswatch theme
+
+    Visit [https://bootswatch.com/litera/](https://bootswatch.com/litera/) to see a Bootswatch's demo of the `litera` theme.
 
     Returns
     -------
@@ -104,7 +118,9 @@ def litera() -> list[HTMLDependency]:
 
 def lumen() -> list[HTMLDependency]:
     """
-    To see a live demo of the lumen Bootswatch theme, visit [https://bootswatch.com/lumen/](https://bootswatch.com/lumen/).
+    `lumen` Bootswatch theme
+
+    Visit [https://bootswatch.com/lumen/](https://bootswatch.com/lumen/) to see a Bootswatch's demo of the `lumen` theme.
 
     Returns
     -------
@@ -117,7 +133,9 @@ def lumen() -> list[HTMLDependency]:
 
 def lux() -> list[HTMLDependency]:
     """
-    To see a live demo of the lux Bootswatch theme, visit [https://bootswatch.com/lux/](https://bootswatch.com/lux/).
+    `lux` Bootswatch theme
+
+    Visit [https://bootswatch.com/lux/](https://bootswatch.com/lux/) to see a Bootswatch's demo of the `lux` theme.
 
     Returns
     -------
@@ -130,7 +148,9 @@ def lux() -> list[HTMLDependency]:
 
 def materia() -> list[HTMLDependency]:
     """
-    To see a live demo of the materia Bootswatch theme, visit [https://bootswatch.com/materia/](https://bootswatch.com/materia/).
+    `materia` Bootswatch theme
+
+    Visit [https://bootswatch.com/materia/](https://bootswatch.com/materia/) to see a Bootswatch's demo of the `materia` theme.
 
     Returns
     -------
@@ -143,7 +163,9 @@ def materia() -> list[HTMLDependency]:
 
 def minty() -> list[HTMLDependency]:
     """
-    To see a live demo of the minty Bootswatch theme, visit [https://bootswatch.com/minty/](https://bootswatch.com/minty/).
+    `minty` Bootswatch theme
+
+    Visit [https://bootswatch.com/minty/](https://bootswatch.com/minty/) to see a Bootswatch's demo of the `minty` theme.
 
     Returns
     -------
@@ -156,7 +178,9 @@ def minty() -> list[HTMLDependency]:
 
 def morph() -> list[HTMLDependency]:
     """
-    To see a live demo of the morph Bootswatch theme, visit [https://bootswatch.com/morph/](https://bootswatch.com/morph/).
+    `morph` Bootswatch theme
+
+    Visit [https://bootswatch.com/morph/](https://bootswatch.com/morph/) to see a Bootswatch's demo of the `morph` theme.
 
     Returns
     -------
@@ -169,7 +193,9 @@ def morph() -> list[HTMLDependency]:
 
 def pulse() -> list[HTMLDependency]:
     """
-    To see a live demo of the pulse Bootswatch theme, visit [https://bootswatch.com/pulse/](https://bootswatch.com/pulse/).
+    `pulse` Bootswatch theme
+
+    Visit [https://bootswatch.com/pulse/](https://bootswatch.com/pulse/) to see a Bootswatch's demo of the `pulse` theme.
 
     Returns
     -------
@@ -182,7 +208,9 @@ def pulse() -> list[HTMLDependency]:
 
 def quartz() -> list[HTMLDependency]:
     """
-    To see a live demo of the quartz Bootswatch theme, visit [https://bootswatch.com/quartz/](https://bootswatch.com/quartz/).
+    `quartz` Bootswatch theme
+
+    Visit [https://bootswatch.com/quartz/](https://bootswatch.com/quartz/) to see a Bootswatch's demo of the `quartz` theme.
 
     Returns
     -------
@@ -195,7 +223,9 @@ def quartz() -> list[HTMLDependency]:
 
 def sandstone() -> list[HTMLDependency]:
     """
-    To see a live demo of the sandstone Bootswatch theme, visit [https://bootswatch.com/sandstone/](https://bootswatch.com/sandstone/).
+    `sandstone` Bootswatch theme
+
+    Visit [https://bootswatch.com/sandstone/](https://bootswatch.com/sandstone/) to see a Bootswatch's demo of the `sandstone` theme.
 
     Returns
     -------
@@ -208,7 +238,9 @@ def sandstone() -> list[HTMLDependency]:
 
 def simplex() -> list[HTMLDependency]:
     """
-    To see a live demo of the simplex Bootswatch theme, visit [https://bootswatch.com/simplex/](https://bootswatch.com/simplex/).
+    `simplex` Bootswatch theme
+
+    Visit [https://bootswatch.com/simplex/](https://bootswatch.com/simplex/) to see a Bootswatch's demo of the `simplex` theme.
 
     Returns
     -------
@@ -221,7 +253,9 @@ def simplex() -> list[HTMLDependency]:
 
 def sketchy() -> list[HTMLDependency]:
     """
-    To see a live demo of the sketchy Bootswatch theme, visit [https://bootswatch.com/sketchy/](https://bootswatch.com/sketchy/).
+    `sketchy` Bootswatch theme
+
+    Visit [https://bootswatch.com/sketchy/](https://bootswatch.com/sketchy/) to see a Bootswatch's demo of the `sketchy` theme.
 
     Returns
     -------
@@ -234,7 +268,9 @@ def sketchy() -> list[HTMLDependency]:
 
 def slate() -> list[HTMLDependency]:
     """
-    To see a live demo of the slate Bootswatch theme, visit [https://bootswatch.com/slate/](https://bootswatch.com/slate/).
+    `slate` Bootswatch theme
+
+    Visit [https://bootswatch.com/slate/](https://bootswatch.com/slate/) to see a Bootswatch's demo of the `slate` theme.
 
     Returns
     -------
@@ -247,7 +283,9 @@ def slate() -> list[HTMLDependency]:
 
 def solar() -> list[HTMLDependency]:
     """
-    To see a live demo of the solar Bootswatch theme, visit [https://bootswatch.com/solar/](https://bootswatch.com/solar/).
+    `solar` Bootswatch theme
+
+    Visit [https://bootswatch.com/solar/](https://bootswatch.com/solar/) to see a Bootswatch's demo of the `solar` theme.
 
     Returns
     -------
@@ -260,7 +298,9 @@ def solar() -> list[HTMLDependency]:
 
 def spacelab() -> list[HTMLDependency]:
     """
-    To see a live demo of the spacelab Bootswatch theme, visit [https://bootswatch.com/spacelab/](https://bootswatch.com/spacelab/).
+    `spacelab` Bootswatch theme
+
+    Visit [https://bootswatch.com/spacelab/](https://bootswatch.com/spacelab/) to see a Bootswatch's demo of the `spacelab` theme.
 
     Returns
     -------
@@ -273,7 +313,9 @@ def spacelab() -> list[HTMLDependency]:
 
 def superhero() -> list[HTMLDependency]:
     """
-    To see a live demo of the superhero Bootswatch theme, visit [https://bootswatch.com/superhero/](https://bootswatch.com/superhero/).
+    `superhero` Bootswatch theme
+
+    Visit [https://bootswatch.com/superhero/](https://bootswatch.com/superhero/) to see a Bootswatch's demo of the `superhero` theme.
 
     Returns
     -------
@@ -286,7 +328,9 @@ def superhero() -> list[HTMLDependency]:
 
 def united() -> list[HTMLDependency]:
     """
-    To see a live demo of the united Bootswatch theme, visit [https://bootswatch.com/united/](https://bootswatch.com/united/).
+    `united` Bootswatch theme
+
+    Visit [https://bootswatch.com/united/](https://bootswatch.com/united/) to see a Bootswatch's demo of the `united` theme.
 
     Returns
     -------
@@ -299,7 +343,9 @@ def united() -> list[HTMLDependency]:
 
 def vapor() -> list[HTMLDependency]:
     """
-    To see a live demo of the vapor Bootswatch theme, visit [https://bootswatch.com/vapor/](https://bootswatch.com/vapor/).
+    `vapor` Bootswatch theme
+
+    Visit [https://bootswatch.com/vapor/](https://bootswatch.com/vapor/) to see a Bootswatch's demo of the `vapor` theme.
 
     Returns
     -------
@@ -312,7 +358,9 @@ def vapor() -> list[HTMLDependency]:
 
 def yeti() -> list[HTMLDependency]:
     """
-    To see a live demo of the yeti Bootswatch theme, visit [https://bootswatch.com/yeti/](https://bootswatch.com/yeti/).
+    `yeti` Bootswatch theme
+
+    Visit [https://bootswatch.com/yeti/](https://bootswatch.com/yeti/) to see a Bootswatch's demo of the `yeti` theme.
 
     Returns
     -------
@@ -325,7 +373,9 @@ def yeti() -> list[HTMLDependency]:
 
 def zephyr() -> list[HTMLDependency]:
     """
-    To see a live demo of the zephyr Bootswatch theme, visit [https://bootswatch.com/zephyr/](https://bootswatch.com/zephyr/).
+    `zephyr` Bootswatch theme
+
+    Visit [https://bootswatch.com/zephyr/](https://bootswatch.com/zephyr/) to see a Bootswatch's demo of the `zephyr` theme.
 
     Returns
     -------
