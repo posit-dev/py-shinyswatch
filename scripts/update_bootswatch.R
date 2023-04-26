@@ -1,7 +1,14 @@
 #!/usr/bin/env Rscript
 
+# pak::pkg_install("rstudio/bslib")
+pak::pkg_install("cran::bslib")
+
 library(bslib)
 library(rlang)
+
+bslib_info <- sessioninfo::package_info("bslib")
+bslib_info_list <- bslib_info[bslib_info$package == "bslib", , drop = TRUE]
+bslib_comment <- paste0("// {bslib} version: ", bslib_info_list$source)
 
 # == Approach ================================================================
 # We MUST use `{bslib}` themes as the original bootswatch themes
@@ -133,17 +140,37 @@ ignore <- Map(
     )
 
     # Write bundle to disk
-    sass::sass(
-      sass_bundle,
-      # Make a minimized output file
-      options = sass::sass_options_get(output_style = "compressed"),
-      output = file.path(out_dir, name, "bootswatch.min.css"),
-      cache = FALSE,
-      # Should be `TRUE` if font files are to be saved.
-      # However, we are not saving them as we are reverting the
-      # local font paths to the original CDN paths in the code above.
-      write_attachments = FALSE
-    )
+    for (info in list(
+      # In final package, we only need the minified CSS
+      list(output_style = "compressed", suffix = ".min.css"),
+      # Useful for comparing on updates / debugging
+      list(output_style = "expanded", suffix = ".css")
+    )) {
+      output_file <- file.path(out_dir, name, paste0("bootswatch", info$suffix))
+      sass::sass(
+        sass_bundle,
+        # Make a minimized output file
+        options = sass::sass_options_get(output_style = info$output_style),
+        output = output_file,
+        cache = FALSE,
+        # Should be `TRUE` if font files are to be saved.
+        # However, we are not saving them as we are reverting the
+        # local font paths to the original CDN paths in the code above.
+        write_attachments = FALSE
+      )
+      if (info$output_style == "expanded") {
+        # Add comments on where the file came from
+        writeLines(
+          c(
+            bslib_comment,
+            paste0("// bw: 5: ", ver),
+            paste0("// bsw5 theme: ", name),
+            readLines(output_file)
+          ),
+          output_file
+        )
+      }
+    }
   }
 )
 
