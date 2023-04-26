@@ -62,6 +62,8 @@ jobs:
           python -m pip install --upgrade pip
       - name: Install dependencies
         run: |
+          # Install latest quartodoc from GitHub
+          pip install git+https://github.com/machow/quartodoc.git#egg=quartodoc
           pip install -e ".[dev,test,docs]"
       - name: Install
         run: |
