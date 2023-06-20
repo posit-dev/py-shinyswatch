@@ -1,6 +1,6 @@
 #!/usr/bin/env Rscript
 
-pak::pkg_install("rstudio/bslib")
+pak::pkg_install(c("rstudio/bslib", "here"))
 # pak::pkg_install("cran::bslib")
 
 library(bslib)

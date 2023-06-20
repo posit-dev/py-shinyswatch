@@ -105,3 +105,6 @@ typings/
 node_modules/
 
 /.luarc.json
+
+
+here/
