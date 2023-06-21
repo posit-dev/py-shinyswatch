@@ -63,4 +63,4 @@ website:
         text: "Reference"
     right:
       - icon: github
-        href: https://github.com/rstudio/shinyswatch
+        href: https://github.com/rstudio/py-shinyswatch
