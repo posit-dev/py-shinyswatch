@@ -11,6 +11,7 @@ from typing import Union
 import quartodoc.ast as qast
 from griffe import dataclasses as dc
 from griffe.docstrings import dataclasses as ds
+from griffe import expressions as exp
 from plum import dispatch
 from quartodoc import MdRenderer
 from quartodoc.renderers.base import convert_rst_link_to_md, sanitize
@@ -106,7 +107,7 @@ class Renderer(MdRenderer):
         return ""
 
     @dispatch
-    def render_annotation(self, el: dc.Expression):
+    def render_annotation(self, el: exp.Expression):
         # an expression is essentially a list[dc.Name | str]
         # e.g. Optional[TagList]
         #   -> [Name(source="Optional", ...), "[", Name(...), "]"]
@@ -114,7 +115,7 @@ class Renderer(MdRenderer):
         return "".join(map(self.render_annotation, el))
 
     @dispatch
-    def render_annotation(self, el: dc.Name):
+    def render_annotation(self, el: exp.Name):
         # e.g. Name(source="Optional", full="typing.Optional")
         return f"[{el.source}](`{el.full}`)"
 
