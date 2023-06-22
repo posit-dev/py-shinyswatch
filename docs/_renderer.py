@@ -10,8 +10,8 @@ from typing import Union
 
 import quartodoc.ast as qast
 from griffe import dataclasses as dc
-from griffe.docstrings import dataclasses as ds
 from griffe import expressions as exp
+from griffe.docstrings import dataclasses as ds
 from plum import dispatch
 from quartodoc import MdRenderer
 from quartodoc.renderers.base import convert_rst_link_to_md, sanitize
