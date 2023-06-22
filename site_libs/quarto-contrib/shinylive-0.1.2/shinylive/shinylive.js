@@ -1,4 +1,4 @@
-// Shinylive 0.1.1
+// Shinylive 0.1.2
 // Copyright 2023 RStudio, PBC
 import {
   FCJSONtoFC,
@@ -18,7 +18,7 @@ import {
   sleep,
   stringToUint8Array,
   uint8ArrayToString
-} from "./chunk-SOCCI4SZ.js";
+} from "./chunk-FTWXV7KB.js";
 
 // node_modules/xterm/lib/xterm.js
 var require_xterm = __commonJS({
