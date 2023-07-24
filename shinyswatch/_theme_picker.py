@@ -10,9 +10,8 @@ import shinyswatch
 from ._bsw5 import BSW5_THEME_NAME, bsw5_themes
 
 
-def theme_picker(app: App) -> App:
-    # shinyswatch_theme_picker
-    default_theme = "superhero"
+# TODO: DOCS
+def theme_picker(app: App, *, default_theme: BSW5_THEME_NAME = "superhero") -> App:
     theme_obj: dict[str, BSW5_THEME_NAME] = {"theme": default_theme}
 
     def get_theme() -> BSW5_THEME_NAME:
