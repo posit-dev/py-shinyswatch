@@ -13,7 +13,7 @@ jobs:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        python-version: ["3.7", "3.8", "3.9", "3.10", "3.11"]
+        python-version: ["3.8", "3.9", "3.10", "3.11"]
         os: [ubuntu-latest, windows-latest, macOS-latest]
       fail-fast: false
     defaults:
@@ -63,7 +63,6 @@ jobs:
       - name: Install dependencies
         run: |
           # Install latest quartodoc from GitHub
-          pip install git+https://github.com/machow/quartodoc.git#egg=quartodoc
           pip install -e ".[dev,test,docs]"
       - name: Install
         run: |
