@@ -22,7 +22,7 @@ library(rlang)
 
 bslib_info <- sessioninfo::package_info("bslib")
 bslib_info_list <- bslib_info[bslib_info$package == "bslib", , drop = TRUE]
-bslib_comment <- paste0("// {bslib} version: ", bslib_info_list$source)
+bslib_comment <- paste0("{bslib} version: ", bslib_info_list$source)
 
 # == Approach ================================================================
 # We MUST use `{bslib}` themes as the original bootswatch themes
@@ -149,6 +149,7 @@ ignore <- Map(
     # Overwrite the variables back to the original CDN paths
     sass_bundle <- bs_add_variables(
       sass_bundle,
+
       # Spread the list of variables into the function
       !!!variable_map
     )
@@ -172,18 +173,18 @@ ignore <- Map(
         # local font paths to the original CDN paths in the code above.
         write_attachments = FALSE
       )
-      if (info$output_style == "expanded") {
-        # Add comments on where the file came from
-        writeLines(
-          c(
+      # Add comments on where the file came from
+      writeLines(
+        c(
+          paste0("/* ", c(
             bslib_comment,
-            paste0("// bw: 5: ", ver),
-            paste0("// bsw5 theme: ", name),
-            readLines(output_file)
-          ),
-          output_file
-        )
-      }
+            paste0("bw: 5: ", ver),
+            paste0("bsw5 theme: ", name)
+          ), " */"),
+          readLines(output_file)
+        ),
+        output_file
+      )
     }
   }
 )
