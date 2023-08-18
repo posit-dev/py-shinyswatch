@@ -76,6 +76,8 @@ app = App(app_ui, server)
 
 </td></tr></tbody></table>
 
+> Note: When writing shiny apps on [shinylive.io](https://shinylive.io/py/editor/#code=NobwRAdghgtgpmAXGKAHVA6VBPMAaMAYwHsIAXOcpMAMwCdiYACAZwAsBLCbJjmVYnTJMAgujxM6lACZw6EgK4cAOhFVpUAfSVMAvEyVYoAcziaaAGyXSAFKqYODHDF1QKymlhY6y6dyMr4TIEAcoESAAwSAIwRUUwATBEAlHj2jobE7m4eFAAeHgBucgBGUGR8-mQFgamqyaqNELI0rHLFfq7uEllkORIscCwsHKTJiOkOAAK9OZNMU1LNchj5ZPMtTNVkNuPzjpJwZAp0EEw0gRAAVAm8LEwgXWQYELtMV4kAvoFN6uh6onQNg02g4A3acgaEDAnwAukA), remember to add `shinyswatch` to your `requirements.txt` file!
+
 ## Development
 
 If you want to do development on shinyswatch for Python:

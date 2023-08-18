@@ -1,14 +1,28 @@
 #!/usr/bin/env Rscript
 
-pak::pkg_install(c("rstudio/bslib", "here"))
-# pak::pkg_install("cran::bslib")
+pak::pkg_install(c("any::here", "any::jsonlite", "any::withr"), upgrade = FALSE)
+withr::local_libpaths()
+shas <- jsonlite::read_json("https://raw.githubusercontent.com/rstudio/py-shiny/main/shiny/www/shared/bootstrap/_version.json")
+has_sha <- vapply(shas, grepl, pattern = "@", fixed = TRUE, FUN.VALUE=logical(1))
+pkgs <- unname(unlist(
+  lapply(shas[has_sha], function(sha_txt) {
+    sha_txt <- sub("Github (", "", sha_txt, fixed = TRUE)
+    sha_txt <- sub(")", "", sha_txt)
+    sha_txt
+  })
+))
+# pkgs
+# #> [1] "rstudio/shiny@6fc06281bdfea3d2afa5582119469f15d2eed5fc"
+# #> [2] "rstudio/bslib@eeade07b0d5da324718c647dd23f6792f4721642"
+# #> [3] "rstudio/htmltools@758552e58113b844e0767daa5b2071513fc9bb56"
+pak::pkg_install(pkgs)
 
 library(bslib)
 library(rlang)
 
 bslib_info <- sessioninfo::package_info("bslib")
 bslib_info_list <- bslib_info[bslib_info$package == "bslib", , drop = TRUE]
-bslib_comment <- paste0("// {bslib} version: ", bslib_info_list$source)
+bslib_comment <- paste0("{bslib} version: ", bslib_info_list$source)
 
 # == Approach ================================================================
 # We MUST use `{bslib}` themes as the original bootswatch themes
@@ -135,8 +149,39 @@ ignore <- Map(
     # Overwrite the variables back to the original CDN paths
     sass_bundle <- bs_add_variables(
       sass_bundle,
+
       # Spread the list of variables into the function
       !!!variable_map
+    )
+
+    sass_bundle <- bslib::bs_add_rules(
+      sass_bundle,
+      # Use double class names (e.g. `.FOO.FOO` instead of `.FOO`) to achieve higher
+      # presidence than bslib's single class name (with incorrect variable values)
+      "
+      // https://github.com/rstudio/bslib/blob/8d9c0dde52a0673e5ef0b2e43409848a440d2e93/inst/components/scss/sidebar.scss#L1-L2
+      .bslib-sidebar-layout.bslib-sidebar-layout {
+        $bslib-sidebar-bg: mix($body-color, $body-bg, 3.66%);
+        $bslib-sidebar-fg: color-contrast($bslib-sidebar-bg);
+        --bslib-sidebar-bg: #{$bslib-sidebar-bg};
+        --bslib-sidebar-fg: #{$bslib-sidebar-fg};
+      }
+
+      // https://github.com/rstudio/bslib/blob/8d9c0dde52a0673e5ef0b2e43409848a440d2e93/inst/components/scss/page_sidebar.scss
+      $bslib-page-title-bg: if($navbar-bg, $navbar-bg, $dark) !default;
+      $bslib-page-title-color: color-contrast($bslib-page-title-bg) !default;
+      $bslib-sidebar-padding: $spacer * 1.5 !default;
+
+      .bslib-page-title.bslib-page-title {
+        background-color: $bslib-page-title-bg;
+        color: $bslib-page-title-color;
+        font-size: $h4-font-size;
+        font-weight: 300;
+        padding: var(--bslib-spacer, 1rem);
+        padding-left: $bslib-sidebar-padding;
+        margin-bottom: 0;
+      }
+      "
     )
 
     # Write bundle to disk
@@ -158,18 +203,18 @@ ignore <- Map(
         # local font paths to the original CDN paths in the code above.
         write_attachments = FALSE
       )
-      if (info$output_style == "expanded") {
-        # Add comments on where the file came from
-        writeLines(
-          c(
+      # Add comments on where the file came from
+      writeLines(
+        c(
+          paste0("/* ", c(
             bslib_comment,
-            paste0("// bw: 5: ", ver),
-            paste0("// bsw5 theme: ", name),
-            readLines(output_file)
-          ),
-          output_file
-        )
-      }
+            paste0("bw: 5: ", ver),
+            paste0("bsw5 theme: ", name)
+          ), " */"),
+          readLines(output_file)
+        ),
+        output_file
+      )
     }
   }
 )
