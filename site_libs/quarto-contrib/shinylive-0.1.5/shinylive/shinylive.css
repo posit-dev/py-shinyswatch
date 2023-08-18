@@ -1,11 +1,11 @@
-/* Shinylive 0.1.2
+/* Shinylive 0.1.5
 // Copyright 2023 RStudio, PBC */
 /* src/Components/App.css */
 :root {
   --colors-grey: grey;
-  --colors-blue: rgb(58, 147, 219);
+  --colors-blue: #007BC2;
   --colors-blue-dark: hsl(207, 69%, 35%);
-  --colors-red: rgb(245, 62, 78);
+  --colors-red: #C10000;
   --colors-white: white;
   --colors-bg: white;
   --colors-fg: #333;
@@ -182,7 +182,7 @@ button:disabled {
 .HeaderBar {
   height: 30px;
   padding: 3px 8px;
-  background-color: #5096cf;
+  background-color: #007BC2;
   font-family: var(--font-face);
   font-size: 1.1rem;
   color: var(--colors-white);
@@ -196,9 +196,11 @@ button:disabled {
   margin-right: auto;
 }
 .HeaderBar .shiny-logo {
-  height: 40px;
+  height: 22px;
   display: inline-block;
   margin-right: 6px;
+  margin-left: 4px;
+  margin-top: 1px;
 }
 .HeaderBar > div {
   flex-direction: row;
@@ -430,8 +432,10 @@ div#size-detection-cell {
   left: 0;
   top: 0;
   bottom: 0;
+  right: 0;
   z-index: 10;
   color: transparent;
+  pointer-events: none;
 }
 .xterm .live-region {
   position: absolute;
@@ -441,7 +445,7 @@ div#size-detection-cell {
   overflow: hidden;
 }
 .xterm-dim {
-  opacity: 0.5;
+  opacity: 1 !important;
 }
 .xterm-underline-1 {
   text-decoration: underline;
@@ -458,6 +462,24 @@ div#size-detection-cell {
 .xterm-underline-5 {
   text-decoration: dashed underline;
 }
+.xterm-overline {
+  text-decoration: overline;
+}
+.xterm-overline.xterm-underline-1 {
+  text-decoration: overline underline;
+}
+.xterm-overline.xterm-underline-2 {
+  text-decoration: overline double underline;
+}
+.xterm-overline.xterm-underline-3 {
+  text-decoration: overline wavy underline;
+}
+.xterm-overline.xterm-underline-4 {
+  text-decoration: overline dotted underline;
+}
+.xterm-overline.xterm-underline-5 {
+  text-decoration: overline dashed underline;
+}
 .xterm-strikethrough {
   text-decoration: line-through;
 }
@@ -465,8 +487,11 @@ div#size-detection-cell {
   z-index: 6;
   position: absolute;
 }
-.xterm-decoration-overview-ruler {
+.xterm-screen .xterm-decoration-container .xterm-decoration.xterm-decoration-top-layer {
   z-index: 7;
+}
+.xterm-decoration-overview-ruler {
+  z-index: 8;
   position: absolute;
   top: 0;
   right: 0;

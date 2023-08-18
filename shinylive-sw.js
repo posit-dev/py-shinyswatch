@@ -1,4 +1,4 @@
-// Shinylive 0.1.2
+// Shinylive 0.1.5
 // Copyright 2023 RStudio, PBC
 
 // src/assets/shinylive-inject-socket.txt

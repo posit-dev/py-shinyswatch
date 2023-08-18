@@ -1,4 +1,4 @@
-// Shinylive 0.1.2
+// Shinylive 0.1.5
 // Copyright 2023 RStudio, PBC
 var __create = Object.create;
 var __defProp = Object.defineProperty;
@@ -11,7 +11,7 @@ var __require = /* @__PURE__ */ ((x) => typeof require !== "undefined" ? require
 }) : x)(function(x) {
   if (typeof require !== "undefined")
     return require.apply(this, arguments);
-  throw new Error('Dynamic require of "' + x + '" is not supported');
+  throw Error('Dynamic require of "' + x + '" is not supported');
 });
 var __commonJS = (cb, mod) => function __require2() {
   return mod || (0, cb[__getOwnPropNames(cb)[0]])((mod = { exports: {} }).exports, mod), mod.exports;
@@ -651,7 +651,7 @@ async function loadPyodide(options = {}) {
     }, getRemoteSet: async (mount) => {
       const entries = /* @__PURE__ */ Object.create(null), handles = await getFsHandles(mount.opts.fileSystemHandle);
       for (const [path, handle] of handles)
-        "." !== path && (entries[PATH.join2(mount.mountpoint, path)] = { timestamp: "file" === handle.kind ? (await handle.getFile()).lastModifiedDate : new Date(), mode: "file" === handle.kind ? nativeFSAsync.FILE_MODE : nativeFSAsync.DIR_MODE });
+        "." !== path && (entries[PATH.join2(mount.mountpoint, path)] = { timestamp: "file" === handle.kind ? (await handle.getFile()).lastModifiedDate : /* @__PURE__ */ new Date(), mode: "file" === handle.kind ? nativeFSAsync.FILE_MODE : nativeFSAsync.DIR_MODE });
       return { type: "remote", entries, handles };
     }, loadLocalEntry: (path) => {
       const node = FS.lookupPath(path).node, stat = FS.stat(path);
@@ -678,7 +678,7 @@ async function loadPyodide(options = {}) {
         return { contents: new Uint8Array(await file.arrayBuffer()), mode: nativeFSAsync.FILE_MODE, timestamp: file.lastModifiedDate };
       }
       if ("directory" === handle.kind)
-        return { mode: nativeFSAsync.DIR_MODE, timestamp: new Date() };
+        return { mode: nativeFSAsync.DIR_MODE, timestamp: /* @__PURE__ */ new Date() };
       throw new Error("unknown kind: " + handle.kind);
     }, storeRemoteEntry: async (handles, path, entry) => {
       const parentDirHandle = handles.get(PATH.dirname(path)), handle = FS.isFile(entry.mode) ? await parentDirHandle.getFileHandle(PATH.basename(path), { create: true }) : await parentDirHandle.getDirectoryHandle(PATH.basename(path), { create: true });
