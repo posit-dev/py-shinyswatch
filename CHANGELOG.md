@@ -9,7 +9,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Bug fixes
 
-* Updated themes to support latest py-shiny sidebars. Requires shiny 0.5.0 or later (#15).
+* Updated themes to support latest shiny sidebars. Requires shiny 0.5.0 or later (#15).
+* Dropped support for python 3.7 as shiny does not support python 3.7 (#16).
 
 
 ## [0.2.4] - 2023-04-18
