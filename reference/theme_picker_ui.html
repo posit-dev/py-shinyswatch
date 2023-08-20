@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>shinyswatch – theme.lux</title>
+<title>shinyswatch – theme_picker_ui</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -107,7 +107,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../reference/theme.cerulean.html">Themes</a></li><li class="breadcrumb-item"><a href="../reference/theme.lux.html">theme.lux</a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../reference/theme_picker_ui.html">Theme picker</a></li><li class="breadcrumb-item"><a href="../reference/theme_picker_ui.html">theme_picker_ui</a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
     </div>
@@ -153,7 +153,7 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../reference/theme_picker_ui.html" class="sidebar-item-text sidebar-link">
+  <a href="../reference/theme_picker_ui.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">theme_picker_ui</span></a>
   </div>
 </li>
@@ -224,7 +224,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../reference/theme.lux.html" class="sidebar-item-text sidebar-link active">
+  <a href="../reference/theme.lux.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">theme.lux</span></a>
   </div>
 </li>
@@ -337,17 +337,23 @@ ul.task-list li input[type="checkbox"] {
 
 
 
-<section id="shinyswatch.theme.lux" class="level1">
-<h1>theme.lux</h1>
-<p><code>theme.lux()</code></p>
-<p><code>lux</code> Bootswatch theme</p>
-<p>Visit <a href="https://bootswatch.com/lux/">https://bootswatch.com/lux/</a> to see a Bootswatch's demo of the <code>lux</code> theme.</p>
+<section id="shinyswatch.theme_picker_ui" class="level1">
+<h1>theme_picker_ui</h1>
+<p><code>theme_picker_ui()</code></p>
+<section id="notes" class="level2">
+<h2 class="anchored" data-anchor-id="notes">Notes</h2>
+<ul>
+<li>All simultaneous theme picker users on the same Shiny server will see the same theme. This only is an issue when you are sharing the same Shiny server.</li>
+<li>Do not include more than one theme picker in your app.</li>
+<li>Do not call the theme picker UI / server inside a module.</li>
+</ul>
+</section>
 <section id="returns" class="level2">
 <h2 class="anchored" data-anchor-id="returns">Returns</h2>
 <table class="table">
 <colgroup>
-<col style="width: 50%">
-<col style="width: 49%">
+<col style="width: 54%">
+<col style="width: 45%">
 </colgroup>
 <thead>
 <tr class="header">
@@ -357,11 +363,17 @@ ul.task-list li input[type="checkbox"] {
 </thead>
 <tbody>
 <tr class="odd">
-<td><code>list</code>[<code>htmltools</code>.<code>HTMLDependency</code>]</td>
-<td>List of HTMLDependency objects that create a Bootswatch (lux) and Bootstrap 5 theme.</td>
+<td><code>ui</code>.<code>TagChild</code></td>
+<td>A UI elements creating the theme picker.</td>
 </tr>
 </tbody>
 </table>
+</section>
+<section id="see-also" class="level2">
+<h2 class="anchored" data-anchor-id="see-also">See Also</h2>
+<ul>
+<li><a href="../reference/theme_picker_server.html#shinyswatch.theme_picker_server"><code>shinyswatch.theme_picker_server</code></a></li>
+</ul>
 </section>
 <section id="examples" class="level2">
 <h2 class="anchored" data-anchor-id="examples">Examples</h2>
@@ -378,7 +390,11 @@ import shinyswatch
 app_ui = ui.page_navbar(
     ui.nav(
         "Navbar 1",
-        shinyswatch.theme.lux(),
+        # !! DO NOT INCLUDE THEME in `app_ui` !!
+        # shinyswatch.theme.superhero(),
+        # !! !!
+        # Include theme_picker_ui UI module somewhere in your UI
+        shinyswatch.theme_picker_ui(),
         ui.layout_sidebar(
             ui.panel_sidebar(
                 ui.input_file("file", "File input:"),
@@ -395,7 +411,6 @@ app_ui = ui.page_navbar(
                 ui.navset_tab(
                     ui.nav(
                         "Tab 1",
-                        ui.tags.h4("Table"),
                         ui.output_table("table"),
                         ui.tags.h4("Verbatim text output"),
                         ui.output_text_verbatim("txtout"),
@@ -414,10 +429,14 @@ app_ui = ui.page_navbar(
     ui.nav("Plot", "Plot content"),
     ui.nav("Table", "Table content"),
     title="shinyswatch",
+    inverse=True,
 )
 
 
 def server(input, output, session):
+    # Include theme_picker_server server in the root of your server function
+    shinyswatch.theme_picker_server()
+
     @output
     @render.text
     def txtout():
