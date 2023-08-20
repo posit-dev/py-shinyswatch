@@ -1,79 +1,123 @@
-from typing import Callable
-
-from htmltools import Tag, TagList
-from htmltools._core import Version
-from shiny import App, Inputs, Outputs, Session, reactive, render, req, ui
-from starlette.requests import Request as StarletteRequest
-
-import shinyswatch
+from htmltools import HTMLDependency, TagList
+from shiny import reactive, render, req, ui
+from shiny.session import require_active_session
 
 from ._bsw5 import BSW5_THEME_NAME, bsw5_themes
+from ._get_theme import get_theme
+from ._shiny import base_dep_version
+
+default_theme_name = "superhero"
+
+theme_name: reactive.Value[BSW5_THEME_NAME] = reactive.Value(default_theme_name)
+# Use a counter to force the new theme to be registered as a dependency
+counter: reactive.Value[int] = reactive.Value(0)
 
 
-# TODO: DOCS
-def theme_picker(app: App, *, default_theme: BSW5_THEME_NAME = "superhero") -> App:
-    theme_obj: dict[str, BSW5_THEME_NAME] = {"theme": default_theme}
+def theme_picker_ui() -> ui.TagChild:
+    """
+    Theme picker - UI
 
-    def get_theme() -> BSW5_THEME_NAME:
-        return theme_obj.get("theme", default_theme)
+    Add this to your UI to enable the theme picker. This function requires :func:`~shinyswatch.theme_picker_server` to be included in your `server` function.
 
-    def set_theme(theme: BSW5_THEME_NAME):
-        nonlocal theme_obj
-        theme_obj["theme"] = theme
+    Notes
+    -----
+    * All simultaneous theme picker users on the same Shiny server will see the same theme. This only is an issue when you are sharing the same Shiny server.
+    * Do not include more than one theme picker in your app.
+    * Do not call the theme picker UI / server inside a module.
 
-    counter = 1
+    Returns
+    -------
+    :
+        A UI elements creating the theme picker.
 
-    def theme_ui(request: StarletteRequest) -> Tag:
-        nonlocal counter
-        counter = counter + 1
-
-        theme_deps = shinyswatch.get_theme(get_theme())
-        for theme_dep in theme_deps:
-            # Use a high value to override anything else being used
-            theme_dep.version = Version(f"9999.{counter}")
-
-        def app_ui():
-            if callable(app.ui):
-                return app.ui(request)
-            else:
-                rendered_ui = app.ui
-                return TagList(
-                    ui.HTML(rendered_ui["html"]),
-                    rendered_ui["dependencies"],
-                )
-
-        return ui.tags.div(
-            theme_deps,
-            ui.tags.script(
-                """
-                Shiny.addCustomMessageHandler('refresh', function(message) {
+    See Also
+    --------
+    * :func:`shinyswatch.theme_picker_server`
+    """
+    return ui.tags.div(
+        # Have a div that is hidden by default and is shown if the server does not
+        # disable it. This is nice as the warning will be displayed if the server module
+        # is not run.
+        ui.div(
+            "!! Please include `shinyswatch.picker_server(MODULE_ID)` in your server function !!",
+            style="color: var(--bs-danger); background-color: var(--bs-light); display: none;",
+            id="shinyswatch_picker_warning",
+        ),
+        ui.tags.script(
+            """
+            (function() {
+                const display_warning = setTimeout(function() {
+                    window.document.querySelector("#shinyswatch_picker_warning").style.display = 'block';
+                }, 1000);
+                Shiny.addCustomMessageHandler('shinyswatch-hide-warning', function(message) {
+                    window.clearTimeout(display_warning);
+                });
+                Shiny.addCustomMessageHandler('shinyswatch-refresh', function(message) {
                     window.location.reload();
                 });
-                """
-            ),
-            ui.input_select(
-                id="shinyswatch_theme_picker",
-                label="Select a theme:",
-                selected=get_theme(),
-                choices=bsw5_themes,
-            ),
-            app_ui(),
+            })()
+            """
+        ),
+        ui.input_select(
+            id="shinyswatch_theme_picker",
+            label="Select a theme:",
+            # TODO-barret; selected
+            selected=None,
+            choices=[],
+        ),
+        get_theme(default_theme_name),
+        ui.output_ui("shinyswatch_theme_deps"),
+    )
+
+
+# @module.server
+def theme_picker_server() -> None:
+    """
+    Theme picker - Server
+
+    This function adds the necessary hooks for the theme picker UI to properly update. This function requires :func:`~shinyswatch.theme_picker_ui` to be included in your UI definition.
+
+    Note: All simultaneous theme picker users on the same Shiny server will see the same theme. This only is an issue when you are sharing the same Shiny server.
+
+    See Also
+    --------
+    * :func:`~shinyswatch.theme_picker_ui`
+    """
+
+    session = require_active_session(None)
+    input = session.input
+    output = session.output
+
+    @reactive.Effect
+    @reactive.event(input.shinyswatch_theme_picker)
+    async def _():
+        counter.set(counter() + 1)
+        if theme_name() != input.shinyswatch_theme_picker():
+            theme_name.set(input.shinyswatch_theme_picker())
+            await session.send_custom_message("shinyswatch-refresh", {})
+
+    @output
+    @render.ui
+    def shinyswatch_theme_deps():  # pyright: ignore[reportUnusedFunction]
+        req(theme_name())
+
+        # Get the theme dependencies and set them to a version that will always be registered
+        theme_deps = get_theme(theme_name())
+        incremented_version = HTMLDependency(
+            name="VersionOnly",
+            version=f"{base_dep_version}.{counter()}",
+        ).version
+        for theme_dep in theme_deps:
+            theme_dep.version = incremented_version
+        # Return dependencies in a TagList so they can all be utilized
+        return TagList(theme_deps)
+
+    @reactive.Effect
+    async def _():
+        ui.update_selectize(
+            "shinyswatch_theme_picker",
+            selected=theme_name(),
+            choices=bsw5_themes,
         )
-
-    def theme_server(input: Inputs, output: Outputs, session: Session):
-        @reactive.Effect
-        @reactive.event(input.shinyswatch_theme_picker, ignore_none=True)
-        async def _():
-            if input.shinyswatch_theme_picker() == get_theme():
-                return
-
-            print("setting theme: ", input.shinyswatch_theme_picker())
-            set_theme(input.shinyswatch_theme_picker())
-            await session.send_custom_message("refresh", {})
-
-        # Pass through to the user's server function
-        app.server(input, output, session)
-
-    theme_picker_app = App(theme_ui, theme_server)
-
-    return theme_picker_app
+        # Disable the warning message
+        await session.send_custom_message("shinyswatch-hide-warning", {})
