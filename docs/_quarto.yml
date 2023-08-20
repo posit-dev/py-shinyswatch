@@ -8,6 +8,14 @@ metadata-files:
 
 filters:
   - shinylive
+  - interlinks
+
+interlinks:
+  sources:
+    numpy:
+      url: https://numpy.org/doc/stable/
+    python:
+      url: https://docs.python.org/3/
 
 quartodoc:
   # style: single-page

@@ -96,7 +96,7 @@ pip install -e ".[dev,test,docs]"
 
 ### Examples
 
-There are three examples in the shinyswatch repo.
+There are multiple examples in the shinyswatch repo.
 
 <!-- You can view them online at: [shinyswatch.theme.darkly](http://rstudio.github.io/py-shinyswatch/reference/theme.darkly.html) and [get_theme](http://rstudio.github.io/py-shinyswatch/reference/get_theme.html). -->
 
@@ -104,8 +104,7 @@ To run the demos locally, you can run the examples by calling:
 
 ```sh
 python3 -m shiny run examples/basic-darkly/app.py
-# or
 python3 -m shiny run examples/big-sketchy/app.py
-# or
 python3 -m shiny run examples/components/app.py
+python3 -m shiny run examples/theme-picker/app.py
 ```

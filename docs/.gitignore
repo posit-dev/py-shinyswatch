@@ -1,6 +1,7 @@
 /.quarto/
 /_extensions/
 /_site/
+/_inv/
 /reference/
 /objects.json
 /_sidebar.yml
