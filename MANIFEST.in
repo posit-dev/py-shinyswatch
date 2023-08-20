@@ -7,4 +7,4 @@ recursive-exclude * *.py[co]
 recursive-include docs *.rst conf.py Makefile make.bat *.jpg *.png *.gif
 
 recursive-include shinyswatch/bs5 *
-recursive-include shinyswatch/bsw5 *.min.css
+recursive-include shinyswatch/bsw5 bootswatch.min.css shinyswatch-ionRangeSlider.css
