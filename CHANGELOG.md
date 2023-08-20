@@ -9,7 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### New features
 
-* Added `shinyswatch.theme_picker()` to allow users to select a theme from a dropdown menu. When changing themes, a page refresh will occur (#11).
+* Added `shinyswatch.theme_picker_ui()` and `shinyswatch.theme_picker_server()` to allow users to select a theme from a dropdown menu. When changing themes, a page refresh will occur (#11).
 
 ### Bug fixes
 
