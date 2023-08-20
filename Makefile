@@ -64,15 +64,19 @@ coverage: ## check code coverage quickly with the default Python
 
 quarto-shinylive: ## Make sure quarto-shinylive is installed
 	cd docs && (test -f _extensions/quarto-ext/shinylive/shinylive.lua || quarto install extension --no-prompt quarto-ext/shinylive)
-docs-quartodoc: quarto-shinylive ## Build quartodoc
-	cd docs && python -m quartodoc build
+quarto-interlinks: ## Make sure quartodocs's interlinks is installed
+	cd docs && (test -f _extensions/machow/interlinks/interlinks.lua || quarto install extension --no-prompt machow/quartodoc)
+docs-quartodoc: quarto-shinylive quarto-interlinks ## Build quartodoc
+	cd docs && python -m quartodoc build --verbose
+	cd docs && python -m quartodoc interlinks
 docs-render: quarto-shinylive
 	cd docs && quarto render
-docs-ci: docs-quartodoc docs-render ## Build quartodoc for CI
-docs-open:
-	$(BROWSER) docs/_site/index.html
 docs-watch: quarto-shinylive
 	cd docs && quarto preview
+docs-ci: docs-quartodoc docs-render ## Build quartodoc for CI
+docs-preview: docs-quartodoc docs-watch ## Build quartodoc for preview
+docs-open:
+	$(BROWSER) docs/_site/index.html
 docs: docs-ci docs-open ## generate quartodoc HTML documentation, including API docs
 
 # # Perform `quarto preview` and `quartodoc build` in parallel

@@ -216,6 +216,27 @@ ignore <- Map(
         output_file
       )
     }
+
+    # Save iorange slider dep
+    # Get _dynamic_ ionrangeslider dep
+    ion_dep <- shiny:::ionRangeSliderDependencyCSS(sass_bundle)
+    if (inherits(ion_dep, "html_dependency")) {
+      ion_dep <- list(ion_dep)
+    }
+    # Save to temp folder
+    temp_ion_dep_dir <- fs::path_temp("shiny-ion-range-slider")
+    fs::dir_create(temp_ion_dep_dir)
+    withr::with_options(
+      list(htmltools.dir.version = FALSE),
+      ignore <- lapply(ion_dep, htmltools::copyDependencyToDir, temp_ion_dep_dir)
+    )
+    # Overwrite css file
+    ion_dep_file <- file.path(out_dir, name, "shinyswatch-ionRangeSlider.css")
+    fs::file_move(
+      fs::path(temp_ion_dep_dir, "ionRangeSlider", "ionRangeSlider.css"),
+      ion_dep_file
+    )
+
   }
 )
 

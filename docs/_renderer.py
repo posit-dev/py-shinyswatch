@@ -21,15 +21,21 @@ demo_app_path = ROOT_PATH / "examples" / "components" / "app.py"
 with open(demo_app_path) as f:
     demo_app_code = f.read()
 
+picker_app_path = ROOT_PATH / "examples" / "theme-picker" / "app.py"
+with open(picker_app_path) as f:
+    picker_app_code = f.read()
+
 APP_TMPL = (
-    demo_app_code.replace("{", "{{")
-    .replace("}", "}}")
+    demo_app_code
+    # .replace("{", "{{")
+    # .replace("}", "}}")
     .replace("shinyswatch.theme.superhero()", "{code}")
 )
 THEME_TMPL = APP_TMPL.replace("{code}", "shinyswatch.theme.{theme_name}()")
 GET_THEME_TMPL = APP_TMPL.replace("{code}", 'shinyswatch.get_theme("superhero")')
+THEME_PICKER_TMPL = picker_app_code
 
-SHINYLIVE_TMPL = """```{{shinylive-python}}
+SHINYLIVE_TMPL = """```{shinylive-python}
 #| standalone: true
 #| components: [editor, viewer]
 #| layout: vertical
@@ -73,15 +79,20 @@ class Renderer(MdRenderer):
 
         converted = convert_rst_link_to_md(rendered)
 
-        if not (el.module.name == "theme" or el.name == "get_theme"):
+        if not (
+            el.module.name == "theme" or el.name in ("get_theme", "theme_picker_ui")
+        ):
             return converted
 
         app_code = ""
         if el.name == "get_theme":
             app_code = GET_THEME_TMPL
+            print(app_code)
+        elif el.name == "theme_picker_ui":
+            app_code = THEME_PICKER_TMPL
         else:
-            app_code = THEME_TMPL.format(theme_name=el.name)
-        example = SHINYLIVE_TMPL.format(app_code=app_code)
+            app_code = THEME_TMPL.replace("{theme_name}", el.name)
+        example = SHINYLIVE_TMPL.replace("{app_code}", app_code)
         converted_with_examples = DOCSTRING_TMPL.format(
             rendered=converted,
             header="#" * (self.crnt_header_level + 1),
