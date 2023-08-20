@@ -7,6 +7,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [0.3.0] - 2023-08-20
 
+### Bug fixes
+
+* Actually include the new ion range slider files in the package (#18).
+
+## [0.3.0] - 2023-08-20
+
 ### New features
 
 * Added `shinyswatch.theme_picker_ui()` and `shinyswatch.theme_picker_server()` to allow users to select a theme from a dropdown menu. When changing themes, a page refresh will occur (#11).
