@@ -24,8 +24,13 @@ quartodoc:
       desc: Generic method to retrieve a Bootswatch + Bootstrap 5 theme.
       contents:
         - get_theme
+    - title: Theme picker
+      desc: Adds a drop down menu to your app to set and select a bootswatch theme.
+      contents:
+        - theme_picker_ui
+        - theme_picker_server
     - title: Themes
-      desc: Functions to create a specific theme.
+      desc: Functions that return a specific bootswatch theme.
       contents:
         - theme.cerulean
         - theme.cosmo

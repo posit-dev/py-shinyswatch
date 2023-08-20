@@ -36,10 +36,10 @@ def theme_picker_ui() -> ui.TagChild:
     """
     return ui.tags.div(
         # Have a div that is hidden by default and is shown if the server does not
-        # disable it. This is nice as the warning will be displayed if the server module
+        # disable it. This is nice as the warning will be displayed if the server method
         # is not run.
         ui.div(
-            "!! Please include `shinyswatch.picker_server(MODULE_ID)` in your server function !!",
+            "!! Please include `shinyswatch.theme_picker_server()` in your server function !!",
             style="color: var(--bs-danger); background-color: var(--bs-light); display: none;",
             id="shinyswatch_picker_warning",
         ),
@@ -70,7 +70,6 @@ def theme_picker_ui() -> ui.TagChild:
     )
 
 
-# @module.server
 def theme_picker_server() -> None:
     """
     Theme picker - Server

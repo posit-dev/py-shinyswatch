@@ -6,8 +6,11 @@ import shinyswatch
 app_ui = ui.page_navbar(
     ui.nav(
         "Navbar 1",
-        # DO NOT INCLUDE THEME in `app_ui`
+        # !! DO NOT INCLUDE THEME in `app_ui` !!
         # shinyswatch.theme.superhero(),
+        # !! !!
+        # Include theme_picker_ui UI module somewhere in your UI
+        shinyswatch.theme_picker_ui(),
         ui.layout_sidebar(
             ui.panel_sidebar(
                 ui.input_file("file", "File input:"),
@@ -24,7 +27,6 @@ app_ui = ui.page_navbar(
                 ui.navset_tab(
                     ui.nav(
                         "Tab 1",
-                        ui.tags.h4("Table"),
                         ui.output_table("table"),
                         ui.tags.h4("Verbatim text output"),
                         ui.output_text_verbatim("txtout"),
@@ -43,10 +45,14 @@ app_ui = ui.page_navbar(
     ui.nav("Plot", "Plot content"),
     ui.nav("Table", "Table content"),
     title="shinyswatch",
+    inverse=True,
 )
 
 
 def server(input, output, session):
+    # Include theme_picker_server server in the root of your server function
+    shinyswatch.theme_picker_server()
+
     @output
     @render.text
     def txtout():
@@ -59,7 +65,4 @@ def server(input, output, session):
         return cars
 
 
-# Wrap your `App` with `shinyswatch.theme_picker()`
-app = shinyswatch.theme_picker(
-    App(app_ui, server),
-)
+app = App(app_ui, server)

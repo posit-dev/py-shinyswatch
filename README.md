@@ -78,6 +78,14 @@ app = App(app_ui, server)
 
 > Note: When writing shiny apps on [shinylive.io](https://shinylive.io/py/editor/#code=NobwRAdghgtgpmAXGKAHVA6VBPMAaMAYwHsIAXOcpMAMwCdiYACAZwAsBLCbJjmVYnTJMAgujxM6lACZw6EgK4cAOhFVpUAfSVMAvEyVYoAcziaaAGyXSAFKqYODHDF1QKymlhY6y6dyMr4TIEAcoESAAwSAIwRUUwATBEAlHj2jobE7m4eFAAeHgBucgBGUGR8-mQFgamqyaqNELI0rHLFfq7uEllkORIscCwsHKTJiOkOAAK9OZNMU1LNchj5ZPMtTNVkNuPzjpJwZAp0EEw0gRAAVAm8LEwgXWQYELtMV4kAvoFN6uh6onQNg02g4A3acgaEDAnwAukA), remember to add `shinyswatch` to your `requirements.txt` file!
 
+### Theme picker
+
+To add a theme picker to your app, add the `shinyswatch.theme_picker_ui()` in place of your theme object and add `shinyswatch.theme_picker_server()` into your `server` definition.
+
+Demo: [shinylive.io](https://shinylive.io/py/editor/#code=NobwRAdghgtgpmAXGKAHVA6VBPMAaMAYwHsIAXOcpMAMwCdiYACAZwAsBLCbJjmVYnTJMAgujxMAkhFQBXMiwkB5eXIUSAynBYsOpCXUoATOHQmyOAHQjW+Aoa07cWAdyhlCba9bSoA+hZMALxMFlhQAOZwfjQANhZGABTWTKlMAMRMACpscPBMqByEANamTAC0rGRQQilp7FzYru6eGGS58H6FJaYBHIkAlHh1qZk5eXAFRaV0FUzGI6EcGFxqfiyxHCZ0yZCyMJb4TIcAcvsARqaIhxIwXEEAjAAMt1AAHo9PL0wAblDxcCCAGYnkNFmFiKp5H4KG8yH4fqZzu4+LsNlten9YocwRABt4bBATDRWKZETtVvJEFIZPJFExIWQ1NSVEy6RIWNpdKRqVodHo8dcIGkMmMOpNujM5ixqrVhfUnE03B42G1xV1pr1OXRyYNFukxRMpj1ZpUFoSRQABRlqRaWwxE0xtOBwxbE1ibbYI-6DIUikWGMiyOjCmiHECUsgYCD7QYAX0OBJ86GConQiV8fQ5ZNM+MJYDjeHA0Hg1EMAEcLIZ4OQWG04fgiKQKFRkA1nMrPAWALpAA)
+
+
+
 ## Development
 
 If you want to do development on shinyswatch for Python:
