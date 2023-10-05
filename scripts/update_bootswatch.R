@@ -1,7 +1,9 @@
 #!/usr/bin/env Rscript
 
+withr::local_temp_libpaths()
+install.packages("pak", repos = sprintf("https://r-lib.github.io/p/pak/stable/%s/%s/%s", .Platform$pkgType, R.Version()$os, R.Version()$arch))
+
 pak::pkg_install(c("any::here", "any::jsonlite", "any::withr"), upgrade = FALSE)
-withr::local_libpaths()
 shas <- jsonlite::read_json("https://raw.githubusercontent.com/rstudio/py-shiny/main/shiny/www/shared/bootstrap/_version.json")
 has_sha <- vapply(shas, grepl, pattern = "@", fixed = TRUE, FUN.VALUE=logical(1))
 pkgs <- unname(unlist(
@@ -12,9 +14,9 @@ pkgs <- unname(unlist(
   })
 ))
 # pkgs
-# #> [1] "rstudio/shiny@6fc06281bdfea3d2afa5582119469f15d2eed5fc"
-# #> [2] "rstudio/bslib@eeade07b0d5da324718c647dd23f6792f4721642"
-# #> [3] "rstudio/htmltools@758552e58113b844e0767daa5b2071513fc9bb56"
+# #> [1] "rstudio/shiny@68546c319e465a9cb113ea4499912823e264e75f"
+# #> [2] "rstudio/bslib@a076e72e78562d7f006889da4118cd781c66c84c"
+# #> [3] "rstudio/htmltools@9338b7f3e2ed7b3fef8fd813904b9b05281344aa"
 pak::pkg_install(pkgs)
 
 library(bslib)
