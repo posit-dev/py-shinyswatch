@@ -2,7 +2,7 @@
 
 from ._typing_extensions import Literal
 
-bsw5_version = "5.2.2"
+bsw5_version = "5.3.1"
 
 bsw5_themes = (
     "cerulean",
