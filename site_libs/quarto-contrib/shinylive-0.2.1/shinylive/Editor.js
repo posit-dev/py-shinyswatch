@@ -1,4 +1,4 @@
-// Shinylive 0.1.5
+// Shinylive 0.2.1
 // Copyright 2023 RStudio, PBC
 import {
   Icon,
@@ -18,7 +18,7 @@ import {
   require_jsx_runtime,
   require_react,
   stringToUint8Array
-} from "./chunk-BVKLKCXG.js";
+} from "./chunk-AW35JATS.js";
 
 // node_modules/events/events.js
 var require_events = __commonJS({
@@ -1462,7 +1462,7 @@ var require_messageReader = __commonJS({
       }
       MessageReader2.is = is;
     })(MessageReader = exports.MessageReader || (exports.MessageReader = {}));
-    var AbstractMessageReader = class {
+    var AbstractMessageReader2 = class {
       constructor() {
         this.errorEmitter = new events_1.Emitter();
         this.closeEmitter = new events_1.Emitter();
@@ -1498,7 +1498,7 @@ var require_messageReader = __commonJS({
         }
       }
     };
-    exports.AbstractMessageReader = AbstractMessageReader;
+    exports.AbstractMessageReader = AbstractMessageReader2;
     var ResolvedMessageReaderOptions;
     (function(ResolvedMessageReaderOptions2) {
       function fromOptions(options2) {
@@ -1539,7 +1539,7 @@ var require_messageReader = __commonJS({
       }
       ResolvedMessageReaderOptions2.fromOptions = fromOptions;
     })(ResolvedMessageReaderOptions || (ResolvedMessageReaderOptions = {}));
-    var ReadableStreamMessageReader = class extends AbstractMessageReader {
+    var ReadableStreamMessageReader = class extends AbstractMessageReader2 {
       constructor(readable, options2) {
         super();
         this.readable = readable;
@@ -1648,7 +1648,7 @@ var require_messageWriter = __commonJS({
       }
       MessageWriter2.is = is;
     })(MessageWriter = exports.MessageWriter || (exports.MessageWriter = {}));
-    var AbstractMessageWriter = class {
+    var AbstractMessageWriter2 = class {
       constructor() {
         this.errorEmitter = new events_1.Emitter();
         this.closeEmitter = new events_1.Emitter();
@@ -1677,7 +1677,7 @@ var require_messageWriter = __commonJS({
         }
       }
     };
-    exports.AbstractMessageWriter = AbstractMessageWriter;
+    exports.AbstractMessageWriter = AbstractMessageWriter2;
     var ResolvedMessageWriterOptions;
     (function(ResolvedMessageWriterOptions2) {
       function fromOptions(options2) {
@@ -1689,7 +1689,7 @@ var require_messageWriter = __commonJS({
       }
       ResolvedMessageWriterOptions2.fromOptions = fromOptions;
     })(ResolvedMessageWriterOptions || (ResolvedMessageWriterOptions = {}));
-    var WriteableStreamMessageWriter = class extends AbstractMessageWriter {
+    var WriteableStreamMessageWriter = class extends AbstractMessageWriter2 {
       constructor(writable, options2) {
         super();
         this.writable = writable;
@@ -2115,7 +2115,7 @@ var require_connection = __commonJS({
       ConnectionState2[ConnectionState2["Closed"] = 3] = "Closed";
       ConnectionState2[ConnectionState2["Disposed"] = 4] = "Disposed";
     })(ConnectionState || (ConnectionState = {}));
-    function createMessageConnection2(messageReader, messageWriter, _logger, options2) {
+    function createMessageConnection3(messageReader, messageWriter, _logger, options2) {
       const logger = _logger !== void 0 ? _logger : exports.NullLogger;
       let sequenceNumber = 0;
       let notificationSequenceNumber = 0;
@@ -3013,7 +3013,7 @@ ${JSON.stringify(message, null, 4)}`);
       });
       return connection;
     }
-    exports.createMessageConnection = createMessageConnection2;
+    exports.createMessageConnection = createMessageConnection3;
   }
 });
 
@@ -3443,7 +3443,7 @@ var require_main = __commonJS({
       }
     };
     exports.BrowserMessageWriter = BrowserMessageWriter2;
-    function createMessageConnection2(reader, writer, logger, options2) {
+    function createMessageConnection3(reader, writer, logger, options2) {
       if (logger === void 0) {
         logger = api_1.NullLogger;
       }
@@ -3452,7 +3452,7 @@ var require_main = __commonJS({
       }
       return (0, api_1.createMessageConnection)(reader, writer, logger, options2);
     }
-    exports.createMessageConnection = createMessageConnection2;
+    exports.createMessageConnection = createMessageConnection3;
   }
 });
 
@@ -7681,8 +7681,41 @@ var LSPClient = class {
   }
 };
 
-// src/language-server/pyright.ts
+// src/language-server/null-client.ts
 var import_vscode_jsonrpc = __toESM(require_main());
+var nullClient = null;
+function ensureNullClient() {
+  if (!nullClient) {
+    nullClient = new NullClient();
+  }
+  return nullClient;
+}
+var NullMessageReader = class extends import_vscode_jsonrpc.AbstractMessageReader {
+  listen() {
+    return { dispose: () => {
+    } };
+  }
+};
+var NullMessageWriter = class extends import_vscode_jsonrpc.AbstractMessageWriter {
+  async write() {
+  }
+  end() {
+  }
+};
+var NullClient = class extends LSPClient {
+  constructor() {
+    const conn = (0, import_vscode_jsonrpc.createMessageConnection)(
+      new NullMessageReader(),
+      new NullMessageWriter()
+    );
+    conn.listen();
+    const client = new LanguageServerClient(conn, "en", createUri(""));
+    super(client);
+  }
+};
+
+// src/language-server/pyright.ts
+var import_vscode_jsonrpc2 = __toESM(require_main());
 var import_browser = __toESM(require_browser());
 var workerScriptName = "pyright-main-9de05813f9fe07eabc93.worker.js";
 var pyright = (language2) => {
@@ -7697,7 +7730,7 @@ var pyright = (language2) => {
     type: "browser/boot",
     mode: "foreground"
   });
-  const connection = (0, import_vscode_jsonrpc.createMessageConnection)(
+  const connection = (0, import_vscode_jsonrpc2.createMessageConnection)(
     new import_browser.BrowserMessageReader(foreground),
     new import_browser.BrowserMessageWriter(foreground)
   );
@@ -7800,13 +7833,14 @@ var React2 = __toESM(require_react());
 var import_jsx_runtime = __toESM(require_jsx_runtime());
 function ShareModal({
   fileContents = [],
-  setShareModalVisible
+  setShareModalVisible,
+  appEngine
 }) {
   const showModalRef = React2.useRef(null);
   const encodedCode = fileContentsToUrlString(fileContents);
   const [hideHeaderChecked, setHideHeaderChecked] = React2.useState(false);
-  const editorUrl = editorUrlPrefix + "#code=" + encodedCode;
-  const appUrl = appUrlPrefix + "#" + (hideHeaderChecked ? "h=0&" : "") + "code=" + encodedCode;
+  const editorUrl = editorUrlPrefix(appEngine) + "#code=" + encodedCode;
+  const appUrl = appUrlPrefix(appEngine) + "#" + (hideHeaderChecked ? "h=0&" : "") + "code=" + encodedCode;
   const editorUrlInputRef = React2.useRef(null);
   const appUrlInputRef = React2.useRef(null);
   const [editorButtonText, setEditorButtonText] = React2.useState("Copy URL");
@@ -37308,9 +37342,10 @@ function Editor({
   runOnLoad = true,
   lineNumbers: lineNumbers2 = true,
   showHeaderBar = true,
-  floatingButtons = false
+  floatingButtons = false,
+  appEngine
 }) {
-  const lspClient = ensurePyrightClient();
+  const lspClient = appEngine === "python" ? ensurePyrightClient() : ensureNullClient();
   const editorInstanceId = useInstanceCounter();
   const lspPathPrefix = `editor${editorInstanceId}/`;
   const inferEditorExtensions = React4.useCallback(
@@ -37347,7 +37382,11 @@ function Editor({
   const { files, activeFile, syncActiveFileState, focusOnEditor } = tabbedFiles;
   const [isShinyApp, setIsShinyApp] = React4.useState(false);
   React4.useEffect(() => {
-    setIsShinyApp(files.some((file) => file.name === "app.py"));
+    setIsShinyApp(
+      files.some(
+        (f) => f.name === "app.py" || f.name === "app.R" || f.name === "server.R"
+      )
+    );
   }, [files]);
   const runCodeInTerminal = React4.useCallback(
     (command2) => {
@@ -37385,7 +37424,9 @@ function Editor({
       });
       if (!runOnLoad)
         return;
-      const isShinyCode = currentFilesFromApp.some((f) => f.name === "app.py");
+      const isShinyCode = currentFilesFromApp.some(
+        (f) => f.name === "app.py" || f.name === "app.R" || f.name === "server.R"
+      );
       if (isShinyCode) {
         await viewerMethods.runApp(currentFilesFromApp);
       }
@@ -37404,7 +37445,9 @@ function Editor({
     if (!terminalMethods.ready)
       return;
     (async () => {
-      const isShinyCode = currentFilesFromApp.some((f) => f.name === "app.py");
+      const isShinyCode = currentFilesFromApp.some(
+        (f) => f.name === "app.py" || f.name === "app.R" || f.name === "server.R"
+      );
       if (!isShinyCode) {
         if (currentFilesFromApp[0].type === "text") {
           runCodeInTerminal(currentFilesFromApp[0].content);
@@ -37538,7 +37581,7 @@ function Editor({
     syncActiveFileState();
     const fileContents = editorFilesToFileContents(files);
     window.open(
-      editorUrlPrefix + "#code=" + fileContentsToUrlString(fileContents),
+      editorUrlPrefix(appEngine) + "#code=" + fileContentsToUrlString(fileContents),
       "_blank"
     );
   }, [files, syncActiveFileState]);
@@ -37553,7 +37596,8 @@ function Editor({
       ShareModal,
       {
         fileContents: editorFilesToFileContents(files),
-        setShareModalVisible
+        setShareModalVisible,
+        appEngine
       }
     );
   }
@@ -37573,7 +37617,7 @@ function Editor({
     setHeaderBarCallbacks,
     showShareModal
   ]);
-  const formatCodeButton = /* @__PURE__ */ (0, import_jsx_runtime3.jsx)(
+  const formatCodeButton = appEngine === "python" ? /* @__PURE__ */ (0, import_jsx_runtime3.jsx)(
     "button",
     {
       className: "code-run-button",
@@ -37582,7 +37626,7 @@ function Editor({
       onClick: () => formatCode(),
       children: /* @__PURE__ */ (0, import_jsx_runtime3.jsx)(Icon, { icon: "code" })
     }
-  );
+  ) : null;
   const formatCode = React4.useCallback(async () => {
     if (!cmView)
       return;
