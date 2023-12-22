@@ -5,6 +5,10 @@ All notable changes to `shinyswatch` will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.4.2] - 2023-12-22
+
+* Update bootswatch themes. (24)
+
 ## [0.4.1] - 2023-10-31
 
 ### New features
@@ -16,7 +20,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### New features
 
 * Update themes to support Bootstrap 5.3 (#20)
-
 
 ## [0.3.1] - 2023-08-20
 
