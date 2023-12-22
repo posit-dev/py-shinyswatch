@@ -1,4 +1,4 @@
-// Shinylive 0.2.3
+// Shinylive 0.2.4
 // Copyright 2023 RStudio, PBC
 import {
   Icon,
@@ -20,7 +20,7 @@ import {
   require_jsx_runtime,
   require_react,
   stringToUint8Array
-} from "./chunk-GWAOPURX.js";
+} from "./chunk-Y3RSPUTM.js";
 
 // node_modules/events/events.js
 var require_events = __commonJS({
@@ -7885,7 +7885,10 @@ var LineCursor = class {
   }
   next(skip = 0) {
     let { done, lineBreak, value } = this.inner.next(skip);
-    if (done) {
+    if (done && this.afterBreak) {
+      this.value = "";
+      this.afterBreak = false;
+    } else if (done) {
       this.done = true;
       this.value = "";
     } else if (lineBreak) {
@@ -9688,7 +9691,8 @@ var EditorState = class _EditorState {
     } else {
       startValues = tr.startState.values.slice();
     }
-    new _EditorState(conf, tr.newDoc, tr.newSelection, startValues, (state, slot) => slot.update(state, tr), tr);
+    let selection = tr.startState.facet(allowMultipleSelections) ? tr.newSelection : tr.newSelection.asSingle();
+    new _EditorState(conf, tr.newDoc, selection, startValues, (state, slot) => slot.update(state, tr), tr);
   }
   /**
   Create a [transaction spec](https://codemirror.net/6/docs/ref/#state.TransactionSpec) that
@@ -11483,7 +11487,7 @@ var ContentView = class _ContentView {
     this.markDirty();
     for (let i = from; i < to; i++) {
       let child = this.children[i];
-      if (child.parent == this)
+      if (child.parent == this && children.indexOf(child) < 0)
         child.destroy();
     }
     this.children.splice(from, to - from, ...children);
@@ -11534,6 +11538,8 @@ var ContentView = class _ContentView {
     return 0;
   }
   destroy() {
+    for (let child of this.children)
+      child.destroy();
     this.parent = null;
   }
 };
@@ -16417,6 +16423,13 @@ var baseTheme$1 = /* @__PURE__ */ buildTheme("." + baseThemeID, {
   "&.cm-focused > .cm-scroller > .cm-cursorLayer .cm-cursor": {
     display: "block"
   },
+  ".cm-announced": {
+    position: "fixed",
+    top: "-10000px"
+  },
+  "@media print": {
+    ".cm-announced": { display: "none" }
+  },
   "&light .cm-activeLine": { backgroundColor: "#cceeff44" },
   "&dark .cm-activeLine": { backgroundColor: "#99eeff33" },
   "&light .cm-specialChar": { color: "red" },
@@ -17341,7 +17354,7 @@ var EditorView = class _EditorView {
     this.scrollDOM.className = "cm-scroller";
     this.scrollDOM.appendChild(this.contentDOM);
     this.announceDOM = document.createElement("div");
-    this.announceDOM.style.cssText = "position: fixed; top: -10000px";
+    this.announceDOM.className = "cm-announced";
     this.announceDOM.setAttribute("aria-live", "polite");
     this.dom = document.createElement("div");
     this.dom.appendChild(this.announceDOM);
@@ -17491,6 +17504,7 @@ var EditorView = class _EditorView {
       this.pluginMap.clear();
       for (let plugin of this.plugins)
         plugin.update(this);
+      this.docView.destroy();
       this.docView = new DocView(this);
       this.inputState.ensureHandlers(this.plugins);
       this.mountStyles();
@@ -18015,6 +18029,7 @@ var EditorView = class _EditorView {
       plugin.destroy(this);
     this.plugins = [];
     this.inputState.destroy();
+    this.docView.destroy();
     this.dom.remove();
     this.observer.destroy();
     if (this.measureScheduled > -1)
@@ -18657,8 +18672,10 @@ var themeSpec = {
     "&::selection": { backgroundColor: "transparent !important" }
   }
 };
-if (CanHidePrimary)
+if (CanHidePrimary) {
   themeSpec[".cm-line"].caretColor = "transparent !important";
+  themeSpec[".cm-content"] = { caretColor: "transparent !important" };
+}
 var hideNativeSelection = /* @__PURE__ */ Prec.highest(/* @__PURE__ */ EditorView.theme(themeSpec));
 var setDropCursorPos = /* @__PURE__ */ StateEffect.define({
   map(pos, mapping) {
@@ -19511,7 +19528,10 @@ var showHoverTooltipHost = /* @__PURE__ */ showTooltip.compute([showHoverTooltip
     return null;
   return {
     pos: Math.min(...tooltips.map((t2) => t2.pos)),
-    end: Math.max(...tooltips.filter((t2) => t2.end != null).map((t2) => t2.end)),
+    end: Math.max(...tooltips.map((t2) => {
+      var _a3;
+      return (_a3 = t2.end) !== null && _a3 !== void 0 ? _a3 : t2.pos;
+    })),
     create: HoverTooltipHost.create,
     above: tooltips[0].above,
     arrow: tooltips.some((t2) => t2.arrow)
@@ -19586,25 +19606,45 @@ var HoverPlugin = class {
       view.dispatch({ effects: this.setHover.of(open) });
     }
   }
+  get tooltip() {
+    let plugin = this.view.plugin(tooltipPlugin);
+    let index = plugin ? plugin.manager.tooltips.findIndex((t2) => t2.create == HoverTooltipHost.create) : -1;
+    return index > -1 ? plugin.manager.tooltipViews[index] : null;
+  }
   mousemove(event) {
     var _a3;
     this.lastMove = { x: event.clientX, y: event.clientY, target: event.target, time: Date.now() };
     if (this.hoverTimeout < 0)
       this.hoverTimeout = setTimeout(this.checkHover, this.hoverTime);
-    let tooltip = this.active;
-    if (tooltip && !isInTooltip(this.lastMove.target) || this.pending) {
-      let { pos } = tooltip || this.pending, end = (_a3 = tooltip === null || tooltip === void 0 ? void 0 : tooltip.end) !== null && _a3 !== void 0 ? _a3 : pos;
+    let { active, tooltip } = this;
+    if (active && tooltip && !isInTooltip(tooltip.dom, event) || this.pending) {
+      let { pos } = active || this.pending, end = (_a3 = active === null || active === void 0 ? void 0 : active.end) !== null && _a3 !== void 0 ? _a3 : pos;
       if (pos == end ? this.view.posAtCoords(this.lastMove) != pos : !isOverRange(this.view, pos, end, event.clientX, event.clientY)) {
         this.view.dispatch({ effects: this.setHover.of(null) });
         this.pending = null;
       }
     }
   }
-  mouseleave(e) {
+  mouseleave(event) {
     clearTimeout(this.hoverTimeout);
     this.hoverTimeout = -1;
-    if (this.active && !isInTooltip(e.relatedTarget))
-      this.view.dispatch({ effects: this.setHover.of(null) });
+    let { active } = this;
+    if (active) {
+      let { tooltip } = this;
+      let inTooltip = tooltip && tooltip.dom.contains(event.relatedTarget);
+      if (!inTooltip)
+        this.view.dispatch({ effects: this.setHover.of(null) });
+      else
+        this.watchTooltipLeave(tooltip.dom);
+    }
+  }
+  watchTooltipLeave(tooltip) {
+    let watch = (event) => {
+      tooltip.removeEventListener("mouseleave", watch);
+      if (this.active && !this.view.dom.contains(event.relatedTarget))
+        this.view.dispatch({ effects: this.setHover.of(null) });
+    };
+    tooltip.addEventListener("mouseleave", watch);
   }
   destroy() {
     clearTimeout(this.hoverTimeout);
@@ -19612,11 +19652,10 @@ var HoverPlugin = class {
     this.view.dom.removeEventListener("mousemove", this.mousemove);
   }
 };
-function isInTooltip(elt) {
-  for (let cur2 = elt; cur2; cur2 = cur2.parentNode)
-    if (cur2.nodeType == 1 && cur2.classList.contains("cm-tooltip"))
-      return true;
-  return false;
+var tooltipMargin = 4;
+function isInTooltip(tooltip, event) {
+  let rect = tooltip.getBoundingClientRect();
+  return event.clientX >= rect.left - tooltipMargin && event.clientX <= rect.right + tooltipMargin && event.clientY >= rect.top - tooltipMargin && event.clientY <= rect.bottom + tooltipMargin;
 }
 function isOverRange(view, from, to, x, y, margin) {
   let rect = view.scrollDOM.getBoundingClientRect();
@@ -26226,6 +26265,7 @@ var noTokens = /* @__PURE__ */ Object.create(null);
 var typeArray = [NodeType.none];
 var nodeSet = /* @__PURE__ */ new NodeSet(typeArray);
 var warned = [];
+var byTag = /* @__PURE__ */ Object.create(null);
 var defaultTable = /* @__PURE__ */ Object.create(null);
 for (let [legacyName, name2] of [
   ["variable", "variableName"],
@@ -26283,7 +26323,11 @@ function createTokenType(extra, tagStr) {
   }
   if (!tags$1.length)
     return 0;
-  let name2 = tagStr.replace(/ /g, "_"), type = NodeType.define({
+  let name2 = tagStr.replace(/ /g, "_"), key = name2 + " " + tags$1.map((t2) => t2.id);
+  let known = byTag[key];
+  if (known)
+    return known.id;
+  let type = byTag[key] = NodeType.define({
     id: typeArray.length,
     name: name2,
     props: [styleTags({ [name2]: tags$1 })]
@@ -27767,11 +27811,11 @@ var bracketState = /* @__PURE__ */ StateField.define({
     return RangeSet.empty;
   },
   update(value, tr) {
+    value = value.map(tr.changes);
     if (tr.selection) {
       let line = tr.state.doc.lineAt(tr.selection.main.head);
       value = value.update({ filter: (from) => from >= line.from && from <= line.to });
     }
-    value = value.map(tr.changes);
     for (let effect of tr.effects)
       if (effect.is(closeBracketEffect))
         value = value.update({ add: [closedBracket.range(effect.value, effect.value + 1)] });
@@ -31970,7 +32014,7 @@ var commentContent = new ExternalTokenizer((input) => {
     if (input.next == dash2) {
       dashes++;
     } else if (input.next == greaterThan && dashes >= 2) {
-      if (i > 3)
+      if (i >= 3)
         input.acceptToken(commentContent$1, -2);
       break;
     } else {
@@ -32105,7 +32149,9 @@ function configureNesting(tags3 = [], attributes = []) {
         for (let tag of other) {
           if (tag.tag == tagName && (!tag.attrs || tag.attrs(attrs2 || (attrs2 = getAttrs2(n, input))))) {
             let close = n.lastChild;
-            return { parser: tag.parser, overlay: [{ from: open.to, to: close.type.id == CloseTag ? close.from : n.to }] };
+            let to = close.type.id == CloseTag ? close.from : n.to;
+            if (to > open.to)
+              return { parser: tag.parser, overlay: [{ from: open.to, to }] };
           }
         }
     }
@@ -33178,7 +33224,9 @@ var defaultNesting = [
   },
   {
     tag: "script",
-    attrs: (attrs) => attrs.type == "importmap" || attrs.type == "speculationrules",
+    attrs(attrs) {
+      return /^(importmap|speculationrules|application\/(.+\+)?json)$/i.test(attrs.type);
+    },
     parser: jsonParser
   },
   {
@@ -35482,7 +35530,7 @@ var RegExpQuery = class extends QueryType2 {
     return this.prevMatchInRange(state, 0, curFrom) || this.prevMatchInRange(state, curTo, state.doc.length);
   }
   getReplacement(result) {
-    return this.spec.unquote(this.spec.replace.replace(/\$([$&\d+])/g, (m, i) => i == "$" ? "$" : i == "&" ? result.match[0] : i != "0" && +i < result.match.length ? result.match[i] : m));
+    return this.spec.unquote(this.spec.replace).replace(/\$([$&\d+])/g, (m, i) => i == "$" ? "$" : i == "&" ? result.match[0] : i != "0" && +i < result.match.length ? result.match[i] : m);
   }
   matchAll(state, limit) {
     let cursor = regexpCursor(this.spec, state, 0, state.doc.length), ranges = [];
@@ -35730,7 +35778,7 @@ var searchKeymap = [
   { key: "Mod-g", run: findNext, shift: findPrevious, scope: "editor search-panel", preventDefault: true },
   { key: "Escape", run: closeSearchPanel, scope: "editor search-panel" },
   { key: "Mod-Shift-l", run: selectSelectionMatches },
-  { key: "Alt-g", run: gotoLine },
+  { key: "Mod-Alt-g", run: gotoLine },
   { key: "Mod-d", run: selectNextOccurrence, preventDefault: true }
 ];
 var SearchPanel = class {
