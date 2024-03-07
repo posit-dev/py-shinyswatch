@@ -1,4 +1,4 @@
-// Shinylive 0.2.6
+// Shinylive 0.2.7
 // Copyright 2024 RStudio, PBC
 import {
   FCJSONtoFC,
@@ -21,7 +21,7 @@ import {
   sleep,
   stringToUint8Array,
   uint8ArrayToString
-} from "./chunk-7GM7ARTS.js";
+} from "./chunk-4NAPKKKV.js";
 
 // node_modules/scheduler/cjs/scheduler.development.js
 var require_scheduler_development = __commonJS({
@@ -35629,7 +35629,6 @@ app_ui = ui.page_fluid(
 )
 
 def server(input, output, session):
-  @output
   @render.text
   def txt():
       return f"n*2 is {input.n() * 2}"

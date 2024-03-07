@@ -1,4 +1,4 @@
-// Shinylive 0.2.6
+// Shinylive 0.2.7
 // Copyright 2024 RStudio, PBC
 
 // node_modules/js-yaml/dist/js-yaml.mjs

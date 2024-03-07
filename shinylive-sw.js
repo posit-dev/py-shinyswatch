@@ -1,4 +1,4 @@
-// Shinylive 0.2.6
+// Shinylive 0.2.7
 // Copyright 2024 RStudio, PBC
 var __require = /* @__PURE__ */ ((x2) => typeof require !== "undefined" ? require : typeof Proxy !== "undefined" ? new Proxy(x2, {
   get: (a, b2) => (typeof require !== "undefined" ? require : a)[b2]
