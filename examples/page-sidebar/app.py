@@ -1,3 +1,4 @@
+# pyright: reportAttributeAccessIssue=false
 import matplotlib.pyplot as plt
 import numpy as np
 from shiny import App, render, ui
