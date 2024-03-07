@@ -297,8 +297,7 @@ Returns
 -------
 list[htmltools.HTMLDependency]
     List of HTMLDependency objects that create a Bootswatch ({ theme_name }) and Bootstrap 5 theme.
-\"\"\"
-"
+\"\"\""
   )
 }), collapse = "\n\n\n")
 
