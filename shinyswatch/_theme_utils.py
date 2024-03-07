@@ -8,27 +8,45 @@ from ._get_theme_deps import get_theme_deps as _get_theme_deps
 
 
 class ThemeColors:
+    # Leave type definitions for pyright type stubs; Do not set values here
+    # Leave type definintions here for completions w/ static type checker
+    primary: str
+    secondary: str
+    success: str
+    danger: str
+    warning: str
+    info: str
+    light: str
+    dark: str
+    body_color: str
+    body_bg: str
+
     def __init__(self, name: BSW5_THEME_NAME) -> None:
+        colors = bsw5_theme_colors[name]
+        _color_names: list[str] = list(colors.keys())
+        _color_name_len = max(len(x) for x in _color_names)
+
         self._name = name
-        self._colors: dict[str, str] = bsw5_theme_colors[name]
-
-    def __getattr__(self, key: str) -> str:
-        return self._colors[key]
-
-    def __getitem__(self, key: str) -> str:
-        return self._colors[key]
-
-    def __dir__(self) -> list[str]:
-        return list(self._colors.keys())
+        self._color_names = _color_names
+        self._color_name_len = _color_name_len
+        for k, v in colors.items():
+            setattr(self, k, v)
 
     def __repr__(self) -> str:
-        colors = [f"{k:11}: {v}" for k, v in self._colors.items()]
+        colors = [
+            f"{k:{self._color_name_len + 1}}: {getattr(self, k)}"
+            for k in self._color_names
+        ]
         colors = "\n ".join(colors)
         ret = [f"<ThemeColors({self._name!r}):", " " + colors, ">"]
         return "\n".join(ret)
 
 
 class ShinyswatchTheme(Tagifiable):
+    # Leave type definitions for pyright type stubs; Do not set values here
+    name: BSW5_THEME_NAME
+    colors: ThemeColors
+
     def __init__(self, name: BSW5_THEME_NAME) -> None:
         assert_theme(name=name)
         self.name: BSW5_THEME_NAME = name
