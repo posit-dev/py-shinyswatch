@@ -15,8 +15,16 @@ def test_error_messages():
 
 def test_themes():
     for theme_name in bsw5.bsw5_themes:
-        theme_deps = shinyswatch.get_theme_deps(theme_name)
+        theme_obj = shinyswatch.get_theme(theme_name)
+        theme_deps = theme_obj()
 
+        # assert all `_html_deps` are HTMLDependencies
         assert isinstance(theme_deps, list)
         for dep in theme_deps:
             assert isinstance(dep, htmltools.HTMLDependency)
+
+        # assert all tagified theme values are HTMLDependencies
+        tagified_theme = theme_obj.tagify()
+        assert isinstance(tagified_theme, htmltools.TagList)
+        for item in tagified_theme:
+            assert isinstance(item, htmltools.HTMLDependency)

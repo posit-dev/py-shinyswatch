@@ -38,4 +38,4 @@ class ShinyswatchTheme(Tagifiable):
         return _get_theme_deps(self.name)
 
     def tagify(self) -> TagList:
-        return TagList(_get_theme_deps(self.name))
+        return TagList(*self())

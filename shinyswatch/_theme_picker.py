@@ -3,7 +3,7 @@ from shiny import reactive, render, req, ui
 from shiny.session import require_active_session
 
 from ._bsw5 import BSW5_THEME_NAME, bsw5_themes
-from ._get_theme_deps import get_theme_deps
+from ._get_theme import get_theme
 from ._shiny import base_dep_version
 
 default_theme_name = "superhero"
@@ -65,7 +65,7 @@ def theme_picker_ui() -> ui.TagChild:
             selected=None,
             choices=[],
         ),
-        get_theme_deps(default_theme_name),
+        get_theme(default_theme_name),
         ui.output_ui("shinyswatch_theme_deps"),
     )
 
@@ -101,7 +101,8 @@ def theme_picker_server() -> None:
         req(theme_name())
 
         # Get the theme dependencies and set them to a version that will always be registered
-        theme_deps = get_theme_deps(theme_name())
+        theme_obj = get_theme(theme_name())
+        theme_deps = theme_obj()
         incremented_version = HTMLDependency(
             name="VersionOnly",
             version=f"{base_dep_version}.{counter()}",
