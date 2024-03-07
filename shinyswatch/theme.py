@@ -4,383 +4,503 @@
 Targeted theme methods for all Bootswatch themes.
 """
 
-from __future__ import annotations
+from ._theme_utils import ShinyswatchTheme as _ShinyswatchTheme
+
+cerulean = _ShinyswatchTheme("cerulean")
+"""
+`cerulean` Bootswatch theme
+
+Visit [https://bootswatch.com/cerulean/](https://bootswatch.com/cerulean/) to see a Bootswatch's demo of the `cerulean` theme.
 
-from htmltools import HTMLDependency
+Attributes
+----------
+name:
+    Name of the theme.
+colors:
+    A class containing the color variables used in the theme.
+
+Returns
+-------
+list[htmltools.HTMLDependency]
+    List of HTMLDependency objects that create a Bootswatch (cerulean) and Bootstrap 5 theme.
+"""
+
+
+cosmo = _ShinyswatchTheme("cosmo")
+"""
+`cosmo` Bootswatch theme
+
+Visit [https://bootswatch.com/cosmo/](https://bootswatch.com/cosmo/) to see a Bootswatch's demo of the `cosmo` theme.
 
-from ._get_theme import get_theme as _get_theme
+Attributes
+----------
+name:
+    Name of the theme.
+colors:
+    A class containing the color variables used in the theme.
+
+Returns
+-------
+list[htmltools.HTMLDependency]
+    List of HTMLDependency objects that create a Bootswatch (cosmo) and Bootstrap 5 theme.
+"""
+
+
+cyborg = _ShinyswatchTheme("cyborg")
+"""
+`cyborg` Bootswatch theme
+
+Visit [https://bootswatch.com/cyborg/](https://bootswatch.com/cyborg/) to see a Bootswatch's demo of the `cyborg` theme.
 
+Attributes
+----------
+name:
+    Name of the theme.
+colors:
+    A class containing the color variables used in the theme.
+
+Returns
+-------
+list[htmltools.HTMLDependency]
+    List of HTMLDependency objects that create a Bootswatch (cyborg) and Bootstrap 5 theme.
+"""
+
+
+darkly = _ShinyswatchTheme("darkly")
+"""
+`darkly` Bootswatch theme
+
+Visit [https://bootswatch.com/darkly/](https://bootswatch.com/darkly/) to see a Bootswatch's demo of the `darkly` theme.
 
-def cerulean() -> list[HTMLDependency]:
-    """
-    `cerulean` Bootswatch theme
+Attributes
+----------
+name:
+    Name of the theme.
+colors:
+    A class containing the color variables used in the theme.
+
+Returns
+-------
+list[htmltools.HTMLDependency]
+    List of HTMLDependency objects that create a Bootswatch (darkly) and Bootstrap 5 theme.
+"""
+
+
+flatly = _ShinyswatchTheme("flatly")
+"""
+`flatly` Bootswatch theme
+
+Visit [https://bootswatch.com/flatly/](https://bootswatch.com/flatly/) to see a Bootswatch's demo of the `flatly` theme.
 
-    Visit [https://bootswatch.com/cerulean/](https://bootswatch.com/cerulean/) to see a Bootswatch's demo of the `cerulean` theme.
+Attributes
+----------
+name:
+    Name of the theme.
+colors:
+    A class containing the color variables used in the theme.
+
+Returns
+-------
+list[htmltools.HTMLDependency]
+    List of HTMLDependency objects that create a Bootswatch (flatly) and Bootstrap 5 theme.
+"""
+
 
-    Returns
-    -------
-    list[htmltools.HTMLDependency]
-        List of HTMLDependency objects that create a Bootswatch (cerulean) and Bootstrap 5 theme.
-    """
+journal = _ShinyswatchTheme("journal")
+"""
+`journal` Bootswatch theme
 
-    return _get_theme("cerulean")
+Visit [https://bootswatch.com/journal/](https://bootswatch.com/journal/) to see a Bootswatch's demo of the `journal` theme.
 
+Attributes
+----------
+name:
+    Name of the theme.
+colors:
+    A class containing the color variables used in the theme.
 
-def cosmo() -> list[HTMLDependency]:
-    """
-    `cosmo` Bootswatch theme
+Returns
+-------
+list[htmltools.HTMLDependency]
+    List of HTMLDependency objects that create a Bootswatch (journal) and Bootstrap 5 theme.
+"""
 
-    Visit [https://bootswatch.com/cosmo/](https://bootswatch.com/cosmo/) to see a Bootswatch's demo of the `cosmo` theme.
 
-    Returns
-    -------
-    list[htmltools.HTMLDependency]
-        List of HTMLDependency objects that create a Bootswatch (cosmo) and Bootstrap 5 theme.
-    """
+litera = _ShinyswatchTheme("litera")
+"""
+`litera` Bootswatch theme
 
-    return _get_theme("cosmo")
+Visit [https://bootswatch.com/litera/](https://bootswatch.com/litera/) to see a Bootswatch's demo of the `litera` theme.
 
+Attributes
+----------
+name:
+    Name of the theme.
+colors:
+    A class containing the color variables used in the theme.
 
-def cyborg() -> list[HTMLDependency]:
-    """
-    `cyborg` Bootswatch theme
+Returns
+-------
+list[htmltools.HTMLDependency]
+    List of HTMLDependency objects that create a Bootswatch (litera) and Bootstrap 5 theme.
+"""
 
-    Visit [https://bootswatch.com/cyborg/](https://bootswatch.com/cyborg/) to see a Bootswatch's demo of the `cyborg` theme.
 
-    Returns
-    -------
-    list[htmltools.HTMLDependency]
-        List of HTMLDependency objects that create a Bootswatch (cyborg) and Bootstrap 5 theme.
-    """
+lumen = _ShinyswatchTheme("lumen")
+"""
+`lumen` Bootswatch theme
 
-    return _get_theme("cyborg")
+Visit [https://bootswatch.com/lumen/](https://bootswatch.com/lumen/) to see a Bootswatch's demo of the `lumen` theme.
 
+Attributes
+----------
+name:
+    Name of the theme.
+colors:
+    A class containing the color variables used in the theme.
 
-def darkly() -> list[HTMLDependency]:
-    """
-    `darkly` Bootswatch theme
+Returns
+-------
+list[htmltools.HTMLDependency]
+    List of HTMLDependency objects that create a Bootswatch (lumen) and Bootstrap 5 theme.
+"""
 
-    Visit [https://bootswatch.com/darkly/](https://bootswatch.com/darkly/) to see a Bootswatch's demo of the `darkly` theme.
 
-    Returns
-    -------
-    list[htmltools.HTMLDependency]
-        List of HTMLDependency objects that create a Bootswatch (darkly) and Bootstrap 5 theme.
-    """
+lux = _ShinyswatchTheme("lux")
+"""
+`lux` Bootswatch theme
 
-    return _get_theme("darkly")
+Visit [https://bootswatch.com/lux/](https://bootswatch.com/lux/) to see a Bootswatch's demo of the `lux` theme.
 
+Attributes
+----------
+name:
+    Name of the theme.
+colors:
+    A class containing the color variables used in the theme.
 
-def flatly() -> list[HTMLDependency]:
-    """
-    `flatly` Bootswatch theme
+Returns
+-------
+list[htmltools.HTMLDependency]
+    List of HTMLDependency objects that create a Bootswatch (lux) and Bootstrap 5 theme.
+"""
 
-    Visit [https://bootswatch.com/flatly/](https://bootswatch.com/flatly/) to see a Bootswatch's demo of the `flatly` theme.
 
-    Returns
-    -------
-    list[htmltools.HTMLDependency]
-        List of HTMLDependency objects that create a Bootswatch (flatly) and Bootstrap 5 theme.
-    """
+materia = _ShinyswatchTheme("materia")
+"""
+`materia` Bootswatch theme
 
-    return _get_theme("flatly")
+Visit [https://bootswatch.com/materia/](https://bootswatch.com/materia/) to see a Bootswatch's demo of the `materia` theme.
 
+Attributes
+----------
+name:
+    Name of the theme.
+colors:
+    A class containing the color variables used in the theme.
 
-def journal() -> list[HTMLDependency]:
-    """
-    `journal` Bootswatch theme
+Returns
+-------
+list[htmltools.HTMLDependency]
+    List of HTMLDependency objects that create a Bootswatch (materia) and Bootstrap 5 theme.
+"""
 
-    Visit [https://bootswatch.com/journal/](https://bootswatch.com/journal/) to see a Bootswatch's demo of the `journal` theme.
 
-    Returns
-    -------
-    list[htmltools.HTMLDependency]
-        List of HTMLDependency objects that create a Bootswatch (journal) and Bootstrap 5 theme.
-    """
+minty = _ShinyswatchTheme("minty")
+"""
+`minty` Bootswatch theme
 
-    return _get_theme("journal")
+Visit [https://bootswatch.com/minty/](https://bootswatch.com/minty/) to see a Bootswatch's demo of the `minty` theme.
 
+Attributes
+----------
+name:
+    Name of the theme.
+colors:
+    A class containing the color variables used in the theme.
 
-def litera() -> list[HTMLDependency]:
-    """
-    `litera` Bootswatch theme
+Returns
+-------
+list[htmltools.HTMLDependency]
+    List of HTMLDependency objects that create a Bootswatch (minty) and Bootstrap 5 theme.
+"""
 
-    Visit [https://bootswatch.com/litera/](https://bootswatch.com/litera/) to see a Bootswatch's demo of the `litera` theme.
 
-    Returns
-    -------
-    list[htmltools.HTMLDependency]
-        List of HTMLDependency objects that create a Bootswatch (litera) and Bootstrap 5 theme.
-    """
+morph = _ShinyswatchTheme("morph")
+"""
+`morph` Bootswatch theme
 
-    return _get_theme("litera")
+Visit [https://bootswatch.com/morph/](https://bootswatch.com/morph/) to see a Bootswatch's demo of the `morph` theme.
 
+Attributes
+----------
+name:
+    Name of the theme.
+colors:
+    A class containing the color variables used in the theme.
 
-def lumen() -> list[HTMLDependency]:
-    """
-    `lumen` Bootswatch theme
+Returns
+-------
+list[htmltools.HTMLDependency]
+    List of HTMLDependency objects that create a Bootswatch (morph) and Bootstrap 5 theme.
+"""
 
-    Visit [https://bootswatch.com/lumen/](https://bootswatch.com/lumen/) to see a Bootswatch's demo of the `lumen` theme.
 
-    Returns
-    -------
-    list[htmltools.HTMLDependency]
-        List of HTMLDependency objects that create a Bootswatch (lumen) and Bootstrap 5 theme.
-    """
+pulse = _ShinyswatchTheme("pulse")
+"""
+`pulse` Bootswatch theme
 
-    return _get_theme("lumen")
+Visit [https://bootswatch.com/pulse/](https://bootswatch.com/pulse/) to see a Bootswatch's demo of the `pulse` theme.
 
+Attributes
+----------
+name:
+    Name of the theme.
+colors:
+    A class containing the color variables used in the theme.
 
-def lux() -> list[HTMLDependency]:
-    """
-    `lux` Bootswatch theme
+Returns
+-------
+list[htmltools.HTMLDependency]
+    List of HTMLDependency objects that create a Bootswatch (pulse) and Bootstrap 5 theme.
+"""
 
-    Visit [https://bootswatch.com/lux/](https://bootswatch.com/lux/) to see a Bootswatch's demo of the `lux` theme.
 
-    Returns
-    -------
-    list[htmltools.HTMLDependency]
-        List of HTMLDependency objects that create a Bootswatch (lux) and Bootstrap 5 theme.
-    """
+quartz = _ShinyswatchTheme("quartz")
+"""
+`quartz` Bootswatch theme
 
-    return _get_theme("lux")
+Visit [https://bootswatch.com/quartz/](https://bootswatch.com/quartz/) to see a Bootswatch's demo of the `quartz` theme.
 
+Attributes
+----------
+name:
+    Name of the theme.
+colors:
+    A class containing the color variables used in the theme.
 
-def materia() -> list[HTMLDependency]:
-    """
-    `materia` Bootswatch theme
+Returns
+-------
+list[htmltools.HTMLDependency]
+    List of HTMLDependency objects that create a Bootswatch (quartz) and Bootstrap 5 theme.
+"""
 
-    Visit [https://bootswatch.com/materia/](https://bootswatch.com/materia/) to see a Bootswatch's demo of the `materia` theme.
 
-    Returns
-    -------
-    list[htmltools.HTMLDependency]
-        List of HTMLDependency objects that create a Bootswatch (materia) and Bootstrap 5 theme.
-    """
+sandstone = _ShinyswatchTheme("sandstone")
+"""
+`sandstone` Bootswatch theme
 
-    return _get_theme("materia")
+Visit [https://bootswatch.com/sandstone/](https://bootswatch.com/sandstone/) to see a Bootswatch's demo of the `sandstone` theme.
 
+Attributes
+----------
+name:
+    Name of the theme.
+colors:
+    A class containing the color variables used in the theme.
 
-def minty() -> list[HTMLDependency]:
-    """
-    `minty` Bootswatch theme
+Returns
+-------
+list[htmltools.HTMLDependency]
+    List of HTMLDependency objects that create a Bootswatch (sandstone) and Bootstrap 5 theme.
+"""
 
-    Visit [https://bootswatch.com/minty/](https://bootswatch.com/minty/) to see a Bootswatch's demo of the `minty` theme.
 
-    Returns
-    -------
-    list[htmltools.HTMLDependency]
-        List of HTMLDependency objects that create a Bootswatch (minty) and Bootstrap 5 theme.
-    """
+simplex = _ShinyswatchTheme("simplex")
+"""
+`simplex` Bootswatch theme
 
-    return _get_theme("minty")
+Visit [https://bootswatch.com/simplex/](https://bootswatch.com/simplex/) to see a Bootswatch's demo of the `simplex` theme.
 
+Attributes
+----------
+name:
+    Name of the theme.
+colors:
+    A class containing the color variables used in the theme.
 
-def morph() -> list[HTMLDependency]:
-    """
-    `morph` Bootswatch theme
+Returns
+-------
+list[htmltools.HTMLDependency]
+    List of HTMLDependency objects that create a Bootswatch (simplex) and Bootstrap 5 theme.
+"""
 
-    Visit [https://bootswatch.com/morph/](https://bootswatch.com/morph/) to see a Bootswatch's demo of the `morph` theme.
 
-    Returns
-    -------
-    list[htmltools.HTMLDependency]
-        List of HTMLDependency objects that create a Bootswatch (morph) and Bootstrap 5 theme.
-    """
+sketchy = _ShinyswatchTheme("sketchy")
+"""
+`sketchy` Bootswatch theme
 
-    return _get_theme("morph")
+Visit [https://bootswatch.com/sketchy/](https://bootswatch.com/sketchy/) to see a Bootswatch's demo of the `sketchy` theme.
 
+Attributes
+----------
+name:
+    Name of the theme.
+colors:
+    A class containing the color variables used in the theme.
 
-def pulse() -> list[HTMLDependency]:
-    """
-    `pulse` Bootswatch theme
+Returns
+-------
+list[htmltools.HTMLDependency]
+    List of HTMLDependency objects that create a Bootswatch (sketchy) and Bootstrap 5 theme.
+"""
 
-    Visit [https://bootswatch.com/pulse/](https://bootswatch.com/pulse/) to see a Bootswatch's demo of the `pulse` theme.
 
-    Returns
-    -------
-    list[htmltools.HTMLDependency]
-        List of HTMLDependency objects that create a Bootswatch (pulse) and Bootstrap 5 theme.
-    """
+slate = _ShinyswatchTheme("slate")
+"""
+`slate` Bootswatch theme
 
-    return _get_theme("pulse")
+Visit [https://bootswatch.com/slate/](https://bootswatch.com/slate/) to see a Bootswatch's demo of the `slate` theme.
 
+Attributes
+----------
+name:
+    Name of the theme.
+colors:
+    A class containing the color variables used in the theme.
 
-def quartz() -> list[HTMLDependency]:
-    """
-    `quartz` Bootswatch theme
+Returns
+-------
+list[htmltools.HTMLDependency]
+    List of HTMLDependency objects that create a Bootswatch (slate) and Bootstrap 5 theme.
+"""
 
-    Visit [https://bootswatch.com/quartz/](https://bootswatch.com/quartz/) to see a Bootswatch's demo of the `quartz` theme.
 
-    Returns
-    -------
-    list[htmltools.HTMLDependency]
-        List of HTMLDependency objects that create a Bootswatch (quartz) and Bootstrap 5 theme.
-    """
+solar = _ShinyswatchTheme("solar")
+"""
+`solar` Bootswatch theme
 
-    return _get_theme("quartz")
+Visit [https://bootswatch.com/solar/](https://bootswatch.com/solar/) to see a Bootswatch's demo of the `solar` theme.
 
+Attributes
+----------
+name:
+    Name of the theme.
+colors:
+    A class containing the color variables used in the theme.
 
-def sandstone() -> list[HTMLDependency]:
-    """
-    `sandstone` Bootswatch theme
+Returns
+-------
+list[htmltools.HTMLDependency]
+    List of HTMLDependency objects that create a Bootswatch (solar) and Bootstrap 5 theme.
+"""
 
-    Visit [https://bootswatch.com/sandstone/](https://bootswatch.com/sandstone/) to see a Bootswatch's demo of the `sandstone` theme.
 
-    Returns
-    -------
-    list[htmltools.HTMLDependency]
-        List of HTMLDependency objects that create a Bootswatch (sandstone) and Bootstrap 5 theme.
-    """
+spacelab = _ShinyswatchTheme("spacelab")
+"""
+`spacelab` Bootswatch theme
 
-    return _get_theme("sandstone")
+Visit [https://bootswatch.com/spacelab/](https://bootswatch.com/spacelab/) to see a Bootswatch's demo of the `spacelab` theme.
 
+Attributes
+----------
+name:
+    Name of the theme.
+colors:
+    A class containing the color variables used in the theme.
 
-def simplex() -> list[HTMLDependency]:
-    """
-    `simplex` Bootswatch theme
+Returns
+-------
+list[htmltools.HTMLDependency]
+    List of HTMLDependency objects that create a Bootswatch (spacelab) and Bootstrap 5 theme.
+"""
 
-    Visit [https://bootswatch.com/simplex/](https://bootswatch.com/simplex/) to see a Bootswatch's demo of the `simplex` theme.
 
-    Returns
-    -------
-    list[htmltools.HTMLDependency]
-        List of HTMLDependency objects that create a Bootswatch (simplex) and Bootstrap 5 theme.
-    """
+superhero = _ShinyswatchTheme("superhero")
+"""
+`superhero` Bootswatch theme
 
-    return _get_theme("simplex")
+Visit [https://bootswatch.com/superhero/](https://bootswatch.com/superhero/) to see a Bootswatch's demo of the `superhero` theme.
 
+Attributes
+----------
+name:
+    Name of the theme.
+colors:
+    A class containing the color variables used in the theme.
 
-def sketchy() -> list[HTMLDependency]:
-    """
-    `sketchy` Bootswatch theme
+Returns
+-------
+list[htmltools.HTMLDependency]
+    List of HTMLDependency objects that create a Bootswatch (superhero) and Bootstrap 5 theme.
+"""
 
-    Visit [https://bootswatch.com/sketchy/](https://bootswatch.com/sketchy/) to see a Bootswatch's demo of the `sketchy` theme.
 
-    Returns
-    -------
-    list[htmltools.HTMLDependency]
-        List of HTMLDependency objects that create a Bootswatch (sketchy) and Bootstrap 5 theme.
-    """
+united = _ShinyswatchTheme("united")
+"""
+`united` Bootswatch theme
 
-    return _get_theme("sketchy")
+Visit [https://bootswatch.com/united/](https://bootswatch.com/united/) to see a Bootswatch's demo of the `united` theme.
 
+Attributes
+----------
+name:
+    Name of the theme.
+colors:
+    A class containing the color variables used in the theme.
 
-def slate() -> list[HTMLDependency]:
-    """
-    `slate` Bootswatch theme
+Returns
+-------
+list[htmltools.HTMLDependency]
+    List of HTMLDependency objects that create a Bootswatch (united) and Bootstrap 5 theme.
+"""
 
-    Visit [https://bootswatch.com/slate/](https://bootswatch.com/slate/) to see a Bootswatch's demo of the `slate` theme.
 
-    Returns
-    -------
-    list[htmltools.HTMLDependency]
-        List of HTMLDependency objects that create a Bootswatch (slate) and Bootstrap 5 theme.
-    """
+vapor = _ShinyswatchTheme("vapor")
+"""
+`vapor` Bootswatch theme
 
-    return _get_theme("slate")
+Visit [https://bootswatch.com/vapor/](https://bootswatch.com/vapor/) to see a Bootswatch's demo of the `vapor` theme.
 
+Attributes
+----------
+name:
+    Name of the theme.
+colors:
+    A class containing the color variables used in the theme.
 
-def solar() -> list[HTMLDependency]:
-    """
-    `solar` Bootswatch theme
+Returns
+-------
+list[htmltools.HTMLDependency]
+    List of HTMLDependency objects that create a Bootswatch (vapor) and Bootstrap 5 theme.
+"""
 
-    Visit [https://bootswatch.com/solar/](https://bootswatch.com/solar/) to see a Bootswatch's demo of the `solar` theme.
 
-    Returns
-    -------
-    list[htmltools.HTMLDependency]
-        List of HTMLDependency objects that create a Bootswatch (solar) and Bootstrap 5 theme.
-    """
+yeti = _ShinyswatchTheme("yeti")
+"""
+`yeti` Bootswatch theme
 
-    return _get_theme("solar")
+Visit [https://bootswatch.com/yeti/](https://bootswatch.com/yeti/) to see a Bootswatch's demo of the `yeti` theme.
 
+Attributes
+----------
+name:
+    Name of the theme.
+colors:
+    A class containing the color variables used in the theme.
 
-def spacelab() -> list[HTMLDependency]:
-    """
-    `spacelab` Bootswatch theme
+Returns
+-------
+list[htmltools.HTMLDependency]
+    List of HTMLDependency objects that create a Bootswatch (yeti) and Bootstrap 5 theme.
+"""
 
-    Visit [https://bootswatch.com/spacelab/](https://bootswatch.com/spacelab/) to see a Bootswatch's demo of the `spacelab` theme.
 
-    Returns
-    -------
-    list[htmltools.HTMLDependency]
-        List of HTMLDependency objects that create a Bootswatch (spacelab) and Bootstrap 5 theme.
-    """
+zephyr = _ShinyswatchTheme("zephyr")
+"""
+`zephyr` Bootswatch theme
 
-    return _get_theme("spacelab")
+Visit [https://bootswatch.com/zephyr/](https://bootswatch.com/zephyr/) to see a Bootswatch's demo of the `zephyr` theme.
 
+Attributes
+----------
+name:
+    Name of the theme.
+colors:
+    A class containing the color variables used in the theme.
 
-def superhero() -> list[HTMLDependency]:
-    """
-    `superhero` Bootswatch theme
-
-    Visit [https://bootswatch.com/superhero/](https://bootswatch.com/superhero/) to see a Bootswatch's demo of the `superhero` theme.
-
-    Returns
-    -------
-    list[htmltools.HTMLDependency]
-        List of HTMLDependency objects that create a Bootswatch (superhero) and Bootstrap 5 theme.
-    """
-
-    return _get_theme("superhero")
-
-
-def united() -> list[HTMLDependency]:
-    """
-    `united` Bootswatch theme
-
-    Visit [https://bootswatch.com/united/](https://bootswatch.com/united/) to see a Bootswatch's demo of the `united` theme.
-
-    Returns
-    -------
-    list[htmltools.HTMLDependency]
-        List of HTMLDependency objects that create a Bootswatch (united) and Bootstrap 5 theme.
-    """
-
-    return _get_theme("united")
-
-
-def vapor() -> list[HTMLDependency]:
-    """
-    `vapor` Bootswatch theme
-
-    Visit [https://bootswatch.com/vapor/](https://bootswatch.com/vapor/) to see a Bootswatch's demo of the `vapor` theme.
-
-    Returns
-    -------
-    list[htmltools.HTMLDependency]
-        List of HTMLDependency objects that create a Bootswatch (vapor) and Bootstrap 5 theme.
-    """
-
-    return _get_theme("vapor")
-
-
-def yeti() -> list[HTMLDependency]:
-    """
-    `yeti` Bootswatch theme
-
-    Visit [https://bootswatch.com/yeti/](https://bootswatch.com/yeti/) to see a Bootswatch's demo of the `yeti` theme.
-
-    Returns
-    -------
-    list[htmltools.HTMLDependency]
-        List of HTMLDependency objects that create a Bootswatch (yeti) and Bootstrap 5 theme.
-    """
-
-    return _get_theme("yeti")
-
-
-def zephyr() -> list[HTMLDependency]:
-    """
-    `zephyr` Bootswatch theme
-
-    Visit [https://bootswatch.com/zephyr/](https://bootswatch.com/zephyr/) to see a Bootswatch's demo of the `zephyr` theme.
-
-    Returns
-    -------
-    list[htmltools.HTMLDependency]
-        List of HTMLDependency objects that create a Bootswatch (zephyr) and Bootstrap 5 theme.
-    """
-
-    return _get_theme("zephyr")
+Returns
+-------
+list[htmltools.HTMLDependency]
+    List of HTMLDependency objects that create a Bootswatch (zephyr) and Bootstrap 5 theme.
+"""

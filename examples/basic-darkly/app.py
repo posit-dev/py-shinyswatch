@@ -5,7 +5,7 @@ import shinyswatch
 
 app_ui = ui.page_fluid(
     # Theme code - start
-    shinyswatch.theme.darkly(),
+    shinyswatch.theme.darkly,
     # Theme code - end
     ui.input_slider("num", "Number:", min=10, max=100, value=30),
     ui.output_text_verbatim("slider_val"),

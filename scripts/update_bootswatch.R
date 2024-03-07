@@ -89,6 +89,21 @@ withr::with_options(
   }
 )
 
+theme_extract_color_vars <- function(theme) {
+  color_vars <- c(
+    "body-color", "body-bg",
+    "light", "dark",
+    "primary", "secondary", "info",
+    "success", "warning", "danger"
+  )
+
+  colors <- bslib::bs_get_variables(theme, color_vars)
+  names(colors) <- gsub("-", "_", color_vars)
+  as.list(colors)
+}
+
+theme_colors <- list()
+
 
 # For each theme...
 theme_names <- bslib::bootswatch_themes(version = ver)
@@ -202,6 +217,8 @@ ignore <- Map(
       )
     }
 
+    theme_colors[[name]] <<- theme_extract_color_vars(sass_bundle)
+
     # Save iorange slider dep
     # Get _dynamic_ ionrangeslider dep
     ion_dep <- shiny:::ionRangeSliderDependencyCSS(sass_bundle)
@@ -231,17 +248,15 @@ version_txt <- npm_tag
 themes_txt <- jsonlite::toJSON(
   as.list(theme_names),
   auto_unbox = TRUE,
-  pretty = TRUE
+  pretty = 4
 )
-# Python's Black likes to format code with trailing commas and with 4 spaces
-themes_txt <- sub("\"\n", "\",\n", themes_txt)
-themes_txt <- sub("]\n", "],\n", themes_txt)
-themes_txt <- gsub("  ", "    ", themes_txt)
 
 themes_type_txt <- paste0("Literal", themes_txt)
 themes_tuple_txt <- themes_txt
 themes_tuple_txt <- sub("]", ")", themes_tuple_txt, fixed = TRUE)
 themes_tuple_txt <- sub("[", "(", themes_tuple_txt, fixed = TRUE)
+
+theme_colors_json <- jsonlite::toJSON(theme_colors, auto_unbox = TRUE, pretty = 4)
 
 bsw5_file_txt <- glue::glue(
   "
@@ -255,6 +270,8 @@ bsw5_themes = {themes_tuple_txt}
 
 BSW5_THEME_NAME = {themes_type_txt}
 
+bsw5_theme_colors = {theme_colors_json}
+
 "
 )
 
@@ -264,19 +281,24 @@ cat(file = file.path(lib, "_bsw5.py"), bsw5_file_txt)
 theme_funcs_txt <- paste0(lapply(theme_names, function(theme_name) {
   glue::glue(
     .trim = FALSE,
-    "def { theme_name }() -> list[HTMLDependency]:
-    \"\"\"
-    `{ theme_name }` Bootswatch theme
+    "{theme_name} = _ShinyswatchTheme(\"{theme_name}\")
+\"\"\"
+`{ theme_name }` Bootswatch theme
 
-    Visit [https://bootswatch.com/{ theme_name }/](https://bootswatch.com/{ theme_name }/) to see a Bootswatch's demo of the `{ theme_name }` theme.
+Visit [https://bootswatch.com/{ theme_name }/](https://bootswatch.com/{ theme_name }/) to see a Bootswatch's demo of the `{ theme_name }` theme.
 
-    Returns
-    -------
-    list[htmltools.HTMLDependency]
-        List of HTMLDependency objects that create a Bootswatch ({ theme_name }) and Bootstrap 5 theme.
-    \"\"\"
+Attributes
+----------
+name:
+    Name of the theme.
+colors:
+    A class containing the color variables used in the theme.
 
-    return _get_theme(\"{ theme_name }\")"
+Returns
+-------
+list[htmltools.HTMLDependency]
+    List of HTMLDependency objects that create a Bootswatch ({ theme_name }) and Bootstrap 5 theme.
+\"\"\""
   )
 }), collapse = "\n\n\n")
 
@@ -289,20 +311,13 @@ themes_file_txt <- glue::glue(
 Targeted theme methods for all Bootswatch themes.
 \"\"\"
 
-from __future__ import annotations
-
-from htmltools import HTMLDependency
-
-from ._get_theme import get_theme as _get_theme
-
+from ._theme_utils import ShinyswatchTheme as _ShinyswatchTheme
 
 {theme_funcs_txt}
 
 "
 )
 cat(file = file.path(lib, "theme.py"), themes_file_txt)
-
-
 
 
 # Cleanup

@@ -29,9 +29,9 @@ APP_TMPL = (
     demo_app_code
     # .replace("{", "{{")
     # .replace("}", "}}")
-    .replace("shinyswatch.theme.superhero()", "{code}")
+    .replace("shinyswatch.theme.superhero", "{code}")
 )
-THEME_TMPL = APP_TMPL.replace("{code}", "shinyswatch.theme.{theme_name}()")
+THEME_TMPL = APP_TMPL.replace("{code}", "shinyswatch.theme.{theme_name}")
 GET_THEME_TMPL = APP_TMPL.replace("{code}", 'shinyswatch.get_theme("superhero")')
 THEME_PICKER_TMPL = picker_app_code
 

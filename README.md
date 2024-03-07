@@ -28,13 +28,13 @@ To use a theme, call the theme function and add it to your App's UI definition.
 
 ```python
 # Minty theme
-shinyswatch.theme.minty()
+shinyswatch.theme.minty
 
 # Sketchy theme
-shinyswatch.theme.sketchy()
+shinyswatch.theme.sketchy
 
 # Superhero theme
-shinyswatch.theme.superhero()
+shinyswatch.theme.superhero
 ```
 
 Example Shiny application:
@@ -53,7 +53,7 @@ import shinyswatch
 
 app_ui = ui.page_fluid(
     # Theme code - start
-    shinyswatch.theme.darkly(),
+    shinyswatch.theme.darkly,
     # Theme code - end
     ui.input_slider("num", "Number:", min=10, max=100, value=30),
     ui.output_text_verbatim("slider_val"),
@@ -76,7 +76,7 @@ app = App(app_ui, server)
 
 </td></tr></tbody></table>
 
-> Note: When writing shiny apps on [shinylive.io](https://shinylive.io/py/editor/#code=NobwRAdghgtgpmAXGKAHVA6VBPMAaMAYwHsIAXOcpMAMwCdiYACAZwAsBLCbJjmVYnTJMAgujxM6lACZw6EgK4cAOhFVpUAfSVMAvEyVYoAcziaaAGyXSAFKqYODHDF1QKymlhY6y6dyMr4TIEAcoESAAwSAIwRUUwATBEAlHj2jobE7m4eFAAeHgBucgBGUGR8-mQFgamqyaqNELI0rHLFfq7uEllkORIscCwsHKTJiOkOAAK9OZNMU1LNchj5ZPMtTNVkNuPzjpJwZAp0EEw0gRAAVAm8LEwgXWQYELtMV4kAvoFN6uh6onQNg02g4A3acgaEDAnwAukA), remember to add `shinyswatch` to your `requirements.txt` file!
+> Note: When writing shiny apps on [shinylive.io](https://shinylive.io/py/editor/#code=NobwRAdghgtgpmAXGKAHVA6VBPMAaMAYwHsIAXOcpMAMwCdiYACAZwAsBLCbJjmVYnTJMAgujxM6lACZw6EgK4cAOhD4ChrTtxYB3KGUJtVqtKgD6SpgF4mSrFADmcczQA2S6QApVTP1q5sPQMjDDI2OHgMAC84VDZseV9-ey5UBTJzFjcOWTofSGV8JiKAOSKJAAYJAEZK6qYAJkqASjxkv3tiDPTMigAPTIA3OQAjAz4CskGittUWkwhVWRpWORH8tIyJbrJeiRY4FhYOUhbEDqYAAV3ey6upCDywuBmIfyYVpmmyL3PLj5SMgKOjvGhFCAAKkavBYTBAWzIGAgfyYkKaAF8iotTOgbKJ0F4zJYOAd1nIFhAwBi8OBoPBqFIAI5KKTwcgsMKDfBEUgUKjIdiBYKGNjUgC6QA), remember to add `shinyswatch` to your `requirements.txt` file!
 
 ### Theme picker
 

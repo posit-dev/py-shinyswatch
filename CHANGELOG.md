@@ -7,7 +7,31 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [UNRELEASED]
 
+### Breaking changes
+
+* `shinyswatch.get_theme(name)` now returns a tagifiable class instance of the theme. This callable class instance may be executed to retrive the html dependencies. To resolve some rare typing issues, either execute the returned theme object to directly use the html dependencies or use `shinyswatch.get_theme_deps(name)`. (#29)
+
+```python
+# before
+theme_deps = shinyswatch.get_theme("yeti")
+
+# after (option 1)
+theme_deps = shinyswatch.get_theme_deps("yeti")
+# after (option 2)
+theme_obj = shinyswatch.get_theme("yeti")
+theme_deps = theme_obj()
+```
+
+### New features
+
+* Themes in `shinyswatch.theme` are now tagifiable class instances. You no longer need to call the theme as a function, e.g. `shinyswatch.theme.yeti`. Existing code calling the theme, e.g. `shinyswatch.theme.yeti()`, will continue to work as the `__call__` method retrieves the theme's html dependencies. (#29)
+
+* `shinyswatch.theme`'s theme object now includes a `.colors` attribute with the theme's color palette, including colors like `body_color`, `body_bg`, `primary`, `secondary`, etc.  You can use these colors to theme plots, outputs and other UI elements to match the shinyswatch theme. (#29)
+
+### Updates
+
 * Update bootswatch themes to receive page_sidebar updates and require shiny v0.8.1 (#28)
+
 * Update bootswatch themes to receive posit-dev/py-shiny#1124 updates to fix navbar theming (#26)
 
 ## [0.4.2] - 2023-12-22
@@ -41,8 +65,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Bug fixes
 
 * Updated themes to support latest shiny sidebars. Requires shiny 0.5.0 or later (#15).
-* Dropped support for python 3.7 as shiny does not support python 3.7 (#16).
 
+* Dropped support for python 3.7 as shiny does not support python 3.7 (#16).
 
 ## [0.2.4] - 2023-04-18
 
