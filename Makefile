@@ -105,3 +105,6 @@ check: pyright lint ## check code quality with pyright, flake8, black and isort
 	black --check .
 	echo "Sorting imports with isort."
 	isort --check-only --diff .
+
+update-bootswatch:
+	Rscript scripts/update_bootswatch.R
