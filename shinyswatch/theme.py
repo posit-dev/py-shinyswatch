@@ -59,7 +59,8 @@ class ThemeColors:
 
     def __repr__(self) -> str:
         colors = [f"{k:11}: {v}" for k, v in self._colors.items()]
-        return f"""<ThemeColors({self._name!r}): \n {'\n '.join(colors)}\n>"""
+        ret = [f"ThemeColors({self._name!r}):", f" {'\n '.join(colors)}", ">"]
+        return "\n".join(ret)
 
 
 class ShinyswatchTheme:
