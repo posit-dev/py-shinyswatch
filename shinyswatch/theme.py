@@ -11,7 +11,7 @@ import os
 
 from htmltools import HTMLDependency
 
-from ._bsw5 import BSW5_THEME_NAME, bsw5_themes
+from ._bsw5 import BSW5_THEME_NAME
 from ._get_theme import get_theme as _get_theme
 
 __all__ = (
@@ -59,7 +59,7 @@ class ThemeColors:
 
     def __repr__(self) -> str:
         colors = [f"{k:11}: {v}" for k, v in self._colors.items()]
-        return f"<ThemeColors({self._name!r}): \n {'\n '.join(colors)}\n>"
+        return f"""<ThemeColors({self._name!r}): \n {'\n '.join(colors)}\n>"""
 
 
 class ShinyswatchTheme:
