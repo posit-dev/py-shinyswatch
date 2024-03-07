@@ -89,6 +89,19 @@ withr::with_options(
   }
 )
 
+theme_extract_color_vars <- function(theme) {
+  color_vars <- c(
+    "body-color", "body-bg",
+    "light", "dark",
+    "primary", "secondary", "info",
+    "success", "warning", "danger"
+  )
+
+  colors <- bslib::bs_get_variables(theme, color_vars)
+  names(colors) <- gsub("-", "_", color_vars)
+  as.list(colors)
+}
+
 
 # For each theme...
 theme_names <- bslib::bootswatch_themes(version = ver)
@@ -218,6 +231,9 @@ ignore <- Map(
         output_file
       )
     }
+
+    theme_colors <- theme_extract_color_vars(sass_bundle)
+    jsonlite::write_json(theme_colors, file.path(out_dir, name, "colors.json"), auto_unbox = TRUE)
 
     # Save iorange slider dep
     # Get _dynamic_ ionrangeslider dep
