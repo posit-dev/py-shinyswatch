@@ -147,6 +147,12 @@ ul.task-list li input[type="checkbox"] {
  <span class="menu-text">get_theme</span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../reference/get_theme_deps.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">get_theme_deps</span></a>
+  </div>
+</li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
@@ -347,9 +353,38 @@ ul.task-list li input[type="checkbox"] {
 
 <section id="shinyswatch.theme.zephyr" class="level1">
 <h1>theme.zephyr</h1>
-<p><code>theme.zephyr()</code></p>
+<p><code>theme.zephyr</code></p>
 <p><code>zephyr</code> Bootswatch theme</p>
 <p>Visit <a href="https://bootswatch.com/zephyr/">https://bootswatch.com/zephyr/</a> to see a Bootswatch's demo of the <code>zephyr</code> theme.</p>
+<section id="attributes" class="level2">
+<h2 class="anchored" data-anchor-id="attributes">Attributes</h2>
+<table class="table">
+<colgroup>
+<col style="width: 10%">
+<col style="width: 10%">
+<col style="width: 78%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>name</td>
+<td></td>
+<td>Name of the theme.</td>
+</tr>
+<tr class="even">
+<td>colors</td>
+<td></td>
+<td>A class containing the color variables used in the theme.</td>
+</tr>
+</tbody>
+</table>
+</section>
 <section id="returns" class="level2">
 <h2 class="anchored" data-anchor-id="returns">Returns</h2>
 <table class="table">
@@ -380,9 +415,9 @@ from shiny import App, render, ui
 import shinyswatch
 
 app_ui = ui.page_navbar(
-    ui.nav(
+    ui.nav_panel(
         "Navbar 1",
-        shinyswatch.theme.zephyr(),
+        shinyswatch.theme.zephyr,
         ui.layout_sidebar(
             ui.panel_sidebar(
                 ui.input_file("file", "File input:"),
@@ -415,8 +450,8 @@ app_ui = ui.page_navbar(
             ),
         ),
     ),
-    ui.nav("Plot", "Plot content"),
-    ui.nav("Table", "Table content"),
+    ui.nav_panel("Plot", "Plot content"),
+    ui.nav_panel("Table", "Table content"),
     title="shinyswatch",
 )
 
