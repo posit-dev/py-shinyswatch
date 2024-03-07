@@ -297,11 +297,18 @@ cat(file = file.path(lib, "_bsw5.py"), bsw5_file_txt)
 theme_funcs_txt <- paste0(lapply(theme_names, function(theme_name) {
   glue::glue(
     .trim = FALSE,
-    "def { theme_name }() -> list[HTMLDependency]:
+    "{theme_name} = _ShinyswatchTheme(\"{theme_name}\")
     \"\"\"
     `{ theme_name }` Bootswatch theme
 
     Visit [https://bootswatch.com/{ theme_name }/](https://bootswatch.com/{ theme_name }/) to see a Bootswatch's demo of the `{ theme_name }` theme.
+
+    Attributes
+    ----------
+    name:
+        Name of the theme.
+    colors:
+        A class containing the color variables used in the theme.
 
     Returns
     -------
@@ -322,12 +329,7 @@ themes_file_txt <- glue::glue(
 Targeted theme methods for all Bootswatch themes.
 \"\"\"
 
-from __future__ import annotations
-
-from htmltools import HTMLDependency
-
-from ._get_theme import get_theme as _get_theme
-
+from ._theme_utils import ShinyswatchTheme as _ShinyswatchTheme
 
 {theme_funcs_txt}
 
