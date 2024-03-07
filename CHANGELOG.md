@@ -7,7 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [UNRELEASED]
 
-* Update bootswatch themes to receive posit-dev/py-shiny#1124 updates to fix navbar themeing (#26)
+* Update bootswatch themes to receive page_sidebar updates and require shiny v0.8.1 (#28)
+* Update bootswatch themes to receive posit-dev/py-shiny#1124 updates to fix navbar theming (#26)
 
 ## [0.4.2] - 2023-12-22
 
