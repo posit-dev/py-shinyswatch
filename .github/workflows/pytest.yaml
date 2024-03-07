@@ -113,7 +113,7 @@ jobs:
       ## prod deploy ----
       - name: "Deploy to PyPI"
         uses: pypa/gh-action-pypi-publish@release/v1
-        if: startsWith(github.event.release.name, 'shinyswatch')
+        if: ${{ !startsWith(github.event.release.name, 'TEST') }}
         with:
           user: __token__
           password: ${{ secrets.PYPI_API_TOKEN }}
