@@ -15,7 +15,7 @@ def test_error_messages():
 
 def test_themes():
     for theme_name in bsw5.bsw5_themes:
-        theme_deps = shinyswatch.get_theme(theme_name)
+        theme_deps = shinyswatch.get_theme_deps(theme_name)
 
         assert isinstance(theme_deps, list)
         for dep in theme_deps:

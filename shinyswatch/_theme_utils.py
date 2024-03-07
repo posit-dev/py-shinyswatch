@@ -1,9 +1,10 @@
 from __future__ import annotations
 
-from htmltools import HTMLDependency
+from htmltools import HTMLDependency, Tagifiable, TagList
 
+from ._assert import assert_theme
 from ._bsw5 import BSW5_THEME_NAME, bsw5_theme_colors
-from ._get_theme import get_theme as _get_theme
+from ._get_theme_deps import get_theme_deps as _get_theme_deps
 
 
 class ThemeColors:
@@ -27,13 +28,14 @@ class ThemeColors:
         return "\n".join(ret)
 
 
-class ShinyswatchTheme:
+class ShinyswatchTheme(Tagifiable):
     def __init__(self, name: BSW5_THEME_NAME) -> None:
+        assert_theme(name=name)
         self.name: BSW5_THEME_NAME = name
         self.colors = ThemeColors(name)
 
     def __call__(self) -> list[HTMLDependency]:
-        return self.tagify()
+        return _get_theme_deps(self.name)
 
-    def tagify(self) -> list[HTMLDependency]:
-        return _get_theme(self.name)
+    def tagify(self) -> TagList:
+        return TagList(_get_theme_deps(self.name))
