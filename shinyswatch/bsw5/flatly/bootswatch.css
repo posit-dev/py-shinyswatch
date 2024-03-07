@@ -1,4 +1,4 @@
-/* {bslib} version: Github (rstudio/bslib@63dc94a1c89f338c5805a458101e600dcaf371a7) */
+/* {bslib} version: Github (rstudio/bslib@1929f7e63197f6073085a03f926f11829b7292ea) */
 /* bw: 5: 5 */
 /* bsw5 theme: flatly */
 @import url("https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;1,400&display=swap");
@@ -14665,6 +14665,10 @@ pre.shiny-code {
   margin-bottom: 0;
 }
 
+.bslib-gap-spacing > .shiny-html-output > .bslib-mb-spacing, .bslib-gap-spacing > .shiny-html-output > .form-group, .bslib-gap-spacing > .shiny-html-output > p, .bslib-gap-spacing > .shiny-html-output > pre {
+  margin-bottom: 0;
+}
+
 .html-fill-container > .html-fill-item.bslib-mb-spacing {
   margin-bottom: 0;
 }
@@ -15622,17 +15626,7 @@ pre.shiny-code {
   background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23000'%3e%3cpath d='M.293.293a1 1 0 0 1 1.414 0L8 6.586 14.293.293a1 1 0 1 1 1.414 1.414L9.414 8l6.293 6.293a1 1 0 0 1-1.414 1.414L8 9.414l-6.293 6.293a1 1 0 0 1-1.414-1.414L6.586 8 .293 1.707a1 1 0 0 1 0-1.414z'/%3e%3c/svg%3e");
 }
 
-.bslib-sidebar-layout.bslib-sidebar-layout {
-  --bslib-sidebar-bg: #f7f7f7;
-  --bslib-sidebar-fg: #000;
-}
-
-.bslib-page-title.bslib-page-title {
-  background-color: #7b8a8b;
-  color: #fff;
-  font-size: 1.5rem;
-  font-weight: 300;
-  padding: var(--bslib-spacer, 1rem);
-  padding-left: 1.5rem;
-  margin-bottom: 0;
+.bslib-page-sidebar {
+  --bslib-page-sidebar-title-bg: #ecf0f1;
+  --bslib-page-sidebar-title-color: #000;
 }
