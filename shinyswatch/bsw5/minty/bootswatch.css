@@ -1,4 +1,4 @@
-/* {bslib} version: Github (rstudio/bslib@63dc94a1c89f338c5805a458101e600dcaf371a7) */
+/* {bslib} version: Github (rstudio/bslib@1929f7e63197f6073085a03f926f11829b7292ea) */
 /* bw: 5: 5 */
 /* bsw5 theme: minty */
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap");
@@ -14661,6 +14661,10 @@ pre.shiny-code {
   margin-bottom: 0;
 }
 
+.bslib-gap-spacing > .shiny-html-output > .bslib-mb-spacing, .bslib-gap-spacing > .shiny-html-output > .form-group, .bslib-gap-spacing > .shiny-html-output > p, .bslib-gap-spacing > .shiny-html-output > pre {
+  margin-bottom: 0;
+}
+
 .html-fill-container > .html-fill-item.bslib-mb-spacing {
   margin-bottom: 0;
 }
@@ -15588,17 +15592,7 @@ legend {
   color: inherit;
 }
 
-.bslib-sidebar-layout.bslib-sidebar-layout {
-  --bslib-sidebar-bg: #f9f9f9;
-  --bslib-sidebar-fg: #5a5a5a;
-}
-
-.bslib-page-title.bslib-page-title {
-  background-color: #343a40;
-  color: #fff;
-  font-size: 1.5rem;
-  font-weight: 300;
-  padding: var(--bslib-spacer, 1rem);
-  padding-left: 1.5rem;
-  margin-bottom: 0;
+.bslib-page-sidebar {
+  --bslib-page-sidebar-title-bg: #f8f9fa;
+  --bslib-page-sidebar-title-color: #5a5a5a;
 }
