@@ -18,7 +18,7 @@ def test_themes():
         theme_obj = shinyswatch.get_theme(theme_name)
         theme_deps = theme_obj()
 
-        # assert all `_html_deps` are HTMLDependencies
+        # assert all returned html deps are HTMLDependencies
         assert isinstance(theme_deps, list)
         for dep in theme_deps:
             assert isinstance(dep, htmltools.HTMLDependency)
@@ -28,3 +28,9 @@ def test_themes():
         assert isinstance(tagified_theme, htmltools.TagList)
         for item in tagified_theme:
             assert isinstance(item, htmltools.HTMLDependency)
+
+        # assert all theme_deps are HTMLDependencies
+        theme_deps = shinyswatch.get_theme_deps(theme_name)
+        assert isinstance(theme_deps, list)
+        for dep in theme_deps:
+            assert isinstance(dep, htmltools.HTMLDependency)
