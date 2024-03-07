@@ -24,7 +24,7 @@ pip install https://github.com/rstudio/py-shinyswatch/tarball/main
 
 ## Usage
 
-To use a theme, add a `shinyswatch.theme` to your App's UI definition.
+To use a theme, add a `shinyswatch.theme` theme object to your App's UI definition.
 
 ```python
 # Minty theme
@@ -171,5 +171,8 @@ def server(input):
 app = App(app_ui, server)
 
 ## file: requirements.txt
+numpy
+matplotlib
+shiny
 shinyswatch
 ```

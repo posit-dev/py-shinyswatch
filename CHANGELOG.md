@@ -9,8 +9,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### New features
 
-* Themes in `shinyswatch.theme` are now callable classes. You no longer need to call the theme as a function, although existing code will still work. The theme object now includes a `.colors` attribute with the theme's color palette, including colors like `body_color`, `body_bg`, `primary`, `secondary`, etc.  You can use these colors to theme plots, outputs and other UI elements to match the shinyswatch theme. (#29)
+* Themes in `shinyswatch.theme` are now callable classes. You no longer need to call the theme as a function, e.g. `shinyswatch.theme.yeti`. Existing code calling the theme, e.g. `shinyswatch.theme.yet()` will continue to work. (#29)
 
+* `shinyswatch.theme`'s theme object now includes a `.colors` attribute with the theme's color palette, including colors like `body_color`, `body_bg`, `primary`, `secondary`, etc.  You can use these colors to theme plots, outputs and other UI elements to match the shinyswatch theme. (#29)
+
+### Updates
 * Update bootswatch themes to receive page_sidebar updates and require shiny v0.8.1 (#28)
 
 * Update bootswatch themes to receive posit-dev/py-shiny#1124 updates to fix navbar theming (#26)
