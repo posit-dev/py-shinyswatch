@@ -1,21 +1,15 @@
 from __future__ import annotations
 
-import json
-import os
-
 from htmltools import HTMLDependency
 
-from ._bsw5 import BSW5_THEME_NAME
+from ._bsw5 import BSW5_THEME_NAME, bsw5_theme_colors
 from ._get_theme import get_theme as _get_theme
 
 
 class ThemeColors:
     def __init__(self, name: BSW5_THEME_NAME) -> None:
-        theme_dir = os.path.join(os.path.dirname(__file__), "bsw5", name)
         self._name = name
-        self._colors: dict[str, str] = json.load(
-            open(os.path.join(theme_dir, "colors.json"))
-        )
+        self._colors: dict[str, str] = bsw5_theme_colors[name]
 
     def __getattr__(self, key: str) -> str:
         return self._colors[key]

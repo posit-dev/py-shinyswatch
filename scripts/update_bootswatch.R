@@ -102,6 +102,8 @@ theme_extract_color_vars <- function(theme) {
   as.list(colors)
 }
 
+theme_colors <- list()
+
 
 # For each theme...
 theme_names <- bslib::bootswatch_themes(version = ver)
@@ -215,8 +217,7 @@ ignore <- Map(
       )
     }
 
-    theme_colors <- theme_extract_color_vars(sass_bundle)
-    jsonlite::write_json(theme_colors, file.path(out_dir, name, "colors.json"), auto_unbox = TRUE)
+    theme_colors[[name]] <<- theme_extract_color_vars(sass_bundle)
 
     # Save iorange slider dep
     # Get _dynamic_ ionrangeslider dep
@@ -247,17 +248,15 @@ version_txt <- npm_tag
 themes_txt <- jsonlite::toJSON(
   as.list(theme_names),
   auto_unbox = TRUE,
-  pretty = TRUE
+  pretty = 4
 )
-# Python's Black likes to format code with trailing commas and with 4 spaces
-themes_txt <- sub("\"\n", "\",\n", themes_txt)
-themes_txt <- sub("]\n", "],\n", themes_txt)
-themes_txt <- gsub("  ", "    ", themes_txt)
 
 themes_type_txt <- paste0("Literal", themes_txt)
 themes_tuple_txt <- themes_txt
 themes_tuple_txt <- sub("]", ")", themes_tuple_txt, fixed = TRUE)
 themes_tuple_txt <- sub("[", "(", themes_tuple_txt, fixed = TRUE)
+
+theme_colors_json <- jsonlite::toJSON(theme_colors, auto_unbox = TRUE, pretty = 4)
 
 bsw5_file_txt <- glue::glue(
   "
@@ -270,6 +269,8 @@ bsw5_version = \"{version_txt}\"
 bsw5_themes = {themes_tuple_txt}
 
 BSW5_THEME_NAME = {themes_type_txt}
+
+bsw5_theme_colors = {theme_colors_json}
 
 "
 )
@@ -317,8 +318,6 @@ from ._theme_utils import ShinyswatchTheme as _ShinyswatchTheme
 "
 )
 cat(file = file.path(lib, "theme.py"), themes_file_txt)
-
-
 
 
 # Cleanup
