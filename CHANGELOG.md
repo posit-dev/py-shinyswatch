@@ -9,7 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### New features
 
-* Themes in `shinyswatch.theme` are now callable classes. You no longer need to call the theme as a function, e.g. `shinyswatch.theme.yeti`. Existing code calling the theme, e.g. `shinyswatch.theme.yet()` will continue to work. (#29)
+* Themes in `shinyswatch.theme` are now tagifiable class instances. You no longer need to call the theme as a function, e.g. `shinyswatch.theme.yeti`. Existing code calling the theme, e.g. `shinyswatch.theme.yeti()`, will continue to work as the `__call__` method retrieves the theme's html dependencies. To resolve some rare typing issues, try calling the theme object to directly use the html dependencies. (#29)
 
 * `shinyswatch.theme`'s theme object now includes a `.colors` attribute with the theme's color palette, including colors like `body_color`, `body_bg`, `primary`, `secondary`, etc.  You can use these colors to theme plots, outputs and other UI elements to match the shinyswatch theme. (#29)
 
@@ -50,6 +50,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Bug fixes
 
 * Updated themes to support latest shiny sidebars. Requires shiny 0.5.0 or later (#15).
+
 * Dropped support for python 3.7 as shiny does not support python 3.7 (#16).
 
 
