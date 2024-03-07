@@ -28,7 +28,8 @@ class ThemeColors:
 
     def __repr__(self) -> str:
         colors = [f"{k:11}: {v}" for k, v in self._colors.items()]
-        ret = [f"<ThemeColors({self._name!r}):", "\n ".join(colors), ">"]
+        colors = "\n ".join(colors)
+        ret = [f"<ThemeColors({self._name!r}):", " " + colors, ">"]
         return "\n".join(ret)
 
 
