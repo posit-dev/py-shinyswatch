@@ -158,21 +158,13 @@ ignore <- Map(
 
     sass_bundle <- bslib::bs_add_rules(
       sass_bundle,
-      # Use double class names (e.g. `.FOO.FOO` instead of `.FOO`) to achieve higher
-      # precedence than bslib's single class name (with incorrect variable values)
-      "// https://github.com/rstudio/bslib/blob/8d9c0dde52a0673e5ef0b2e43409848a440d2e93/inst/components/scss/page_sidebar.scss
-      $bslib-page-title-bg: if($navbar-bg, $navbar-bg, $dark) !default;
-      $bslib-page-title-color: color-contrast($bslib-page-title-bg) !default;
-      $bslib-sidebar-padding: $spacer * 1.5 !default;
+      "
+      $bslib-page-sidebar-title-bg: if($navbar-bg, $navbar-bg, $light) !default;
+      $bslib-page-sidebar-title-color: color-contrast($bslib-page-sidebar-title-bg) !default;
 
-      .bslib-page-title.bslib-page-title {
-        background-color: $bslib-page-title-bg;
-        color: $bslib-page-title-color;
-        font-size: $h4-font-size;
-        font-weight: 300;
-        padding: var(--bslib-spacer, 1rem);
-        padding-left: $bslib-sidebar-padding;
-        margin-bottom: 0;
+      .bslib-page-sidebar {
+        --bslib-page-sidebar-title-bg: #{$bslib-page-sidebar-title-bg};
+        --bslib-page-sidebar-title-color: #{$bslib-page-sidebar-title-color};
       }
       "
     )
