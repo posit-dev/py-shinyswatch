@@ -281,25 +281,24 @@ theme_funcs_txt <- paste0(lapply(theme_names, function(theme_name) {
   glue::glue(
     .trim = FALSE,
     "{theme_name} = _ShinyswatchTheme(\"{theme_name}\")
-    \"\"\"
-    `{ theme_name }` Bootswatch theme
+\"\"\"
+`{ theme_name }` Bootswatch theme
 
-    Visit [https://bootswatch.com/{ theme_name }/](https://bootswatch.com/{ theme_name }/) to see a Bootswatch's demo of the `{ theme_name }` theme.
+Visit [https://bootswatch.com/{ theme_name }/](https://bootswatch.com/{ theme_name }/) to see a Bootswatch's demo of the `{ theme_name }` theme.
 
-    Attributes
-    ----------
-    name:
-        Name of the theme.
-    colors:
-        A class containing the color variables used in the theme.
+Attributes
+----------
+name:
+    Name of the theme.
+colors:
+    A class containing the color variables used in the theme.
 
-    Returns
-    -------
-    list[htmltools.HTMLDependency]
-        List of HTMLDependency objects that create a Bootswatch ({ theme_name }) and Bootstrap 5 theme.
-    \"\"\"
-
-    return _get_theme(\"{ theme_name }\")"
+Returns
+-------
+list[htmltools.HTMLDependency]
+    List of HTMLDependency objects that create a Bootswatch ({ theme_name }) and Bootstrap 5 theme.
+\"\"\"
+"
   )
 }), collapse = "\n\n\n")
 
