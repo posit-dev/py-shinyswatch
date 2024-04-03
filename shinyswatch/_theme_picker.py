@@ -1,4 +1,4 @@
-from htmltools import HTMLDependency, TagList
+from htmltools import TagList
 from packaging.version import Version
 from shiny import reactive, render, req, ui
 from shiny.session import require_active_session
