@@ -1,10 +1,10 @@
 from htmltools import HTMLDependency, TagList
+from packaging.version import Version
 from shiny import reactive, render, req, ui
 from shiny.session import require_active_session
 
 from ._bsw5 import BSW5_THEME_NAME, bsw5_themes
 from ._get_theme_deps import get_theme_deps
-from ._shiny import base_dep_version
 
 default_theme_name = "superhero"
 
@@ -102,12 +102,10 @@ def theme_picker_server() -> None:
 
         # Get the theme dependencies and set them to a version that will always be registered
         theme_deps = get_theme_deps(theme_name())
-        incremented_version = HTMLDependency(
-            name="VersionOnly",
-            version=f"{base_dep_version}.{counter()}",
-        ).version
+        incremented_version = Version(f"9999.{counter()}")
         for theme_dep in theme_deps:
-            theme_dep.version = incremented_version
+            if hasattr(theme_dep, "version"):
+                theme_dep.version = incremented_version
         # Return dependencies in a TagList so they can all be utilized
         return TagList(theme_deps)
 
