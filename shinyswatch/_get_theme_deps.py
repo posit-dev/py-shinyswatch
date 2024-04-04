@@ -54,14 +54,14 @@ def get_theme_deps(name: BSW5_THEME_NAME) -> list[HTMLDependency]:
         ),
         # Add in the matching JS files
         HTMLDependency(
-            name=f"bootstrap-{name}-js",
+            name="shinyswatch-js",
             version=bsw5_version,
             source={"package": "shinyswatch", "subdir": bs5_path},
             script={"src": "bootstrap.bundle.min.js"},
         ),
         # Shinyswatch - bootstrap / bootswatch css
         HTMLDependency(
-            name=f"bootswatch-{name}-css",
+            name="shinyswatch-css",
             version=bsw5_version,
             source={"package": "shinyswatch", "subdir": subdir},
             stylesheet=[{"href": "bootswatch.min.css"}],
@@ -76,7 +76,7 @@ def get_theme_deps(name: BSW5_THEME_NAME) -> list[HTMLDependency]:
         ),
         # Shinyswatch - ionRangeSlider css
         HTMLDependency(
-            name=f"bootswatch-{name}-ionrangeslider",
+            name="shinyswatch-ionrangeslider",
             version=bsw5_version,
             source={"package": "shinyswatch", "subdir": subdir},
             stylesheet=[{"href": "shinyswatch-ionRangeSlider.css"}],
