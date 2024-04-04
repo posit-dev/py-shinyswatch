@@ -1,5 +1,5 @@
 from htmltools import HTMLDependency
-from shiny import reactive, req, ui
+from shiny import reactive, ui
 from shiny.session import require_active_session
 
 from . import __version__ as shinyswatch_version
