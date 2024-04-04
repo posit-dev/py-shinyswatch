@@ -13,6 +13,37 @@ from ._bsw5 import BSW5_THEME_NAME, bsw5_version
 bs5_path = os.path.join(os.path.dirname(__file__), "bs5")
 
 
+def suppress_shiny_bootstrap() -> list[HTMLDependency]:
+    return [
+        HTMLDependency(
+            name="bootstrap-js",
+            version=shiny_bootstrap_version + ".9999",
+        ),
+        HTMLDependency(
+            name="bootstrap-css",
+            version=shiny_bootstrap_version + ".9999",
+        ),
+        HTMLDependency(
+            name="bootstrap",
+            version=shiny_bootstrap_version + ".9999",
+        ),
+        # Disable ionRangeSlider
+        HTMLDependency(
+            name="preset-shiny-ionrangeslider",
+            version="9999",
+        ),
+    ]
+
+
+def dep_shinyswatch_bootstrap_js() -> HTMLDependency:
+    return HTMLDependency(
+        name="shinyswatch-js",
+        version=bsw5_version,
+        source={"package": "shinyswatch", "subdir": bs5_path},
+        script={"src": "bootstrap.bundle.min.js"},
+    )
+
+
 def get_theme_deps(name: BSW5_THEME_NAME) -> list[HTMLDependency]:
     """
     Get the HTML dependencies for a Bootstrap 5 Bootswatch theme for Shiny.
@@ -37,22 +68,7 @@ def get_theme_deps(name: BSW5_THEME_NAME) -> list[HTMLDependency]:
         # This is to prevent the Shiny bootstrap stylesheet from being loaded and instead load the bootswatch + bootstrap stylesheet
         # _Disable_ bootstrap html dep
         # Prevents  bootstrap from being loaded at a later time (Ex: shiny.ui.card() https://github.com/rstudio/py-shiny/blob/d08af1a8534677c7026b60559cd5eafc5f6608d7/shiny/ui/_navs.py#L983)
-        #
-        # bootstrap_deps_suppress(["css", "js"]),
-        # TODO: Replace the next three lines with the above line when available
-        HTMLDependency(
-            name="bootstrap-js",
-            version=shiny_bootstrap_version + ".9999",
-        ),
-        HTMLDependency(
-            name="bootstrap-css",
-            version=shiny_bootstrap_version + ".9999",
-        ),
-        HTMLDependency(
-            name="bootstrap",
-            version=shiny_bootstrap_version + ".9999",
-        ),
-        # Add in the matching JS files
+        *suppress_shiny_bootstrap(),
         HTMLDependency(
             name="shinyswatch-js",
             version=bsw5_version,
@@ -69,12 +85,6 @@ def get_theme_deps(name: BSW5_THEME_NAME) -> list[HTMLDependency]:
         # ## End Bootswatch
         #
         # ## Start ionRangeSlider
-        # Disable ionRangeSlider
-        HTMLDependency(
-            name="preset-shiny-ionrangeslider",
-            version="9999",
-        ),
-        # Shinyswatch - ionRangeSlider css
         HTMLDependency(
             name="shinyswatch-ionrangeslider",
             version=bsw5_version,
@@ -82,4 +92,23 @@ def get_theme_deps(name: BSW5_THEME_NAME) -> list[HTMLDependency]:
             stylesheet=[{"href": "shinyswatch-ionRangeSlider.css"}],
         ),
         # ## End ionRangeSlider
+    ]
+
+
+def deps_shinyswatch_all() -> list[HTMLDependency]:
+    return [
+        *suppress_shiny_bootstrap(),
+        dep_shinyswatch_bootstrap_js(),
+        HTMLDependency(
+            name="shinyswatch-js",
+            version=bsw5_version,
+            source={"package": "shinyswatch", "subdir": bs5_path},
+            script={"src": "bootstrap.bundle.min.js"},
+        ),
+        HTMLDependency(
+            name="shinyswatch-all-css",
+            version=bsw5_version,
+            source={"package": "shinyswatch", "subdir": "bsw5"},
+            all_files=True,
+        ),
     ]
