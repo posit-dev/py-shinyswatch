@@ -42,15 +42,15 @@ def get_theme_deps(name: BSW5_THEME_NAME) -> list[HTMLDependency]:
         # TODO: Replace the next three lines with the above line when available
         HTMLDependency(
             name="bootstrap-js",
-            version=shiny_bootstrap_version + "9999",
+            version=shiny_bootstrap_version + ".9999",
         ),
         HTMLDependency(
             name="bootstrap-css",
-            version=shiny_bootstrap_version + "9999",
+            version=shiny_bootstrap_version + ".9999",
         ),
         HTMLDependency(
             name="bootstrap",
-            version=shiny_bootstrap_version + "9999",
+            version=shiny_bootstrap_version + ".9999",
         ),
         # Add in the matching JS files
         HTMLDependency(
