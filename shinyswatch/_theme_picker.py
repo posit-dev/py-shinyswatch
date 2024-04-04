@@ -1,10 +1,10 @@
-from htmltools import TagList
-from packaging.version import Version
-from shiny import reactive, render, req, ui
+from htmltools import HTMLDependency
+from shiny import reactive, req, ui
 from shiny.session import require_active_session
 
-from ._bsw5 import BSW5_THEME_NAME, bsw5_themes
-from ._get_theme_deps import get_theme_deps
+from . import __version__ as shinyswatch_version
+from ._bsw5 import BSW5_THEME_NAME, bsw5_themes, bsw5_version
+from ._get_theme_deps import deps_shinyswatch_all
 
 default_theme_name = "superhero"
 
@@ -43,21 +43,6 @@ def theme_picker_ui() -> ui.TagChild:
             style="color: var(--bs-danger); background-color: var(--bs-light); display: none;",
             id="shinyswatch_picker_warning",
         ),
-        ui.tags.script(
-            """
-            (function() {
-                const display_warning = setTimeout(function() {
-                    window.document.querySelector("#shinyswatch_picker_warning").style.display = 'block';
-                }, 1000);
-                Shiny.addCustomMessageHandler('shinyswatch-hide-warning', function(message) {
-                    window.clearTimeout(display_warning);
-                });
-                Shiny.addCustomMessageHandler('shinyswatch-refresh', function(message) {
-                    window.location.reload();
-                });
-            })()
-            """
-        ),
         ui.input_select(
             id="shinyswatch_theme_picker",
             label="Select a theme:",
@@ -65,8 +50,14 @@ def theme_picker_ui() -> ui.TagChild:
             selected=None,
             choices=[],
         ),
-        get_theme_deps(default_theme_name),
-        ui.output_ui("shinyswatch_theme_deps"),
+        deps_shinyswatch_all(),
+        HTMLDependency(
+            name="shinyswatch-theme-picker",
+            version=shinyswatch_version,
+            source={"package": "shinyswatch", "subdir": "picker"},
+            stylesheet={"href": "theme_picker.css"},
+            script={"src": "theme_picker.js"},
+        ),
     )
 
 
@@ -85,31 +76,21 @@ def theme_picker_server() -> None:
 
     session = require_active_session(None)
     input = session.input
-    output = session.output
 
-    @reactive.Effect
+    @reactive.effect
     @reactive.event(input.shinyswatch_theme_picker)
     async def _():
         counter.set(counter() + 1)
-        if theme_name() != input.shinyswatch_theme_picker():
-            theme_name.set(input.shinyswatch_theme_picker())
-            await session.send_custom_message("shinyswatch-refresh", {})
 
-    @output
-    @render.ui
-    def shinyswatch_theme_deps():  # pyright: ignore[reportUnusedFunction]
-        req(theme_name())
+        await session.send_custom_message(
+            "shinyswatch-pick-theme",
+            {
+                "theme": input.shinyswatch_theme_picker(),
+                "version": bsw5_version,
+            },
+        )
 
-        # Get the theme dependencies and set them to a version that will always be registered
-        theme_deps = get_theme_deps(theme_name())
-        incremented_version = Version(f"9999.{counter()}")
-        for theme_dep in theme_deps:
-            if hasattr(theme_dep, "version"):
-                theme_dep.version = incremented_version
-        # Return dependencies in a TagList so they can all be utilized
-        return TagList(theme_deps)
-
-    @reactive.Effect
+    @reactive.effect
     async def _():
         ui.update_selectize(
             "shinyswatch_theme_picker",
