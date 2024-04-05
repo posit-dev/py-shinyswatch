@@ -94,7 +94,7 @@ def theme_picker_server() -> None:
             "shinyswatch-pick-theme",
             {
                 "theme": input.shinyswatch_theme_picker(),
-                "sheets": deps_shinyswatch_css_files(),
+                "sheets": deps_shinyswatch_css_files,
             },
         )
 
