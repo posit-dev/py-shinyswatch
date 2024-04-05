@@ -90,7 +90,7 @@ def get_theme_deps(name: BSW5_THEME_NAME) -> list[HTMLDependency]:
     ]
 
 
-# TODO: Update this list if the css files above change
+# TODO: Update this list if the css files in the dependency above change
 deps_shinyswatch_css_files = [
     "bootswatch.min.css",
     "shinyswatch-ionRangeSlider.css",

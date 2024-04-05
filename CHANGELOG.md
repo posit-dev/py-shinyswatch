@@ -5,6 +5,14 @@ All notable changes to `shinyswatch` will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [UNRELEASED] - YYYY-MM-DD
+
+### Internal changes
+
+* We've restructured the dependencies used to provide a shinyswatch theme.  This change should not affect users of shinyswatch, but it will prevent accidentally including two shinyswatch themes on the same page. (#32)
+
+* The theme picker now transitions between themes more smoothly. That said, we do not recommend using the theme picker only while developing your app. (#32)
+
 ## [0.5.1] - 2024-03-07
 
 * Add typed attributes in the theme's color class for stronger type checking.
