@@ -43,7 +43,13 @@ function replaceShinyswatchCSS ({ theme, sheet }) {
     link.href = `${getShinyswatchLibPath()}/${theme}/${sheet}`
     link.dataset.shinyswatchCss = sheet
     link.dataset.shinyswatchTheme = theme
+    link.onload = () => shinyswatchTransition(true)
     document.body.appendChild(link)
+    document.body.addEventListener(
+      'transitionend',
+      () => shinyswatchTransition(false),
+      { once: true }
+    )
     return link
   }
 
@@ -56,17 +62,15 @@ function replaceShinyswatchCSS ({ theme, sheet }) {
     return;
   }
 
-  // Adding the new theme will trigger a transition, enable *smooth* transitions
-  document.documentElement.dataset.shinyswatchTransitioning = 'true'
-
   const newLink = oldLink.cloneNode(true)
   newLink.href = newLink.href.replace(oldLink.dataset.shinyswatchTheme, theme)
   newLink.href = newLink.href.replace(window.location.href, '')
   newLink.dataset.shinyswatchTheme = theme
+  newLink.onload = () => shinyswatchTransition(true)
   oldLink.parentNode.insertBefore(newLink, oldLink.nextSibling)
 
   const cleanup = () => {
-    document.documentElement.removeAttribute('data-shinyswatch-transitioning')
+    shinyswatchTransition(false)
     oldLink.remove()
   }
 
@@ -77,6 +81,7 @@ function replaceShinyswatchCSS ({ theme, sheet }) {
   document.body.addEventListener(
     'transitionend',
     () => {
+      console.log('transitionend')
       clearTimeout(backup)
       cleanup()
     },
@@ -84,4 +89,18 @@ function replaceShinyswatchCSS ({ theme, sheet }) {
   )
 
   return newLink
+}
+
+function shinyswatchTransition(transitioning) {
+  if (transitioning) {
+    document.documentElement.dataset.shinyswatchTransitioning = 'true'
+  } else {
+    setTimeout(
+      () => {
+        // Give the transition a tick to end before removing the attribute
+        document.documentElement.removeAttribute('data-shinyswatch-transitioning')
+      },
+      100
+    )
+  }
 }
