@@ -44,10 +44,13 @@ Shiny.addCustomMessageHandler('shinyswatch-pick-theme', function (theme) {
           // If the transitionend event doesn't fire, remove the old link after 500ms
           if (oldLink.parentNode) oldLink.remove()
         }, 500)
+
+        // Theme picker adds a `* { transition: ... }` rule that we can use to detect
+        // when the new theme has been applied.
         document.body.addEventListener(
           'transitionend',
           () => {
-            cancelTimeout(backup)
+            clearTimeout(backup)
             oldLink.remove()
           },
           { once: true }
