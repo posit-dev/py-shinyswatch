@@ -34,7 +34,7 @@ Shiny.addCustomMessageHandler('shinyswatch-pick-theme', function (theme) {
     // removal. The current update will only copy and remove the last one.
     const oldLink = oldLinks[oldLinks.length - 1]
 
-      document.documentElement.dataset.shinyswatchTransitioning = "true"
+    document.documentElement.dataset.shinyswatchTransitioning = 'true'
 
     if (oldLink) {
       if (oldLink.dataset.shinyswatchTheme !== theme) {
@@ -48,7 +48,9 @@ Shiny.addCustomMessageHandler('shinyswatch-pick-theme', function (theme) {
         oldLink.parentNode.insertBefore(newLink, oldLink.nextSibling)
 
         const cleanup = () => {
-          document.documentElement.removeAttribute('data-shinyswatch-transitioning')
+          document.documentElement.removeAttribute(
+            'data-shinyswatch-transitioning'
+          )
           oldLink.remove()
         }
 
