@@ -37,7 +37,7 @@ function replaceShinyswatchCSS ({ theme, sheet }) {
     `link[data-shinyswatch-css="${sheet}"]`
   )
 
-  if (oldLinks.length > 0) {
+  if (oldLinks.length == 0) {
     // For some reason we don't have a shinyswatch-created theme link, so we'll have
     // to create one ourselves.
     link = document.createElement('link')
