@@ -25,51 +25,21 @@ Shiny.addCustomMessageHandler('shinyswatch-pick-theme', function (theme) {
 
   const sheets = ['bootswatch.min.css', 'shinyswatch-ionRangeSlider.css']
 
+  document.documentElement.dataset.shinyswatchTransitioning = 'true'
+
   for (const sheet of sheets) {
-    const oldLinks = document.querySelectorAll(
-      `link[data-shinyswatch-css="${sheet}"]`
-    )
+    replaceShinyswatchCSS({ theme, sheet })
+  }
+})
 
-    // If we have more than one link, all but the last are already scheduled for
-    // removal. The current update will only copy and remove the last one.
-    const oldLink = oldLinks[oldLinks.length - 1]
+function replaceShinyswatchCSS ({ theme, sheet }) {
+  const oldLinks = document.querySelectorAll(
+    `link[data-shinyswatch-css="${sheet}"]`
+  )
 
-    document.documentElement.dataset.shinyswatchTransitioning = 'true'
-
-    if (oldLink) {
-      if (oldLink.dataset.shinyswatchTheme !== theme) {
-        const newLink = oldLink.cloneNode(true)
-        newLink.href = newLink.href.replace(
-          oldLink.dataset.shinyswatchTheme,
-          theme
-        )
-        newLink.href = newLink.href.replace(window.location.href, '')
-        newLink.dataset.shinyswatchTheme = theme
-        oldLink.parentNode.insertBefore(newLink, oldLink.nextSibling)
-
-        const cleanup = () => {
-          document.documentElement.removeAttribute(
-            'data-shinyswatch-transitioning'
-          )
-          oldLink.remove()
-        }
-
-        const backup = setTimeout(cleanup, 500)
-
-        // Theme picker adds a `* { transition: ... }` rule that we can use to detect
-        // when the new theme has been applied.
-        document.body.addEventListener(
-          'transitionend',
-          () => {
-            clearTimeout(backup)
-            cleanup()
-          },
-          { once: true }
-        )
-      }
-      continue
-    }
-
+  if (oldLinks.length > 0) {
+    // For some reason we don't have a shinyswatch-created theme link, so we'll have
+    // to create one ourselves.
     link = document.createElement('link')
     link.rel = 'stylesheet'
     link.type = 'text/css'
@@ -77,5 +47,38 @@ Shiny.addCustomMessageHandler('shinyswatch-pick-theme', function (theme) {
     link.dataset.shinyswatchCss = sheet
     link.dataset.shinyswatchTheme = theme
     document.body.appendChild(link)
+    return link
   }
-})
+
+  // If we have more than one link, all but the last are already scheduled for
+  // removal. The current update will only copy and remove the last one.
+  const oldLink = oldLinks[oldLinks.length - 1]
+
+  if (oldLink.dataset.shinyswatchTheme !== theme) {
+    const newLink = oldLink.cloneNode(true)
+    newLink.href = newLink.href.replace(oldLink.dataset.shinyswatchTheme, theme)
+    newLink.href = newLink.href.replace(window.location.href, '')
+    newLink.dataset.shinyswatchTheme = theme
+    oldLink.parentNode.insertBefore(newLink, oldLink.nextSibling)
+
+    const cleanup = () => {
+      document.documentElement.removeAttribute('data-shinyswatch-transitioning')
+      oldLink.remove()
+    }
+
+    const backup = setTimeout(cleanup, 500)
+
+    // Theme picker adds a `* { transition: ... }` rule that we can use to detect
+    // when the new theme has been applied.
+    document.body.addEventListener(
+      'transitionend',
+      () => {
+        clearTimeout(backup)
+        cleanup()
+      },
+      { once: true }
+    )
+  }
+
+  return newLink
+}
