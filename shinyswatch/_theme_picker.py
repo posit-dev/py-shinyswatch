@@ -6,7 +6,7 @@ from shiny.session import require_active_session
 
 from . import __version__ as shinyswatch_version
 from ._bsw5 import BSW5_THEME_NAME, bsw5_themes
-from ._get_theme_deps import deps_shinyswatch_all
+from ._get_theme_deps import deps_shinyswatch_all, deps_shinyswatch_css_files
 
 default_theme_name = "superhero"
 
@@ -92,7 +92,10 @@ def theme_picker_server() -> None:
 
         await session.send_custom_message(
             "shinyswatch-pick-theme",
-            input.shinyswatch_theme_picker(),
+            {
+                "theme": input.shinyswatch_theme_picker(),
+                "sheets": deps_shinyswatch_css_files(),
+            },
         )
 
     @reactive.effect

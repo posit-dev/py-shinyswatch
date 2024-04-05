@@ -90,6 +90,14 @@ def get_theme_deps(name: BSW5_THEME_NAME) -> list[HTMLDependency]:
     ]
 
 
+def deps_shinyswatch_css_files() -> list[str]:
+    # TODO: Update this list if the css files above change
+    return [
+        "bootswatch.min.css",
+        "shinyswatch-ionRangeSlider.css",
+    ]
+
+
 def deps_shinyswatch_all(initial: str = "superhero") -> list[HTMLDependency]:
     assert_theme(name=initial)
 

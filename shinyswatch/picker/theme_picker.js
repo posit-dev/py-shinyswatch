@@ -2,7 +2,7 @@
 // to figure out where the htmldependency has ended up
 // e.g. src="lib/shinyswatch-js-5.3.1/bootstrap.bundle.min.js"
 // avoids having to know the shinswatch bootstrap version or lib location
-function getShinyswatchLibPath() {
+function getShinyswatchLibPath () {
   const sw_script = document.querySelector('script[src*="shinyswatch-js"')
   return sw_script.src
     .replace(/\/bootstrap.*js$/, '')
@@ -22,16 +22,13 @@ Shiny.addCustomMessageHandler('shinyswatch-refresh', function (message) {
   window.location.reload()
 })
 
-Shiny.addCustomMessageHandler('shinyswatch-pick-theme', function (theme) {
-
-  const sheets = ['bootswatch.min.css', 'shinyswatch-ionRangeSlider.css']
-
-  document.documentElement.dataset.shinyswatchTransitioning = 'true'
-
-  for (const sheet of sheets) {
-    replaceShinyswatchCSS({ theme, sheet })
+Shiny.addCustomMessageHandler(
+  'shinyswatch-pick-theme',
+  function ({ theme, sheets }) {
+    document.documentElement.dataset.shinyswatchTransitioning = 'true'
+    sheets.forEach(sheet => replaceShinyswatchCSS({ theme, sheet }))
   }
-})
+)
 
 function replaceShinyswatchCSS ({ theme, sheet }) {
   const oldLinks = document.querySelectorAll(
