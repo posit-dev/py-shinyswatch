@@ -81,7 +81,6 @@ function replaceShinyswatchCSS ({ theme, sheet }) {
   document.body.addEventListener(
     'transitionend',
     () => {
-      console.log('transitionend')
       clearTimeout(backup)
       cleanup()
     },
