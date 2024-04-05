@@ -21,7 +21,6 @@ Shiny.addCustomMessageHandler('shinyswatch-refresh', function (message) {
 })
 
 Shiny.addCustomMessageHandler('shinyswatch-pick-theme', function (theme) {
-  const base_dir = `${subdir}/${theme}`
 
   const sheets = ['bootswatch.min.css', 'shinyswatch-ionRangeSlider.css']
 
@@ -33,6 +32,8 @@ Shiny.addCustomMessageHandler('shinyswatch-pick-theme', function (theme) {
 })
 
 function replaceShinyswatchCSS ({ theme, sheet }) {
+  const base_dir = `${subdir}/${theme}`
+
   const oldLinks = document.querySelectorAll(
     `link[data-shinyswatch-css="${sheet}"]`
   )
