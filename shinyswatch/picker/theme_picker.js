@@ -5,7 +5,7 @@
 const sw_script = document.querySelector('script[src*="shinyswatch-js"')
 const subdir = sw_script.src
   .replace(/\/bootstrap.*js$/, '')
-  .replace('shinyswatch-js', 'shinyswatch-css-all')
+  .replace('shinyswatch-js', 'shinyswatch-all-css')
 
 const display_warning = setTimeout(function () {
   window.document.querySelector('#shinyswatch_picker_warning').style.display =
