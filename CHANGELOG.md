@@ -9,9 +9,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Internal changes
 
-* We've restructured the dependencies used to provide a shinyswatch theme.  This change should not affect users of shinyswatch, but it will prevent accidentally including two shinyswatch themes on the same page. (#32)
+* We've restructured the dependencies used to provide a shinyswatch theme.  This change should not affect users of shinyswatch, but it will prevent accidentally including more than one shinyswatch themes on the same page. (#32)
 
-* The theme picker now transitions between themes more smoothly. That said, we do not recommend using the theme picker only while developing your app. (#32)
+* The theme picker now transitions between themes more smoothly. That said, we do still recommend using the theme picker only while developing your app. (#32)
 
 ## [0.5.1] - 2024-03-07
 
