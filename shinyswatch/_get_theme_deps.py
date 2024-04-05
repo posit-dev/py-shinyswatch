@@ -69,12 +69,7 @@ def get_theme_deps(name: BSW5_THEME_NAME) -> list[HTMLDependency]:
         # _Disable_ bootstrap html dep
         # Prevents  bootstrap from being loaded at a later time (Ex: shiny.ui.card() https://github.com/rstudio/py-shiny/blob/d08af1a8534677c7026b60559cd5eafc5f6608d7/shiny/ui/_navs.py#L983)
         *suppress_shiny_bootstrap(),
-        HTMLDependency(
-            name="shinyswatch-js",
-            version=bsw5_version,
-            source={"package": "shinyswatch", "subdir": bs5_path},
-            script={"src": "bootstrap.bundle.min.js"},
-        ),
+        dep_shinyswatch_bootstrap_js(),
         # Shinyswatch - bootstrap / bootswatch css
         HTMLDependency(
             name="shinyswatch-css",
@@ -101,12 +96,6 @@ def deps_shinyswatch_all(initial: str = "superhero") -> list[HTMLDependency]:
     return [
         *suppress_shiny_bootstrap(),
         dep_shinyswatch_bootstrap_js(),
-        HTMLDependency(
-            name="shinyswatch-js",
-            version=bsw5_version,
-            source={"package": "shinyswatch", "subdir": bs5_path},
-            script={"src": "bootstrap.bundle.min.js"},
-        ),
         HTMLDependency(
             name="shinyswatch-all-css",
             version=bsw5_version,
