@@ -2,10 +2,12 @@
 // to figure out where the htmldependency has ended up
 // e.g. src="lib/shinyswatch-js-5.3.1/bootstrap.bundle.min.js"
 // avoids having to know the shinswatch bootstrap version or lib location
-const sw_script = document.querySelector('script[src*="shinyswatch-js"')
-const subdir = sw_script.src
-  .replace(/\/bootstrap.*js$/, '')
-  .replace('shinyswatch-js', 'shinyswatch-all-css')
+function getShinyswatchLibPath() {
+  const sw_script = document.querySelector('script[src*="shinyswatch-js"')
+  return sw_script.src
+    .replace(/\/bootstrap.*js$/, '')
+    .replace('shinyswatch-js', 'shinyswatch-all-css')
+}
 
 const display_warning = setTimeout(function () {
   window.document.querySelector('#shinyswatch_picker_warning').style.display =
@@ -32,8 +34,6 @@ Shiny.addCustomMessageHandler('shinyswatch-pick-theme', function (theme) {
 })
 
 function replaceShinyswatchCSS ({ theme, sheet }) {
-  const base_dir = `${subdir}/${theme}`
-
   const oldLinks = document.querySelectorAll(
     `link[data-shinyswatch-css="${sheet}"]`
   )
@@ -44,7 +44,7 @@ function replaceShinyswatchCSS ({ theme, sheet }) {
     link = document.createElement('link')
     link.rel = 'stylesheet'
     link.type = 'text/css'
-    link.href = `${base_dir}/${sheet}`
+    link.href = `${getShinyswatchLibPath()}/${theme}/${sheet}`
     link.dataset.shinyswatchCss = sheet
     link.dataset.shinyswatchTheme = theme
     document.body.appendChild(link)
