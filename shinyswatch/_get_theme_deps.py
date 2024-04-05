@@ -15,6 +15,7 @@ bs5_path = os.path.join(os.path.dirname(__file__), "bs5")
 
 def suppress_shiny_bootstrap() -> list[HTMLDependency]:
     return [
+        # shiny > 0.8.1 will (likely) split bootstrap into separate js/css deps
         HTMLDependency(
             name="bootstrap-js",
             version=shiny_bootstrap_version + ".9999",
@@ -23,11 +24,13 @@ def suppress_shiny_bootstrap() -> list[HTMLDependency]:
             name="bootstrap-css",
             version=shiny_bootstrap_version + ".9999",
         ),
+        # shiny <= 0.8.1 loads bootstrap as a single dep
         HTMLDependency(
             name="bootstrap",
             version=shiny_bootstrap_version + ".9999",
         ),
         # Disable ionRangeSlider
+        # TODO: Remove this when ionRangeSlider no longer requires Sass for BS5+
         HTMLDependency(
             name="preset-shiny-ionrangeslider",
             version="9999",
