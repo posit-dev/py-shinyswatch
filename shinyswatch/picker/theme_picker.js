@@ -26,9 +26,13 @@ Shiny.addCustomMessageHandler('shinyswatch-pick-theme', function (theme) {
   const sheets = ['bootswatch.min.css', 'shinyswatch-ionRangeSlider.css']
 
   for (const sheet of sheets) {
-    const oldLink = document.querySelector(
+    const oldLinks = document.querySelectorAll(
       `link[data-shinyswatch-css="${sheet}"]`
     )
+
+    // If we have more than one link, all but the last are already scheduled for
+    // removal. The current update will only copy and remove the last one.
+    const oldLink = oldLinks[oldLinks.length - 1]
 
     if (oldLink) {
       if (oldLink.dataset.shinyswatchTheme !== theme) {
