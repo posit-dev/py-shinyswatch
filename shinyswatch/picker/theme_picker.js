@@ -1,9 +1,11 @@
-// Get the source path of the current script
+// Get the source path of the shinyswatch-js script
 // to figure out where the htmldependency has ended up
-const scripts = document.getElementsByTagName('script');
-const currentScriptSrc = scripts[scripts.length - 1].src;
-const hostWithSubdir = currentScriptSrc.replace(/\/shinyswatch-theme-picker.+/, '');
-const subdir = hostWithSubdir.replace(window.href, '');
+// e.g. src="lib/shinyswatch-js-5.3.1/bootstrap.bundle.min.js"
+// avoids having to know the shinswatch bootstrap version or lib location
+const sw_script = document.querySelector('script[src*="shinyswatch-js"');
+const subdir = sw_script.src
+  .replace(/\/bootstrap.*js$/, '')
+  .replace("shinyswatch-js", "shinyswatch-css-all");
 
 const display_warning = setTimeout(function() {
   window.document.querySelector("#shinyswatch_picker_warning").style.display = 'block';
@@ -17,22 +19,32 @@ Shiny.addCustomMessageHandler('shinyswatch-refresh', function(message) {
   window.location.reload();
 });
 
-Shiny.addCustomMessageHandler('shinyswatch-pick-theme', function({ theme, version }) {
-  const base_dir = `${subdir}/shinyswatch-all-css-${version}/${theme}`;
+Shiny.addCustomMessageHandler('shinyswatch-pick-theme', function(theme) {
+  const base_dir = `${subdir}/${theme}`;
 
   const sheets = ["bootswatch.min.css", "shinyswatch-ionRangeSlider.css"];
 
   for (const sheet of sheets) {
-    let oldLink = document.querySelector(`link[data-shinyswatch="${sheet}"]`);
+    const oldLink = document.querySelector(`link[data-shinyswatch-css="${sheet}"]`);
+
     if (oldLink) {
-      oldLink.href = `${base_dir}/${sheet}`;
-    } else {
-      link = document.createElement('link');
-      link.rel = 'stylesheet';
-      link.type = 'text/css';
-      link.href = `${base_dir}/${sheet}`;
-      link.dataset.shinyswatch = sheet;
-      document.body.appendChild(link);
+      if (oldLink.dataset.shinyswatchTheme !== theme) {
+        const newLink = oldLink.cloneNode(true);
+        newLink.href = newLink.href.replace(oldLink.dataset.shinyswatchTheme, theme);
+        newLink.href = newLink.href.replace(window.location.href, '');
+        newLink.dataset.shinyswatchTheme = theme;
+        oldLink.parentNode.insertBefore(newLink, oldLink.nextSibling);
+        setTimeout(() => oldLink.remove(), 200);
+      }
+      continue;
     }
+
+    link = document.createElement('link');
+    link.rel = 'stylesheet';
+    link.type = 'text/css';
+    link.href = `${base_dir}/${sheet}`;
+    link.dataset.shinyswatchCSS = sheet;
+    link.dataset.shinyswatchTheme = theme;
+    document.body.appendChild(link);
   }
 })

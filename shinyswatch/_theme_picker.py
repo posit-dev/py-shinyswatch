@@ -3,7 +3,7 @@ from shiny import reactive, ui
 from shiny.session import require_active_session
 
 from . import __version__ as shinyswatch_version
-from ._bsw5 import BSW5_THEME_NAME, bsw5_themes, bsw5_version
+from ._bsw5 import BSW5_THEME_NAME, bsw5_themes
 from ._get_theme_deps import deps_shinyswatch_all
 
 default_theme_name = "superhero"
@@ -50,7 +50,13 @@ def theme_picker_ui() -> ui.TagChild:
             selected=None,
             choices=[],
         ),
-        deps_shinyswatch_all(),
+        theme_picker_deps(default_theme_name),
+    )
+
+
+def theme_picker_deps(initial: str = "superhero") -> list[HTMLDependency]:
+    return [
+        *deps_shinyswatch_all(initial),
         HTMLDependency(
             name="shinyswatch-theme-picker",
             version=shinyswatch_version,
@@ -58,7 +64,7 @@ def theme_picker_ui() -> ui.TagChild:
             stylesheet={"href": "theme_picker.css"},
             script={"src": "theme_picker.js"},
         ),
-    )
+    ]
 
 
 def theme_picker_server() -> None:
@@ -84,10 +90,7 @@ def theme_picker_server() -> None:
 
         await session.send_custom_message(
             "shinyswatch-pick-theme",
-            {
-                "theme": input.shinyswatch_theme_picker(),
-                "version": bsw5_version,
-            },
+            input.shinyswatch_theme_picker(),
         )
 
     @reactive.effect
