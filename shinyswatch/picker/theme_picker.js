@@ -74,7 +74,7 @@ Shiny.addCustomMessageHandler('shinyswatch-pick-theme', function (theme) {
     link.rel = 'stylesheet'
     link.type = 'text/css'
     link.href = `${base_dir}/${sheet}`
-    link.dataset.shinyswatchCSS = sheet
+    link.dataset.shinyswatchCss = sheet
     link.dataset.shinyswatchTheme = theme
     document.body.appendChild(link)
   }
