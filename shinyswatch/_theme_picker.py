@@ -8,14 +8,8 @@ from . import __version__ as shinyswatch_version
 from ._bsw5 import BSW5_THEME_NAME, bsw5_themes
 from ._get_theme_deps import deps_shinyswatch_all, deps_shinyswatch_css_files
 
-default_theme_name = "superhero"
 
-theme_name: reactive.Value[BSW5_THEME_NAME] = reactive.Value(default_theme_name)
-# Use a counter to force the new theme to be registered as a dependency
-counter: reactive.Value[int] = reactive.Value(0)
-
-
-def theme_picker_ui() -> ui.TagChild:
+def theme_picker_ui(default: BSW5_THEME_NAME = "superhero") -> ui.TagChild:
     """
     Theme picker - UI
 
@@ -26,6 +20,11 @@ def theme_picker_ui() -> ui.TagChild:
     * All simultaneous theme picker users on the same Shiny server will see the same theme. This only is an issue when you are sharing the same Shiny server.
     * Do not include more than one theme picker in your app.
     * Do not call the theme picker UI / server inside a module.
+
+    Parameters
+    ----------
+    default
+        The default theme to be selected when the theme picker is first loaded.
 
     Returns
     -------
@@ -49,10 +48,10 @@ def theme_picker_ui() -> ui.TagChild:
             id="shinyswatch_theme_picker",
             label="Select a theme:",
             # TODO-barret; selected
-            selected=None,
-            choices=[],
+            selected=default,
+            choices=bsw5_themes,
         ),
-        theme_picker_deps(default_theme_name),
+        theme_picker_deps(default),
     )
 
 
@@ -88,7 +87,6 @@ def theme_picker_server() -> None:
     @reactive.effect
     @reactive.event(input.shinyswatch_theme_picker)
     async def _():
-        counter.set(counter() + 1)
 
         await session.send_custom_message(
             "shinyswatch-pick-theme",
@@ -100,10 +98,4 @@ def theme_picker_server() -> None:
 
     @reactive.effect
     async def _():
-        ui.update_selectize(
-            "shinyswatch_theme_picker",
-            selected=theme_name(),
-            choices=bsw5_themes,
-        )
-        # Disable the warning message
         await session.send_custom_message("shinyswatch-hide-warning", {})

@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [UNRELEASED] - YYYY-MM-DD
 
+### New features
+
+* `shinyswatch.theme_picker_ui()` gains a `default` argument to set the initial theme. (#22)
+
 ### Internal changes
 
 * We've restructured the dependencies used to provide a shinyswatch theme.  This change should not affect users of shinyswatch, but it will prevent accidentally including more than one shinyswatch themes on the same page. (#32)
