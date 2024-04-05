@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from htmltools import HTMLDependency
 from shiny import reactive, ui
 from shiny.session import require_active_session
