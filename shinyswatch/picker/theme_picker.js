@@ -34,6 +34,8 @@ Shiny.addCustomMessageHandler('shinyswatch-pick-theme', function (theme) {
     // removal. The current update will only copy and remove the last one.
     const oldLink = oldLinks[oldLinks.length - 1]
 
+      document.documentElement.dataset.shinyswatchTransitioning = "true"
+
     if (oldLink) {
       if (oldLink.dataset.shinyswatchTheme !== theme) {
         const newLink = oldLink.cloneNode(true)
@@ -44,10 +46,13 @@ Shiny.addCustomMessageHandler('shinyswatch-pick-theme', function (theme) {
         newLink.href = newLink.href.replace(window.location.href, '')
         newLink.dataset.shinyswatchTheme = theme
         oldLink.parentNode.insertBefore(newLink, oldLink.nextSibling)
-        const backup = setTimeout(() => {
-          // If the transitionend event doesn't fire, remove the old link after 500ms
-          if (oldLink.parentNode) oldLink.remove()
-        }, 500)
+
+        const cleanup = () => {
+          document.documentElement.removeAttribute('data-shinyswatch-transitioning')
+          oldLink.remove()
+        }
+
+        const backup = setTimeout(cleanup, 500)
 
         // Theme picker adds a `* { transition: ... }` rule that we can use to detect
         // when the new theme has been applied.
@@ -55,7 +60,7 @@ Shiny.addCustomMessageHandler('shinyswatch-pick-theme', function (theme) {
           'transitionend',
           () => {
             clearTimeout(backup)
-            oldLink.remove()
+            cleanup()
           },
           { once: true }
         )
