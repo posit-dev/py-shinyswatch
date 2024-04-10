@@ -1,0 +1,3 @@
+[data-shinyswatch-transitioning] * {
+  transition: all var(--shinyswatch-transition-duration, 100ms) ease-in-out;
+}

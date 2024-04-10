@@ -1,19 +1,15 @@
-from htmltools import HTMLDependency, TagList
-from shiny import reactive, render, req, ui
+from __future__ import annotations
+
+from htmltools import HTMLDependency
+from shiny import reactive, ui
 from shiny.session import require_active_session
 
+from . import __version__ as shinyswatch_version
 from ._bsw5 import BSW5_THEME_NAME, bsw5_themes
-from ._get_theme_deps import get_theme_deps
-from ._shiny import base_dep_version
-
-default_theme_name = "superhero"
-
-theme_name: reactive.Value[BSW5_THEME_NAME] = reactive.Value(default_theme_name)
-# Use a counter to force the new theme to be registered as a dependency
-counter: reactive.Value[int] = reactive.Value(0)
+from ._get_theme_deps import deps_shinyswatch_all, deps_shinyswatch_css_files
 
 
-def theme_picker_ui() -> ui.TagChild:
+def theme_picker_ui(default: BSW5_THEME_NAME = "superhero") -> ui.TagChild:
     """
     Theme picker - UI
 
@@ -24,6 +20,11 @@ def theme_picker_ui() -> ui.TagChild:
     * All simultaneous theme picker users on the same Shiny server will see the same theme. This only is an issue when you are sharing the same Shiny server.
     * Do not include more than one theme picker in your app.
     * Do not call the theme picker UI / server inside a module.
+
+    Parameters
+    ----------
+    default
+        The default theme to be selected when the theme picker is first loaded.
 
     Returns
     -------
@@ -43,31 +44,28 @@ def theme_picker_ui() -> ui.TagChild:
             style="color: var(--bs-danger); background-color: var(--bs-light); display: none;",
             id="shinyswatch_picker_warning",
         ),
-        ui.tags.script(
-            """
-            (function() {
-                const display_warning = setTimeout(function() {
-                    window.document.querySelector("#shinyswatch_picker_warning").style.display = 'block';
-                }, 1000);
-                Shiny.addCustomMessageHandler('shinyswatch-hide-warning', function(message) {
-                    window.clearTimeout(display_warning);
-                });
-                Shiny.addCustomMessageHandler('shinyswatch-refresh', function(message) {
-                    window.location.reload();
-                });
-            })()
-            """
-        ),
         ui.input_select(
             id="shinyswatch_theme_picker",
             label="Select a theme:",
             # TODO-barret; selected
-            selected=None,
-            choices=[],
+            selected=default,
+            choices=bsw5_themes,
         ),
-        get_theme_deps(default_theme_name),
-        ui.output_ui("shinyswatch_theme_deps"),
+        theme_picker_deps(default),
     )
+
+
+def theme_picker_deps(initial: str = "superhero") -> list[HTMLDependency]:
+    return [
+        *deps_shinyswatch_all(initial),
+        HTMLDependency(
+            name="shinyswatch-theme-picker",
+            version=shinyswatch_version,
+            source={"package": "shinyswatch", "subdir": "picker"},
+            stylesheet={"href": "theme_picker.css"},
+            script={"src": "theme_picker.js"},
+        ),
+    ]
 
 
 def theme_picker_server() -> None:
@@ -85,38 +83,19 @@ def theme_picker_server() -> None:
 
     session = require_active_session(None)
     input = session.input
-    output = session.output
 
-    @reactive.Effect
+    @reactive.effect
     @reactive.event(input.shinyswatch_theme_picker)
     async def _():
-        counter.set(counter() + 1)
-        if theme_name() != input.shinyswatch_theme_picker():
-            theme_name.set(input.shinyswatch_theme_picker())
-            await session.send_custom_message("shinyswatch-refresh", {})
 
-    @output
-    @render.ui
-    def shinyswatch_theme_deps():  # pyright: ignore[reportUnusedFunction]
-        req(theme_name())
-
-        # Get the theme dependencies and set them to a version that will always be registered
-        theme_deps = get_theme_deps(theme_name())
-        incremented_version = HTMLDependency(
-            name="VersionOnly",
-            version=f"{base_dep_version}.{counter()}",
-        ).version
-        for theme_dep in theme_deps:
-            theme_dep.version = incremented_version
-        # Return dependencies in a TagList so they can all be utilized
-        return TagList(theme_deps)
-
-    @reactive.Effect
-    async def _():
-        ui.update_selectize(
-            "shinyswatch_theme_picker",
-            selected=theme_name(),
-            choices=bsw5_themes,
+        await session.send_custom_message(
+            "shinyswatch-pick-theme",
+            {
+                "theme": input.shinyswatch_theme_picker(),
+                "sheets": deps_shinyswatch_css_files,
+            },
         )
-        # Disable the warning message
+
+    @reactive.effect
+    async def _():
         await session.send_custom_message("shinyswatch-hide-warning", {})

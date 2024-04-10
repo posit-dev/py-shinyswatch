@@ -8,7 +8,7 @@ import shinyswatch
 app_ui = ui.page_sidebar(
     ui.sidebar(
         ui.input_slider("n", "N", min=0, max=100, value=20),
-        shinyswatch.theme_picker_ui(),
+        shinyswatch.theme_picker_ui("zephyr"),
     ),
     ui.card(ui.output_plot("plot")),
     title="Shiny Sidebar Page",
