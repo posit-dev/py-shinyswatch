@@ -1,4 +1,4 @@
-/* {bslib} version: Github (rstudio/bslib@1929f7e63197f6073085a03f926f11829b7292ea) */
+/* {bslib} version: Github (rstudio/bslib@2c87d0c8753d003fef66858235ead8c9206aefa9) */
 /* bw: 5: 5 */
 /* bsw5 theme: journal */
 @import url("https://fonts.googleapis.com/css2?family=News+Cycle:wght@400;700&display=swap");
@@ -14662,11 +14662,7 @@ pre.shiny-code {
   gap: var(--bslib-mb-spacer);
 }
 
-.bslib-gap-spacing > .bslib-mb-spacing, .bslib-gap-spacing > .form-group, .bslib-gap-spacing > p, .bslib-gap-spacing > pre {
-  margin-bottom: 0;
-}
-
-.bslib-gap-spacing > .shiny-html-output > .bslib-mb-spacing, .bslib-gap-spacing > .shiny-html-output > .form-group, .bslib-gap-spacing > .shiny-html-output > p, .bslib-gap-spacing > .shiny-html-output > pre {
+.bslib-gap-spacing > .bslib-mb-spacing, .bslib-gap-spacing > .form-group, .bslib-gap-spacing > p, .bslib-gap-spacing > pre, .bslib-gap-spacing > .shiny-html-output > .bslib-mb-spacing, .bslib-gap-spacing > .shiny-html-output > .form-group, .bslib-gap-spacing > .shiny-html-output > p, .bslib-gap-spacing > .shiny-html-output > pre, .bslib-gap-spacing > .shiny-panel-conditional > .bslib-mb-spacing, .bslib-gap-spacing > .shiny-panel-conditional > .form-group, .bslib-gap-spacing > .shiny-panel-conditional > p, .bslib-gap-spacing > .shiny-panel-conditional > pre {
   margin-bottom: 0;
 }
 
