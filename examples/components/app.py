@@ -6,7 +6,6 @@ import shinyswatch
 app_ui = ui.page_navbar(
     ui.nav_panel(
         "Navbar 1",
-        shinyswatch.theme.superhero,
         ui.layout_sidebar(
             ui.panel_sidebar(
                 ui.input_file("file", "File input:"),
@@ -42,6 +41,7 @@ app_ui = ui.page_navbar(
     ui.nav_panel("Plot", "Plot content"),
     ui.nav_panel("Table", "Table content"),
     title="shinyswatch",
+    theme=shinyswatch.theme.superhero,
 )
 
 
