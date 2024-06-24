@@ -1,7 +1,7 @@
 from __future__ import annotations
 
 from ._bsw5 import BSW5_THEME_NAME
-from ._theme_utils import ShinyswatchTheme
+from ._theme_shinyswatch import ShinyswatchTheme
 
 
 def get_theme(name: BSW5_THEME_NAME) -> ShinyswatchTheme:

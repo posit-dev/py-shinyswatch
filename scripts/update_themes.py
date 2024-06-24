@@ -157,7 +157,7 @@ def write_theme_py(presets: tuple[ShinyThemePreset, ...]) -> str:
 Targeted theme methods for all Bootswatch themes.
 """
 
-from ._theme_utils import ShinyswatchTheme as _ShinyswatchTheme
+from ._theme_shinyswatch import ShinyswatchTheme as _ShinyswatchTheme
 
 {fn_code}
 '''

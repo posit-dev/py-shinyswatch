@@ -4,7 +4,7 @@
 Targeted theme methods for all Bootswatch themes.
 """
 
-from ._theme_utils import ShinyswatchTheme as _ShinyswatchTheme
+from ._theme_shinyswatch import ShinyswatchTheme as _ShinyswatchTheme
 
 cerulean = _ShinyswatchTheme("cerulean")
 """
