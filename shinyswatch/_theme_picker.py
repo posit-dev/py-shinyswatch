@@ -8,8 +8,10 @@ from ._assert import DEPRECATED_PARAM, assert_deprecated
 from ._bsw5 import bsw5_themes, bsw5_version
 from ._get_theme_deps import deps_shinyswatch_all
 
+DEPRECATED = DEPRECATED_PARAM()
 
-def theme_picker_ui(default: DEPRECATED_PARAM = DEPRECATED_PARAM()) -> ui.TagChild:
+
+def theme_picker_ui(default: DEPRECATED_PARAM = DEPRECATED) -> ui.TagChild:
     """
     Theme picker - UI
 
