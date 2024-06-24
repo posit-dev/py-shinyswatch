@@ -1,10 +1,12 @@
 from __future__ import annotations
 
-from htmltools import HTMLDependency, Tagifiable, TagList
+import os
+
+from htmltools import HTMLDependency
+from shiny.ui import Theme
 
 from ._assert import assert_theme
-from ._bsw5 import BSW5_THEME_NAME, bsw5_theme_colors
-from ._get_theme_deps import get_theme_deps as _get_theme_deps
+from ._bsw5 import BSW5_THEME_NAME, bsw5_theme_colors, bsw5_version
 
 
 class ThemeColors:
@@ -42,18 +44,44 @@ class ThemeColors:
         return "\n".join(ret)
 
 
-class ShinyswatchTheme(Tagifiable):
+class ShinyswatchTheme(Theme):
     # Leave type definitions for pyright type stubs; Do not set values here
     name: BSW5_THEME_NAME
     colors: ThemeColors
 
     def __init__(self, name: BSW5_THEME_NAME) -> None:
         assert_theme(name=name)
-        self.name: BSW5_THEME_NAME = name
+        super().__init__(preset=name, name=name)
         self.colors = ThemeColors(name)
 
-    def __call__(self) -> list[HTMLDependency]:
-        return _get_theme_deps(self.name)
+    def __call__(self) -> HTMLDependency:
+        return super()._html_dependency()
 
-    def tagify(self) -> TagList:
-        return TagList(*self())
+    def _can_use_precompiled(self):
+        return self._version == bsw5_version and not super()._has_customizations()
+
+    def _dep_name(self) -> str:
+        return f"shinyswatch-css-{self.name}"
+
+    def _css_name(self) -> str:
+        return "bootswatch.min.css"
+
+    def _css_precompiled_path(self) -> str:
+        return os.path.join(
+            os.path.dirname(__file__),
+            "bsw5",
+            self.name,
+            self._css_name(),
+        )
+
+    def _html_dependency_precompiled(self) -> HTMLDependency:
+        return HTMLDependency(
+            name=self._dep_name(),
+            version=self._version,
+            source={
+                "package": "shinyswatch",
+                "subdir": os.path.join("bsw5", self._preset),
+            },
+            stylesheet={"href": self._css_name()},
+            all_files=False,
+        )

@@ -6,7 +6,7 @@ from shiny.session import require_active_session
 
 from ._assert import DEPRECATED_PARAM, assert_deprecated
 from ._bsw5 import bsw5_themes, bsw5_version
-from ._get_theme_deps import deps_shinyswatch_all
+from ._theme_deps import deps_shinyswatch_all
 
 DEPRECATED = DEPRECATED_PARAM()
 
