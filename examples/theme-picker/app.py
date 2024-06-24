@@ -6,11 +6,6 @@ import shinyswatch
 app_ui = ui.page_navbar(
     ui.nav(
         "Navbar 1",
-        # !! DO NOT INCLUDE THEME in `app_ui` !!
-        # shinyswatch.theme.superhero(),
-        # !! !!
-        # Include theme_picker_ui UI module somewhere in your UI
-        shinyswatch.theme_picker_ui(),
         ui.layout_sidebar(
             ui.panel_sidebar(
                 ui.input_file("file", "File input:"),
@@ -44,9 +39,13 @@ app_ui = ui.page_navbar(
     ),
     ui.nav("Plot", "Plot content"),
     ui.nav("Table", "Table content"),
-    sidebar=ui.sidebar("Sidebar content"),
+    sidebar=ui.sidebar(
+        "Sidebar content",
+        shinyswatch.theme_picker_ui(),
+    ),
     title="shinyswatch",
     inverse=True,
+    theme=shinyswatch.theme.superhero,
 )
 
 

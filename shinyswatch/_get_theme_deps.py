@@ -44,13 +44,9 @@ def deps_shinyswatch_all(initial: str = "superhero") -> list[HTMLDependency]:
 
     return [
         HTMLDependency(
-            name="shinyswatch-all-css",
+            name="shinyswatch-css-all",
             version=bsw5_version,
             source={"package": "shinyswatch", "subdir": "bsw5"},
-            stylesheet=[
-                shinyswatch_all_initial_css(initial, "bootswatch.min.css"),
-                shinyswatch_all_initial_css(initial, "shinyswatch-ionRangeSlider.css"),
-            ],  # type: ignore
             all_files=True,
         ),
     ]
@@ -59,6 +55,5 @@ def deps_shinyswatch_all(initial: str = "superhero") -> list[HTMLDependency]:
 def shinyswatch_all_initial_css(theme: str, css_file: str) -> dict[str, str]:
     return {
         "href": os.path.join(theme, css_file),
-        "data-shinyswatch-css": css_file,
         "data-shinyswatch-theme": theme,
     }

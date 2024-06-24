@@ -1,18 +1,48 @@
 (function () {
+  // Stores the default link, if not one of the shinyswatch themes
+  let initialThemeLink
+
   // Get the source path of the shinyswatch-js script
   // to figure out where the htmldependency has ended up
-  // e.g. src="lib/shinyswatch-js-5.3.1/bootstrap.bundle.min.js"
+  // e.g. href="lib/shinyswatch-css-superhero-5.3.1/bootswatch.min.css"
   // avoids having to know the shinswatch bootstrap version or lib location
   function getShinyswatchLibPath() {
-    const sw_script = document.querySelector('script[src*="shinyswatch-js"')
-    return sw_script.src
-      .replace(/\/bootstrap.*js$/, '')
-      .replace('shinyswatch-js', 'shinyswatch-all-css')
+    const sw_link = document.querySelector('link[href*="shinyswatch-theme-picker"')
+    return sw_link.href
+      .replace(/\/theme_picker.css$/, '')
+      .replace('shinyswatch-theme-picker', 'shinyswatch-css-all')
   }
 
-  function replaceShinyswatchCSS({ theme, sheet }) {
+  function getInitialThemeLink() {
+    if (initialThemeLink) {
+      return initialThemeLink
+    }
+
+    const initBootstrapLink = document.querySelector('link[href$="bootstrap.min.css"]')
+    if (initBootstrapLink) {
+      initialThemeLink = initBootstrapLink
+      initialThemeLink.dataset.shinyswatchTheme = "default"
+      return initialThemeLink
+    }
+
+    const initShinyswatch = document
+      .querySelector('link[href$="bootswatch.min.css"]:not([data-shinyswatch-theme])')
+
+    if (!initShinyswatch) {
+      return
+    }
+
+    initShinyswatch.dataset.shinyswatchTheme = initShinyswatch.href
+      .match(/shinyswatch-css-(\w+)(-[\d.]+)?/)[1]
+
+    return initShinyswatch
+  }
+
+  function replaceShinyswatchCSS({ theme }) {
+    const sheet = 'bootswatch.min.css'
+
     const oldLinks = document.querySelectorAll(
-      `link[data-shinyswatch-css="${sheet}"]`
+      `link[data-shinyswatch-theme]`
     )
 
     if (oldLinks.length == 0) {
@@ -22,13 +52,19 @@
       link.rel = 'stylesheet'
       link.type = 'text/css'
       link.href = `${getShinyswatchLibPath()}/${theme}/${sheet}`
-      link.dataset.shinyswatchCss = sheet
       link.dataset.shinyswatchTheme = theme
       link.onload = () => shinyswatchTransition(true)
       document.body.appendChild(link)
       document.body.addEventListener(
         'transitionend',
-        () => shinyswatchTransition(false),
+        () => {
+          shinyswatchTransition(false)
+          // Remove the initial bootswatch theme if it exists
+          const initLink = getInitialThemeLink()
+          if (initLink) {
+            initLink.remove()
+          }
+        },
         { once: true }
       )
       return link
@@ -43,12 +79,14 @@
       return;
     }
 
-    const newLink = oldLink.cloneNode(true)
-    newLink.href = newLink.href.replace(oldLink.dataset.shinyswatchTheme, theme)
-    newLink.href = newLink.href.replace(window.location.href, '')
-    newLink.dataset.shinyswatchTheme = theme
-    newLink.onload = () => shinyswatchTransition(true)
-    oldLink.parentNode.insertBefore(newLink, oldLink.nextSibling)
+    let newLink
+    if (theme === 'default') {
+      newLink = getInitialThemeLink().cloneNode(true)
+    } else {
+      newLink = oldLink.cloneNode(true)
+      newLink.href = `${getShinyswatchLibPath()}/${theme}/${sheet}`
+      newLink.dataset.shinyswatchTheme = theme
+    }
 
     const cleanup = () => {
       shinyswatchTransition(false)
@@ -68,6 +106,8 @@
       { once: true }
     )
 
+    newLink.onload = () => shinyswatchTransition(true)
+    oldLink.parentNode.insertBefore(newLink, oldLink.nextSibling)
     return newLink
   }
 
@@ -85,6 +125,25 @@
     }
   }
 
+  function shinyswatchReportInitialTheme() {
+    if (!window.Shiny) {
+      return
+    }
+    if (typeof window.Shiny.setInputValue !== "function") {
+      setTimeout(shinyswatchReportInitialTheme, 1)
+      return
+    }
+
+    const initLink = getInitialThemeLink()
+    if (!initLink) {
+      window.Shiny.setInputValue("__shinyswatch_initial_theme", "")
+      return
+    }
+
+    const theme = initLink.dataset.shinyswatchTheme || ""
+    window.Shiny.setInputValue("__shinyswatch_initial_theme", theme)
+  }
+
   const display_warning = setTimeout(function () {
     window.document.querySelector('#shinyswatch_picker_warning').style.display =
       'block'
@@ -94,10 +153,7 @@
     window.clearTimeout(display_warning)
   })
 
-  Shiny.addCustomMessageHandler(
-    'shinyswatch-pick-theme',
-    function ({ theme, sheets }) {
-      sheets.forEach(sheet => replaceShinyswatchCSS({ theme, sheet }))
-    }
-  )
+  Shiny.addCustomMessageHandler('shinyswatch-pick-theme', replaceShinyswatchCSS)
+
+  shinyswatchReportInitialTheme()
 })()
