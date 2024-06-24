@@ -121,11 +121,55 @@ def write_bsw5_py(
 
 def code_theme_preset(preset: ShinyThemePreset) -> str:
     code = f'''
-    {preset} = _ShinyswatchTheme("{preset}")
+    {preset} = ShinyswatchTheme("{preset}")
     """
     `{preset}` Bootswatch theme
 
-    Visit [https://bootswatch.com/{preset}/](https://bootswatch.com/{preset}/) to see a Bootswatch's demo of the `{preset}` theme.
+    Visit [https://bootswatch.com/{preset}/](https://bootswatch.com/{preset}/) to see
+    Bootswatch's demo of the `{preset}` theme.
+
+    This theme object is a subclass of :class:`~shiny.ui.Theme` and can be further
+    customized with the :class:`~shiny.ui.Theme` methods. Note that customizing Shiny
+    themes requires the [libsass package](https://sass.github.io/libsass-python/).
+
+    Examples
+    --------
+
+    Shinyswatch themes must be provided to the `theme` argument of any Shiny UI page
+    function, e.g. :func:`~shiny.ui.page_fluid` or :func:`~shiny.ui.page_sidebar`, or to
+    :func:`~shiny.express.ui.page_opts` in Shiny Express.
+
+    **Shiny Express**
+
+    ```python
+    from shiny.express import ui
+    import shinyswatch
+
+    ui.page_opts(theme=shinyswatch.{preset})
+    ```
+
+    **Shiny Core**
+
+    ```python
+    from shiny import App, render, ui
+
+    import shinyswatch
+
+    app_ui = ui.page_fluid(
+        ui.input_slider("num", "Number:", min=10, max=100, value=30),
+        ui.output_text_verbatim("slider_val"),
+        theme=shinyswatch.theme.darkly,
+    )
+
+
+    def server(input):
+        @render.text
+        def slider_val():
+            return f"{{input.num()}}"
+
+
+    app = App(app_ui, server)
+    ```
 
     Attributes
     ----------
@@ -136,8 +180,9 @@ def code_theme_preset(preset: ShinyThemePreset) -> str:
 
     Returns
     -------
-    list[htmltools.HTMLDependency]
-        List of HTMLDependency objects that create a Bootswatch ({preset}) and Bootstrap 5 theme.
+    htmltools.HTMLDependency
+        When called, returns an HTMLDependency of a full Shiny Bootswatch ({preset})
+        theme.
     """
     '''
 
@@ -157,7 +202,7 @@ def write_theme_py(presets: tuple[ShinyThemePreset, ...]) -> str:
 Targeted theme methods for all Bootswatch themes.
 """
 
-from ._theme_shinyswatch import ShinyswatchTheme as _ShinyswatchTheme
+from ._theme_shinyswatch import ShinyswatchTheme
 
 {fn_code}
 '''
