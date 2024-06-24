@@ -38,7 +38,7 @@ def theme_picker_ui(default: DEPRECATED_PARAM = DEPRECATED) -> ui.TagChild:
         ),
         # Your main app content...
         title="Shiny Sidebar Page",
-        theme=shinyswatch.theme.minty, # Initial app theme
+        theme=shinyswatch.theme.minty, # Initial (optional) app theme
     )
     ```
 
