@@ -150,8 +150,8 @@ def theme_picker_server() -> None:
             theme = ui.Theme(preset=input.shinyswatch_theme_picker())
 
         if theme is not None:
-            dep = theme._html_dependency()
-            dep = session._process_ui(dep)["deps"][0]
+            dep = theme._html_dependency()  # pyright: ignore[reportPrivateUsage]
+            dep = session._process_ui(dep)["deps"][0]  # pyright: ignore[reportPrivateUsage]
 
         await session.send_custom_message(
             "shinyswatch-pick-theme",

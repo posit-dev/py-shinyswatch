@@ -3,6 +3,7 @@ import pytest
 import shiny
 
 import shinyswatch
+from shinyswatch._bsw5 import BSW5_THEME_NAME, bsw5_themes
 
 
 def test_theme_picker_deprecated_default():
@@ -10,8 +11,8 @@ def test_theme_picker_deprecated_default():
         shinyswatch.theme_picker_ui(default="deprecated")  # type: ignore
 
 
-@pytest.mark.parametrize("name", shinyswatch._bsw5.bsw5_themes)
-def test_theme_picker_expects_single_stylesheet_shinyswatch(name: str):
+@pytest.mark.parametrize("name", bsw5_themes)
+def test_theme_picker_expects_single_stylesheet_shinyswatch(name: BSW5_THEME_NAME):
     deps = shinyswatch.get_theme(name)._html_dependency()
 
     assert isinstance(deps, htmltools.HTMLDependency)
