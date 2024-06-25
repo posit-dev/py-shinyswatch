@@ -6,7 +6,7 @@ from shiny.session import require_active_session
 
 from ._assert import DEPRECATED_PARAM, assert_deprecated
 from ._bsw5 import bsw5_themes, bsw5_version
-from ._theme_deps import deps_shinyswatch_all
+from ._get_theme import get_theme
 
 DEPRECATED = DEPRECATED_PARAM()
 
@@ -79,8 +79,8 @@ def theme_picker_ui(default: DEPRECATED_PARAM = DEPRECATED) -> ui.TagChild:
             selected=None,
             choices=[],
         ),
+        ui.output_ui("shinyswatch_theme_picker_output"),
         theme_picker_deps(),
-        deps_shinyswatch_all(),
     )
 
 
@@ -127,9 +127,10 @@ def theme_picker_server() -> None:
     @reactive.effect
     @reactive.event(input.__shinyswatch_initial_theme)
     def _():
-        choices = bsw5_themes
-        if "default" in input.__shinyswatch_initial_theme():
-            choices = ["default", *choices]
+        choices = set([*ui.Theme.available_presets(), *bsw5_themes])
+        choices = sorted([str(x) for x in choices])
+        if input.__shinyswatch_initial_theme() not in choices:
+            choices = [input.__shinyswatch_initial_theme(), *choices]
 
         ui.update_select(
             "shinyswatch_theme_picker",
@@ -140,10 +141,23 @@ def theme_picker_server() -> None:
     @reactive.effect
     @reactive.event(input.shinyswatch_theme_picker)
     async def _():
+        theme = None
+        dep = None
+
+        if input.shinyswatch_theme_picker() in bsw5_themes:
+            theme = get_theme(input.shinyswatch_theme_picker())
+        elif input.shinyswatch_theme_picker() in ui.Theme.available_presets():
+            theme = ui.Theme(preset=input.shinyswatch_theme_picker())
+
+        if theme is not None:
+            dep = theme._html_dependency()
+            dep = session._process_ui(dep)["deps"][0]
+
         await session.send_custom_message(
             "shinyswatch-pick-theme",
             {
                 "theme": input.shinyswatch_theme_picker(),
+                "dep": dep,
             },
         )
 
