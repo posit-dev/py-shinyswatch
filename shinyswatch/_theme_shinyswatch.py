@@ -63,25 +63,13 @@ class ShinyswatchTheme(Theme):
     def _dep_name(self) -> str:
         return f"shinyswatch-css-{self.name}"
 
-    def _css_name(self) -> str:
+    def _dep_css_name(self) -> str:
         return "bootswatch.min.css"
 
-    def _css_precompiled_path(self) -> str:
+    def _dep_css_precompiled_path(self) -> str:
         return os.path.join(
             os.path.dirname(__file__),
             "bsw5",
             self.name,
-            self._css_name(),
-        )
-
-    def _html_dependency_precompiled(self) -> HTMLDependency:
-        return HTMLDependency(
-            name=self._dep_name(),
-            version=self._version,
-            source={
-                "package": "shinyswatch",
-                "subdir": os.path.join("bsw5", self._preset),
-            },
-            stylesheet={"href": self._css_name()},
-            all_files=False,
+            self._dep_css_name(),
         )
