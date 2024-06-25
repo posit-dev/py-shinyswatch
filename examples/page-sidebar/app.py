@@ -12,6 +12,24 @@ app_ui = ui.page_sidebar(
     ),
     ui.card(ui.output_plot("plot")),
     title="Shiny Sidebar Page",
+    theme=(
+        ui.Theme("shiny", "My Purple Theme")
+        .add_defaults(
+            primary="#7800c2",
+            secondary="#505153",
+            body_color="#2c1648",
+            body_bg="#fcefff",
+            card_bg="#f5dffa",
+        )
+        .add_rules(
+            """
+            .bslib-page-sidebar {
+                --bslib-page-sidebar-title-color: #{$body-bg};
+                --bslib-page-sidebar-title-bg: #{$body-color};
+            }
+            """
+        )
+    ),
 )
 
 
@@ -21,10 +39,13 @@ def server(input):
     @render.plot(alt="A histogram")
     def plot():
         req(input.shinyswatch_theme_picker())
-        if input.shinyswatch_theme_picker() != "default":
+        if hasattr(shinyswatch.theme, input.shinyswatch_theme_picker()):
             theme = getattr(shinyswatch.theme, input.shinyswatch_theme_picker())
             color_accent = theme.colors.primary
             color_fg = theme.colors.body_color
+        elif input.shinyswatch_theme_picker() == "My Purple Theme":
+            color_accent = "#7800c2"
+            color_fg = "#2c1648"
         else:
             color_accent = "#007BC2"
             color_fg = "#1D1F21"
