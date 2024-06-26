@@ -9,6 +9,12 @@ execute:
 
 ```{python}
 import shinylive
+
+def shinylive_example_url(name: str) -> str:
+    return shinylive.url_encode(
+        f"examples/{name}/app.py",
+        f"examples/{name}/requirements.txt",
+    )
 ```
 
 
@@ -61,7 +67,7 @@ Example Shiny application:
 <tbody><tr><td>
 
 ```{.python}
-{{< include "examples/app-darkly.py" >}}
+{{< include "examples/darkly/app.py" >}}
 ```
 
 </td><td>
@@ -79,17 +85,16 @@ Example Shiny application:
 #| layout: horizontal
 #| viewerHeight: 800
 ## file: app.py
-{{< include "examples/app-darkly.py" >}}
+{{< include "examples/darkly/app.py" >}}
 
 
 ## file: requirements.txt
-shiny
-shinyswatch
+{{< include "examples/darkly/requirements.txt" >}}
 
 ```
 :::
 
-> Note: When writing shiny apps on [shinylive.io](https://shinylive.io/py/editor/#code=NobwRAdghgtgpmAXGKAHVA6VBPMAaMAYwHsIAXOcpMAMwCdiYACAZwAsBLCbJjmVYnTJMAgujxM6lACZw6EgK4cAOhFVpUAfSVMAvEyVYoAcziaaAGyXSAFKqYODHDF1QKymlhY6y6dyMr4TIEAcoESAAwSAIwRUUwATBEAlHj2jobE7m4eFAAeHgBucgBGUGR8-mQFgamqyaqNELI0rHLFfq7uEllkORIscCwsHKTJiOkOAAK9OZNMU1LNchj5ZPMtTNVkNuPzjpJwZAp0EEw0gRAAVAm8LEwgXWQYELtMV4kAvoFN6uh6onQNg02g4A3acgaEDAnwAukA), remember to add `shinyswatch` to your `requirements.txt` file!
+> Note: When writing [shiny apps that use shinyswatch on shinylive.io](`{python} shiylive_example_url("darkly")`), remember to add `shinyswatch` to your `requirements.txt` file!
 
 
 ## Theme picker
@@ -97,7 +102,7 @@ shinyswatch
 To add a theme picker to your app, add the theme picker UI and server functions to your app's UI and server definitions.
 
 ::: {.content-visible when-format="markdown"}
-Demo: [shinylive.io](`{python} shinylive.url_encode("examples/theme-picker/app.py", "examples/theme-picker/requirements.txt")`)
+[Demo **theme picker** app on shinylive.io](`{python} shinylive_example_url("theme-picker")`).
 :::
 
 ::: {.content-visible when-format="html"}
@@ -122,7 +127,7 @@ shinyswatch themes include a `.colors` attribute that can be used to theme plots
 In the example below, try changing the theme and re-running the app to see how the plot changes.
 
 ::: {.content-visible when-format="markdown"}
-Demo: [shinylive.io](`{python} shinylive.url_encode("examples/plot-theming/app.py", "examples/plot-theming/requirements.txt")`)
+[Demo **plot theming** app on shinylive.io](`{python} shinylive_example_url("plot-theming")`).
 :::
 
 ::: {.content-visible when-format="html"}
