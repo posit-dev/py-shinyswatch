@@ -26,7 +26,7 @@ def test_themes():
         )
         assert theme_obj._can_use_precompiled(), cant_precompile
 
-        theme_deps = theme_obj()
+        theme_deps = theme_obj._html_dependency()
 
         # assert all returned html deps are HTMLDependencies
         assert isinstance(theme_deps, htmltools.HTMLDependency)
