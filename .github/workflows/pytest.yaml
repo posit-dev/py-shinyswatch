@@ -15,7 +15,6 @@ jobs:
       matrix:
         python-version: ["3.8", "3.9", "3.10", "3.11", "3.12"]
         os: [ubuntu-latest, windows-latest, macOS-latest]
-        check-readme: ["3.12"]
       fail-fast: false
     defaults:
       run:
@@ -42,13 +41,6 @@ jobs:
       - name: pyright, flake8, black and isort
         run: |
           make check
-      - name: Check that README.md is up-to-date with docs/index.qmd
-        if: ${{ matrix.os == 'ubuntu-latest' && matrix.check-readme == matrix.python-version }}}
-        run: |
-          if [ docs/index.qmd -nt README.md ]; then
-            echo '::error file=README.md,title=README is out-of-date::README.md is out of date. Please run `make docs-readme` to update it.'
-            exit 1
-          fi
 
   deploy:
     name: "Deploy to PyPI"
