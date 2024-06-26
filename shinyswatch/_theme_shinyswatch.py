@@ -2,7 +2,6 @@ from __future__ import annotations
 
 import os
 
-from htmltools import HTMLDependency
 from shiny.ui import Theme
 
 from ._assert import assert_theme
@@ -54,8 +53,11 @@ class ShinyswatchTheme(Theme):
         super().__init__(preset=name, name=name)
         self.colors = ThemeColors(name)
 
-    def __call__(self) -> HTMLDependency:
-        return super()._html_dependency()
+    def __call__(self) -> ShinyswatchTheme:
+        # We keep the callable interface for backwards compatibility, but simply return
+        # `self` rather than the HTMLDependency object. This ensures that the error
+        # raised by tagifing a Theme object still occurs even with the called interface.
+        return self
 
     def _can_use_precompiled(self):
         return self._version == bsw5_version and not super()._has_customizations()
