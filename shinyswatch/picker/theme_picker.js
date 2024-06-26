@@ -1,10 +1,11 @@
+/* globals Shiny */
 (function () {
   // Stores the default theme links, if not one of the shinyswatch themes
   // Is always an array, even if there is only one link
   /** @type {HTMLLinkElement[] | undefined | null} */
   let initialThemeLink
   /** @type {string} */
-  let initialThemeName = "default"
+  let initialThemeName = 'default'
 
   /**
    * Gets the `<link>` elements of the initial theme.
@@ -14,8 +15,8 @@
    * be a `<link>` element referring to `bootstrap.min.css`.
    * @returns {HTMLLinkElement[] | undefined}
    */
-  function getInitialThemeLink() {
-    if (typeof initialThemeLink !== "undefined") {
+  function getInitialThemeLink () {
+    if (typeof initialThemeLink !== 'undefined') {
       return initialThemeLink
     }
 
@@ -24,7 +25,7 @@
       initialThemeLink = Array.from(initShinyTheme)
       const themeNames = initialThemeLink
         .map(el => el.dataset.shinyTheme)
-        .filter(nm => nm && nm != "")
+        .filter(nm => nm && nm !== '')
 
       if (themeNames.length > 0) {
         initialThemeName = themeNames[0]
@@ -38,7 +39,7 @@
 
     const initBootstrapLink = document.querySelector('link[href$="bootstrap.min.css"]')
     if (initBootstrapLink) {
-      initBootstrapLink.dataset.shinyswatchTheme = "default"
+      initBootstrapLink.dataset.shinyswatchTheme = 'default'
       initialThemeLink = [initBootstrapLink]
       return initialThemeLink
     }
@@ -61,7 +62,7 @@
    *   code path.
    * @returns {HTMLLinkElement}
    */
-  function makeShinyswatchLink(theme, dep) {
+  function makeShinyswatchLink (theme, dep) {
     const link = document.createElement('link')
     link.rel = 'stylesheet'
     link.type = 'text/css'
@@ -80,32 +81,31 @@
    *   dependency object.
    * @returns {HTMLLinkElement | HTMLLinkElement[]}
    */
-  function replaceShinyswatchCSS({ theme, dep }) {
+  function replaceShinyswatchCSS ({ theme, dep }) {
     const oldLinks = document.querySelectorAll(
-      `link[data-shinyswatch-theme]`
+      'link[data-shinyswatch-theme]'
     )
 
     // If we have more than one link, all but the last are already scheduled for
     // removal. The current update will only copy and remove the last one.
-    let oldLink = oldLinks.length > 0 ? oldLinks[oldLinks.length - 1] : null
+    const oldLink = oldLinks.length > 0 ? oldLinks[oldLinks.length - 1] : null
 
     if (oldLink && oldLink.dataset.shinyswatchTheme === theme) {
       // The theme is already applied, so we don't need to do anything.
-      return;
+      return
     }
 
     const removeLinks = oldLink && oldLink.dataset.shinyswatchTheme === initialThemeName
-      ? "initial"
-      : "old"
-
+      ? 'initial'
+      : 'old'
 
     const cleanup = () => {
       shinyswatchTransition(false)
       switch (removeLinks) {
-        case "old":
+        case 'old':
           oldLink.remove()
           break
-        case "initial":
+        case 'initial':
           document
             .querySelectorAll(`[data-shinyswatch-theme="${initialThemeName}"]`)
             .forEach(link => link.remove())
@@ -150,7 +150,7 @@
    *
    * @param {boolean} transitioning
    */
-  function shinyswatchTransition(transitioning) {
+  function shinyswatchTransition (transitioning) {
     if (transitioning) {
       document.documentElement.dataset.shinyswatchTransitioning = 'true'
     } else {
@@ -174,31 +174,31 @@
    * When detecting the initial theme, if the initial theme is not from shinyswatch, we
    * keep a reference to its link element(s) to use when returning to the theme.
    */
-  function shinyswatchReportInitialTheme() {
+  function shinyswatchReportInitialTheme () {
     if (!window.Shiny) {
       return
     }
-    if (typeof window.Shiny.setInputValue !== "function") {
+    if (typeof window.Shiny.setInputValue !== 'function') {
       setTimeout(shinyswatchReportInitialTheme, 1)
       return
     }
 
     const initLink = getInitialThemeLink()
     if (!initLink) {
-      window.Shiny.setInputValue("__shinyswatch_initial_theme", "")
+      window.Shiny.setInputValue('__shinyswatch_initial_theme', '')
       return
     }
 
-    window.Shiny.setInputValue("__shinyswatch_initial_theme", initialThemeName)
+    window.Shiny.setInputValue('__shinyswatch_initial_theme', initialThemeName)
   }
 
-  const display_warning = setTimeout(function () {
+  const displayWarning = setTimeout(function () {
     window.document.querySelector('#shinyswatch_picker_warning').style.display =
       'block'
   }, 1000)
 
   Shiny.addCustomMessageHandler('shinyswatch-hide-warning', function (_) {
-    window.clearTimeout(display_warning)
+    window.clearTimeout(displayWarning)
   })
 
   Shiny.addCustomMessageHandler('shinyswatch-pick-theme', replaceShinyswatchCSS)
