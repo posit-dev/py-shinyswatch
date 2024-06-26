@@ -41,6 +41,12 @@ jobs:
       - name: pyright, flake8, black and isort
         run: |
           make check
+      - name: Check that README.md is up-to-date with docs/index.qmd
+        run: |
+          if [ docs/index.qmd -nt README.md ]; then
+            echo '::error file=README.md,title=README is out-of-date::README.md is out of date. Please run `make docs-readme` to update it.'
+            exit 1
+          fi
 
   deploy:
     name: "Deploy to PyPI"
