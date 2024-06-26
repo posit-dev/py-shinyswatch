@@ -1,4 +1,16 @@
-# shinyswatch
+---
+title: shinyswatch
+
+engine: python
+
+execute:
+  echo: false
+---
+
+```{python}
+import shinylive
+```
+
 
 [Bootswatch](https://bootswatch.com/) + Bootstrap 5 themes for [Shiny](https://shiny.rstudio.com/py/).
 
@@ -39,33 +51,35 @@ shinyswatch.theme.superhero
 
 Example Shiny application:
 
+::: {.content-visible when-format="markdown"}
+
+<table>
+<thead><tr>
+<th>File: <code>app.py</code></th>
+<th>Screenshot</th>
+</tr></thead>
+<tbody><tr><td>
+
+```{.python}
+{{< include "examples/app-darkly.py" >}}
+```
+
+</td><td>
+
+![darkly theme](https://raw.githubusercontent.com/rstudio/py-shinyswatch/v0.2.2/readme_darkly.png)
+
+</td></tr></tbody></table>
+
+:::
+
+::: {.content-visible when-format="html"}
 ```{shinylive-python}
 #| standalone: true
 #| components: [editor, viewer]
 #| layout: horizontal
 #| viewerHeight: 800
 ## file: app.py
-from shiny import App, Inputs, Outputs, Session, render, ui
-
-import shinyswatch
-
-app_ui = ui.page_fluid(
-    # Theme code - start
-    shinyswatch.theme.darkly,
-    # Theme code - end
-    ui.input_slider("num", "Number:", min=10, max=100, value=30),
-    ui.output_text_verbatim("slider_val"),
-)
-
-
-def server(input: Inputs, output: Outputs, session: Session):
-    @output
-    @render.text
-    def slider_val():
-        return f"{input.num()}"
-
-
-app = App(app_ui, server)
+{{< include "examples/app-darkly.py" >}}
 
 
 ## file: requirements.txt
@@ -73,6 +87,7 @@ shiny
 shinyswatch
 
 ```
+:::
 
 > Note: When writing shiny apps on [shinylive.io](https://shinylive.io/py/editor/#code=NobwRAdghgtgpmAXGKAHVA6VBPMAaMAYwHsIAXOcpMAMwCdiYACAZwAsBLCbJjmVYnTJMAgujxM6lACZw6EgK4cAOhFVpUAfSVMAvEyVYoAcziaaAGyXSAFKqYODHDF1QKymlhY6y6dyMr4TIEAcoESAAwSAIwRUUwATBEAlHj2jobE7m4eFAAeHgBucgBGUGR8-mQFgamqyaqNELI0rHLFfq7uEllkORIscCwsHKTJiOkOAAK9OZNMU1LNchj5ZPMtTNVkNuPzjpJwZAp0EEw0gRAAVAm8LEwgXWQYELtMV4kAvoFN6uh6onQNg02g4A3acgaEDAnwAukA), remember to add `shinyswatch` to your `requirements.txt` file!
 
@@ -81,98 +96,72 @@ shinyswatch
 
 To add a theme picker to your app, add the theme picker UI and server functions to your app's UI and server definitions.
 
+::: {.content-visible when-format="markdown"}
+Demo: [shinylive.io](`{python} shinylive.url_encode("examples/theme-picker/app.py", "examples/theme-picker/requirements.txt")`)
+:::
+
+::: {.content-visible when-format="html"}
 ```{shinylive-python}
 #| standalone: true
 #| components: [editor, viewer]
 #| layout: horizontal
 #| viewerHeight: 800
 ## file: app.py
-from shiny import App, Inputs, Outputs, Session, render, ui
-
-import shinyswatch
-
-app_ui = ui.page_fluid(
-    # Theme picker - start
-    shinyswatch.theme_picker_ui(),
-    # Theme picker - end
-    ui.input_slider("num", "Number:", min=10, max=100, value=30),
-    ui.output_text_verbatim("slider_val"),
-)
-
-
-def server(input: Inputs, output: Outputs, session: Session):
-    ## Theme picker - start
-    shinyswatch.theme_picker_server()
-    ## Theme picker - end
-
-    @output
-    @render.text
-    def slider_val():
-        return f"{input.num()}"
-
-
-app = App(app_ui, server)
+{{< include "examples/theme-picker/app.py" >}}
 
 
 ## file: requirements.txt
-shiny
-shinyswatch
+{{< include "examples/theme-picker/requirements.txt" >}}
 
 ```
+:::
 
 ## Plot Theming
 
 shinyswatch themes include a `.colors` attribute that can be used to theme plots or other outputs and UI elements.
 In the example below, try changing the theme and re-running the app to see how the plot changes.
 
+::: {.content-visible when-format="markdown"}
+Demo: [shinylive.io](`{python} shinylive.url_encode("examples/plot-theming/app.py", "examples/plot-theming/requirements.txt")`)
+:::
+
+::: {.content-visible when-format="html"}
 ```{shinylive-python}
 #| standalone: true
 #| components: [editor, viewer]
-#| layout: vertical
+#| layout: horizontal
 #| viewerHeight: 800
 ## file: app.py
-import matplotlib.pyplot as plt
-import numpy as np
-from shiny import App, render, req, ui
+{{< include "examples/plot-theming/app.py" >}}
 
-# Try changing the theme from minty to united
-from shinyswatch.theme import minty as shiny_theme
-
-app_ui = ui.page_fluid(
-    shiny_theme,
-    ui.input_slider("n", "N", min=0, max=100, value=20),
-    ui.card(ui.output_plot("plot"))
-)
-
-
-def server(input):
-    @render.plot(alt="A histogram")
-    def plot():
-        np.random.seed(19680801)
-        x = 100 + 15 * np.random.randn(437)
-
-        fig, ax = plt.subplots()
-        ax.hist(x, input.n(), density=True, color=shiny_theme.colors.primary)
-
-        # Theme the plot to match the current theme
-        fig.patch.set_facecolor("none")
-        ax.set_facecolor("none")
-
-        color_fg = shiny_theme.colors.body_color
-        ax.tick_params(axis="both", colors=color_fg)
-        ax.spines["bottom"].set_color(color_fg)
-        ax.spines["top"].set_color(color_fg)
-        ax.spines["left"].set_color(color_fg)
-        ax.spines["right"].set_color(color_fg)
-
-        return fig
-
-
-app = App(app_ui, server)
 
 ## file: requirements.txt
-numpy
-matplotlib
-shiny
-shinyswatch
+{{< include "examples/plot-theming/requirements.txt" >}}
+
 ```
+:::
+
+::: {.content-visible when-format="markdown"}
+## Development
+
+If you want to do development on shinyswatch for Python:
+
+```sh
+pip install -e ".[dev,test,docs]"
+```
+
+### Examples
+
+There are multiple examples in the shinyswatch repo.
+
+<!-- You can view them online at: [shinyswatch.theme.darkly](http://rstudio.github.io/py-shinyswatch/reference/theme.darkly.html) and [get_theme](http://rstudio.github.io/py-shinyswatch/reference/get_theme.html). -->
+
+To run the demos locally, you can run the examples by calling:
+
+```sh
+python3 -m shiny run examples/basic-darkly/app.py
+python3 -m shiny run examples/big-sketchy/app.py
+python3 -m shiny run examples/components/app.py
+python3 -m shiny run examples/theme-picker/app.py
+```
+:::

@@ -1,32 +1,33 @@
 # shinyswatch
 
-[Bootswatch](https://bootswatch.com/) + Bootstrap 5 themes for [Shiny](https://shiny.rstudio.com/py/).
 
+[Bootswatch](https://bootswatch.com/) + Bootstrap 5 themes for
+[Shiny](https://shiny.rstudio.com/py/).
 
 Here are just three of the **25 themes** in shinyswatch:
 
-| Minty                      | Sketchy                        | Superhero                          |
-|----------------------------|--------------------------------|------------------------------------|
+| Minty                                                                                      | Sketchy                                                                                        | Superhero                                                                                          |
+|--------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------|
 | ![Minty](https://raw.githubusercontent.com/rstudio/py-shinyswatch/v0.2.2/readme_minty.png) | ![Sketchy](https://raw.githubusercontent.com/rstudio/py-shinyswatch/v0.2.2/readme_sketchy.png) | ![Superhero](https://raw.githubusercontent.com/rstudio/py-shinyswatch/v0.2.2/readme_superhero.png) |
-
 
 ## Installation
 
-```sh
+``` sh
 pip install shinyswatch
 ```
 
 To install the latest development version from this repository:
 
-```sh
+``` sh
 pip install https://github.com/rstudio/py-shinyswatch/tarball/main
 ```
 
 ## Usage
 
-To use a theme, call the theme function and add it to your App's UI definition.
+To use a theme, add a `shinyswatch.theme` theme object to your App’s UI
+definition.
 
-```python
+``` python
 # Minty theme
 shinyswatch.theme.minty
 
@@ -40,13 +41,21 @@ shinyswatch.theme.superhero
 Example Shiny application:
 
 <table>
-    <thead><tr>
-        <th>File: <code>app.py</code></th>
-        <th>Screenshot</th>
-    </tr></thead>
-    <tbody><tr><td>
+<thead>
+<tr>
+<th>
+File: <code>app.py</code>
+</th>
+<th>
+Screenshot
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
 
-```python
+``` python
 from shiny import App, Inputs, Outputs, Session, render, ui
 
 import shinyswatch
@@ -70,27 +79,43 @@ def server(input: Inputs, output: Outputs, session: Session):
 app = App(app_ui, server)
 ```
 
-</td><td>
+</td>
+<td>
 
-![darkly theme](https://raw.githubusercontent.com/rstudio/py-shinyswatch/v0.2.2/readme_darkly.png)
+![darkly
+theme](https://raw.githubusercontent.com/rstudio/py-shinyswatch/v0.2.2/readme_darkly.png)
 
-</td></tr></tbody></table>
+</td>
+</tr>
+</tbody>
+</table>
 
-> Note: When writing shiny apps on [shinylive.io](https://shinylive.io/py/editor/#code=NobwRAdghgtgpmAXGKAHVA6VBPMAaMAYwHsIAXOcpMAMwCdiYACAZwAsBLCbJjmVYnTJMAgujxM6lACZw6EgK4cAOhD4ChrTtxYB3KGUJtVqtKgD6SpgF4mSrFADmcczQA2S6QApVTP1q5sPQMjDDI2OHgMAC84VDZseV9-ey5UBTJzFjcOWTofSGV8JiKAOSKJAAYJAEZK6qYAJkqASjxkv3tiDPTMigAPTIA3OQAjAz4CskGittUWkwhVWRpWORH8tIyJbrJeiRY4FhYOUhbEDqYAAV3ey6upCDywuBmIfyYVpmmyL3PLj5SMgKOjvGhFCAAKkavBYTBAWzIGAgfyYkKaAF8iotTOgbKJ0F4zJYOAd1nIFhAwBi8OBoPBqFIAI5KKTwcgsMKDfBEUgUKjIdiBYKGNjUgC6QA), remember to add `shinyswatch` to your `requirements.txt` file!
+> Note: When writing shiny apps on
+> [shinylive.io](https://shinylive.io/py/editor/#code=NobwRAdghgtgpmAXGKAHVA6VBPMAaMAYwHsIAXOcpMAMwCdiYACAZwAsBLCbJjmVYnTJMAgujxM6lACZw6EgK4cAOhFVpUAfSVMAvEyVYoAcziaaAGyXSAFKqYODHDF1QKymlhY6y6dyMr4TIEAcoESAAwSAIwRUUwATBEAlHj2jobE7m4eFAAeHgBucgBGUGR8-mQFgamqyaqNELI0rHLFfq7uEllkORIscCwsHKTJiOkOAAK9OZNMU1LNchj5ZPMtTNVkNuPzjpJwZAp0EEw0gRAAVAm8LEwgXWQYELtMV4kAvoFN6uh6onQNg02g4A3acgaEDAnwAukA),
+> remember to add `shinyswatch` to your `requirements.txt` file!
 
-### Theme picker
+## Theme picker
 
-To add a theme picker to your app, add the `shinyswatch.theme_picker_ui()` in place of your theme object and add `shinyswatch.theme_picker_server()` into your `server` definition.
+To add a theme picker to your app, add the theme picker UI and server
+functions to your app’s UI and server definitions.
 
-Demo: [shinylive.io](https://shinylive.io/py/editor/#code=NobwRAdghgtgpmAXGKAHVA6VBPMAaMAYwHsIAXOcpMAMwCdiYACAZwAsBLCbJjmVYnTJMAgujxMAkhFQBXMiwkB5eXIUSAynBYsOpCXUoATOHQmyOAHQjW+Aoa07cWAdyhlCba9bSoA+hZMALxMFlhQAOZwfjQANhZGABTWTKlMAMRMACpscPBMqByEANamTAC0rGRQQilp7FzYru6eGGS58H6FJaYBHIkAlHh1qZk5eXAFRaV0FUzGI6EcGFxqfiyxHCZ0yZCyMJb4TIcAcvsARqaIhxIwXEEAjAAMt1AAHo9PL0wAblDxcCCAGYnkNFmFiKp5H4KG8yH4fqZzu4+LsNlten9YocwRABt4bBATDRWKZETtVvJEFIZPJFExIWQ1NSVEy6RIWNpdKRqVodHo8dcIGkMmMOpNujM5ixqrVhfUnE03B42G1xV1pr1OXRyYNFukxRMpj1ZpUFoSRQABRlqRaWwxE0xtOBwxbE1ibbYI-6DIUikWGMiyOjCmiHECUsgYCD7QYAX0OBJ86GConQiV8fQ5ZNM+MJYDjeHA0Hg1EMAEcLIZ4OQWG04fgiKQKFRkA1nMrPAWALpAA)
+Demo:
+[shinylive.io](https://shinylive.io/py/editor/#code=NobwRAdghgtgpmAXAAjFADugdOgnmAGlQGMB7CAFzkqVQDMAnUmZAZwAsBLCXZTmdKQYVkAQUxEAkhHQBXCqyIB5eXIVEAynFatO5Ig2oATOAyKzOAHQjX+g4Wy49WAdygVi7a9YzoA+hbIALzIFjhQAOZwfnQANhZGABTWyKnIAMTIACrscPDI6JzEANamyAC0bBRQwilpHNy4ru6eWBS58H6FJaYBnIkAlAR1qZk5eXAFRaUMFcjGI6GcWNxqfqyxnCYMyZCyMJaEyIcAcvsARqaIh0Qw3EEAjAAMt1AAHo9PL8gAblDxcCCAGYnkNFmFSKp5H4qG8KH4fqZzu5+LsNlten9YocwRABt4bBATHQ2KZETtVvIUNI1IpkJCKGoUCpGfI6axtLpyCgtDo9HjrhA0hkxh1Jt0ZnNWNVakL6k4mm4POw2mKutNehyGOTBot0qKJlMerNKgtCcKAAIMtSLC2GImmNpwOGLYlsTbbBH-QaC4XCwwUWQMIV0Q4gSkULAQfaDAC+hwJPkwwTEmESvj6RC15PxECOYAouHQCBQBedFDAsaI4Gg8FoYEMAEcLIZ4JRWG04fmyJRqBXSw0eNZB4qWl480QC0WS6hYRXYwBdIA)
 
+## Plot Theming
 
+shinyswatch themes include a `.colors` attribute that can be used to
+theme plots or other outputs and UI elements. In the example below, try
+changing the theme and re-running the app to see how the plot changes.
+
+Demo:
+[shinylive.io](https://shinylive.io/py/editor/#code=NobwRAdghgtgpmAXAAjFADugdOgnmAGlQGMB7CAFzkqVQEsZ1SAnC5GKC9AG1Iu7oAjHLh59kUAM7IeFADoQGTVsggBXRrgnSI6BQDNmpGMkkALOhC1KWbAIKYizagBM4zJ3ACORNXQUKAMTIACrMWsRmUBAA5pYxyBRmcInJ8MiGxuyWFFoUpMhqilQuBkYm5pa4kgDunJFYSXDpNiowOVpSphZWAPpN8AHQmL1+yAC8hXQ4UDFwvfrcfi4AFArIG91V-WlwBOubfliW6GoUvZICbsxrkHKEyPcAcvdE7RDjAAxvUAAe4wBGT7fZAANygSzg4wATJ8AJT7CCbKZYYhQZirI6kM6nc5iCi3fH3OEIhRwoYKNz6UzuUHuFYnM5wxAHDYAAWcEGuOF4BIhFHG9zsyAsknyMWYsGJrOQVJkvJWzJlyN0WElXOMWEkcDgqwBAE4AGwADk+poB5KRyM2vwmyCBn2QAGp7QBWZAAKlU2HVLk1vogKwALABmADsluVm30dBiRD+dtkWrUgnxkkVUY2fywooJvyIjIoWEDCNl1EkdFy4zCaj2yDIvGY40qfQGcFRpEbkhwzAY6Nwkat1uQwRCu1SKXxiQKHAokQn9bUzE5bDbmYysZmc7MWrg530UGIcAbLFuEHIcGlQ+t2e1+8Px87p-u54gl7Ag+HGxPzAWCUmLa4DszTtj+3aCKQLhAT+67ZhQdDEAA1r06DorA6Z-HQkiCmAEFJK89ZPsw2E-n+lpfhIvxauglhwJIwD3Hh+QwPcAC6u7nD+KykfoMTkV+t40W+9H3PkehgOxd69FxPF8bBVGSEJdEMWA3BwPo8gSRx0lEdxRFkfJ1G0SJYC9jEZiaZJe46Y2emNgZEDrs4FBLkiMYxBSwzoHaDjoCsGDoKMdBENqzB0swloPGAuToAgKDRXAvwUGAAC+RDgNA8C0KZ3h+M48CUN2FBJVFZCUNQyXxeomgKLO+ICIICiAU1PTVHU24KFFMVxagVAlSlrFAA)
 
 ## Development
 
 If you want to do development on shinyswatch for Python:
 
-```sh
+``` sh
 pip install -e ".[dev,test,docs]"
 ```
 
@@ -102,7 +127,7 @@ There are multiple examples in the shinyswatch repo.
 
 To run the demos locally, you can run the examples by calling:
 
-```sh
+``` sh
 python3 -m shiny run examples/basic-darkly/app.py
 python3 -m shiny run examples/big-sketchy/app.py
 python3 -m shiny run examples/components/app.py
