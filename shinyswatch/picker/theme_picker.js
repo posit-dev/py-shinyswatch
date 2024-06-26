@@ -4,7 +4,7 @@
   /** @type {HTMLLinkElement[] | undefined | null} */
   let initialThemeLink
   /** @type {string} */
-  let initialThemeName = ""
+  let initialThemeName = "default"
 
   /**
    * Gets the `<link>` elements of the initial theme.
@@ -197,7 +197,7 @@
       'block'
   }, 1000)
 
-  Shiny.addCustomMessageHandler('shinyswatch-hide-warning', function (message) {
+  Shiny.addCustomMessageHandler('shinyswatch-hide-warning', function (_) {
     window.clearTimeout(display_warning)
   })
 
