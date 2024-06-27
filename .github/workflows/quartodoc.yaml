@@ -71,19 +71,16 @@ jobs:
         run: |
           make docs-ci DOCS_SUBDIR=${{ env.DOCS_SUBDIR }}
 
-      - name: Ensure docs/_site is up-to-date before push
+      - name: Commit and publish to Github Pages (on tag or push to main)
         if: github.event_name != 'pull_request'
         run: |
-          # Force rebase docs/_site
+          # Rebase docs/_site to include any changes pushed while building docs
           cd docs/_site
           git pull --rebase origin gh-pages
 
-      - name: Publish to GitHub Pages (on tag or push to main)
-        if: github.event_name != 'pull_request'
-        uses: quarto-dev/quarto-actions/publish@v2
-        with:
-          path: docs
-          render: false
-          target: gh-pages
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          # Commit and push changes
+          git config --local user.name "$GITHUB_ACTOR"
+          git config --local user.email "$GITHUB_ACTOR@users.noreply.github.com"
+          git add -A
+          git commit -m "Build docs from ${GITHUB_REF}"
+          git push origin gh-pages
