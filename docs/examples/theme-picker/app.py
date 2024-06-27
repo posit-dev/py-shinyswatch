@@ -3,18 +3,16 @@ from shiny import App, Inputs, Outputs, Session, render, ui
 import shinyswatch
 
 app_ui = ui.page_fluid(
-    # Theme picker - start
-    shinyswatch.theme_picker_ui(),
-    # Theme picker - end
+    shinyswatch.theme_picker_ui(),  # <- Add the theme picker UI to your app
     ui.input_slider("num", "Number:", min=10, max=100, value=30),
     ui.output_text_verbatim("slider_val"),
+    theme=shinyswatch.theme.zephyr,  # <- Choose an initial theme (optional)
 )
 
 
 def server(input: Inputs, output: Outputs, session: Session):
-    ## Theme picker - start
+    # Make sure your server function calls the theme picker server function
     shinyswatch.theme_picker_server()
-    ## Theme picker - end
 
     @output
     @render.text

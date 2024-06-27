@@ -6,9 +6,9 @@ from shiny import App, render, req, ui
 from shinyswatch.theme import minty as shiny_theme
 
 app_ui = ui.page_fluid(
-    shiny_theme,
     ui.input_slider("n", "N", min=0, max=100, value=20),
     ui.card(ui.output_plot("plot")),
+    theme=shiny_theme,
 )
 
 
