@@ -62,6 +62,12 @@ coverage: ## check code coverage quickly with the default Python
 	coverage html
 	$(BROWSER) htmlcov/index.html
 
+# These variables are used by docs-ci (i.e. docs-render-ci) to render the site into
+# a specific subdirectory of _site. This enables us to have multiple documentation
+# sites for the same repository, in particular to put the dev docs at `dev/`.
+DOCS_SUBDIR:=
+DOCS_OUTPUT_DIR:="_site/$(DOCS_SUBDIR)"
+
 quarto-shinylive: ## Make sure quarto-shinylive is installed
 	cd docs && (test -f _extensions/quarto-ext/shinylive/shinylive.lua || quarto install extension --no-prompt quarto-ext/shinylive)
 quarto-interlinks: ## Make sure quartodocs's interlinks is installed
@@ -71,9 +77,11 @@ docs-quartodoc: quarto-shinylive quarto-interlinks ## Build quartodoc
 	cd docs && python -m quartodoc interlinks
 docs-render: quarto-shinylive
 	cd docs && quarto render
+docs-render-ci: quarto-shinylive
+	cd docs && quarto render --no-clean --output-dir $(DOCS_OUTPUT_DIR)
 docs-watch: quarto-shinylive
 	cd docs && quarto preview
-docs-ci: docs-quartodoc docs-render ## Build quartodoc for CI
+docs-ci: docs-quartodoc docs-render-ci ## Build quartodoc for CI
 docs-preview: docs-quartodoc docs-watch ## Build quartodoc for preview
 docs-open:
 	$(BROWSER) docs/_site/index.html
