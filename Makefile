@@ -83,7 +83,7 @@ docs-watch: quarto-shinylive
 	cd docs && quarto preview
 docs-ci: docs-quartodoc docs-render-ci ## Build quartodoc for CI
 docs-readme: README.md ## Build README.md from index.qmd
-	quarto render docs/index.qmd --to gfm --output README.md --output-dir .
+	quarto render docs/index.qmd --output README.md --output-dir . --profile readme
 docs-preview: docs-quartodoc docs-watch ## Build quartodoc for preview
 docs-open:
 	$(BROWSER) docs/_site/index.html
