@@ -4,13 +4,8 @@ from shiny import App, render, ui
 import shinyswatch
 
 app_ui = ui.page_navbar(
-    ui.nav(
+    ui.nav_panel(
         "Navbar 1",
-        # !! DO NOT INCLUDE THEME in `app_ui` !!
-        # shinyswatch.theme.superhero(),
-        # !! !!
-        # Include theme_picker_ui UI module somewhere in your UI
-        shinyswatch.theme_picker_ui(),
         ui.layout_sidebar(
             ui.panel_sidebar(
                 ui.input_file("file", "File input:"),
@@ -25,7 +20,7 @@ app_ui = ui.page_navbar(
             ),
             ui.panel_main(
                 ui.navset_tab(
-                    ui.nav(
+                    ui.nav_panel(
                         "Tab 1",
                         ui.output_table("table"),
                         ui.tags.h4("Verbatim text output"),
@@ -36,17 +31,21 @@ app_ui = ui.page_navbar(
                         ui.tags.h4("Header 4"),
                         ui.tags.h5("Header 5"),
                     ),
-                    ui.nav("Tab 2", "Tab 2 content"),
-                    ui.nav("Tab 3", "Tab 3 content"),
+                    ui.nav_panel("Tab 2", "Tab 2 content"),
+                    ui.nav_panel("Tab 3", "Tab 3 content"),
                 )
             ),
         ),
     ),
-    ui.nav("Plot", "Plot content"),
-    ui.nav("Table", "Table content"),
-    sidebar=ui.sidebar("Sidebar content"),
+    ui.nav_panel("Plot", "Plot content"),
+    ui.nav_panel("Table", "Table content"),
+    sidebar=ui.sidebar(
+        "Sidebar content",
+        shinyswatch.theme_picker_ui(),
+    ),
     title="shinyswatch",
     inverse=True,
+    theme=shinyswatch.theme.superhero,
 )
 
 

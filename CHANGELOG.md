@@ -7,6 +7,19 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased] - YYYY-MM-DD
 
+### Breaking changes
+
+* shinyswatch now uses the newly-introduced `shiny.ui.Theme()` class to define themes. As a result, `shinyswatch.theme.{name}` objects can no longer be added anywhere in the app's UI. Instead, pass a shinyswatch theme to the `theme` argument of any `shiny.ui.page_*()` functions (Shiny Core) or to `shiny.express.ui.page_opts()` (Shiny Express). (#39)
+
+* The `default` argument of `theme_picker_ui()` is now deprecated. Instead, pass the initial theme to the `theme` argument of any `shiny.ui.page_*()` functions (Shiny Core) or to `shiny.express.ui.page_opts()` (Shiny Express). This change separates the initial theme selection from the placement of the theme picker input. (#39)
+
+* `shinyswatch.get_theme_deps()` was removed from the pacakge. If needed, use the `._html_dependency()` method of the theme object. (#39)
+
+### New features
+
+* As mentioned above, shinyswatch now uses the `shiny.ui.Theme()` class to define themes, making shinyswatch themes customizable using the `.add_defaults()`, `.add_rules()` and other methods of the `shiny.ui.Theme()` class. Customized themes are recompiled from Sass to CSS, which requires the [libsass package](https://sass.github.io/libsass-python/). (#39)
+
+* The theme picker now includes Shiny's default theme (as `"shiny"`) and bare Bootstrap (as `"bootstrap"`) as theme options, in addition to the Bootswatch themes. If the initial app theme is a custom `shiny.ui.Theme()`, the custom theme is also included in the theme picker options. (#39)
 
 ## [0.6.1] - 2024-04-23
 

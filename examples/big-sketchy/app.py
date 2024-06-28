@@ -6,12 +6,6 @@ from shiny.ui import h2, tags
 import shinyswatch
 
 app_ui = ui.page_fluid(
-    # Theme code - start
-    # Add the Theme's HTML Dependency object in the UI code
-    shinyswatch.get_theme("sketchy"),
-    # # Equivalent to:
-    # shinyswatch.theme.sketchy,
-    # Theme code - end
     ui.panel_title("Changing the values of inputs from the server"),
     ui.row(
         ui.column(
@@ -93,6 +87,7 @@ app_ui = ui.page_fluid(
             ),
         ),
     ),
+    theme=shinyswatch.get_theme("sketchy"),
 )
 
 

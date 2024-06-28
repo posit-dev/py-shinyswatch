@@ -1,9 +1,6 @@
 {
-    "ignore": ["build", "docs"],
+    "ignore": ["build", "docs", "scripts"],
     "typeCheckingMode": "basic",
-    "strict": [
-        "shinyswatch/",
-        "scripts/",
-    ],
+    "strict": ["shinyswatch/"],
     "reportImportCycles": false
 }
