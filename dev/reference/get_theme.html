@@ -147,12 +147,6 @@ ul.task-list li input[type="checkbox"] {
  <span class="menu-text">get_theme</span></a>
   </div>
 </li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../reference/get_theme_deps.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">get_theme_deps</span></a>
-  </div>
-</li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
@@ -386,8 +380,8 @@ ul.task-list li input[type="checkbox"] {
 <h2 class="anchored" data-anchor-id="returns">Returns</h2>
 <table class="caption-top table">
 <colgroup>
-<col style="width: 58%">
-<col style="width: 41%">
+<col style="width: 60%">
+<col style="width: 39%">
 </colgroup>
 <thead>
 <tr class="header">
@@ -418,7 +412,6 @@ import shinyswatch
 app_ui = ui.page_navbar(
     ui.nav_panel(
         "Navbar 1",
-        shinyswatch.get_theme("superhero"),
         ui.layout_sidebar(
             ui.panel_sidebar(
                 ui.input_file("file", "File input:"),
@@ -454,6 +447,7 @@ app_ui = ui.page_navbar(
     ui.nav_panel("Plot", "Plot content"),
     ui.nav_panel("Table", "Table content"),
     title="shinyswatch",
+    theme=shinyswatch.get_theme("superhero"),
 )
 
 
