@@ -74,13 +74,16 @@ jobs:
       - name: Commit and publish to Github Pages (on tag or push to main)
         if: github.event_name != 'pull_request'
         run: |
-          # Rebase docs/_site to include any changes pushed while building docs
           cd docs/_site
-          git pull --rebase origin gh-pages
 
-          # Commit and push changes
+          # Commit changes from this build
           git config --local user.name "$GITHUB_ACTOR"
           git config --local user.email "$GITHUB_ACTOR@users.noreply.github.com"
           git add -A
           git commit -m "Build docs from ${GITHUB_REF}"
+
+          # Rebase to include any changes pushed while building docs
+          git pull --rebase origin gh-pages
+
+          # Deploy site by pushing to gh-pages
           git push origin gh-pages
