@@ -1,6 +1,8 @@
 # shinyswatch
 
 
+<!-- DO NOT EDIT BY HAND: Edit docs/index.qmd and run `make docs-readme` to update -->
+
 [Bootswatch](https://bootswatch.com/) + Bootstrap 5 themes for
 [Shiny](https://shiny.rstudio.com/py/).
 
