@@ -87,3 +87,11 @@ jobs:
 
           # Deploy site by pushing to gh-pages
           git push origin gh-pages
+
+      - name: Check that README.md is up-to-date
+        run: |
+          make docs-readme
+          if git diff --name-only HEAD | grep -q 'README.md'; then
+            echo '::error file=README.md,title=README is out-of-date::README.md is out of date. Please run `make docs-readme` to update it.'
+            exit 1
+          fi
