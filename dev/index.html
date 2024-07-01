@@ -152,11 +152,25 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">shinyswatch</h1>
+</div>
 
 
 
-<section id="shinyswatch" class="level1">
-<h1>shinyswatch</h1>
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
 <p><a href="https://bootswatch.com/">Bootswatch</a> + Bootstrap 5 themes for <a href="https://shiny.rstudio.com/py/">Shiny</a>.</p>
 <p>Here are just three of the <strong>25 themes</strong> in shinyswatch:</p>
 <table class="caption-top table">
@@ -208,11 +222,9 @@ from shiny import App, Inputs, Outputs, Session, render, ui
 import shinyswatch
 
 app_ui = ui.page_fluid(
-    # Theme code - start
-    shinyswatch.theme.darkly,
-    # Theme code - end
     ui.input_slider("num", "Number:", min=10, max=100, value=30),
     ui.output_text_verbatim("slider_val"),
+    theme=shinyswatch.theme.darkly,  # &lt;- Use a shinyswatch theme here
 )
 
 
@@ -226,12 +238,14 @@ def server(input: Inputs, output: Outputs, session: Session):
 app = App(app_ui, server)
 
 
+
 ## file: requirements.txt
 shiny
 shinyswatch
+
 </code></pre>
 <blockquote class="blockquote">
-<p>Note: When writing shiny apps on <a href="https://shinylive.io/py/editor/#code=NobwRAdghgtgpmAXGKAHVA6VBPMAaMAYwHsIAXOcpMAMwCdiYACAZwAsBLCbJjmVYnTJMAgujxM6lACZw6EgK4cAOhFVpUAfSVMAvEyVYoAcziaaAGyXSAFKqYODHDF1QKymlhY6y6dyMr4TIEAcoESAAwSAIwRUUwATBEAlHj2jobE7m4eFAAeHgBucgBGUGR8-mQFgamqyaqNELI0rHLFfq7uEllkORIscCwsHKTJiOkOAAK9OZNMU1LNchj5ZPMtTNVkNuPzjpJwZAp0EEw0gRAAVAm8LEwgXWQYELtMV4kAvoFN6uh6onQNg02g4A3acgaEDAnwAukA">shinylive.io</a>, remember to add <code>shinyswatch</code> to your <code>requirements.txt</code> file!</p>
+<p>Note: When writing <a href="https://shinylive.io/py/editor/#code=NobwRAdghgtgpmAXAAjFADugdOgnmAGlQGMB7CAFzkqVQDMAnUmZAZwAsBLCXZTmdKQYVkAQUxEAkhHQBXCqyIB5eXIVEAynFatO5Ig2oATOAyKzOAHQjX+g4Wy49WAdygVi7a9YzoA+hbIALzIFjhQAOZwfnQANhZGABTWyKmhnFjcan6ssZwmDMmQsjCWhMhlAHIlAEamiGVEMNxBAIwADE1QAB5t7Z3IAG5Q8XBBAMztAJQEKWlhpKryflTdFH6DpjXu-EW5+aYbI2Uzc6kU7HDwQRzcuK7unlgXV3BYRlAMANaxuETIAGJkAAeAC0yAAqqw4MgoI47g8POxkC94MhLoZrFNvDYICY6GxTJtCll5ChpGpFMhFhQ1CgVLT5FToTo9BAUFpWeQpg0IGlkAABGlqM6Cwx40zPOBrUX4th5ApHWKJHmi-mGCiyBh8uhlECkihYCAlFUAXzKOJ8mGCYkwiV8AU4RGhDGJ2Ig5TAFFw6AQKC90ooYFNRHA0HgtDAhgAjhZDPBKKxnmtPWRKNQg-7bjxrNn7m4kdZPd7fZHVkHTQBdIA">shiny apps that use shinyswatch on shinylive.io</a>, remember to add <code>shinyswatch</code> to your <code>requirements.txt</code> file!</p>
 </blockquote>
 </section>
 <section id="theme-picker" class="level2">
@@ -247,18 +261,16 @@ from shiny import App, Inputs, Outputs, Session, render, ui
 import shinyswatch
 
 app_ui = ui.page_fluid(
-    # Theme picker - start
-    shinyswatch.theme_picker_ui(),
-    # Theme picker - end
+    shinyswatch.theme_picker_ui(),  # &lt;- Add the theme picker UI to your app
     ui.input_slider("num", "Number:", min=10, max=100, value=30),
     ui.output_text_verbatim("slider_val"),
+    theme=shinyswatch.theme.zephyr,  # &lt;- Choose an initial theme (optional)
 )
 
 
 def server(input: Inputs, output: Outputs, session: Session):
-    ## Theme picker - start
+    # Make sure your server function calls the theme picker server function
     shinyswatch.theme_picker_server()
-    ## Theme picker - end
 
     @output
     @render.text
@@ -269,9 +281,11 @@ def server(input: Inputs, output: Outputs, session: Session):
 app = App(app_ui, server)
 
 
+
 ## file: requirements.txt
 shiny
 shinyswatch
+
 </code></pre>
 </section>
 <section id="plot-theming" class="level2">
@@ -279,7 +293,7 @@ shinyswatch
 <p>shinyswatch themes include a <code>.colors</code> attribute that can be used to theme plots or other outputs and UI elements. In the example below, try changing the theme and re-running the app to see how the plot changes.</p>
 <pre class="shinylive-python" data-engine="python"><code>#| standalone: true
 #| components: [editor, viewer]
-#| layout: vertical
+#| layout: horizontal
 #| viewerHeight: 800
 ## file: app.py
 import matplotlib.pyplot as plt
@@ -290,9 +304,9 @@ from shiny import App, render, req, ui
 from shinyswatch.theme import minty as shiny_theme
 
 app_ui = ui.page_fluid(
-    shiny_theme,
     ui.input_slider("n", "N", min=0, max=100, value=20),
-    ui.card(ui.output_plot("plot"))
+    ui.card(ui.output_plot("plot")),
+    theme=shiny_theme,
 )
 
 
@@ -321,14 +335,17 @@ def server(input):
 
 app = App(app_ui, server)
 
+
+
 ## file: requirements.txt
 numpy
 matplotlib
 shiny
-shinyswatch</code></pre>
+shinyswatch
+
+</code></pre>
 
 
-</section>
 </section>
 
 </main> <!-- /main -->
