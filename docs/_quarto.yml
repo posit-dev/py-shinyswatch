@@ -2,6 +2,8 @@ project:
   type: website
   resources:
     - objects.json
+  pre-render:
+    - cp ../CHANGELOG.md changelog.md
 
 metadata-files:
   - _sidebar.yml
@@ -76,7 +78,10 @@ website:
         text: Get Started
       - file: reference/index.qmd
         text: "Reference"
-    right:
+    tools:
+      - icon: newspaper
+        href: changelog.md
+        aria-label: Changelog
       - icon: github
         href: https://github.com/rstudio/py-shinyswatch
 
