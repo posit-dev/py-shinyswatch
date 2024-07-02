@@ -8,8 +8,8 @@
 
 Here are just three of the **25 themes** in shinyswatch:
 
-| Minty                                                                                      | Sketchy                                                                                        | Superhero                                                                                          |
-|--------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------|
+| Minty | Sketchy | Superhero |
+|----|----|----|
 | ![Minty](https://raw.githubusercontent.com/rstudio/py-shinyswatch/v0.2.2/readme_minty.png) | ![Sketchy](https://raw.githubusercontent.com/rstudio/py-shinyswatch/v0.2.2/readme_sketchy.png) | ![Superhero](https://raw.githubusercontent.com/rstudio/py-shinyswatch/v0.2.2/readme_superhero.png) |
 
 ## Installation
