@@ -69,11 +69,18 @@ quartodoc:
 website:
   title: shinyswatch
   navbar:
+    foreground: white
+    background: primary
     left:
-      # - href: https://machow.github.io/quartodoc/
-      #   text: quartodoc home
+      - href: index.qmd
+        text: Get Started
       - file: reference/index.qmd
         text: "Reference"
     right:
       - icon: github
         href: https://github.com/rstudio/py-shinyswatch
+
+format:
+  html:
+    theme: shiny.scss
+
