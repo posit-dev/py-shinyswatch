@@ -72,7 +72,9 @@ quarto-shinylive: ## Make sure quarto-shinylive is installed
 	cd docs && (test -f _extensions/quarto-ext/shinylive/shinylive.lua || quarto install extension --no-prompt quarto-ext/shinylive)
 quarto-interlinks: ## Make sure quartodocs's interlinks is installed
 	cd docs && (test -f _extensions/machow/interlinks/interlinks.lua || quarto install extension --no-prompt machow/quartodoc)
-docs-quartodoc: quarto-shinylive quarto-interlinks ## Build quartodoc
+quarto-line-highlight:
+	cd docs && (test -f _extensions/shafayetShafee/line-highlight/_extension.yml || quarto install extension --no-prompt shafayetShafee/line-highlight)
+docs-quartodoc: quarto-shinylive quarto-interlinks quarto-line-highlight ## Build quartodoc
 	cd docs && python -m quartodoc build --verbose
 	cd docs && python -m quartodoc interlinks
 docs-render: quarto-shinylive

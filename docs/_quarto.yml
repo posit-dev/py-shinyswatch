@@ -78,10 +78,14 @@ website:
         text: Get Started
       - file: reference/index.qmd
         text: "Reference"
+      - text: "News"
+        menu:
+          - text: v0.7.0
+            href: releases/v0.7.0.qmd
+          - text: "---"
+          - text: "Changelog"
+            href: changelog.md
     tools:
-      - icon: newspaper
-        href: changelog.md
-        aria-label: Changelog
       - icon: github
         href: https://github.com/rstudio/py-shinyswatch
 
