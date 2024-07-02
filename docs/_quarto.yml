@@ -90,6 +90,9 @@ website:
     tools:
       - icon: github
         href: https://github.com/posit-dev/py-shinyswatch
+  page-footer:
+    center: |
+      shinyswatch v{{< env SHINYSWATCH_VERSION >}}
 
 format:
   html:
