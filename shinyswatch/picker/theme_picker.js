@@ -48,6 +48,23 @@
   }
 
   /**
+   * Gets the theme from local storage.
+   * @returns {string | null}
+   **/
+  function getThemeLocalStorage () {
+    return localStorage.getItem('shinyswatch-theme')
+  }
+
+  /**
+   * Sets the theme in local storage.
+   * @param {string} theme
+   * @returns {void}
+   **/
+  function setThemeLocalStorage (theme) {
+    localStorage.setItem('shinyswatch-theme', theme)
+  }
+
+  /**
    * Creates a new shinyswatch link element.
    *
    * Note that we don't use `Shiny.renderDependencies()` here because we want to be
@@ -126,6 +143,8 @@
       { once: true }
     )
 
+    setThemeLocalStorage(theme)
+
     if (theme === initialThemeName && getInitialThemeLink()) {
       const newLinks = getInitialThemeLink().map(link => link.cloneNode())
       newLinks[0].onload = () => shinyswatchTransition(true)
@@ -184,12 +203,12 @@
     }
 
     const initLink = getInitialThemeLink()
-    if (!initLink) {
-      window.Shiny.setInputValue('__shinyswatch_initial_theme', '')
-      return
+    const initTheme = {
+      name: initLink ? initialThemeName : '',
+      saved: getThemeLocalStorage() || '',
     }
 
-    window.Shiny.setInputValue('__shinyswatch_initial_theme', initialThemeName)
+    window.Shiny.setInputValue('__shinyswatch_initial_theme', initTheme)
   }
 
   const displayWarning = setTimeout(function () {
