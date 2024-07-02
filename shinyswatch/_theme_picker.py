@@ -127,15 +127,21 @@ def theme_picker_server() -> None:
     @reactive.effect
     @reactive.event(input.__shinyswatch_initial_theme)
     def _():
+        init_theme_name = input.__shinyswatch_initial_theme()["name"]
+        last_theme = input.__shinyswatch_initial_theme()["saved"]
+
         choices = set([*ui.Theme.available_presets(), *bsw5_themes])
         choices = sorted([str(x) for x in choices])
-        if input.__shinyswatch_initial_theme() not in choices:
-            choices = [input.__shinyswatch_initial_theme(), *choices]
+        if init_theme_name and init_theme_name not in choices:
+            choices = [init_theme_name, *choices]
+
+        if last_theme and last_theme not in choices:
+            last_theme = None
 
         ui.update_select(
             "shinyswatch_theme_picker",
             choices=choices,
-            selected=input.__shinyswatch_initial_theme(),
+            selected=last_theme or init_theme_name or "",
         )
 
     @reactive.effect

@@ -21,6 +21,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 * The theme picker now includes Shiny's default theme (as `"shiny"`) and bare Bootstrap (as `"bootstrap"`) as theme options, in addition to the Bootswatch themes. If the initial app theme is a custom `shiny.ui.Theme()`, the custom theme is also included in the theme picker options. (#39)
 
+* The theme picker will now remember the previous theme selection between app uses when the app is re-loaded in the same browser. (#43)
+
 ## [0.6.1] - 2024-04-23
 
 * Include missing theme picker assets in the package. (#36)
