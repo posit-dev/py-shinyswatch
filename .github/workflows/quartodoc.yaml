@@ -60,6 +60,8 @@ jobs:
           env_file = os.getenv("GITHUB_ENV")
           with open(env_file, "a") as github_env:
               github_env.write(f"DOCS_SUBDIR={subdir}")
+              if is_dev:
+                  github_env.write(f"\nDOCS_PROFILE=dev")
 
       # If event is a tag, set subdir to '<tag_name>'
       - name: "[tag] Set versioned DOCS_SUBDIR"
@@ -80,7 +82,7 @@ jobs:
           git config --local user.name "$GITHUB_ACTOR"
           git config --local user.email "$GITHUB_ACTOR@users.noreply.github.com"
           git add -A
-          git commit -m "Build docs from ${GITHUB_REF}"
+          git commit -m "Build docs from ${GITHUB_REF}" || exit 0
 
           # Rebase to include any changes pushed while building docs
           git pull --rebase origin gh-pages

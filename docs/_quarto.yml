@@ -70,6 +70,8 @@ quartodoc:
 
 website:
   title: shinyswatch
+  site-url: https://posit-dev.github.io/py-shinyswatch
+  repo-url: https://github.com/posit-dev/py-shinyswatch
   navbar:
     foreground: white
     background: primary
@@ -87,7 +89,7 @@ website:
             href: changelog.md
     tools:
       - icon: github
-        href: https://github.com/rstudio/py-shinyswatch
+        href: https://github.com/posit-dev/py-shinyswatch
 
 format:
   html:

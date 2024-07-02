@@ -1,0 +1,5 @@
+website:
+  announcement:
+    dismissable: false
+    content: |
+      This is the development version of shinyswatch. [Go to the stable version](https://posit-dev.github.io/py-shinyswatch).
