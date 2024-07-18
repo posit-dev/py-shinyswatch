@@ -1,5 +1,5 @@
-// Shinylive 0.3.0
-// Copyright 2024 RStudio, PBC
+// Shinylive 0.4.1
+// Copyright 2024 Posit, PBC
 var __create = Object.create;
 var __defProp = Object.defineProperty;
 var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
@@ -3543,6 +3543,42 @@ function fileContentsToUrlString(fileContents, sort = true) {
     JSON.stringify(fileContents.map(FCtoFCJSON))
   );
 }
+async function fileContentsToUrlStringInWebWorker(fileContents, sort = true) {
+  if (sort) {
+    fileContents.sort((a, b) => a.name.localeCompare(b.name));
+  }
+  const fileContentJsonString = JSON.stringify(fileContents.map(FCtoFCJSON));
+  return await encodeLzstringWebWorker(fileContentJsonString);
+}
+var _lzstringWebWorker = null;
+function ensureLzstringWebWorker() {
+  if (_lzstringWebWorker === null) {
+    _lzstringWebWorker = new Worker(
+      currentScriptDir() + "/lzstring-worker.js",
+      { type: "module" }
+    );
+  }
+  return _lzstringWebWorker;
+}
+async function encodeLzstringWebWorker(value) {
+  const response = await postMessageLzstringWebWorker({
+    type: "encode",
+    value
+  });
+  return response.value;
+}
+async function postMessageLzstringWebWorker(msg) {
+  const worker = ensureLzstringWebWorker();
+  return new Promise((onSuccess) => {
+    const channel = new MessageChannel();
+    channel.port1.onmessage = (e) => {
+      channel.port1.close();
+      const msg2 = e.data;
+      onSuccess(msg2);
+    };
+    worker.postMessage(msg, [channel.port2]);
+  });
+}
 
 export {
   __require,
@@ -3571,7 +3607,8 @@ export {
   Icon,
   editorUrlPrefix,
   appUrlPrefix,
-  fileContentsToUrlString
+  fileContentsToUrlString,
+  fileContentsToUrlStringInWebWorker
 };
 /*! Bundled license information:
 

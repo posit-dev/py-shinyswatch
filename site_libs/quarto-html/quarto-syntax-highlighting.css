@@ -33,7 +33,7 @@
 
 /* other quarto variables */
 :root {
-  --quarto-font-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  --quarto-font-monospace: "Source Code Pro", SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
 }
 
 pre > code.sourceCode > span {
@@ -85,6 +85,7 @@ code span.st {
 
 code span.cf {
   color: #003B4F;
+  font-weight: bold;
   font-style: inherit;
 }
 
@@ -193,6 +194,7 @@ code span.dv {
 
 code span.kw {
   color: #003B4F;
+  font-weight: bold;
   font-style: inherit;
 }
 

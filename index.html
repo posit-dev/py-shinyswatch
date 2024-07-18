@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.553">
+<meta name="generator" content="quarto-1.5.55">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -33,7 +33,7 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -74,9 +74,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
 <meta name="shinylive:serviceworker_dir" content=".">
-<script src="site_libs/quarto-contrib/shinylive-0.3.0/shinylive/load-shinylive-sw.js" type="module"></script>
-<script src="site_libs/quarto-contrib/shinylive-0.3.0/shinylive/run-python-blocks.js" type="module"></script>
-<link href="site_libs/quarto-contrib/shinylive-0.3.0/shinylive/shinylive.css" rel="stylesheet">
+<script src="site_libs/quarto-contrib/shinylive-0.4.1/shinylive/load-shinylive-sw.js" type="module"></script>
+<script src="site_libs/quarto-contrib/shinylive-0.4.1/shinylive/run-python-blocks.js" type="module"></script>
+<link href="site_libs/quarto-contrib/shinylive-0.4.1/shinylive/shinylive.css" rel="stylesheet">
 <link href="site_libs/quarto-contrib/shinylive-quarto-css/shinylive-quarto.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
@@ -121,25 +121,39 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     </a>
   </div>
             <div id="quarto-search" class="" title="Search"></div>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
   <span class="navbar-toggler-icon"></span>
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
+    <a class="nav-link active" href="./index.html" aria-current="page"> 
+<span class="menu-text">Get Started</span></a>
+  </li>  
+  <li class="nav-item">
     <a class="nav-link" href="./reference/index.html"> 
 <span class="menu-text">Reference</span></a>
   </li>  
-</ul>
-            <ul class="navbar-nav navbar-nav-scroll ms-auto">
-  <li class="nav-item compact">
-    <a class="nav-link" href="https://github.com/rstudio/py-shinyswatch"> <i class="bi bi-github" role="img">
-</i> 
-<span class="menu-text"></span></a>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-news" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">News</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-news">    
+        <li>
+    <a class="dropdown-item" href="https://shiny.posit.co/blog/posts/shinyswatch-0.7.0/">
+ <span class="dropdown-text">v0.7.0</span></a>
   </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li>
+    <a class="dropdown-item" href="./changelog.html">
+ <span class="dropdown-text">Changelog</span></a>
+  </li>  
+    </ul>
+  </li>
 </ul>
           </div> <!-- /navcollapse -->
-          <div class="quarto-navbar-tools">
+            <div class="quarto-navbar-tools">
+    <a href="https://github.com/posit-dev/py-shinyswatch" title="" class="quarto-navigation-tool px-1" aria-label=""><i class="bi bi-github"></i></a>
 </div>
       </div> <!-- /container-fluid -->
     </nav>
@@ -150,16 +164,30 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <!-- margin-sidebar -->
     
 <!-- main -->
-<main class="content" id="quarto-document-content">
+<main class="content page-columns page-full" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">shinyswatch</h1>
+</div>
 
 
 
+<div class="quarto-title-meta">
 
-<section id="shinyswatch" class="level1">
-<h1>shinyswatch</h1>
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
 <p><a href="https://bootswatch.com/">Bootswatch</a> + Bootstrap 5 themes for <a href="https://shiny.rstudio.com/py/">Shiny</a>.</p>
 <p>Here are just three of the <strong>25 themes</strong> in shinyswatch:</p>
-<table class="table">
+<table class="caption-top table">
 <colgroup>
 <col style="width: 29%">
 <col style="width: 33%">
@@ -186,7 +214,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>To install the latest development version from this repository:</p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> install https://github.com/rstudio/py-shinyswatch/tarball/main</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
-<section id="usage" class="level2">
+<section id="usage" class="level2 page-columns page-full">
 <h2 class="anchored" data-anchor-id="usage">Usage</h2>
 <p>To use a theme, add a <code>shinyswatch.theme</code> theme object to your App’s UI definition.</p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Minty theme</span></span>
@@ -198,21 +226,20 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Superhero theme</span></span>
 <span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>shinyswatch.theme.superhero</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Example Shiny application:</p>
+<div class="column-page-inset">
 <pre class="shinylive-python" data-engine="python"><code>#| standalone: true
 #| components: [editor, viewer]
 #| layout: horizontal
-#| viewerHeight: 800
+#| viewerHeight: 400
 ## file: app.py
 from shiny import App, Inputs, Outputs, Session, render, ui
 
 import shinyswatch
 
 app_ui = ui.page_fluid(
-    # Theme code - start
-    shinyswatch.theme.darkly,
-    # Theme code - end
     ui.input_slider("num", "Number:", min=10, max=100, value=30),
     ui.output_text_verbatim("slider_val"),
+    theme=shinyswatch.theme.darkly,  # &lt;- Use a shinyswatch theme here
 )
 
 
@@ -226,39 +253,41 @@ def server(input: Inputs, output: Outputs, session: Session):
 app = App(app_ui, server)
 
 
+
 ## file: requirements.txt
 shiny
 shinyswatch
+
 </code></pre>
+</div>
 <blockquote class="blockquote">
-<p>Note: When writing shiny apps on <a href="https://shinylive.io/py/editor/#code=NobwRAdghgtgpmAXGKAHVA6VBPMAaMAYwHsIAXOcpMAMwCdiYACAZwAsBLCbJjmVYnTJMAgujxM6lACZw6EgK4cAOhFVpUAfSVMAvEyVYoAcziaaAGyXSAFKqYODHDF1QKymlhY6y6dyMr4TIEAcoESAAwSAIwRUUwATBEAlHj2jobE7m4eFAAeHgBucgBGUGR8-mQFgamqyaqNELI0rHLFfq7uEllkORIscCwsHKTJiOkOAAK9OZNMU1LNchj5ZPMtTNVkNuPzjpJwZAp0EEw0gRAAVAm8LEwgXWQYELtMV4kAvoFN6uh6onQNg02g4A3acgaEDAnwAukA">shinylive.io</a>, remember to add <code>shinyswatch</code> to your <code>requirements.txt</code> file!</p>
+<p>Note: When writing <a href="https://shinylive.io/py/editor/#code=NobwRAdghgtgpmAXAAjFADugdOgnmAGlQGMB7CAFzkqVQDMAnUmZAZwAsBLCXZTmdKQYVkAQUxEAkhHQBXCqyIB5eXIVEAynFatO5Ig2oATOAyKzOAHQjX+g4Wy49WAdygVi7a9YzoA+hbIALzIFjhQAOZwfnQANhZGABTWyKmhnFjcan6ssZwmDMmQsjCWhMhlAHIlAEamiGVEMNxBAIwADE1QAB5t7Z3IAG5Q8XBBAMztAJQEKWlhpKryflTdFH6DpjXu-EW5+aYbI2Uzc6kU7HDwQRzcuK7unlgXV3BYRlAMANaxuETIAGJkAAeAC0yAAqqw4MgoI47g8POxkC94MhLoZrFNvDYICY6GxTJtCll5ChpGpFMhFhQ1CgVLT5FToTo9BAUFpWeQpg0IGlkAABGlqM6Cwx40zPOBrUX4th5ApHWKJHmi-mGCiyBh8uhlECkihYCAlFUAXzKOJ8mGCYkwiV8AU4RGhDGJ2Ig5TAFFw6AQKC90ooYFNRHA0HgtDAhgAjhZDPBKKxnmtPWRKNQg-7bjxrNn7m4kdZPd7fZHVkHTQBdIA">shiny apps that use shinyswatch on shinylive.io</a>, remember to add <code>shinyswatch</code> to your <code>requirements.txt</code> file!</p>
 </blockquote>
 </section>
-<section id="theme-picker" class="level2">
+<section id="theme-picker" class="level2 page-columns page-full">
 <h2 class="anchored" data-anchor-id="theme-picker">Theme picker</h2>
 <p>To add a theme picker to your app, add the theme picker UI and server functions to your app’s UI and server definitions.</p>
+<div class="column-page-inset">
 <pre class="shinylive-python" data-engine="python"><code>#| standalone: true
 #| components: [editor, viewer]
 #| layout: horizontal
-#| viewerHeight: 800
+#| viewerHeight: 400
 ## file: app.py
 from shiny import App, Inputs, Outputs, Session, render, ui
 
 import shinyswatch
 
 app_ui = ui.page_fluid(
-    # Theme picker - start
-    shinyswatch.theme_picker_ui(),
-    # Theme picker - end
+    shinyswatch.theme_picker_ui(),  # &lt;- Add the theme picker UI to your app
     ui.input_slider("num", "Number:", min=10, max=100, value=30),
     ui.output_text_verbatim("slider_val"),
+    theme=shinyswatch.theme.zephyr,  # &lt;- Choose an initial theme (optional)
 )
 
 
 def server(input: Inputs, output: Outputs, session: Session):
-    ## Theme picker - start
+    # Make sure your server function calls the theme picker server function
     shinyswatch.theme_picker_server()
-    ## Theme picker - end
 
     @output
     @render.text
@@ -269,18 +298,22 @@ def server(input: Inputs, output: Outputs, session: Session):
 app = App(app_ui, server)
 
 
+
 ## file: requirements.txt
 shiny
 shinyswatch
+
 </code></pre>
+</div>
 </section>
-<section id="plot-theming" class="level2">
+<section id="plot-theming" class="level2 page-columns page-full">
 <h2 class="anchored" data-anchor-id="plot-theming">Plot Theming</h2>
 <p>shinyswatch themes include a <code>.colors</code> attribute that can be used to theme plots or other outputs and UI elements. In the example below, try changing the theme and re-running the app to see how the plot changes.</p>
+<div class="column-page-inset">
 <pre class="shinylive-python" data-engine="python"><code>#| standalone: true
 #| components: [editor, viewer]
-#| layout: vertical
-#| viewerHeight: 800
+#| layout: horizontal
+#| viewerHeight: 550
 ## file: app.py
 import matplotlib.pyplot as plt
 import numpy as np
@@ -290,9 +323,9 @@ from shiny import App, render, req, ui
 from shinyswatch.theme import minty as shiny_theme
 
 app_ui = ui.page_fluid(
-    shiny_theme,
     ui.input_slider("n", "N", min=0, max=100, value=20),
-    ui.card(ui.output_plot("plot"))
+    ui.card(ui.output_plot("plot")),
+    theme=shiny_theme,
 )
 
 
@@ -321,14 +354,18 @@ def server(input):
 
 app = App(app_ui, server)
 
+
+
 ## file: requirements.txt
 numpy
 matplotlib
 shiny
-shinyswatch</code></pre>
+shinyswatch
+
+</code></pre>
+</div>
 
 
-</section>
 </section>
 
 </main> <!-- /main -->
@@ -367,18 +404,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
     return false;
   }
-  const clipboard = new window.ClipboardJS('.code-copy-button', {
-    text: function(trigger) {
-      const codeEl = trigger.previousElementSibling.cloneNode(true);
-      for (const childEl of codeEl.children) {
-        if (isCodeAnnotation(childEl)) {
-          childEl.remove();
-        }
-      }
-      return codeEl.innerText;
-    }
-  });
-  clipboard.on('success', function(e) {
+  const onCopySuccess = function(e) {
     // button target
     const button = e.trigger;
     // don't keep focus
@@ -410,15 +436,37 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }, 1000);
     // clear code selection
     e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
   });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    // For code content inside modals, clipBoardJS needs to be initialized with a container option
+    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
     var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
     var mailtoRegex = new RegExp(/^mailto:/);
-      var filterRegex = new RegExp('/' + window.location.host + '/');
+      var filterRegex = new RegExp("https:\/\/posit-dev\.github\.io\/py-shinyswatch");
     var isInternal = (href) => {
         return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
     }
     // Inspect non-navigation links and adorn them if external
- 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
     for (var i=0; i<links.length; i++) {
       const link = links[i];
       if (!isInternal(link.href)) {
@@ -742,6 +790,19 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 });
 </script>
 </div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+      &nbsp;
+    </div>   
+    <div class="nav-footer-center">
+<p>shinyswatch v0.7.0</p>
+</div>
+    <div class="nav-footer-right">
+      &nbsp;
+    </div>
+  </div>
+</footer>
 
 
 
