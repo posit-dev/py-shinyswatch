@@ -1,0 +1,343 @@
+/* fonts */
+
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&family=Source+Code+Pro:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+/*-- scss:defaults --*/
+$link-color: #007bc2;
+$text-muted: #6a737b;
+
+$blue: #007bc2;
+$indigo: #4b00c1;
+$purple: #74149c;
+$pink: #bf007f;
+$red: #c10000;
+$orange: #f45100;
+$yellow: #f9b928;
+$green: #00891a;
+$teal: #00bf7f;
+$cyan: #03c7e8;
+$white: #ffffff;
+$gray: #606060;
+$gray-dark: #303030;
+$gray-100: #f8f8f8;
+$gray-200: #e9ecef;
+$gray-300: #dee2e6;
+$gray-400: #cdd4da;
+$gray-500: #8D959E;
+$gray-600: #707782;
+$gray-700: #48505F;
+$gray-800: #343A46;
+$gray-900: #1D1F21;
+$default: #dee2e6;
+$primary: #007bc2;
+$secondary: #404040;
+$success: #00891a;
+$info: #03c7e8;
+$warning: #f9b928;
+$danger: #c10000;
+$light: #f8f8f8;
+$dark: #212529;
+$default-rgb: 222, 226, 230;
+$primary-rgb: 0, 123, 194;
+$secondary-rgb: 64, 64, 64;
+$success-rgb: 0, 137, 26;
+$info-rgb: 3, 199, 232;
+$warning-rgb: 249, 185, 40;
+$danger-rgb: 193, 0, 0;
+$light-rgb: 248, 248, 248;
+$dark-rgb: 32, 32, 32;
+$white-rgb: 255, 255, 255;
+$black-rgb: 0, 0, 0;
+$body-color-rgb: 32, 32, 32;
+$body-bg-rgb: 255, 255, 255;
+$font-family-sans-serif: "Open Sans", Roboto, "Helvetica Neue", Arial,
+  "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji",
+  "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+$font-family-monospace: "Source Code Pro", SFMono-Regular, Menlo, Monaco,
+  Consolas, "Liberation Mono", "Courier New", monospace;
+$code-font-size: 0.9em;
+$gradient: linear-gradient(
+  180deg,
+  rgba(255, 255, 255, 0.15),
+  rgba(255, 255, 255, 0)
+);
+$root-font-size: 18px;
+$body-font-family: "Open Sans", Roboto, "Helvetica Neue", Arial, "Noto Sans",
+  "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
+  "Segoe UI Symbol", "Noto Color Emoji";
+$body-font-size: 1rem;
+$body-font-weight: 400;
+$body-line-height: 1.6;
+$body-color: #212529;
+$body-bg: #ffffff;
+$hr-margin-y: 2rem;
+$input-btn-font-size: 15px;
+$btn-font-weight: 500;
+$btn-padding-y: 0.75em;
+$btn-padding-x: 2em;
+$h1-font-size: 2.1rem;
+
+
+
+// Form controls
+$form-check-input-width: 1.2em !default;
+$form-check-input-border-radius: 2px !default;
+$form-check-margin-bottom: 0.25rem !default;
+$form-text-color: $gray-600 !default;
+
+// Borders
+$input-border-color: $gray-500 !default;
+$border-radius: 3px !default;
+// Defaults to $gray700, of which we've set to a blueish-gray, which looks a bit weird...
+// We could go forward with the blue-ish gray, but if we do, we'll want to also make
+// $border-color-translucent-dark a bit more blueish
+$border-color-dark: #495057 !default;
+
+// Tables
+$table-striped-bg: rgba($primary, 0.06) !default;
+$table-hover-bg: rgba($primary, 0.1) !default;
+$table-striped-order: even !default;
+
+// Box Shadows
+$box-shadow:
+  0px 1px 2px rgba(29, 31, 33,.1),
+  0px 3px 7px rgba(29, 31, 33,.1),
+  0px 12px 30px rgba(29, 31, 33,.08) !default;
+
+$box-shadow-sm:
+  0px 1px 2px rgba(29,31,33,.1),
+  0px 2px 3px rgba(29,31,33,.1),
+  0px 3px 8px rgba(29,31,33,.08) !default;
+
+
+// A shiny-preset-specific variable, hoping Bootstrap adds something like this
+$box-shadow-dark:
+  0px 1px 2px rgba(0, 0, 0,.1),
+  0px 3px 7px rgba(0, 0, 0,.1),
+  0px 12px 30px rgba(0, 0, 0,.08) !default;
+
+$card-border-radius: 8px !default;
+
+
+
+
+/*-- scss:rules --*/
+
+// color classes
+
+
+.purple {
+  color: #74149c !important;
+}
+.blue {
+  color: #007bc2 !important;
+}
+.indigo {
+  color: #4b00c1 !important;
+}
+.purple {
+  color: #74149c !important;
+}
+.pink {
+  color: #bf007f !important;
+}
+.red {
+  color: #c10000 !important;
+}
+.orange {
+  color: #f45100 !important;
+}
+.yellow {
+  color: #f9b928 !important;
+}
+.green {
+  color: #00891a !important;
+}
+.teal {
+  color: #00bf7f !important;
+}
+.cyan {
+  color: #03c7e8 !important;
+}
+.white {
+  color: #ffffff !important;
+}
+.dark {
+  color: $gray-900 !important;
+}
+
+
+// Original pyshiny-site css
+
+a {
+  color: var(--bs-blue);
+}
+
+/* Typography */
+
+body {
+  font-size: 0.95em;
+  -webkit-font-smoothing: antialiased;
+}
+
+.h1,
+.h2,
+.h3,
+.h4,
+.h5,
+.h6,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  border-bottom: none;
+  margin-bottom: 0.5rem;
+  font-family: inherit;
+  font-weight: 400;
+  line-height: 1.3;
+}
+
+h1,
+.h1 {
+  font-size: 2.7em;
+  line-height: 1.15;
+  margin-bottom: 30px !important;
+}
+
+.h2,
+h2 {
+  font-size: 2.25em;
+}
+
+.h3,
+h3 {
+  font-size: 1.825em;
+}
+
+.h4,
+h4 {
+  font-size: 1.5em;
+}
+
+h5,
+.h5 {
+  font-size: 1.2em;
+}
+
+.h6,
+h6 {
+  font-size: 0.9em;
+  font-weight: 700;
+}
+
+code {
+  color: inherit;
+  padding: 4px 0;
+}
+
+.sidebar nav#TOC ul {
+  font-weight: 400;
+}
+
+/* Spacing Bits */
+
+hr {
+  margin: 2rem 0;
+}
+
+/* Callouts */
+
+div.callout-note.callout {
+  border-left-color: #007bc2;
+}
+
+div.callout-note.callout-style-default .callout-header {
+  background-color: #cce7f8;
+}
+
+div.callout-tip.callout {
+  border-left-color: #008471;
+}
+
+div.callout-tip.callout-style-default .callout-header {
+  background-color: #cce6e3;
+}
+
+div.callout-warning.callout {
+  border-left-color: #fdcb3b;
+}
+
+div.callout-warning.callout-style-default .callout-header {
+  background-color: #fff5d8;
+}
+
+div.callout-caution.callout {
+  border-left-color: #c2202e;
+}
+
+div.callout-caution.callout-style-default .callout-header {
+  background-color: #f3d1d4;
+}
+
+div.callout-important.callout {
+  border-left-color: #fc9628;
+}
+
+div.callout-important.callout-style-default .callout-header {
+  background-color: #fc9628;
+}
+
+/* Navs */
+.navbar {
+  padding-top: 6px;
+  padding-bottom: 6px;
+}
+
+.navbar-nav .nav-link.active {
+  text-decoration: underline;
+}
+
+
+// sidebar styling
+// sidebar icon placement
+
+.sidebar-subtitle + strong  {
+  margin-left: 7px;
+}
+@media only screen and (max-width:991px) {
+  .menu-text img {
+    display: none;
+  }
+}
+
+/*breadcrumb styling */
+
+.breadcrumb-item img {
+  display: none;
+}
+.breadcrumb-item a, .breadcrumb-item .sidebar-subtitle+strong {
+  margin-left: 0px;
+  font-weight: 500;
+  color: $gray-700;
+  font-size: .85rem;
+}
+li.breadcrumb-item a:hover {
+  border-bottom: 1px solid $gray-600 !important;
+}
+.quarto-page-breadcrumbs .breadcrumb-item::before {
+  padding-right: 0.45em;
+  padding-left: .175em;
+  font-weight: 500;
+  color: $gray-700;
+}
+.quarto-title-breadcrumbs .breadcrumb {
+  margin-bottom: .25em;
+}
+.quarto-title-breadcrumbs .breadcrumb li:last-of-type a {
+  color: $gray-700;
+  font-weight: 500;
+  font-size: .85rem;
+}
+

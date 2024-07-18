@@ -82,11 +82,12 @@ Example Shiny application:
 :::
 
 ::: {.content-visible when-format="html"}
+::: column-page-inset
 ```{shinylive-python}
 #| standalone: true
 #| components: [editor, viewer]
 #| layout: horizontal
-#| viewerHeight: 800
+#| viewerHeight: 400
 ## file: app.py
 {{< include "examples/darkly/app.py" >}}
 
@@ -95,6 +96,7 @@ Example Shiny application:
 {{< include "examples/darkly/requirements.txt" >}}
 
 ```
+:::
 :::
 
 > Note: When writing [shiny apps that use shinyswatch on shinylive.io](`{python} shinylive_example_url("darkly")`), remember to add `shinyswatch` to your `requirements.txt` file!
@@ -109,11 +111,12 @@ To add a theme picker to your app, add the theme picker UI and server functions 
 :::
 
 ::: {.content-visible when-format="html"}
+::: column-page-inset
 ```{shinylive-python}
 #| standalone: true
 #| components: [editor, viewer]
 #| layout: horizontal
-#| viewerHeight: 800
+#| viewerHeight: 400
 ## file: app.py
 {{< include "examples/theme-picker/app.py" >}}
 
@@ -122,6 +125,7 @@ To add a theme picker to your app, add the theme picker UI and server functions 
 {{< include "examples/theme-picker/requirements.txt" >}}
 
 ```
+:::
 :::
 
 ## Plot Theming
@@ -134,11 +138,12 @@ In the example below, try changing the theme and re-running the app to see how t
 :::
 
 ::: {.content-visible when-format="html"}
+::: column-page-inset
 ```{shinylive-python}
 #| standalone: true
 #| components: [editor, viewer]
 #| layout: horizontal
-#| viewerHeight: 800
+#| viewerHeight: 550
 ## file: app.py
 {{< include "examples/plot-theming/app.py" >}}
 
@@ -147,6 +152,7 @@ In the example below, try changing the theme and re-running the app to see how t
 {{< include "examples/plot-theming/requirements.txt" >}}
 
 ```
+:::
 :::
 
 ::: {.content-visible when-format="markdown"}

@@ -67,20 +67,28 @@ coverage: ## check code coverage quickly with the default Python
 # sites for the same repository, in particular to put the dev docs at `dev/`.
 DOCS_SUBDIR:=
 DOCS_OUTPUT_DIR:="_site/$(DOCS_SUBDIR)"
+DOCS_PROFILE:=
+
+SHINYSWATCH_VERSION := $(shell python3 -c "import shinyswatch; print(shinyswatch.__version__)")
 
 quarto-shinylive: ## Make sure quarto-shinylive is installed
 	cd docs && (test -f _extensions/quarto-ext/shinylive/shinylive.lua || quarto install extension --no-prompt quarto-ext/shinylive)
 quarto-interlinks: ## Make sure quartodocs's interlinks is installed
 	cd docs && (test -f _extensions/machow/interlinks/interlinks.lua || quarto install extension --no-prompt machow/quartodoc)
-docs-quartodoc: quarto-shinylive quarto-interlinks ## Build quartodoc
+quarto-line-highlight:
+	cd docs && (test -f _extensions/shafayetShafee/line-highlight/_extension.yml || quarto install extension --no-prompt shafayetShafee/line-highlight)
+docs-quartodoc: quarto-shinylive quarto-interlinks quarto-line-highlight ## Build quartodoc
 	cd docs && python -m quartodoc build --verbose
 	cd docs && python -m quartodoc interlinks
 docs-render: quarto-shinylive
-	cd docs && quarto render
+	export SHINYSWATCH_VERSION=$(SHINYSWATCH_VERSION) && \
+	cd docs && quarto render --profile ${DOCS_PROFILE}
 docs-render-ci: quarto-shinylive
-	cd docs && quarto render --no-clean --output-dir $(DOCS_OUTPUT_DIR)
+	export SHINYSWATCH_VERSION=$(SHINYSWATCH_VERSION) && \
+	cd docs && quarto render --no-clean --output-dir $(DOCS_OUTPUT_DIR) --profile ${DOCS_PROFILE}
 docs-watch: quarto-shinylive
-	cd docs && quarto preview
+	export SHINYSWATCH_VERSION=$(SHINYSWATCH_VERSION) && \
+	cd docs && quarto preview --profile ${DOCS_PROFILE}
 docs-ci: docs-quartodoc docs-render-ci ## Build quartodoc for CI
 docs-readme: README.md ## Build README.md from index.qmd
 	quarto render docs/index.qmd --output README.md --output-dir . --profile readme

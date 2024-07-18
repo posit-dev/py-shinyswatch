@@ -2,6 +2,8 @@ project:
   type: website
   resources:
     - objects.json
+  pre-render:
+    - cp ../CHANGELOG.md changelog.md
 
 metadata-files:
   - _sidebar.yml
@@ -68,12 +70,31 @@ quartodoc:
 
 website:
   title: shinyswatch
+  site-url: https://posit-dev.github.io/py-shinyswatch
+  repo-url: https://github.com/posit-dev/py-shinyswatch
   navbar:
+    foreground: white
+    background: primary
     left:
-      # - href: https://machow.github.io/quartodoc/
-      #   text: quartodoc home
+      - href: index.qmd
+        text: Get Started
       - file: reference/index.qmd
         text: "Reference"
-    right:
+      - text: "News"
+        menu:
+          - text: v0.7.0
+            href: https://shiny.posit.co/blog/posts/shinyswatch-0.7.0/
+          - text: "---"
+          - text: "Changelog"
+            href: changelog.md
+    tools:
       - icon: github
-        href: https://github.com/rstudio/py-shinyswatch
+        href: https://github.com/posit-dev/py-shinyswatch
+  page-footer:
+    center: |
+      shinyswatch v{{< env SHINYSWATCH_VERSION >}}
+
+format:
+  html:
+    theme: shiny.scss
+

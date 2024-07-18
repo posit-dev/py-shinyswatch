@@ -7,7 +7,7 @@ app_ui = ui.page_navbar(
     ui.nav_panel(
         "Navbar 1",
         ui.layout_sidebar(
-            ui.panel_sidebar(
+            ui.sidebar(
                 ui.input_file("file", "File input:"),
                 ui.input_text("txt", "Text input:", "general"),
                 ui.input_slider("slider", "Slider input:", 1, 100, 30),
@@ -18,22 +18,20 @@ app_ui = ui.page_navbar(
                     "action2", "Action button", class_="btn-primary"
                 ),
             ),
-            ui.panel_main(
-                ui.navset_tab(
-                    ui.nav_panel(
-                        "Tab 1",
-                        ui.output_table("table"),
-                        ui.tags.h4("Verbatim text output"),
-                        ui.output_text_verbatim("txtout"),
-                        ui.tags.h1("Header 1"),
-                        ui.tags.h2("Header 2"),
-                        ui.tags.h3("Header 3"),
-                        ui.tags.h4("Header 4"),
-                        ui.tags.h5("Header 5"),
-                    ),
-                    ui.nav_panel("Tab 2", "Tab 2 content"),
-                    ui.nav_panel("Tab 3", "Tab 3 content"),
-                )
+            ui.navset_tab(
+                ui.nav_panel(
+                    "Tab 1",
+                    ui.output_table("table"),
+                    ui.tags.h4("Verbatim text output"),
+                    ui.output_text_verbatim("txtout"),
+                    ui.tags.h1("Header 1"),
+                    ui.tags.h2("Header 2"),
+                    ui.tags.h3("Header 3"),
+                    ui.tags.h4("Header 4"),
+                    ui.tags.h5("Header 5"),
+                ),
+                ui.nav_panel("Tab 2", "Tab 2 content"),
+                ui.nav_panel("Tab 3", "Tab 3 content"),
             ),
         ),
     ),
