@@ -4,13 +4,14 @@ import os
 import shutil
 import textwrap
 from pathlib import Path
+from typing import Dict
 
 import black
 from shiny._versions import bootstrap as version_bootstrap
 from shiny.ui import Theme
 from shiny.ui._theme_presets import ShinyThemePreset, shiny_theme_presets_bootswatch
 
-type ThemeColors = dict[ShinyThemePreset, dict[str, str]]
+ThemeColors = Dict[ShinyThemePreset, Dict[str, str]]
 
 logging.basicConfig(
     format="%(asctime)s - %(levelname)s - %(message)s",
