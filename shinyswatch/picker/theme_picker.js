@@ -1,4 +1,4 @@
-/* globals Shiny */
+/* globals Shiny,$ */
 (function () {
   // Stores the default theme links, if not one of the shinyswatch themes
   // Is always an array, even if there is only one link
@@ -211,13 +211,30 @@
     window.Shiny.setInputValue('__shinyswatch_initial_theme', initTheme)
   }
 
-  const displayWarning = setTimeout(function () {
-    window.document.querySelector('#shinyswatch_picker_warning').style.display =
-      'block'
-  }, 1000)
+  function removeWarning() {
+    const warning = document.getElementById("shinyswatch_picker_warning")
+    if (warning) {
+      warning.remove()
+    }
+  }
+
+  function showWarning() {
+    const warning = document.getElementById('shinyswatch_picker_warning')
+    if (warning) {
+      warning.style.display = 'block'
+    }
+  }
+
+  let displayWarning
+  if (typeof window.Shiny.setInputValue === "function") {
+    displayWarning = setTimeout(showWarning, 1000)
+  } else {
+    $(window).one("shiny:idle", showWarning)
+  }
 
   Shiny.addCustomMessageHandler('shinyswatch-hide-warning', function (_) {
-    window.clearTimeout(displayWarning)
+    if (displayWarning) window.clearTimeout(displayWarning)
+    removeWarning()
   })
 
   Shiny.addCustomMessageHandler('shinyswatch-pick-theme', replaceShinyswatchCSS)
