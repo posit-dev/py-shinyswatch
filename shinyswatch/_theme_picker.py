@@ -63,13 +63,23 @@ def theme_picker_ui(default: DEPRECATED_PARAM = DEPRECATED) -> ui.TagChild:
         "Please use the `theme` argument of a Shiny page function to set the initial theme.",
     )
 
-    return ui.tags.div(
+    return ui.TagList(
         # Have a div that is hidden by default and is shown if the server does not
         # disable it. This is nice as the warning will be displayed if the server method
         # is not run.
         ui.div(
-            "!! Please include `shinyswatch.theme_picker_server()` in your server function !!",
-            style="color: var(--bs-danger); background-color: var(--bs-light); display: none;",
+            ui.div(
+                ui.HTML("&#9888;<br>"),  # warning triangle
+                "Please include ",
+                ui.code(
+                    "shinyswatch.theme_picker_server()",
+                    style="overflow-wrap: anywhere;",
+                ),
+                " in your server function.",
+            ),
+            style="display: none;",
+            class_="alert alert-danger align-items-center",
+            role="alert",
             id="shinyswatch_picker_warning",
         ),
         ui.input_select(
