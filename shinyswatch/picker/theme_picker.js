@@ -221,7 +221,7 @@
   function showWarning() {
     const warning = document.getElementById('shinyswatch_picker_warning')
     if (warning) {
-      warning.style.display = 'block'
+      warning.style.display = null
     }
   }
 
