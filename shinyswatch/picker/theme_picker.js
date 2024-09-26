@@ -225,7 +225,11 @@
     }
   }
 
-  $(window).one("shiny:idle", showWarning)
+  if (typeof window.Shiny.setInputValue === "function") {
+    setTimeout(showWarning, 1000)
+  } else {
+    $(window).one("shiny:idle", showWarning)
+  }
 
   Shiny.addCustomMessageHandler('shinyswatch-hide-warning', function (_) {
     removeWarning()
