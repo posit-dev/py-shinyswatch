@@ -225,15 +225,9 @@
     }
   }
 
-  let displayWarning
-  if (typeof window.Shiny.setInputValue === "function") {
-    displayWarning = setTimeout(showWarning, 1000)
-  } else {
-    $(window).one("shiny:idle", showWarning)
-  }
+  $(window).one("shiny:idle", showWarning)
 
   Shiny.addCustomMessageHandler('shinyswatch-hide-warning', function (_) {
-    if (displayWarning) window.clearTimeout(displayWarning)
     removeWarning()
   })
 
