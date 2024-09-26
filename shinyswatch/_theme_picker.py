@@ -124,9 +124,14 @@ def theme_picker_server() -> None:
     session = require_active_session(None)
     input = session.input
 
+    async def remove_theme_picker_warning():
+        await session.send_custom_message("shinyswatch-hide-warning", {})
+
     @reactive.effect
     @reactive.event(input.__shinyswatch_initial_theme)
-    def _():
+    async def _():
+        await remove_theme_picker_warning()
+
         init_theme_name = input.__shinyswatch_initial_theme()["name"]
         last_theme = input.__shinyswatch_initial_theme()["saved"]
 
@@ -171,4 +176,4 @@ def theme_picker_server() -> None:
 
     @reactive.effect
     async def _():
-        await session.send_custom_message("shinyswatch-hide-warning", {})
+        await remove_theme_picker_warning()
