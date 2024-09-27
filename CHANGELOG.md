@@ -5,6 +5,12 @@ All notable changes to `shinyswatch` will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [UNRELEASED]
+
+### Bug fixes
+
+* The theme picker's message warning users to include `shinyswatch.theme_picker_server()` is now correctly hidden if the app takes longer than expected to start up. (#47)
+
 ## [0.7.0] - 2024-07-18
 
 ### Breaking changes

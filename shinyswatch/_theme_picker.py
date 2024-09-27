@@ -63,13 +63,23 @@ def theme_picker_ui(default: DEPRECATED_PARAM = DEPRECATED) -> ui.TagChild:
         "Please use the `theme` argument of a Shiny page function to set the initial theme.",
     )
 
-    return ui.tags.div(
+    return ui.TagList(
         # Have a div that is hidden by default and is shown if the server does not
         # disable it. This is nice as the warning will be displayed if the server method
         # is not run.
         ui.div(
-            "!! Please include `shinyswatch.theme_picker_server()` in your server function !!",
-            style="color: var(--bs-danger); background-color: var(--bs-light); display: none;",
+            ui.div(
+                ui.HTML("&#9888;<br>"),  # warning triangle
+                "Please include ",
+                ui.code(
+                    "shinyswatch.theme_picker_server()",
+                    style="overflow-wrap: anywhere;",
+                ),
+                " in your server function.",
+            ),
+            style="display: none;",
+            class_="alert alert-danger align-items-center",
+            role="alert",
             id="shinyswatch_picker_warning",
         ),
         ui.input_select(
@@ -124,9 +134,14 @@ def theme_picker_server() -> None:
     session = require_active_session(None)
     input = session.input
 
+    async def remove_theme_picker_warning():
+        await session.send_custom_message("shinyswatch-hide-warning", {})
+
     @reactive.effect
     @reactive.event(input.__shinyswatch_initial_theme)
-    def _():
+    async def _():
+        await remove_theme_picker_warning()
+
         init_theme_name = input.__shinyswatch_initial_theme()["name"]
         last_theme = input.__shinyswatch_initial_theme()["saved"]
 
@@ -171,4 +186,4 @@ def theme_picker_server() -> None:
 
     @reactive.effect
     async def _():
-        await session.send_custom_message("shinyswatch-hide-warning", {})
+        await remove_theme_picker_warning()
