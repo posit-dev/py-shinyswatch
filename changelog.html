@@ -168,6 +168,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h1>Change Log for shinyswatch</h1>
 <p>All notable changes to <code>shinyswatch</code> will be documented in this file.</p>
 <p>The format is based on <a href="https://keepachangelog.com/en/1.0.0/">Keep a Changelog</a>, and this project adheres to <a href="https://semver.org/spec/v2.0.0.html">Semantic Versioning</a>.</p>
+<section id="unreleased" class="level2">
+<h2 class="anchored" data-anchor-id="unreleased">[UNRELEASED]</h2>
+<section id="bug-fixes" class="level3">
+<h3 class="anchored" data-anchor-id="bug-fixes">Bug fixes</h3>
+<ul>
+<li>The theme picker’s message warning users to include <code>shinyswatch.theme_picker_server()</code> is now correctly hidden if the app takes longer than expected to start up. (#47)</li>
+</ul>
+</section>
+</section>
 <section id="section" class="level2">
 <h2 class="anchored" data-anchor-id="section">[0.7.0] - 2024-07-18</h2>
 <section id="breaking-changes" class="level3">
@@ -272,8 +281,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="section-8" class="level2">
 <h2 class="anchored" data-anchor-id="section-8">[0.3.1] - 2023-08-20</h2>
-<section id="bug-fixes" class="level3">
-<h3 class="anchored" data-anchor-id="bug-fixes">Bug fixes</h3>
+<section id="bug-fixes-1" class="level3">
+<h3 class="anchored" data-anchor-id="bug-fixes-1">Bug fixes</h3>
 <ul>
 <li>Actually include the new ion range slider files in the package (#18).</li>
 </ul>
@@ -287,8 +296,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>Added <code>shinyswatch.theme_picker_ui()</code> and <code>shinyswatch.theme_picker_server()</code> to allow users to select a theme from a dropdown menu. When changing themes, a page refresh will occur (#11).</li>
 </ul>
 </section>
-<section id="bug-fixes-1" class="level3">
-<h3 class="anchored" data-anchor-id="bug-fixes-1">Bug fixes</h3>
+<section id="bug-fixes-2" class="level3">
+<h3 class="anchored" data-anchor-id="bug-fixes-2">Bug fixes</h3>
 <ul>
 <li><p>Updated themes to support latest shiny sidebars. Requires shiny 0.5.0 or later (#15).</p></li>
 <li><p>Dropped support for python 3.7 as shiny does not support python 3.7 (#16).</p></li>
@@ -297,8 +306,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="section-10" class="level2">
 <h2 class="anchored" data-anchor-id="section-10">[0.2.4] - 2023-04-18</h2>
-<section id="bug-fixes-2" class="level3">
-<h3 class="anchored" data-anchor-id="bug-fixes-2">Bug fixes</h3>
+<section id="bug-fixes-3" class="level3">
+<h3 class="anchored" data-anchor-id="bug-fixes-3">Bug fixes</h3>
 <ul>
 <li><p>Added return types to <code>theme()</code> methods. (#6)</p></li>
 <li><p>Update bootswatch themes. (8b80ed0)</p></li>
