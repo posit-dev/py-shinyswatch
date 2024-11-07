@@ -171,10 +171,7 @@ def theme_picker_server() -> None:
             theme = ui.Theme(preset=input.shinyswatch_theme_picker())
 
         if theme is not None:
-            if hasattr(theme, "_html_dependency"):
-                dep = getattr(theme, "_html_dependency")()
-            elif hasattr(theme, "_html_dependencies"):
-                dep = theme._html_dependencies()  # pyright: ignore[reportPrivateUsage]
+            dep = theme._html_dependencies()  # pyright: ignore[reportPrivateUsage]
             dep = session._process_ui(dep)[  # pyright: ignore[reportPrivateUsage]
                 "deps"
             ][0]

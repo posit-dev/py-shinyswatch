@@ -77,17 +77,15 @@ class ShinyswatchTheme(Theme):
             self._dep_css_name(),
         )
 
-    def _html_dependency(self) -> HTMLDependency | list[HTMLDependency]:
+    def _html_dependency(self) -> HTMLDependency:
         """
-        For backwards-compatibility with Shiny <= v1.2.0.
+        For backwards-compatibility with previous versions of shinyswatch.
         """
 
-        if hasattr(super(), "_html_dependency"):
-            dep = getattr(super(), "_html_dependency")()
-            if not isinstance(dep, HTMLDependency):
-                raise ValueError(
-                    "Invalid theme dependency, please update to shiny >= 1.0.0."
-                )
-            return dep
-        else:
-            return self._html_dependencies()[0]
+        # Shiny v1.2.0 renamed the `_html_dependency()` method to `_html_dependencies()`
+        # to allow Theme sub-classes to append dependencies. shinyswatch doesn't rely on
+        # that behavior, but we did advertise usage of the `_html_dependency()` method,
+        # so this shim is included to avoid breaking potential existing uses of the
+        # method.
+
+        return self._html_dependencies()[0]
