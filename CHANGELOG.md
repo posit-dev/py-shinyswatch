@@ -7,9 +7,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [UNRELEASED]
 
-### Bug fixes
-
 * The theme picker's message warning users to include `shinyswatch.theme_picker_server()` is now correctly hidden if the app takes longer than expected to start up. (#47)
+
+* shinyswatch's pre-compiled themes were updated to match Shiny v1.2.0. (#48)
 
 ## [0.7.0] - 2024-07-18
 
