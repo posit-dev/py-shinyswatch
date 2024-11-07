@@ -1,6 +1,6 @@
 """Bootswatch + Bootstrap 5 themes for Shiny"""
 
-__version__ = "0.7.0"
+__version__ = "0.8.0"
 
 from . import theme
 from ._get_theme import get_theme
