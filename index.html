@@ -74,9 +74,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
 <meta name="shinylive:serviceworker_dir" content=".">
-<script src="site_libs/quarto-contrib/shinylive-0.7.0/shinylive/load-shinylive-sw.js" type="module"></script>
-<script src="site_libs/quarto-contrib/shinylive-0.7.0/shinylive/run-python-blocks.js" type="module"></script>
-<link href="site_libs/quarto-contrib/shinylive-0.7.0/shinylive/shinylive.css" rel="stylesheet">
+<script src="site_libs/quarto-contrib/shinylive-0.9.0/shinylive/load-shinylive-sw.js" type="module"></script>
+<script src="site_libs/quarto-contrib/shinylive-0.9.0/shinylive/run-python-blocks.js" type="module"></script>
+<link href="site_libs/quarto-contrib/shinylive-0.9.0/shinylive/shinylive.css" rel="stylesheet">
 <link href="site_libs/quarto-contrib/shinylive-quarto-css/shinylive-quarto.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
@@ -227,7 +227,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>shinyswatch.theme.superhero</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Example Shiny application:</p>
 <div class="column-page-inset">
-<pre class="shinylive-python" data-engine="python"><code>#| standalone: true
+<pre class="shinylive-python" data-engine="python"><code>#| '!! shinylive warning !!': |
+#|   shinylive does not work in self-contained HTML documents.
+#|   Please set `embed-resources: false` in your metadata.
+#| standalone: true
 #| components: [editor, viewer]
 #| layout: horizontal
 #| viewerHeight: 400
@@ -268,7 +271,10 @@ shinyswatch
 <h2 class="anchored" data-anchor-id="theme-picker">Theme picker</h2>
 <p>To add a theme picker to your app, add the theme picker UI and server functions to your app’s UI and server definitions.</p>
 <div class="column-page-inset">
-<pre class="shinylive-python" data-engine="python"><code>#| standalone: true
+<pre class="shinylive-python" data-engine="python"><code>#| '!! shinylive warning !!': |
+#|   shinylive does not work in self-contained HTML documents.
+#|   Please set `embed-resources: false` in your metadata.
+#| standalone: true
 #| components: [editor, viewer]
 #| layout: horizontal
 #| viewerHeight: 400
@@ -310,7 +316,10 @@ shinyswatch
 <h2 class="anchored" data-anchor-id="plot-theming">Plot Theming</h2>
 <p>shinyswatch themes include a <code>.colors</code> attribute that can be used to theme plots or other outputs and UI elements. In the example below, try changing the theme and re-running the app to see how the plot changes.</p>
 <div class="column-page-inset">
-<pre class="shinylive-python" data-engine="python"><code>#| standalone: true
+<pre class="shinylive-python" data-engine="python"><code>#| '!! shinylive warning !!': |
+#|   shinylive does not work in self-contained HTML documents.
+#|   Please set `embed-resources: false` in your metadata.
+#| standalone: true
 #| components: [editor, viewer]
 #| layout: horizontal
 #| viewerHeight: 550
