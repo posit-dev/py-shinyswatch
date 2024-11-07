@@ -129,5 +129,4 @@ format:
 	isort .
 
 update-bootswatch:
-	Rscript scripts/update_bootswatch.R
-	$(MAKE) format
+	python3 scripts/update_themes.py
