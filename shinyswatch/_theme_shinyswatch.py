@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import os
 
+from htmltools import HTMLDependency
 from shiny.ui import Theme
 
 from ._assert import assert_theme
@@ -75,3 +76,18 @@ class ShinyswatchTheme(Theme):
             self.name,
             self._dep_css_name(),
         )
+
+    def _html_dependency(self) -> HTMLDependency | list[HTMLDependency]:
+        """
+        For backwards-compatibility with Shiny <= v1.2.0.
+        """
+
+        if hasattr(super(), "_html_dependency"):
+            dep = getattr(super(), "_html_dependency")()
+            if not isinstance(dep, HTMLDependency):
+                raise ValueError(
+                    "Invalid theme dependency, please update to shiny >= 1.0.0."
+                )
+            return dep
+        else:
+            return self._html_dependencies()[0]
