@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import os
 
+from htmltools import HTMLDependency
 from shiny.ui import Theme
 
 from ._assert import assert_theme
@@ -75,3 +76,16 @@ class ShinyswatchTheme(Theme):
             self.name,
             self._dep_css_name(),
         )
+
+    def _html_dependency(self) -> HTMLDependency:
+        """
+        For backwards-compatibility with previous versions of shinyswatch.
+        """
+
+        # Shiny v1.2.0 renamed the `_html_dependency()` method to `_html_dependencies()`
+        # to allow Theme sub-classes to append dependencies. shinyswatch doesn't rely on
+        # that behavior, but we did advertise usage of the `_html_dependency()` method,
+        # so this shim is included to avoid breaking potential existing uses of the
+        # method.
+
+        return self._html_dependencies()[0]
