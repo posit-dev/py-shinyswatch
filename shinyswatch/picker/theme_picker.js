@@ -10,8 +10,26 @@ class ShinyswatchThemePicker extends HTMLElement {
   }
 
   connectedCallback () {
+    this.ensureUniqueInstance()
     this.shinyswatchReportInitialTheme()
     this.showWarningAfterDelay()
+  }
+
+  ensureUniqueInstance() {
+    const existingPickers = document.querySelectorAll('[id="shinyswatch_theme_picker"]');
+    if (existingPickers.length > 1) {
+      const message = 'Multiple `shinyswatch.theme_picker_ui()` elements detected. Only one instance per app is supported.'
+      const shinyClientError = new window.CustomEvent('shiny:client-message', {
+        detail: {
+          headline: 'Only one theme picker allowed',
+          message,
+        },
+        bubbles: true,
+        cancelable: true
+      })
+      this.dispatchEvent(shinyClientError)
+      console.error(`[shinyswatch] ${message}`)
+    }
   }
 
   /**
