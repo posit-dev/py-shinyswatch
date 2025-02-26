@@ -43,18 +43,29 @@ shinyswatch.theme.superhero
 Example Shiny application:
 
 <table>
+
 <thead>
+
 <tr>
+
 <th>
+
 File: <code>app.py</code>
 </th>
+
 <th>
+
 Screenshot
 </th>
+
 </tr>
+
 </thead>
+
 <tbody>
+
 <tr>
+
 <td>
 
 ``` python
@@ -80,14 +91,18 @@ app = App(app_ui, server)
 ```
 
 </td>
+
 <td>
 
 ![darkly
 theme](https://raw.githubusercontent.com/rstudio/py-shinyswatch/v0.2.2/readme_darkly.png)
 
 </td>
+
 </tr>
+
 </tbody>
+
 </table>
 
 > Note: When writing [shiny apps that use shinyswatch on
