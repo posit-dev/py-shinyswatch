@@ -67,29 +67,32 @@ def theme_picker_ui(default: DEPRECATED_PARAM = DEPRECATED) -> ui.TagChild:
         # Have a div that is hidden by default and is shown if the server does not
         # disable it. This is nice as the warning will be displayed if the server method
         # is not run.
-        ui.div(
+        ui.Tag(
+            "shinyswatch-theme-picker",
             ui.div(
-                ui.HTML("&#9888;<br>"),  # warning triangle
-                "Please include ",
-                ui.code(
-                    "shinyswatch.theme_picker_server()",
-                    style="overflow-wrap: anywhere;",
+                ui.div(
+                    ui.HTML("&#9888;<br>"),  # warning triangle
+                    "Please include ",
+                    ui.code(
+                        "shinyswatch.theme_picker_server()",
+                        style="overflow-wrap: anywhere;",
+                    ),
+                    " in your server function.",
                 ),
-                " in your server function.",
+                style="display: none;",
+                class_="alert alert-danger align-items-center",
+                role="alert",
+                id="shinyswatch_picker_warning",
             ),
-            style="display: none;",
-            class_="alert alert-danger align-items-center",
-            role="alert",
-            id="shinyswatch_picker_warning",
+            ui.input_select(
+                id="shinyswatch_theme_picker",
+                label="Select a theme:",
+                # These choices are filled in by the server logic
+                selected=None,
+                choices=[],
+            ),
+            ui.output_ui("shinyswatch_theme_picker_output"),
         ),
-        ui.input_select(
-            id="shinyswatch_theme_picker",
-            label="Select a theme:",
-            # These choices are filled in by the server logic
-            selected=None,
-            choices=[],
-        ),
-        ui.output_ui("shinyswatch_theme_picker_output"),
         theme_picker_deps(),
     )
 
