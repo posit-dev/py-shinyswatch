@@ -1,127 +1,127 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://posit-dev.github.io/py-shinyswatch/reference/theme.morph.html</loc>
-    <lastmod>2024-11-07T18:30:19.528Z</lastmod>
-  </url>
-  <url>
-    <loc>https://posit-dev.github.io/py-shinyswatch/reference/theme_picker_ui.html</loc>
-    <lastmod>2024-11-07T18:30:19.480Z</lastmod>
-  </url>
-  <url>
-    <loc>https://posit-dev.github.io/py-shinyswatch/reference/theme.materia.html</loc>
-    <lastmod>2024-11-07T18:30:19.520Z</lastmod>
-  </url>
-  <url>
-    <loc>https://posit-dev.github.io/py-shinyswatch/reference/theme.cyborg.html</loc>
-    <lastmod>2024-11-07T18:30:19.496Z</lastmod>
-  </url>
-  <url>
-    <loc>https://posit-dev.github.io/py-shinyswatch/reference/get_theme.html</loc>
-    <lastmod>2024-11-07T18:30:19.476Z</lastmod>
-  </url>
-  <url>
-    <loc>https://posit-dev.github.io/py-shinyswatch/reference/theme.sandstone.html</loc>
-    <lastmod>2024-11-07T18:30:19.536Z</lastmod>
-  </url>
-  <url>
-    <loc>https://posit-dev.github.io/py-shinyswatch/reference/theme_picker_server.html</loc>
-    <lastmod>2024-11-07T18:30:19.484Z</lastmod>
-  </url>
-  <url>
-    <loc>https://posit-dev.github.io/py-shinyswatch/reference/theme.minty.html</loc>
-    <lastmod>2024-11-07T18:30:19.524Z</lastmod>
-  </url>
-  <url>
-    <loc>https://posit-dev.github.io/py-shinyswatch/reference/theme.yeti.html</loc>
-    <lastmod>2024-11-07T18:30:19.568Z</lastmod>
-  </url>
-  <url>
-    <loc>https://posit-dev.github.io/py-shinyswatch/reference/theme.lumen.html</loc>
-    <lastmod>2024-11-07T18:30:19.512Z</lastmod>
-  </url>
-  <url>
-    <loc>https://posit-dev.github.io/py-shinyswatch/reference/theme.zephyr.html</loc>
-    <lastmod>2024-11-07T18:30:19.572Z</lastmod>
-  </url>
-  <url>
-    <loc>https://posit-dev.github.io/py-shinyswatch/reference/theme.lux.html</loc>
-    <lastmod>2024-11-07T18:30:19.516Z</lastmod>
-  </url>
-  <url>
-    <loc>https://posit-dev.github.io/py-shinyswatch/reference/theme.cerulean.html</loc>
-    <lastmod>2024-11-07T18:30:19.488Z</lastmod>
-  </url>
-  <url>
-    <loc>https://posit-dev.github.io/py-shinyswatch/reference/theme.superhero.html</loc>
-    <lastmod>2024-11-07T18:30:19.560Z</lastmod>
-  </url>
-  <url>
-    <loc>https://posit-dev.github.io/py-shinyswatch/reference/theme.simplex.html</loc>
-    <lastmod>2024-11-07T18:30:19.540Z</lastmod>
-  </url>
-  <url>
-    <loc>https://posit-dev.github.io/py-shinyswatch/changelog.html</loc>
-    <lastmod>2024-11-07T18:30:21.484Z</lastmod>
-  </url>
-  <url>
-    <loc>https://posit-dev.github.io/py-shinyswatch/index.html</loc>
-    <lastmod>2024-11-07T18:29:07.263Z</lastmod>
-  </url>
-  <url>
-    <loc>https://posit-dev.github.io/py-shinyswatch/reference/theme.vapor.html</loc>
-    <lastmod>2024-11-07T18:30:19.564Z</lastmod>
-  </url>
-  <url>
     <loc>https://posit-dev.github.io/py-shinyswatch/reference/theme.pulse.html</loc>
-    <lastmod>2024-11-07T18:30:19.528Z</lastmod>
-  </url>
-  <url>
-    <loc>https://posit-dev.github.io/py-shinyswatch/reference/theme.darkly.html</loc>
-    <lastmod>2024-11-07T18:30:19.496Z</lastmod>
-  </url>
-  <url>
-    <loc>https://posit-dev.github.io/py-shinyswatch/reference/theme.solar.html</loc>
-    <lastmod>2024-11-07T18:30:19.552Z</lastmod>
+    <lastmod>2025-02-27T19:54:41.160Z</lastmod>
   </url>
   <url>
     <loc>https://posit-dev.github.io/py-shinyswatch/reference/theme.litera.html</loc>
-    <lastmod>2024-11-07T18:30:19.508Z</lastmod>
-  </url>
-  <url>
-    <loc>https://posit-dev.github.io/py-shinyswatch/reference/theme.united.html</loc>
-    <lastmod>2024-11-07T18:30:19.564Z</lastmod>
+    <lastmod>2025-02-27T19:54:41.144Z</lastmod>
   </url>
   <url>
     <loc>https://posit-dev.github.io/py-shinyswatch/reference/theme.cosmo.html</loc>
-    <lastmod>2024-11-07T18:30:19.492Z</lastmod>
+    <lastmod>2025-02-27T19:54:41.131Z</lastmod>
   </url>
   <url>
-    <loc>https://posit-dev.github.io/py-shinyswatch/reference/theme.spacelab.html</loc>
-    <lastmod>2024-11-07T18:30:19.556Z</lastmod>
+    <loc>https://posit-dev.github.io/py-shinyswatch/reference/theme.superhero.html</loc>
+    <lastmod>2025-02-27T19:54:41.182Z</lastmod>
+  </url>
+  <url>
+    <loc>https://posit-dev.github.io/py-shinyswatch/reference/theme.materia.html</loc>
+    <lastmod>2025-02-27T19:54:41.152Z</lastmod>
+  </url>
+  <url>
+    <loc>https://posit-dev.github.io/py-shinyswatch/reference/theme.solar.html</loc>
+    <lastmod>2025-02-27T19:54:41.177Z</lastmod>
   </url>
   <url>
     <loc>https://posit-dev.github.io/py-shinyswatch/reference/theme.sketchy.html</loc>
-    <lastmod>2024-11-07T18:30:19.544Z</lastmod>
+    <lastmod>2025-02-27T19:54:41.171Z</lastmod>
   </url>
   <url>
-    <loc>https://posit-dev.github.io/py-shinyswatch/reference/theme.slate.html</loc>
-    <lastmod>2024-11-07T18:30:19.548Z</lastmod>
+    <loc>https://posit-dev.github.io/py-shinyswatch/reference/theme.simplex.html</loc>
+    <lastmod>2025-02-27T19:54:41.169Z</lastmod>
   </url>
   <url>
     <loc>https://posit-dev.github.io/py-shinyswatch/reference/theme.flatly.html</loc>
-    <lastmod>2024-11-07T18:30:19.500Z</lastmod>
+    <lastmod>2025-02-27T19:54:41.139Z</lastmod>
   </url>
   <url>
-    <loc>https://posit-dev.github.io/py-shinyswatch/reference/index.html</loc>
-    <lastmod>2024-11-07T18:30:19.460Z</lastmod>
+    <loc>https://posit-dev.github.io/py-shinyswatch/reference/theme.spacelab.html</loc>
+    <lastmod>2025-02-27T19:54:41.180Z</lastmod>
+  </url>
+  <url>
+    <loc>https://posit-dev.github.io/py-shinyswatch/reference/theme.united.html</loc>
+    <lastmod>2025-02-27T19:54:41.185Z</lastmod>
+  </url>
+  <url>
+    <loc>https://posit-dev.github.io/py-shinyswatch/reference/theme.slate.html</loc>
+    <lastmod>2025-02-27T19:54:41.174Z</lastmod>
+  </url>
+  <url>
+    <loc>https://posit-dev.github.io/py-shinyswatch/reference/theme.morph.html</loc>
+    <lastmod>2025-02-27T19:54:41.158Z</lastmod>
   </url>
   <url>
     <loc>https://posit-dev.github.io/py-shinyswatch/reference/theme.quartz.html</loc>
-    <lastmod>2024-11-07T18:30:19.532Z</lastmod>
+    <lastmod>2025-02-27T19:54:41.163Z</lastmod>
+  </url>
+  <url>
+    <loc>https://posit-dev.github.io/py-shinyswatch/reference/theme.cerulean.html</loc>
+    <lastmod>2025-02-27T19:54:41.128Z</lastmod>
+  </url>
+  <url>
+    <loc>https://posit-dev.github.io/py-shinyswatch/index.html</loc>
+    <lastmod>2025-02-27T19:53:45.764Z</lastmod>
+  </url>
+  <url>
+    <loc>https://posit-dev.github.io/py-shinyswatch/changelog.html</loc>
+    <lastmod>2025-02-27T19:54:42.805Z</lastmod>
+  </url>
+  <url>
+    <loc>https://posit-dev.github.io/py-shinyswatch/reference/index.html</loc>
+    <lastmod>2025-02-27T19:54:41.106Z</lastmod>
+  </url>
+  <url>
+    <loc>https://posit-dev.github.io/py-shinyswatch/reference/theme.zephyr.html</loc>
+    <lastmod>2025-02-27T19:54:41.193Z</lastmod>
+  </url>
+  <url>
+    <loc>https://posit-dev.github.io/py-shinyswatch/reference/get_theme.html</loc>
+    <lastmod>2025-02-27T19:54:41.119Z</lastmod>
+  </url>
+  <url>
+    <loc>https://posit-dev.github.io/py-shinyswatch/reference/theme.lumen.html</loc>
+    <lastmod>2025-02-27T19:54:41.147Z</lastmod>
+  </url>
+  <url>
+    <loc>https://posit-dev.github.io/py-shinyswatch/reference/theme.darkly.html</loc>
+    <lastmod>2025-02-27T19:54:41.136Z</lastmod>
+  </url>
+  <url>
+    <loc>https://posit-dev.github.io/py-shinyswatch/reference/theme.minty.html</loc>
+    <lastmod>2025-02-27T19:54:41.155Z</lastmod>
+  </url>
+  <url>
+    <loc>https://posit-dev.github.io/py-shinyswatch/reference/theme.cyborg.html</loc>
+    <lastmod>2025-02-27T19:54:41.134Z</lastmod>
   </url>
   <url>
     <loc>https://posit-dev.github.io/py-shinyswatch/reference/theme.journal.html</loc>
-    <lastmod>2024-11-07T18:30:19.504Z</lastmod>
+    <lastmod>2025-02-27T19:54:41.142Z</lastmod>
+  </url>
+  <url>
+    <loc>https://posit-dev.github.io/py-shinyswatch/reference/theme.lux.html</loc>
+    <lastmod>2025-02-27T19:54:41.150Z</lastmod>
+  </url>
+  <url>
+    <loc>https://posit-dev.github.io/py-shinyswatch/reference/theme.sandstone.html</loc>
+    <lastmod>2025-02-27T19:54:41.166Z</lastmod>
+  </url>
+  <url>
+    <loc>https://posit-dev.github.io/py-shinyswatch/reference/theme_picker_ui.html</loc>
+    <lastmod>2025-02-27T19:54:41.123Z</lastmod>
+  </url>
+  <url>
+    <loc>https://posit-dev.github.io/py-shinyswatch/reference/theme.vapor.html</loc>
+    <lastmod>2025-02-27T19:54:41.188Z</lastmod>
+  </url>
+  <url>
+    <loc>https://posit-dev.github.io/py-shinyswatch/reference/theme.yeti.html</loc>
+    <lastmod>2025-02-27T19:54:41.190Z</lastmod>
+  </url>
+  <url>
+    <loc>https://posit-dev.github.io/py-shinyswatch/reference/theme_picker_server.html</loc>
+    <lastmod>2025-02-27T19:54:41.125Z</lastmod>
   </url>
 </urlset>
