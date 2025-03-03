@@ -5,6 +5,10 @@ All notable changes to `shinyswatch` will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [UNRELEASED]
+
+* The theme picker can now be used with dynamic UI, e.g. `shiny.ui.output_ui()` and `shiny.render.ui()`. Be careful when using the theme picker in this way: only one theme picker is allowed in the app at a time. (#51)
+
 ## [0.8.0] - 2024-11-07
 
 * The theme picker's message warning users to include `shinyswatch.theme_picker_server()` is now correctly hidden if the app takes longer than expected to start up. (#47)
