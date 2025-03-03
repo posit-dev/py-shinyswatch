@@ -942,113 +942,113 @@
     "text": "All notable changes to shinyswatch will be documented in this file.\nThe format is based on Keep a Changelog, and this project adheres to Semantic Versioning.\n\n\n\nThe theme picker can now be used with dynamic UI, e.g. shiny.ui.output_ui() and shiny.render.ui(). Be careful when using the theme picker in this way: only one theme picker is allowed in the app at a time. (#51)\nUpdate pre-built shinyswatch themes for use with Shiny v1.3.0. In this release, the navbar colors of Bootswatch themes are less opinionated by default and are designed to work well in light and dark modes. To set navbar colors with Shiny v1.3.0, use shiny.ui.navbar_options(). The documentation for ui.navbar_options() includes instructions for setting navbar colors from Bootswatch examples. (#52)\n\n\n\n\n\nThe theme picker’s message warning users to include shinyswatch.theme_picker_server() is now correctly hidden if the app takes longer than expected to start up. (#47)\nshinyswatch now requires Shiny v1.2.0. (#48)\n\n\n\n\n\n\n\nshinyswatch now requires shiny v1.0.0 or newer to use the newly-introduced shiny.ui.Theme() class to define themes. As a result, shinyswatch.theme.{name} objects can no longer be added anywhere in the app’s UI. Instead, pass a shinyswatch theme to the theme argument of any shiny.ui.page_*() functions (Shiny Core) or to shiny.express.ui.page_opts() (Shiny Express). (#39)\nThe default argument of theme_picker_ui() is now deprecated. Instead, pass the initial theme to the theme argument of any shiny.ui.page_*() functions (Shiny Core) or to shiny.express.ui.page_opts() (Shiny Express). This change separates the initial theme selection from the placement of the theme picker input. (#39)\nshinyswatch.get_theme_deps() was removed from the package. If needed, use the ._html_dependency() method of the theme object. (#39)\n\n\n\n\n\nAs mentioned above, shinyswatch now uses the shiny.ui.Theme() class to define themes, making shinyswatch themes customizable using the .add_defaults(), .add_rules() and other methods of the shiny.ui.Theme() class. Customized themes are recompiled from Sass to CSS, which requires the libsass package. (#39)\nThe theme picker now includes Shiny’s default theme (as \"shiny\") and bare Bootstrap (as \"bootstrap\") as theme options, in addition to the Bootswatch themes. If the initial app theme is a custom shiny.ui.Theme(), the custom theme is also included in the theme picker options. (#39)\nThe theme picker will now remember the previous theme selection between app uses when the app is re-loaded in the same browser. (#43)\n\n\n\n\n\n\nInclude missing theme picker assets in the package. (#36)\n\n\n\n\n\n\n\nshinyswatch.theme_picker_ui() gains a default argument to set the initial theme. (#22)\n\n\n\n\n\nWe’ve restructured the dependencies used to provide a shinyswatch theme. This change should not affect users of shinyswatch, but it will prevent accidentally including more than one shinyswatch themes on the same page. (#32)\nThe theme picker now transitions between themes more smoothly. That said, we do still recommend using the theme picker only while developing your app. (#32)\n\n\n\n\n\n\nAdd typed attributes in the theme’s color class for stronger type checking.\n\n\n\n\n\n\n\nshinyswatch.get_theme(name) now returns a tagifiable class instance of the theme. This callable class instance may be executed to retrive the html dependencies. To resolve some rare typing issues, either execute the returned theme object to directly use the html dependencies or use shinyswatch.get_theme_deps(name). (#29)\n\n# before\ntheme_deps = shinyswatch.get_theme(\"yeti\")\n\n# after (option 1)\ntheme_deps = shinyswatch.get_theme_deps(\"yeti\")\n# after (option 2)\ntheme_obj = shinyswatch.get_theme(\"yeti\")\ntheme_deps = theme_obj()\n\n\n\n\nThemes in shinyswatch.theme are now tagifiable class instances. You no longer need to call the theme as a function, e.g. shinyswatch.theme.yeti. Existing code calling the theme, e.g. shinyswatch.theme.yeti(), will continue to work as the __call__ method retrieves the theme’s html dependencies. (#29)\nshinyswatch.theme’s theme object now includes a .colors attribute with the theme’s color palette, including colors like body_color, body_bg, primary, secondary, etc. You can use these colors to theme plots, outputs and other UI elements to match the shinyswatch theme. (#29)\n\n\n\n\n\nUpdate bootswatch themes to receive page_sidebar updates and require shiny v0.8.1 (#28)\nUpdate bootswatch themes to receive posit-dev/py-shiny#1124 updates to fix navbar theming (#26)\n\n\n\n\n\n\nUpdate bootswatch themes. (#24)\n\n\n\n\n\n\n\nDrop XStatic-bootswatch dependency\n\n\n\n\n\n\n\n\nUpdate themes to support Bootstrap 5.3 (#20)\n\n\n\n\n\n\n\n\nActually include the new ion range slider files in the package (#18).\n\n\n\n\n\n\n\n\nAdded shinyswatch.theme_picker_ui() and shinyswatch.theme_picker_server() to allow users to select a theme from a dropdown menu. When changing themes, a page refresh will occur (#11).\n\n\n\n\n\nUpdated themes to support latest shiny sidebars. Requires shiny 0.5.0 or later (#15).\nDropped support for python 3.7 as shiny does not support python 3.7 (#16).\n\n\n\n\n\n\n\n\nAdded return types to theme() methods. (#6)\nUpdate bootswatch themes. (8b80ed0)\n\n\n\n\n\n\n\n\nUse external images for README.md so that PyPI can render them. (ff23b59)\n\n\n\n\n\n\n\n\nUpdate README.md\n\n\n\n\n\n\n\n\ntheme module contains 25 theme methods that wrap get_theme(). (#4)\nGeneric get_theme() method returns an HTML Dependency that overwrites the default bootstrap theme with the bootswatch theme. The returned HTML Dependency requires internet to load fonts. (#4)"
   },
   {
-    "objectID": "changelog.html#unreleased",
-    "href": "changelog.html#unreleased",
-    "title": "Change Log for shinyswatch",
-    "section": "",
-    "text": "The theme picker can now be used with dynamic UI, e.g. shiny.ui.output_ui() and shiny.render.ui(). Be careful when using the theme picker in this way: only one theme picker is allowed in the app at a time. (#51)\nUpdate pre-built shinyswatch themes for use with Shiny v1.3.0. In this release, the navbar colors of Bootswatch themes are less opinionated by default and are designed to work well in light and dark modes. To set navbar colors with Shiny v1.3.0, use shiny.ui.navbar_options(). The documentation for ui.navbar_options() includes instructions for setting navbar colors from Bootswatch examples. (#52)"
-  },
-  {
     "objectID": "changelog.html#section",
     "href": "changelog.html#section",
     "title": "Change Log for shinyswatch",
     "section": "",
-    "text": "The theme picker’s message warning users to include shinyswatch.theme_picker_server() is now correctly hidden if the app takes longer than expected to start up. (#47)\nshinyswatch now requires Shiny v1.2.0. (#48)"
+    "text": "The theme picker can now be used with dynamic UI, e.g. shiny.ui.output_ui() and shiny.render.ui(). Be careful when using the theme picker in this way: only one theme picker is allowed in the app at a time. (#51)\nUpdate pre-built shinyswatch themes for use with Shiny v1.3.0. In this release, the navbar colors of Bootswatch themes are less opinionated by default and are designed to work well in light and dark modes. To set navbar colors with Shiny v1.3.0, use shiny.ui.navbar_options(). The documentation for ui.navbar_options() includes instructions for setting navbar colors from Bootswatch examples. (#52)"
   },
   {
     "objectID": "changelog.html#section-1",
     "href": "changelog.html#section-1",
     "title": "Change Log for shinyswatch",
     "section": "",
-    "text": "shinyswatch now requires shiny v1.0.0 or newer to use the newly-introduced shiny.ui.Theme() class to define themes. As a result, shinyswatch.theme.{name} objects can no longer be added anywhere in the app’s UI. Instead, pass a shinyswatch theme to the theme argument of any shiny.ui.page_*() functions (Shiny Core) or to shiny.express.ui.page_opts() (Shiny Express). (#39)\nThe default argument of theme_picker_ui() is now deprecated. Instead, pass the initial theme to the theme argument of any shiny.ui.page_*() functions (Shiny Core) or to shiny.express.ui.page_opts() (Shiny Express). This change separates the initial theme selection from the placement of the theme picker input. (#39)\nshinyswatch.get_theme_deps() was removed from the package. If needed, use the ._html_dependency() method of the theme object. (#39)\n\n\n\n\n\nAs mentioned above, shinyswatch now uses the shiny.ui.Theme() class to define themes, making shinyswatch themes customizable using the .add_defaults(), .add_rules() and other methods of the shiny.ui.Theme() class. Customized themes are recompiled from Sass to CSS, which requires the libsass package. (#39)\nThe theme picker now includes Shiny’s default theme (as \"shiny\") and bare Bootstrap (as \"bootstrap\") as theme options, in addition to the Bootswatch themes. If the initial app theme is a custom shiny.ui.Theme(), the custom theme is also included in the theme picker options. (#39)\nThe theme picker will now remember the previous theme selection between app uses when the app is re-loaded in the same browser. (#43)"
+    "text": "The theme picker’s message warning users to include shinyswatch.theme_picker_server() is now correctly hidden if the app takes longer than expected to start up. (#47)\nshinyswatch now requires Shiny v1.2.0. (#48)"
   },
   {
     "objectID": "changelog.html#section-2",
     "href": "changelog.html#section-2",
     "title": "Change Log for shinyswatch",
     "section": "",
-    "text": "Include missing theme picker assets in the package. (#36)"
+    "text": "shinyswatch now requires shiny v1.0.0 or newer to use the newly-introduced shiny.ui.Theme() class to define themes. As a result, shinyswatch.theme.{name} objects can no longer be added anywhere in the app’s UI. Instead, pass a shinyswatch theme to the theme argument of any shiny.ui.page_*() functions (Shiny Core) or to shiny.express.ui.page_opts() (Shiny Express). (#39)\nThe default argument of theme_picker_ui() is now deprecated. Instead, pass the initial theme to the theme argument of any shiny.ui.page_*() functions (Shiny Core) or to shiny.express.ui.page_opts() (Shiny Express). This change separates the initial theme selection from the placement of the theme picker input. (#39)\nshinyswatch.get_theme_deps() was removed from the package. If needed, use the ._html_dependency() method of the theme object. (#39)\n\n\n\n\n\nAs mentioned above, shinyswatch now uses the shiny.ui.Theme() class to define themes, making shinyswatch themes customizable using the .add_defaults(), .add_rules() and other methods of the shiny.ui.Theme() class. Customized themes are recompiled from Sass to CSS, which requires the libsass package. (#39)\nThe theme picker now includes Shiny’s default theme (as \"shiny\") and bare Bootstrap (as \"bootstrap\") as theme options, in addition to the Bootswatch themes. If the initial app theme is a custom shiny.ui.Theme(), the custom theme is also included in the theme picker options. (#39)\nThe theme picker will now remember the previous theme selection between app uses when the app is re-loaded in the same browser. (#43)"
   },
   {
     "objectID": "changelog.html#section-3",
     "href": "changelog.html#section-3",
     "title": "Change Log for shinyswatch",
     "section": "",
-    "text": "shinyswatch.theme_picker_ui() gains a default argument to set the initial theme. (#22)\n\n\n\n\n\nWe’ve restructured the dependencies used to provide a shinyswatch theme. This change should not affect users of shinyswatch, but it will prevent accidentally including more than one shinyswatch themes on the same page. (#32)\nThe theme picker now transitions between themes more smoothly. That said, we do still recommend using the theme picker only while developing your app. (#32)"
+    "text": "Include missing theme picker assets in the package. (#36)"
   },
   {
     "objectID": "changelog.html#section-4",
     "href": "changelog.html#section-4",
     "title": "Change Log for shinyswatch",
     "section": "",
-    "text": "Add typed attributes in the theme’s color class for stronger type checking."
+    "text": "shinyswatch.theme_picker_ui() gains a default argument to set the initial theme. (#22)\n\n\n\n\n\nWe’ve restructured the dependencies used to provide a shinyswatch theme. This change should not affect users of shinyswatch, but it will prevent accidentally including more than one shinyswatch themes on the same page. (#32)\nThe theme picker now transitions between themes more smoothly. That said, we do still recommend using the theme picker only while developing your app. (#32)"
   },
   {
     "objectID": "changelog.html#section-5",
     "href": "changelog.html#section-5",
     "title": "Change Log for shinyswatch",
     "section": "",
-    "text": "shinyswatch.get_theme(name) now returns a tagifiable class instance of the theme. This callable class instance may be executed to retrive the html dependencies. To resolve some rare typing issues, either execute the returned theme object to directly use the html dependencies or use shinyswatch.get_theme_deps(name). (#29)\n\n# before\ntheme_deps = shinyswatch.get_theme(\"yeti\")\n\n# after (option 1)\ntheme_deps = shinyswatch.get_theme_deps(\"yeti\")\n# after (option 2)\ntheme_obj = shinyswatch.get_theme(\"yeti\")\ntheme_deps = theme_obj()\n\n\n\n\nThemes in shinyswatch.theme are now tagifiable class instances. You no longer need to call the theme as a function, e.g. shinyswatch.theme.yeti. Existing code calling the theme, e.g. shinyswatch.theme.yeti(), will continue to work as the __call__ method retrieves the theme’s html dependencies. (#29)\nshinyswatch.theme’s theme object now includes a .colors attribute with the theme’s color palette, including colors like body_color, body_bg, primary, secondary, etc. You can use these colors to theme plots, outputs and other UI elements to match the shinyswatch theme. (#29)\n\n\n\n\n\nUpdate bootswatch themes to receive page_sidebar updates and require shiny v0.8.1 (#28)\nUpdate bootswatch themes to receive posit-dev/py-shiny#1124 updates to fix navbar theming (#26)"
+    "text": "Add typed attributes in the theme’s color class for stronger type checking."
   },
   {
     "objectID": "changelog.html#section-6",
     "href": "changelog.html#section-6",
     "title": "Change Log for shinyswatch",
     "section": "",
-    "text": "Update bootswatch themes. (#24)"
+    "text": "shinyswatch.get_theme(name) now returns a tagifiable class instance of the theme. This callable class instance may be executed to retrive the html dependencies. To resolve some rare typing issues, either execute the returned theme object to directly use the html dependencies or use shinyswatch.get_theme_deps(name). (#29)\n\n# before\ntheme_deps = shinyswatch.get_theme(\"yeti\")\n\n# after (option 1)\ntheme_deps = shinyswatch.get_theme_deps(\"yeti\")\n# after (option 2)\ntheme_obj = shinyswatch.get_theme(\"yeti\")\ntheme_deps = theme_obj()\n\n\n\n\nThemes in shinyswatch.theme are now tagifiable class instances. You no longer need to call the theme as a function, e.g. shinyswatch.theme.yeti. Existing code calling the theme, e.g. shinyswatch.theme.yeti(), will continue to work as the __call__ method retrieves the theme’s html dependencies. (#29)\nshinyswatch.theme’s theme object now includes a .colors attribute with the theme’s color palette, including colors like body_color, body_bg, primary, secondary, etc. You can use these colors to theme plots, outputs and other UI elements to match the shinyswatch theme. (#29)\n\n\n\n\n\nUpdate bootswatch themes to receive page_sidebar updates and require shiny v0.8.1 (#28)\nUpdate bootswatch themes to receive posit-dev/py-shiny#1124 updates to fix navbar theming (#26)"
   },
   {
     "objectID": "changelog.html#section-7",
     "href": "changelog.html#section-7",
     "title": "Change Log for shinyswatch",
     "section": "",
-    "text": "Drop XStatic-bootswatch dependency"
+    "text": "Update bootswatch themes. (#24)"
   },
   {
     "objectID": "changelog.html#section-8",
     "href": "changelog.html#section-8",
     "title": "Change Log for shinyswatch",
     "section": "",
-    "text": "Update themes to support Bootstrap 5.3 (#20)"
+    "text": "Drop XStatic-bootswatch dependency"
   },
   {
     "objectID": "changelog.html#section-9",
     "href": "changelog.html#section-9",
     "title": "Change Log for shinyswatch",
     "section": "",
-    "text": "Actually include the new ion range slider files in the package (#18)."
+    "text": "Update themes to support Bootstrap 5.3 (#20)"
   },
   {
     "objectID": "changelog.html#section-10",
     "href": "changelog.html#section-10",
     "title": "Change Log for shinyswatch",
     "section": "",
-    "text": "Added shinyswatch.theme_picker_ui() and shinyswatch.theme_picker_server() to allow users to select a theme from a dropdown menu. When changing themes, a page refresh will occur (#11).\n\n\n\n\n\nUpdated themes to support latest shiny sidebars. Requires shiny 0.5.0 or later (#15).\nDropped support for python 3.7 as shiny does not support python 3.7 (#16)."
+    "text": "Actually include the new ion range slider files in the package (#18)."
   },
   {
     "objectID": "changelog.html#section-11",
     "href": "changelog.html#section-11",
     "title": "Change Log for shinyswatch",
     "section": "",
-    "text": "Added return types to theme() methods. (#6)\nUpdate bootswatch themes. (8b80ed0)"
+    "text": "Added shinyswatch.theme_picker_ui() and shinyswatch.theme_picker_server() to allow users to select a theme from a dropdown menu. When changing themes, a page refresh will occur (#11).\n\n\n\n\n\nUpdated themes to support latest shiny sidebars. Requires shiny 0.5.0 or later (#15).\nDropped support for python 3.7 as shiny does not support python 3.7 (#16)."
   },
   {
     "objectID": "changelog.html#section-12",
     "href": "changelog.html#section-12",
     "title": "Change Log for shinyswatch",
     "section": "",
-    "text": "Use external images for README.md so that PyPI can render them. (ff23b59)"
+    "text": "Added return types to theme() methods. (#6)\nUpdate bootswatch themes. (8b80ed0)"
   },
   {
     "objectID": "changelog.html#section-13",
     "href": "changelog.html#section-13",
     "title": "Change Log for shinyswatch",
     "section": "",
-    "text": "Update README.md"
+    "text": "Use external images for README.md so that PyPI can render them. (ff23b59)"
   },
   {
     "objectID": "changelog.html#section-14",
     "href": "changelog.html#section-14",
+    "title": "Change Log for shinyswatch",
+    "section": "",
+    "text": "Update README.md"
+  },
+  {
+    "objectID": "changelog.html#section-15",
+    "href": "changelog.html#section-15",
     "title": "Change Log for shinyswatch",
     "section": "",
     "text": "theme module contains 25 theme methods that wrap get_theme(). (#4)\nGeneric get_theme() method returns an HTML Dependency that overwrites the default bootstrap theme with the bootswatch theme. The returned HTML Dependency requires internet to load fonts. (#4)"
