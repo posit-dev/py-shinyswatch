@@ -9,6 +9,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 * The theme picker can now be used with dynamic UI, e.g. `shiny.ui.output_ui()` and `shiny.render.ui()`. Be careful when using the theme picker in this way: only one theme picker is allowed in the app at a time. (#51)
 
+* Update pre-built shinyswatch themes for use with Shiny v1.3.0. In this release, the navbar colors of Bootswatch themes are less opinionated by default and are designed to work well in light and dark modes. To set navbar colors with Shiny v1.3.0, use `shiny.ui.navbar_options()`. [The documentation for `ui.navbar_options()`](https://shiny.posit.co/py/api/core/ui.navbar_options.html#shiny.ui.navbar_options) includes instructions for setting navbar colors from Bootswatch examples. (#52)
+
 ## [0.8.0] - 2024-11-07
 
 * The theme picker's message warning users to include `shinyswatch.theme_picker_server()` is now correctly hidden if the app takes longer than expected to start up. (#47)
