@@ -6,8 +6,7 @@ from shiny.ui import Theme
 
 def get_theme_color_values(theme: Theme):
     # If it matters, should copy the theme to avoid modifying the original
-    theme.add_rules(
-        """
+    theme.add_rules("""
         #values {
             --value: {
             "body_color": "#{$body-color}",
@@ -22,8 +21,7 @@ def get_theme_color_values(theme: Theme):
             "danger": "#{$danger}"
             }
         }
-        """
-    )
+        """)
 
     theme_css = theme.to_css()
 

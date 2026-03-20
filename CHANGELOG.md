@@ -5,6 +5,10 @@ All notable changes to `shinyswatch` will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.10.0] - 2026-03-20
+
+* Update pre-built shinyswatch themes for use with Shiny v1.6.0. (#54)
+
 ## [0.9.0] - 2025-03-03
 
 * The theme picker can now be used with dynamic UI, e.g. `shiny.ui.output_ui()` and `shiny.render.ui()`. Be careful when using the theme picker in this way: only one theme picker is allowed in the app at a time. (#51)

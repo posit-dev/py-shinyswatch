@@ -42,6 +42,7 @@ jobs:
         run: |
           make test
       - name: pyright, flake8, black and isort
+        if: matrix.python-version != '3.9'
         run: |
           make check
 
