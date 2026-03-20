@@ -21,14 +21,12 @@ app_ui = ui.page_sidebar(
             body_bg="#fcefff",
             card_bg="#f5dffa",
         )
-        .add_rules(
-            """
+        .add_rules("""
             .bslib-page-sidebar {
                 --bslib-page-sidebar-title-color: #{$body-bg};
                 --bslib-page-sidebar-title-bg: #{$body-color};
             }
-            """
-        )
+            """)
     ),
 )
 
