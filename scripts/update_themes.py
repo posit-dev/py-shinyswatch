@@ -146,7 +146,7 @@ def code_theme_preset(preset: ShinyThemePreset) -> str:
     from shiny.express import ui
     import shinyswatch
 
-    ui.page_opts(theme=shinyswatch.{preset})
+    ui.page_opts(theme=shinyswatch.theme.{preset})
     ```
 
     **Shiny Core**

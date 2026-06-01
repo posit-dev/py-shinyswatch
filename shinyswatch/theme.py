@@ -6,6 +6,71 @@ Targeted theme methods for all Bootswatch themes.
 
 from ._theme_shinyswatch import ShinyswatchTheme
 
+brite = ShinyswatchTheme("brite")
+"""
+`brite` Bootswatch theme
+
+Visit [https://bootswatch.com/brite/](https://bootswatch.com/brite/) to see
+Bootswatch's demo of the `brite` theme.
+
+This theme object is a subclass of :class:`~shiny.ui.Theme` and can be further
+customized with the :class:`~shiny.ui.Theme` methods. Note that customizing Shiny
+themes requires the [libsass package](https://sass.github.io/libsass-python/).
+
+Examples
+--------
+
+Shinyswatch themes must be provided to the `theme` argument of any Shiny UI page
+function, e.g. :func:`~shiny.ui.page_fluid` or :func:`~shiny.ui.page_sidebar`, or to
+:func:`~shiny.express.ui.page_opts` in Shiny Express.
+
+**Shiny Express**
+
+```python
+from shiny.express import ui
+import shinyswatch
+
+ui.page_opts(theme=shinyswatch.theme.brite)
+```
+
+**Shiny Core**
+
+```python
+from shiny import App, render, ui
+
+import shinyswatch
+
+app_ui = ui.page_fluid(
+    ui.input_slider("num", "Number:", min=10, max=100, value=30),
+    ui.output_text_verbatim("slider_val"),
+    theme=shinyswatch.theme.darkly,
+)
+
+
+def server(input):
+    @render.text
+    def slider_val():
+        return f"{input.num()}"
+
+
+app = App(app_ui, server)
+```
+
+Attributes
+----------
+name:
+    Name of the theme.
+colors:
+    A class containing the color variables used in the theme.
+
+Returns
+-------
+htmltools.HTMLDependency
+    When called, returns an HTMLDependency of a full Shiny Bootswatch (brite)
+    theme.
+"""
+
+
 cerulean = ShinyswatchTheme("cerulean")
 """
 `cerulean` Bootswatch theme
@@ -30,7 +95,7 @@ function, e.g. :func:`~shiny.ui.page_fluid` or :func:`~shiny.ui.page_sidebar`, o
 from shiny.express import ui
 import shinyswatch
 
-ui.page_opts(theme=shinyswatch.cerulean)
+ui.page_opts(theme=shinyswatch.theme.cerulean)
 ```
 
 **Shiny Core**
@@ -95,7 +160,7 @@ function, e.g. :func:`~shiny.ui.page_fluid` or :func:`~shiny.ui.page_sidebar`, o
 from shiny.express import ui
 import shinyswatch
 
-ui.page_opts(theme=shinyswatch.cosmo)
+ui.page_opts(theme=shinyswatch.theme.cosmo)
 ```
 
 **Shiny Core**
@@ -160,7 +225,7 @@ function, e.g. :func:`~shiny.ui.page_fluid` or :func:`~shiny.ui.page_sidebar`, o
 from shiny.express import ui
 import shinyswatch
 
-ui.page_opts(theme=shinyswatch.cyborg)
+ui.page_opts(theme=shinyswatch.theme.cyborg)
 ```
 
 **Shiny Core**
@@ -225,7 +290,7 @@ function, e.g. :func:`~shiny.ui.page_fluid` or :func:`~shiny.ui.page_sidebar`, o
 from shiny.express import ui
 import shinyswatch
 
-ui.page_opts(theme=shinyswatch.darkly)
+ui.page_opts(theme=shinyswatch.theme.darkly)
 ```
 
 **Shiny Core**
@@ -290,7 +355,7 @@ function, e.g. :func:`~shiny.ui.page_fluid` or :func:`~shiny.ui.page_sidebar`, o
 from shiny.express import ui
 import shinyswatch
 
-ui.page_opts(theme=shinyswatch.flatly)
+ui.page_opts(theme=shinyswatch.theme.flatly)
 ```
 
 **Shiny Core**
@@ -355,7 +420,7 @@ function, e.g. :func:`~shiny.ui.page_fluid` or :func:`~shiny.ui.page_sidebar`, o
 from shiny.express import ui
 import shinyswatch
 
-ui.page_opts(theme=shinyswatch.journal)
+ui.page_opts(theme=shinyswatch.theme.journal)
 ```
 
 **Shiny Core**
@@ -420,7 +485,7 @@ function, e.g. :func:`~shiny.ui.page_fluid` or :func:`~shiny.ui.page_sidebar`, o
 from shiny.express import ui
 import shinyswatch
 
-ui.page_opts(theme=shinyswatch.litera)
+ui.page_opts(theme=shinyswatch.theme.litera)
 ```
 
 **Shiny Core**
@@ -485,7 +550,7 @@ function, e.g. :func:`~shiny.ui.page_fluid` or :func:`~shiny.ui.page_sidebar`, o
 from shiny.express import ui
 import shinyswatch
 
-ui.page_opts(theme=shinyswatch.lumen)
+ui.page_opts(theme=shinyswatch.theme.lumen)
 ```
 
 **Shiny Core**
@@ -550,7 +615,7 @@ function, e.g. :func:`~shiny.ui.page_fluid` or :func:`~shiny.ui.page_sidebar`, o
 from shiny.express import ui
 import shinyswatch
 
-ui.page_opts(theme=shinyswatch.lux)
+ui.page_opts(theme=shinyswatch.theme.lux)
 ```
 
 **Shiny Core**
@@ -615,7 +680,7 @@ function, e.g. :func:`~shiny.ui.page_fluid` or :func:`~shiny.ui.page_sidebar`, o
 from shiny.express import ui
 import shinyswatch
 
-ui.page_opts(theme=shinyswatch.materia)
+ui.page_opts(theme=shinyswatch.theme.materia)
 ```
 
 **Shiny Core**
@@ -680,7 +745,7 @@ function, e.g. :func:`~shiny.ui.page_fluid` or :func:`~shiny.ui.page_sidebar`, o
 from shiny.express import ui
 import shinyswatch
 
-ui.page_opts(theme=shinyswatch.minty)
+ui.page_opts(theme=shinyswatch.theme.minty)
 ```
 
 **Shiny Core**
@@ -745,7 +810,7 @@ function, e.g. :func:`~shiny.ui.page_fluid` or :func:`~shiny.ui.page_sidebar`, o
 from shiny.express import ui
 import shinyswatch
 
-ui.page_opts(theme=shinyswatch.morph)
+ui.page_opts(theme=shinyswatch.theme.morph)
 ```
 
 **Shiny Core**
@@ -810,7 +875,7 @@ function, e.g. :func:`~shiny.ui.page_fluid` or :func:`~shiny.ui.page_sidebar`, o
 from shiny.express import ui
 import shinyswatch
 
-ui.page_opts(theme=shinyswatch.pulse)
+ui.page_opts(theme=shinyswatch.theme.pulse)
 ```
 
 **Shiny Core**
@@ -875,7 +940,7 @@ function, e.g. :func:`~shiny.ui.page_fluid` or :func:`~shiny.ui.page_sidebar`, o
 from shiny.express import ui
 import shinyswatch
 
-ui.page_opts(theme=shinyswatch.quartz)
+ui.page_opts(theme=shinyswatch.theme.quartz)
 ```
 
 **Shiny Core**
@@ -940,7 +1005,7 @@ function, e.g. :func:`~shiny.ui.page_fluid` or :func:`~shiny.ui.page_sidebar`, o
 from shiny.express import ui
 import shinyswatch
 
-ui.page_opts(theme=shinyswatch.sandstone)
+ui.page_opts(theme=shinyswatch.theme.sandstone)
 ```
 
 **Shiny Core**
@@ -1005,7 +1070,7 @@ function, e.g. :func:`~shiny.ui.page_fluid` or :func:`~shiny.ui.page_sidebar`, o
 from shiny.express import ui
 import shinyswatch
 
-ui.page_opts(theme=shinyswatch.simplex)
+ui.page_opts(theme=shinyswatch.theme.simplex)
 ```
 
 **Shiny Core**
@@ -1070,7 +1135,7 @@ function, e.g. :func:`~shiny.ui.page_fluid` or :func:`~shiny.ui.page_sidebar`, o
 from shiny.express import ui
 import shinyswatch
 
-ui.page_opts(theme=shinyswatch.sketchy)
+ui.page_opts(theme=shinyswatch.theme.sketchy)
 ```
 
 **Shiny Core**
@@ -1135,7 +1200,7 @@ function, e.g. :func:`~shiny.ui.page_fluid` or :func:`~shiny.ui.page_sidebar`, o
 from shiny.express import ui
 import shinyswatch
 
-ui.page_opts(theme=shinyswatch.slate)
+ui.page_opts(theme=shinyswatch.theme.slate)
 ```
 
 **Shiny Core**
@@ -1200,7 +1265,7 @@ function, e.g. :func:`~shiny.ui.page_fluid` or :func:`~shiny.ui.page_sidebar`, o
 from shiny.express import ui
 import shinyswatch
 
-ui.page_opts(theme=shinyswatch.solar)
+ui.page_opts(theme=shinyswatch.theme.solar)
 ```
 
 **Shiny Core**
@@ -1265,7 +1330,7 @@ function, e.g. :func:`~shiny.ui.page_fluid` or :func:`~shiny.ui.page_sidebar`, o
 from shiny.express import ui
 import shinyswatch
 
-ui.page_opts(theme=shinyswatch.spacelab)
+ui.page_opts(theme=shinyswatch.theme.spacelab)
 ```
 
 **Shiny Core**
@@ -1330,7 +1395,7 @@ function, e.g. :func:`~shiny.ui.page_fluid` or :func:`~shiny.ui.page_sidebar`, o
 from shiny.express import ui
 import shinyswatch
 
-ui.page_opts(theme=shinyswatch.superhero)
+ui.page_opts(theme=shinyswatch.theme.superhero)
 ```
 
 **Shiny Core**
@@ -1395,7 +1460,7 @@ function, e.g. :func:`~shiny.ui.page_fluid` or :func:`~shiny.ui.page_sidebar`, o
 from shiny.express import ui
 import shinyswatch
 
-ui.page_opts(theme=shinyswatch.united)
+ui.page_opts(theme=shinyswatch.theme.united)
 ```
 
 **Shiny Core**
@@ -1460,7 +1525,7 @@ function, e.g. :func:`~shiny.ui.page_fluid` or :func:`~shiny.ui.page_sidebar`, o
 from shiny.express import ui
 import shinyswatch
 
-ui.page_opts(theme=shinyswatch.vapor)
+ui.page_opts(theme=shinyswatch.theme.vapor)
 ```
 
 **Shiny Core**
@@ -1525,7 +1590,7 @@ function, e.g. :func:`~shiny.ui.page_fluid` or :func:`~shiny.ui.page_sidebar`, o
 from shiny.express import ui
 import shinyswatch
 
-ui.page_opts(theme=shinyswatch.yeti)
+ui.page_opts(theme=shinyswatch.theme.yeti)
 ```
 
 **Shiny Core**
@@ -1590,7 +1655,7 @@ function, e.g. :func:`~shiny.ui.page_fluid` or :func:`~shiny.ui.page_sidebar`, o
 from shiny.express import ui
 import shinyswatch
 
-ui.page_opts(theme=shinyswatch.zephyr)
+ui.page_opts(theme=shinyswatch.theme.zephyr)
 ```
 
 **Shiny Core**
