@@ -6,6 +6,71 @@ Targeted theme methods for all Bootswatch themes.
 
 from ._theme_shinyswatch import ShinyswatchTheme
 
+brite = ShinyswatchTheme("brite")
+"""
+`brite` Bootswatch theme
+
+Visit [https://bootswatch.com/brite/](https://bootswatch.com/brite/) to see
+Bootswatch's demo of the `brite` theme.
+
+This theme object is a subclass of :class:`~shiny.ui.Theme` and can be further
+customized with the :class:`~shiny.ui.Theme` methods. Note that customizing Shiny
+themes requires the [libsass package](https://sass.github.io/libsass-python/).
+
+Examples
+--------
+
+Shinyswatch themes must be provided to the `theme` argument of any Shiny UI page
+function, e.g. :func:`~shiny.ui.page_fluid` or :func:`~shiny.ui.page_sidebar`, or to
+:func:`~shiny.express.ui.page_opts` in Shiny Express.
+
+**Shiny Express**
+
+```python
+from shiny.express import ui
+import shinyswatch
+
+ui.page_opts(theme=shinyswatch.brite)
+```
+
+**Shiny Core**
+
+```python
+from shiny import App, render, ui
+
+import shinyswatch
+
+app_ui = ui.page_fluid(
+    ui.input_slider("num", "Number:", min=10, max=100, value=30),
+    ui.output_text_verbatim("slider_val"),
+    theme=shinyswatch.theme.darkly,
+)
+
+
+def server(input):
+    @render.text
+    def slider_val():
+        return f"{input.num()}"
+
+
+app = App(app_ui, server)
+```
+
+Attributes
+----------
+name:
+    Name of the theme.
+colors:
+    A class containing the color variables used in the theme.
+
+Returns
+-------
+htmltools.HTMLDependency
+    When called, returns an HTMLDependency of a full Shiny Bootswatch (brite)
+    theme.
+"""
+
+
 cerulean = ShinyswatchTheme("cerulean")
 """
 `cerulean` Bootswatch theme

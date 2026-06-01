@@ -2,9 +2,10 @@
 
 from ._typing_extensions import Literal
 
-bsw5_version = "5.3.1"
+bsw5_version = "5.3.8"
 
 bsw5_themes = (
+    "brite",
     "cerulean",
     "cosmo",
     "cyborg",
@@ -33,6 +34,7 @@ bsw5_themes = (
 )
 
 BSW5_THEME_NAME = Literal[
+    "brite",
     "cerulean",
     "cosmo",
     "cyborg",
@@ -61,6 +63,18 @@ BSW5_THEME_NAME = Literal[
 ]
 
 bsw5_theme_colors = {
+    "brite": {
+        "body_color": "#212529",
+        "body_bg": "#fff",
+        "light": "#e9ecef",
+        "dark": "#000",
+        "primary": "#a2e436",
+        "secondary": "#fff",
+        "info": "#22d2ed",
+        "success": "#68d391",
+        "warning": "#ffc700",
+        "danger": "#f56565",
+    },
     "cerulean": {
         "body_color": "#495057",
         "body_bg": "#fff",
@@ -160,7 +174,7 @@ bsw5_theme_colors = {
     "lux": {
         "body_color": "#55595c",
         "body_bg": "#fff",
-        "light": "#fff",
+        "light": "#f0f1f2",
         "dark": "#343a40",
         "primary": "#1a1a1a",
         "secondary": "#fff",
