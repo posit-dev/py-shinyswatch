@@ -16,7 +16,7 @@ jobs:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        python-version: ["3.9", "3.10", "3.11", "3.12", "3.13"]
+        python-version: ["3.10", "3.11", "3.12", "3.13", "3.14"]
         os: [ubuntu-latest, windows-latest, macOS-latest]
       fail-fast: false
     defaults:
@@ -42,7 +42,6 @@ jobs:
         run: |
           make test
       - name: pyright, flake8, black and isort
-        if: matrix.python-version != '3.9'
         run: |
           make check
 

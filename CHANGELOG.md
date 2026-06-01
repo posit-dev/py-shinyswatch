@@ -11,6 +11,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 * Update pre-built shinyswatch themes for use with Shiny v1.6.3. (#56)
 
+* shinyswatch now requires Shiny v1.6.3 or later and Python 3.10 or later. Python 3.9 is no longer supported. (#56)
+
 ## [0.10.0] - 2026-03-20
 
 * Update pre-built shinyswatch themes for use with Shiny v1.6.0. (#54)
