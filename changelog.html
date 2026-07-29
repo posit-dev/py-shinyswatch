@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.9.38">
+<meta name="generator" content="quarto-1.10.18">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -12,10 +12,13 @@
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
 */
-code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
-div.columns{display: flex; gap: min(4vw, 1.5em);}
-div.column{flex: auto; overflow-x: auto;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
 div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
 ul.task-list li input[type="checkbox"] {
@@ -74,10 +77,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-949597cd2944ea54491caeee39932bd9.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-02b724de8ee8634ea320344b14deccd0.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-07898aa32c43c58ff7f96f8ed69aa124.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-20b6f454b52192c2e7d19c4874a18620.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -174,35 +177,42 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>All notable changes to <code>shinyswatch</code> will be documented in this file.</p>
 <p>The format is based on <a href="https://keepachangelog.com/en/1.0.0/">Keep a Changelog</a>, and this project adheres to <a href="https://semver.org/spec/v2.0.0.html">Semantic Versioning</a>.</p>
 <section id="section" class="level2">
-<h2 class="anchored" data-anchor-id="section">[0.11.0] - 2026-06-01</h2>
+<h2 class="anchored" data-anchor-id="section">[0.12.0] - 2026-07-29</h2>
+<ul>
+<li><p>Update pre-built shinyswatch themes for use with Shiny v1.7.0. This picks up the new Bootstrap Offcanvas styles behind <code>shiny.ui.offcanvas()</code> and the sidebar resize handle fixes, neither of which were present in the themes pre-built against Shiny v1.6.3. (#57)</p></li>
+<li><p>shinyswatch now requires Shiny v1.7.0 or later. (#57)</p></li>
+</ul>
+</section>
+<section id="section-1" class="level2">
+<h2 class="anchored" data-anchor-id="section-1">[0.11.0] - 2026-06-01</h2>
 <ul>
 <li><p>Added the <code>brite</code> theme. (#56)</p></li>
 <li><p>Update pre-built shinyswatch themes for use with Shiny v1.6.3. (#56)</p></li>
 <li><p>shinyswatch now requires Shiny v1.6.3 or later and Python 3.10 or later. Python 3.9 is no longer supported. (#56)</p></li>
 </ul>
 </section>
-<section id="section-1" class="level2">
-<h2 class="anchored" data-anchor-id="section-1">[0.10.0] - 2026-03-20</h2>
+<section id="section-2" class="level2">
+<h2 class="anchored" data-anchor-id="section-2">[0.10.0] - 2026-03-20</h2>
 <ul>
 <li>Update pre-built shinyswatch themes for use with Shiny v1.6.0. (#54)</li>
 </ul>
 </section>
-<section id="section-2" class="level2">
-<h2 class="anchored" data-anchor-id="section-2">[0.9.0] - 2025-03-03</h2>
+<section id="section-3" class="level2">
+<h2 class="anchored" data-anchor-id="section-3">[0.9.0] - 2025-03-03</h2>
 <ul>
 <li><p>The theme picker can now be used with dynamic UI, e.g.&nbsp;<code>shiny.ui.output_ui()</code> and <code>shiny.render.ui()</code>. Be careful when using the theme picker in this way: only one theme picker is allowed in the app at a time. (#51)</p></li>
 <li><p>Update pre-built shinyswatch themes for use with Shiny v1.3.0. In this release, the navbar colors of Bootswatch themes are less opinionated by default and are designed to work well in light and dark modes. To set navbar colors with Shiny v1.3.0, use <code>shiny.ui.navbar_options()</code>. <a href="https://shiny.posit.co/py/api/core/ui.navbar_options.html#shiny.ui.navbar_options">The documentation for <code>ui.navbar_options()</code></a> includes instructions for setting navbar colors from Bootswatch examples. (#52)</p></li>
 </ul>
 </section>
-<section id="section-3" class="level2">
-<h2 class="anchored" data-anchor-id="section-3">[0.8.0] - 2024-11-07</h2>
+<section id="section-4" class="level2">
+<h2 class="anchored" data-anchor-id="section-4">[0.8.0] - 2024-11-07</h2>
 <ul>
 <li><p>The theme picker’s message warning users to include <code>shinyswatch.theme_picker_server()</code> is now correctly hidden if the app takes longer than expected to start up. (#47)</p></li>
 <li><p>shinyswatch now requires <a href="https://shiny.posit.co/blog/posts/shiny-python-1.2/">Shiny v1.2.0</a>. (#48)</p></li>
 </ul>
 </section>
-<section id="section-4" class="level2">
-<h2 class="anchored" data-anchor-id="section-4">[0.7.0] - 2024-07-18</h2>
+<section id="section-5" class="level2">
+<h2 class="anchored" data-anchor-id="section-5">[0.7.0] - 2024-07-18</h2>
 <section id="breaking-changes" class="level3">
 <h3 class="anchored" data-anchor-id="breaking-changes">Breaking changes</h3>
 <ul>
@@ -220,14 +230,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ul>
 </section>
 </section>
-<section id="section-5" class="level2">
-<h2 class="anchored" data-anchor-id="section-5">[0.6.1] - 2024-04-23</h2>
+<section id="section-6" class="level2">
+<h2 class="anchored" data-anchor-id="section-6">[0.6.1] - 2024-04-23</h2>
 <ul>
 <li>Include missing theme picker assets in the package. (#36)</li>
 </ul>
 </section>
-<section id="section-6" class="level2">
-<h2 class="anchored" data-anchor-id="section-6">[0.6.0] - 2024-04-16</h2>
+<section id="section-7" class="level2">
+<h2 class="anchored" data-anchor-id="section-7">[0.6.0] - 2024-04-16</h2>
 <section id="new-features-1" class="level3">
 <h3 class="anchored" data-anchor-id="new-features-1">New features</h3>
 <ul>
@@ -242,14 +252,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ul>
 </section>
 </section>
-<section id="section-7" class="level2">
-<h2 class="anchored" data-anchor-id="section-7">[0.5.1] - 2024-03-07</h2>
+<section id="section-8" class="level2">
+<h2 class="anchored" data-anchor-id="section-8">[0.5.1] - 2024-03-07</h2>
 <ul>
 <li>Add typed attributes in the theme’s color class for stronger type checking.</li>
 </ul>
 </section>
-<section id="section-8" class="level2">
-<h2 class="anchored" data-anchor-id="section-8">[0.5.0] - 2024-03-07</h2>
+<section id="section-9" class="level2">
+<h2 class="anchored" data-anchor-id="section-9">[0.5.0] - 2024-03-07</h2>
 <section id="breaking-changes-1" class="level3">
 <h3 class="anchored" data-anchor-id="breaking-changes-1">Breaking changes</h3>
 <ul>
@@ -279,14 +289,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ul>
 </section>
 </section>
-<section id="section-9" class="level2">
-<h2 class="anchored" data-anchor-id="section-9">[0.4.2] - 2023-12-22</h2>
+<section id="section-10" class="level2">
+<h2 class="anchored" data-anchor-id="section-10">[0.4.2] - 2023-12-22</h2>
 <ul>
 <li>Update bootswatch themes. (#24)</li>
 </ul>
 </section>
-<section id="section-10" class="level2">
-<h2 class="anchored" data-anchor-id="section-10">[0.4.1] - 2023-10-31</h2>
+<section id="section-11" class="level2">
+<h2 class="anchored" data-anchor-id="section-11">[0.4.1] - 2023-10-31</h2>
 <section id="new-features-3" class="level3">
 <h3 class="anchored" data-anchor-id="new-features-3">New features</h3>
 <ul>
@@ -294,8 +304,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ul>
 </section>
 </section>
-<section id="section-11" class="level2">
-<h2 class="anchored" data-anchor-id="section-11">[0.4.0] - 2023-10-31</h2>
+<section id="section-12" class="level2">
+<h2 class="anchored" data-anchor-id="section-12">[0.4.0] - 2023-10-31</h2>
 <section id="new-features-4" class="level3">
 <h3 class="anchored" data-anchor-id="new-features-4">New features</h3>
 <ul>
@@ -303,8 +313,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ul>
 </section>
 </section>
-<section id="section-12" class="level2">
-<h2 class="anchored" data-anchor-id="section-12">[0.3.1] - 2023-08-20</h2>
+<section id="section-13" class="level2">
+<h2 class="anchored" data-anchor-id="section-13">[0.3.1] - 2023-08-20</h2>
 <section id="bug-fixes" class="level3">
 <h3 class="anchored" data-anchor-id="bug-fixes">Bug fixes</h3>
 <ul>
@@ -312,8 +322,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ul>
 </section>
 </section>
-<section id="section-13" class="level2">
-<h2 class="anchored" data-anchor-id="section-13">[0.3.0] - 2023-08-20</h2>
+<section id="section-14" class="level2">
+<h2 class="anchored" data-anchor-id="section-14">[0.3.0] - 2023-08-20</h2>
 <section id="new-features-5" class="level3">
 <h3 class="anchored" data-anchor-id="new-features-5">New features</h3>
 <ul>
@@ -328,8 +338,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ul>
 </section>
 </section>
-<section id="section-14" class="level2">
-<h2 class="anchored" data-anchor-id="section-14">[0.2.4] - 2023-04-18</h2>
+<section id="section-15" class="level2">
+<h2 class="anchored" data-anchor-id="section-15">[0.2.4] - 2023-04-18</h2>
 <section id="bug-fixes-2" class="level3">
 <h3 class="anchored" data-anchor-id="bug-fixes-2">Bug fixes</h3>
 <ul>
@@ -338,8 +348,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ul>
 </section>
 </section>
-<section id="section-15" class="level2">
-<h2 class="anchored" data-anchor-id="section-15">[0.2.2] - 2023-04-18</h2>
+<section id="section-16" class="level2">
+<h2 class="anchored" data-anchor-id="section-16">[0.2.2] - 2023-04-18</h2>
 <section id="other-changes" class="level3">
 <h3 class="anchored" data-anchor-id="other-changes">Other changes</h3>
 <ul>
@@ -347,8 +357,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ul>
 </section>
 </section>
-<section id="section-16" class="level2">
-<h2 class="anchored" data-anchor-id="section-16">[0.2.1] - 2023-04-18</h2>
+<section id="section-17" class="level2">
+<h2 class="anchored" data-anchor-id="section-17">[0.2.1] - 2023-04-18</h2>
 <section id="other-changes-1" class="level3">
 <h3 class="anchored" data-anchor-id="other-changes-1">Other changes</h3>
 <ul>
@@ -356,8 +366,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ul>
 </section>
 </section>
-<section id="section-17" class="level2">
-<h2 class="anchored" data-anchor-id="section-17">[0.2.0] - 2023-04-14</h2>
+<section id="section-18" class="level2">
+<h2 class="anchored" data-anchor-id="section-18">[0.2.0] - 2023-04-14</h2>
 <section id="new-features-6" class="level3">
 <h3 class="anchored" data-anchor-id="new-features-6">New features</h3>
 <ul>
@@ -778,7 +788,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       &nbsp;
     </div>   
     <div class="nav-footer-center">
-<p>shinyswatch v0.11.0</p>
+<p>shinyswatch v0.12.0</p>
 </div>
     <div class="nav-footer-right">
       &nbsp;
