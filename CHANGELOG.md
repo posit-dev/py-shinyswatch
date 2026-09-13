@@ -7,9 +7,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [0.13.0] - 2026-09-12
 
-* Update pre-built shinyswatch themes for use with Shiny v1.8.0. This picks up the popover/tooltip rule that keeps a dynamically-rendered output from collapsing to zero width, which was not present in the themes pre-built against Shiny v1.7.0. (#PRNUM)
+* Update pre-built shinyswatch themes for use with Shiny v1.8.0. This picks up the popover/tooltip rule that keeps a dynamically-rendered output from collapsing to zero width, which was not present in the themes pre-built against Shiny v1.7.0. (#59)
 
-* shinyswatch now requires Shiny v1.8.0 or later. (#PRNUM)
+* shinyswatch now requires Shiny v1.8.0 or later. (#59)
 
 ## [0.12.0] - 2026-07-29
 
