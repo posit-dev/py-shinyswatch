@@ -7,7 +7,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [0.13.1] - 2026-09-12
 
-* The theme API reference examples now use `ui.output_text()` instead of `ui.output_text_verbatim()`, which Shiny v1.8.0 deprecates. Copying an example into an app no longer raises a `ShinyDeprecationWarning`. (#PRNUM)
+* The theme API reference examples now use `ui.output_text()` instead of `ui.output_text_verbatim()`, which Shiny v1.8.0 deprecates. Copying an example into an app no longer raises a `ShinyDeprecationWarning`. (#60)
 
 ## [0.13.0] - 2026-09-12
 
