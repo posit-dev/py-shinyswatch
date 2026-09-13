@@ -42,13 +42,13 @@ import shinyswatch
 
 app_ui = ui.page_fluid(
     ui.input_slider("num", "Number:", min=10, max=100, value=30),
-    ui.output_text_verbatim("slider_val"),
+    ui.output_code("slider_val"),
     theme=shinyswatch.theme.darkly,
 )
 
 
 def server(input):
-    @render.text
+    @render.code
     def slider_val():
         return f"{input.num()}"
 
@@ -107,13 +107,13 @@ import shinyswatch
 
 app_ui = ui.page_fluid(
     ui.input_slider("num", "Number:", min=10, max=100, value=30),
-    ui.output_text_verbatim("slider_val"),
+    ui.output_code("slider_val"),
     theme=shinyswatch.theme.darkly,
 )
 
 
 def server(input):
-    @render.text
+    @render.code
     def slider_val():
         return f"{input.num()}"
 
@@ -172,13 +172,13 @@ import shinyswatch
 
 app_ui = ui.page_fluid(
     ui.input_slider("num", "Number:", min=10, max=100, value=30),
-    ui.output_text_verbatim("slider_val"),
+    ui.output_code("slider_val"),
     theme=shinyswatch.theme.darkly,
 )
 
 
 def server(input):
-    @render.text
+    @render.code
     def slider_val():
         return f"{input.num()}"
 
@@ -237,13 +237,13 @@ import shinyswatch
 
 app_ui = ui.page_fluid(
     ui.input_slider("num", "Number:", min=10, max=100, value=30),
-    ui.output_text_verbatim("slider_val"),
+    ui.output_code("slider_val"),
     theme=shinyswatch.theme.darkly,
 )
 
 
 def server(input):
-    @render.text
+    @render.code
     def slider_val():
         return f"{input.num()}"
 
@@ -302,13 +302,13 @@ import shinyswatch
 
 app_ui = ui.page_fluid(
     ui.input_slider("num", "Number:", min=10, max=100, value=30),
-    ui.output_text_verbatim("slider_val"),
+    ui.output_code("slider_val"),
     theme=shinyswatch.theme.darkly,
 )
 
 
 def server(input):
-    @render.text
+    @render.code
     def slider_val():
         return f"{input.num()}"
 
@@ -367,13 +367,13 @@ import shinyswatch
 
 app_ui = ui.page_fluid(
     ui.input_slider("num", "Number:", min=10, max=100, value=30),
-    ui.output_text_verbatim("slider_val"),
+    ui.output_code("slider_val"),
     theme=shinyswatch.theme.darkly,
 )
 
 
 def server(input):
-    @render.text
+    @render.code
     def slider_val():
         return f"{input.num()}"
 
@@ -432,13 +432,13 @@ import shinyswatch
 
 app_ui = ui.page_fluid(
     ui.input_slider("num", "Number:", min=10, max=100, value=30),
-    ui.output_text_verbatim("slider_val"),
+    ui.output_code("slider_val"),
     theme=shinyswatch.theme.darkly,
 )
 
 
 def server(input):
-    @render.text
+    @render.code
     def slider_val():
         return f"{input.num()}"
 
@@ -497,13 +497,13 @@ import shinyswatch
 
 app_ui = ui.page_fluid(
     ui.input_slider("num", "Number:", min=10, max=100, value=30),
-    ui.output_text_verbatim("slider_val"),
+    ui.output_code("slider_val"),
     theme=shinyswatch.theme.darkly,
 )
 
 
 def server(input):
-    @render.text
+    @render.code
     def slider_val():
         return f"{input.num()}"
 
@@ -562,13 +562,13 @@ import shinyswatch
 
 app_ui = ui.page_fluid(
     ui.input_slider("num", "Number:", min=10, max=100, value=30),
-    ui.output_text_verbatim("slider_val"),
+    ui.output_code("slider_val"),
     theme=shinyswatch.theme.darkly,
 )
 
 
 def server(input):
-    @render.text
+    @render.code
     def slider_val():
         return f"{input.num()}"
 
@@ -627,13 +627,13 @@ import shinyswatch
 
 app_ui = ui.page_fluid(
     ui.input_slider("num", "Number:", min=10, max=100, value=30),
-    ui.output_text_verbatim("slider_val"),
+    ui.output_code("slider_val"),
     theme=shinyswatch.theme.darkly,
 )
 
 
 def server(input):
-    @render.text
+    @render.code
     def slider_val():
         return f"{input.num()}"
 
@@ -692,13 +692,13 @@ import shinyswatch
 
 app_ui = ui.page_fluid(
     ui.input_slider("num", "Number:", min=10, max=100, value=30),
-    ui.output_text_verbatim("slider_val"),
+    ui.output_code("slider_val"),
     theme=shinyswatch.theme.darkly,
 )
 
 
 def server(input):
-    @render.text
+    @render.code
     def slider_val():
         return f"{input.num()}"
 
@@ -757,13 +757,13 @@ import shinyswatch
 
 app_ui = ui.page_fluid(
     ui.input_slider("num", "Number:", min=10, max=100, value=30),
-    ui.output_text_verbatim("slider_val"),
+    ui.output_code("slider_val"),
     theme=shinyswatch.theme.darkly,
 )
 
 
 def server(input):
-    @render.text
+    @render.code
     def slider_val():
         return f"{input.num()}"
 
@@ -822,13 +822,13 @@ import shinyswatch
 
 app_ui = ui.page_fluid(
     ui.input_slider("num", "Number:", min=10, max=100, value=30),
-    ui.output_text_verbatim("slider_val"),
+    ui.output_code("slider_val"),
     theme=shinyswatch.theme.darkly,
 )
 
 
 def server(input):
-    @render.text
+    @render.code
     def slider_val():
         return f"{input.num()}"
 
@@ -887,13 +887,13 @@ import shinyswatch
 
 app_ui = ui.page_fluid(
     ui.input_slider("num", "Number:", min=10, max=100, value=30),
-    ui.output_text_verbatim("slider_val"),
+    ui.output_code("slider_val"),
     theme=shinyswatch.theme.darkly,
 )
 
 
 def server(input):
-    @render.text
+    @render.code
     def slider_val():
         return f"{input.num()}"
 
@@ -952,13 +952,13 @@ import shinyswatch
 
 app_ui = ui.page_fluid(
     ui.input_slider("num", "Number:", min=10, max=100, value=30),
-    ui.output_text_verbatim("slider_val"),
+    ui.output_code("slider_val"),
     theme=shinyswatch.theme.darkly,
 )
 
 
 def server(input):
-    @render.text
+    @render.code
     def slider_val():
         return f"{input.num()}"
 
@@ -1017,13 +1017,13 @@ import shinyswatch
 
 app_ui = ui.page_fluid(
     ui.input_slider("num", "Number:", min=10, max=100, value=30),
-    ui.output_text_verbatim("slider_val"),
+    ui.output_code("slider_val"),
     theme=shinyswatch.theme.darkly,
 )
 
 
 def server(input):
-    @render.text
+    @render.code
     def slider_val():
         return f"{input.num()}"
 
@@ -1082,13 +1082,13 @@ import shinyswatch
 
 app_ui = ui.page_fluid(
     ui.input_slider("num", "Number:", min=10, max=100, value=30),
-    ui.output_text_verbatim("slider_val"),
+    ui.output_code("slider_val"),
     theme=shinyswatch.theme.darkly,
 )
 
 
 def server(input):
-    @render.text
+    @render.code
     def slider_val():
         return f"{input.num()}"
 
@@ -1147,13 +1147,13 @@ import shinyswatch
 
 app_ui = ui.page_fluid(
     ui.input_slider("num", "Number:", min=10, max=100, value=30),
-    ui.output_text_verbatim("slider_val"),
+    ui.output_code("slider_val"),
     theme=shinyswatch.theme.darkly,
 )
 
 
 def server(input):
-    @render.text
+    @render.code
     def slider_val():
         return f"{input.num()}"
 
@@ -1212,13 +1212,13 @@ import shinyswatch
 
 app_ui = ui.page_fluid(
     ui.input_slider("num", "Number:", min=10, max=100, value=30),
-    ui.output_text_verbatim("slider_val"),
+    ui.output_code("slider_val"),
     theme=shinyswatch.theme.darkly,
 )
 
 
 def server(input):
-    @render.text
+    @render.code
     def slider_val():
         return f"{input.num()}"
 
@@ -1277,13 +1277,13 @@ import shinyswatch
 
 app_ui = ui.page_fluid(
     ui.input_slider("num", "Number:", min=10, max=100, value=30),
-    ui.output_text_verbatim("slider_val"),
+    ui.output_code("slider_val"),
     theme=shinyswatch.theme.darkly,
 )
 
 
 def server(input):
-    @render.text
+    @render.code
     def slider_val():
         return f"{input.num()}"
 
@@ -1342,13 +1342,13 @@ import shinyswatch
 
 app_ui = ui.page_fluid(
     ui.input_slider("num", "Number:", min=10, max=100, value=30),
-    ui.output_text_verbatim("slider_val"),
+    ui.output_code("slider_val"),
     theme=shinyswatch.theme.darkly,
 )
 
 
 def server(input):
-    @render.text
+    @render.code
     def slider_val():
         return f"{input.num()}"
 
@@ -1407,13 +1407,13 @@ import shinyswatch
 
 app_ui = ui.page_fluid(
     ui.input_slider("num", "Number:", min=10, max=100, value=30),
-    ui.output_text_verbatim("slider_val"),
+    ui.output_code("slider_val"),
     theme=shinyswatch.theme.darkly,
 )
 
 
 def server(input):
-    @render.text
+    @render.code
     def slider_val():
         return f"{input.num()}"
 
@@ -1472,13 +1472,13 @@ import shinyswatch
 
 app_ui = ui.page_fluid(
     ui.input_slider("num", "Number:", min=10, max=100, value=30),
-    ui.output_text_verbatim("slider_val"),
+    ui.output_code("slider_val"),
     theme=shinyswatch.theme.darkly,
 )
 
 
 def server(input):
-    @render.text
+    @render.code
     def slider_val():
         return f"{input.num()}"
 
@@ -1537,13 +1537,13 @@ import shinyswatch
 
 app_ui = ui.page_fluid(
     ui.input_slider("num", "Number:", min=10, max=100, value=30),
-    ui.output_text_verbatim("slider_val"),
+    ui.output_code("slider_val"),
     theme=shinyswatch.theme.darkly,
 )
 
 
 def server(input):
-    @render.text
+    @render.code
     def slider_val():
         return f"{input.num()}"
 
@@ -1602,13 +1602,13 @@ import shinyswatch
 
 app_ui = ui.page_fluid(
     ui.input_slider("num", "Number:", min=10, max=100, value=30),
-    ui.output_text_verbatim("slider_val"),
+    ui.output_code("slider_val"),
     theme=shinyswatch.theme.darkly,
 )
 
 
 def server(input):
-    @render.text
+    @render.code
     def slider_val():
         return f"{input.num()}"
 
@@ -1667,13 +1667,13 @@ import shinyswatch
 
 app_ui = ui.page_fluid(
     ui.input_slider("num", "Number:", min=10, max=100, value=30),
-    ui.output_text_verbatim("slider_val"),
+    ui.output_code("slider_val"),
     theme=shinyswatch.theme.darkly,
 )
 
 
 def server(input):
-    @render.text
+    @render.code
     def slider_val():
         return f"{input.num()}"
 

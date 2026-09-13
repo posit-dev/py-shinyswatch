@@ -5,6 +5,10 @@ All notable changes to `shinyswatch` will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.13.1] - 2026-09-12
+
+* The theme API reference examples now use `ui.output_code()` / `@render.code` instead of `ui.output_text_verbatim()`, which Shiny v1.8.0 deprecates. Copying an example into an app no longer raises a `ShinyDeprecationWarning`, and the example keeps its monospaced output box. (#60)
+
 ## [0.13.0] - 2026-09-12
 
 * Update pre-built shinyswatch themes for use with Shiny v1.8.0. This picks up the popover/tooltip rule that keeps a dynamically-rendered output from collapsing to zero width, which was not present in the themes pre-built against Shiny v1.7.0. (#59)
