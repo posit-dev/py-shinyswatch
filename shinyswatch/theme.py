@@ -42,7 +42,7 @@ import shinyswatch
 
 app_ui = ui.page_fluid(
     ui.input_slider("num", "Number:", min=10, max=100, value=30),
-    ui.output_text_verbatim("slider_val"),
+    ui.output_text("slider_val"),
     theme=shinyswatch.theme.darkly,
 )
 
@@ -107,7 +107,7 @@ import shinyswatch
 
 app_ui = ui.page_fluid(
     ui.input_slider("num", "Number:", min=10, max=100, value=30),
-    ui.output_text_verbatim("slider_val"),
+    ui.output_text("slider_val"),
     theme=shinyswatch.theme.darkly,
 )
 
@@ -172,7 +172,7 @@ import shinyswatch
 
 app_ui = ui.page_fluid(
     ui.input_slider("num", "Number:", min=10, max=100, value=30),
-    ui.output_text_verbatim("slider_val"),
+    ui.output_text("slider_val"),
     theme=shinyswatch.theme.darkly,
 )
 
@@ -237,7 +237,7 @@ import shinyswatch
 
 app_ui = ui.page_fluid(
     ui.input_slider("num", "Number:", min=10, max=100, value=30),
-    ui.output_text_verbatim("slider_val"),
+    ui.output_text("slider_val"),
     theme=shinyswatch.theme.darkly,
 )
 
@@ -302,7 +302,7 @@ import shinyswatch
 
 app_ui = ui.page_fluid(
     ui.input_slider("num", "Number:", min=10, max=100, value=30),
-    ui.output_text_verbatim("slider_val"),
+    ui.output_text("slider_val"),
     theme=shinyswatch.theme.darkly,
 )
 
@@ -367,7 +367,7 @@ import shinyswatch
 
 app_ui = ui.page_fluid(
     ui.input_slider("num", "Number:", min=10, max=100, value=30),
-    ui.output_text_verbatim("slider_val"),
+    ui.output_text("slider_val"),
     theme=shinyswatch.theme.darkly,
 )
 
@@ -432,7 +432,7 @@ import shinyswatch
 
 app_ui = ui.page_fluid(
     ui.input_slider("num", "Number:", min=10, max=100, value=30),
-    ui.output_text_verbatim("slider_val"),
+    ui.output_text("slider_val"),
     theme=shinyswatch.theme.darkly,
 )
 
@@ -497,7 +497,7 @@ import shinyswatch
 
 app_ui = ui.page_fluid(
     ui.input_slider("num", "Number:", min=10, max=100, value=30),
-    ui.output_text_verbatim("slider_val"),
+    ui.output_text("slider_val"),
     theme=shinyswatch.theme.darkly,
 )
 
@@ -562,7 +562,7 @@ import shinyswatch
 
 app_ui = ui.page_fluid(
     ui.input_slider("num", "Number:", min=10, max=100, value=30),
-    ui.output_text_verbatim("slider_val"),
+    ui.output_text("slider_val"),
     theme=shinyswatch.theme.darkly,
 )
 
@@ -627,7 +627,7 @@ import shinyswatch
 
 app_ui = ui.page_fluid(
     ui.input_slider("num", "Number:", min=10, max=100, value=30),
-    ui.output_text_verbatim("slider_val"),
+    ui.output_text("slider_val"),
     theme=shinyswatch.theme.darkly,
 )
 
@@ -692,7 +692,7 @@ import shinyswatch
 
 app_ui = ui.page_fluid(
     ui.input_slider("num", "Number:", min=10, max=100, value=30),
-    ui.output_text_verbatim("slider_val"),
+    ui.output_text("slider_val"),
     theme=shinyswatch.theme.darkly,
 )
 
@@ -757,7 +757,7 @@ import shinyswatch
 
 app_ui = ui.page_fluid(
     ui.input_slider("num", "Number:", min=10, max=100, value=30),
-    ui.output_text_verbatim("slider_val"),
+    ui.output_text("slider_val"),
     theme=shinyswatch.theme.darkly,
 )
 
@@ -822,7 +822,7 @@ import shinyswatch
 
 app_ui = ui.page_fluid(
     ui.input_slider("num", "Number:", min=10, max=100, value=30),
-    ui.output_text_verbatim("slider_val"),
+    ui.output_text("slider_val"),
     theme=shinyswatch.theme.darkly,
 )
 
@@ -887,7 +887,7 @@ import shinyswatch
 
 app_ui = ui.page_fluid(
     ui.input_slider("num", "Number:", min=10, max=100, value=30),
-    ui.output_text_verbatim("slider_val"),
+    ui.output_text("slider_val"),
     theme=shinyswatch.theme.darkly,
 )
 
@@ -952,7 +952,7 @@ import shinyswatch
 
 app_ui = ui.page_fluid(
     ui.input_slider("num", "Number:", min=10, max=100, value=30),
-    ui.output_text_verbatim("slider_val"),
+    ui.output_text("slider_val"),
     theme=shinyswatch.theme.darkly,
 )
 
@@ -1017,7 +1017,7 @@ import shinyswatch
 
 app_ui = ui.page_fluid(
     ui.input_slider("num", "Number:", min=10, max=100, value=30),
-    ui.output_text_verbatim("slider_val"),
+    ui.output_text("slider_val"),
     theme=shinyswatch.theme.darkly,
 )
 
@@ -1082,7 +1082,7 @@ import shinyswatch
 
 app_ui = ui.page_fluid(
     ui.input_slider("num", "Number:", min=10, max=100, value=30),
-    ui.output_text_verbatim("slider_val"),
+    ui.output_text("slider_val"),
     theme=shinyswatch.theme.darkly,
 )
 
@@ -1147,7 +1147,7 @@ import shinyswatch
 
 app_ui = ui.page_fluid(
     ui.input_slider("num", "Number:", min=10, max=100, value=30),
-    ui.output_text_verbatim("slider_val"),
+    ui.output_text("slider_val"),
     theme=shinyswatch.theme.darkly,
 )
 
@@ -1212,7 +1212,7 @@ import shinyswatch
 
 app_ui = ui.page_fluid(
     ui.input_slider("num", "Number:", min=10, max=100, value=30),
-    ui.output_text_verbatim("slider_val"),
+    ui.output_text("slider_val"),
     theme=shinyswatch.theme.darkly,
 )
 
@@ -1277,7 +1277,7 @@ import shinyswatch
 
 app_ui = ui.page_fluid(
     ui.input_slider("num", "Number:", min=10, max=100, value=30),
-    ui.output_text_verbatim("slider_val"),
+    ui.output_text("slider_val"),
     theme=shinyswatch.theme.darkly,
 )
 
@@ -1342,7 +1342,7 @@ import shinyswatch
 
 app_ui = ui.page_fluid(
     ui.input_slider("num", "Number:", min=10, max=100, value=30),
-    ui.output_text_verbatim("slider_val"),
+    ui.output_text("slider_val"),
     theme=shinyswatch.theme.darkly,
 )
 
@@ -1407,7 +1407,7 @@ import shinyswatch
 
 app_ui = ui.page_fluid(
     ui.input_slider("num", "Number:", min=10, max=100, value=30),
-    ui.output_text_verbatim("slider_val"),
+    ui.output_text("slider_val"),
     theme=shinyswatch.theme.darkly,
 )
 
@@ -1472,7 +1472,7 @@ import shinyswatch
 
 app_ui = ui.page_fluid(
     ui.input_slider("num", "Number:", min=10, max=100, value=30),
-    ui.output_text_verbatim("slider_val"),
+    ui.output_text("slider_val"),
     theme=shinyswatch.theme.darkly,
 )
 
@@ -1537,7 +1537,7 @@ import shinyswatch
 
 app_ui = ui.page_fluid(
     ui.input_slider("num", "Number:", min=10, max=100, value=30),
-    ui.output_text_verbatim("slider_val"),
+    ui.output_text("slider_val"),
     theme=shinyswatch.theme.darkly,
 )
 
@@ -1602,7 +1602,7 @@ import shinyswatch
 
 app_ui = ui.page_fluid(
     ui.input_slider("num", "Number:", min=10, max=100, value=30),
-    ui.output_text_verbatim("slider_val"),
+    ui.output_text("slider_val"),
     theme=shinyswatch.theme.darkly,
 )
 
@@ -1667,7 +1667,7 @@ import shinyswatch
 
 app_ui = ui.page_fluid(
     ui.input_slider("num", "Number:", min=10, max=100, value=30),
-    ui.output_text_verbatim("slider_val"),
+    ui.output_text("slider_val"),
     theme=shinyswatch.theme.darkly,
 )
 
