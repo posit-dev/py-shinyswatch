@@ -1,8 +1,8 @@
-// Shinylive 0.10.14
+// Shinylive 0.10.15
 // Copyright 2026 Posit, PBC
 import {
   __commonJS
-} from "./chunk-PCA63ASY.js";
+} from "./chunk-LYVYCXL6.js";
 
 // node_modules/ws/browser.js
 var require_browser = __commonJS({
