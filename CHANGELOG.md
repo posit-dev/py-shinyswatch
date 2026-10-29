@@ -5,6 +5,12 @@ All notable changes to `shinyswatch` will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.14.0] - 2026-10-29
+
+* Update pre-built shinyswatch themes for use with Shiny v1.9.0. This picks up the new `--bslib-toolbar-font-size` CSS variable for toolbars and the page-level sidebar layout fixes for `page_sidebar()` and `page_navbar()`, neither of which were present in the themes pre-built against Shiny v1.8.0. (#62)
+
+* shinyswatch now requires Shiny v1.9.0 or later. (#62)
+
 ## [0.13.1] - 2026-09-12
 
 * The theme API reference examples now use `ui.output_code()` / `@render.code` instead of `ui.output_text_verbatim()`, which Shiny v1.8.0 deprecates. Copying an example into an app no longer raises a `ShinyDeprecationWarning`, and the example keeps its monospaced output box. (#60)
